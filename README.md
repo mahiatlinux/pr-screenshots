@@ -26,11 +26,19 @@ Linux x86_64, Python 3.12.13, Codex CLI 0.154.0, NVIDIA RTX 5060 Ti, driver 595.
 
 ## UI evidence
 
-These are screenshots of actual captured terminal transcript excerpts, rendered with Playwright Chromium 151.0.7922.34 at 1440 x 520. The composite was opened and inspected: five reconnects and a generic stream failure before, zero reconnects and the context-window message after. Full terminal output is in the archive.
+Fresh direct captures of real **xterm 407** windows running **Codex CLI 0.154.0**, on an isolated Xvfb display. The terminal runs Codex against the GPU-backed Studio for each pinned checkout. Pixels are read directly from the X11 window after Codex exits. The images have no HTML rendering, output filtering, compositing or retouching. Both captures were opened and inspected.
 
-![Before and after](codex-before-after.png)
+These replace the earlier screenshots of HTML-rendered transcript excerpts.
 
-[Before](codex-base.png) · [After](codex-head.png) · [Logs, pinned dependencies, environment and reproduction scripts](verification.zip)
+### Before: merge base
+
+![Before: actual xterm window](terminal-base.png)
+
+### After: original PR head
+
+![After: actual xterm window](terminal-head.png)
+
+[Original verification logs and scripts](verification.zip) · [Fresh terminal capture logs and scripts](terminal-capture.zip)
 
 ## Fixes
 

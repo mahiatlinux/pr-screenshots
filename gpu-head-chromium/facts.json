@@ -1,0 +1,12 @@
+{
+  "label": "AFTER",
+  "model": "Ling-3.0-tiny-Q6_K",
+  "provider": "local llama.cpp CUDA",
+  "first_reply": "Apple\n\nCopy\nEdit response\nRefresh\nDelete message\nRead aloud\nMore\n67ms",
+  "during_regeneration_export_turns": 1,
+  "regenerated_export_turns": 2,
+  "picked_export_turns": 2,
+  "edited_export_turns": 2,
+  "edited_reply": "Lion\n\nCopy\nEdit response\nRefresh\nDelete message\nRead aloud\nMore\n66ms",
+  "csv_preserves_both_prompts": true
+}

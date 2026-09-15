@@ -1,0 +1,17 @@
+{
+  "thread_id": "uidiff-sharegpt-branch-d95e336b8d",
+  "stored_row_count": 3,
+  "picker_state_on_load": "2/2",
+  "picker_state_after_previous": "1/2",
+  "on_screen_reply": "first",
+  "sharegpt_raw": "{\"conversations\":[{\"from\":\"human\",\"value\":\"Name one fruit.\"},{\"from\":\"gpt\",\"value\":\"FIRST REPLY: Apples. This is the reply picked with the branch picker.\"}]}\n",
+  "training_raw": "{\"messages\":[{\"role\":\"user\",\"content\":\"Name one fruit.\"},{\"role\":\"assistant\",\"content\":\"FIRST REPLY: Apples. This is the reply picked with the branch picker.\"}]}\n",
+  "sharegpt_gpt_turns": [
+    "first"
+  ],
+  "training_assistant_turns": [
+    "first"
+  ],
+  "sharegpt_matches_screen": true,
+  "training_matches_screen": true
+}

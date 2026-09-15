@@ -1,0 +1,6 @@
+{"timestamp": "2026-09-15T04:32:22.935997Z", "level": "info", "event": "Proxying chat completion to http://127.0.0.1:18941/v1/chat/completions (provider=custom, model=review-tiny)"}
+{"timestamp": "2026-09-15T04:32:22.974782Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 44.08}
+{"timestamp": "2026-09-15T04:32:33.094178Z", "level": "info", "event": "Proxying chat completion to http://127.0.0.1:18941/v1/chat/completions (provider=custom, model=review-tiny)"}
+{"timestamp": "2026-09-15T04:32:33.133178Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 43.67}
+{"timestamp": "2026-09-15T04:32:42.955377Z", "level": "info", "event": "Proxying chat completion to http://127.0.0.1:18941/v1/chat/completions (provider=custom, model=review-tiny)"}
+{"timestamp": "2026-09-15T04:32:42.994352Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/v1/chat/completions", "status_code": 200, "process_time_ms": 42.86}

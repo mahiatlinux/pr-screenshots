@@ -1,0 +1,20 @@
+✔ ShareGPT exports only the regenerated reply (52.605395ms)
+✔ ShareGPT exports only the edited prompt and its reply (6.778227ms)
+✔ ShareGPT exports the branch picked in the branch picker (11.302374ms)
+✔ ShareGPT leaves out the replaced reply while its regeneration is unsaved (4.427286ms)
+✔ ShareGPT exports nothing from the replaced branch while an edited first prompt is unsaved (4.197644ms)
+✔ ShareGPT keeps the picked branch when the chat is switched during the export (3.215166ms)
+✔ CSV still exports every branch (3.607875ms)
+✔ legacy flat threads preserve chronological order (4.19599ms)
+✔ empty live branches export no old messages (3.944387ms)
+✔ inactive threads fall back without reading a different view (3.319443ms)
+✔ a torn down view does not hide another matching view (4.128814ms)
+✔ selected multi-turn branch excludes both sibling subtrees (3.703334ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 353.183577

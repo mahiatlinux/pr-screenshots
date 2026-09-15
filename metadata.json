@@ -1,0 +1,16 @@
+{
+  "pr": 10941,
+  "base": "03af220ac0023ab846727397b3a1de9efa0aec42",
+  "head": "bd516c952a4dc74f19238effc1e0c8c7c29fb61b",
+  "merge": "b2782c590c89aa3815d2e86820feb6a7935a97f0",
+  "merge_parent": "8760d44374e5f094707d5c0e9e75560200db26b9",
+  "os": "Linux x86_64",
+  "python": "3.14.4",
+  "node": "26.8.2",
+  "playwright": "1.62.0",
+  "viewport": [
+    1280,
+    900
+  ],
+  "source_changes": 0
+}

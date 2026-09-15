@@ -1,0 +1,191 @@
+✖ ShareGPT exports only the regenerated reply (38.654819ms)
+✖ ShareGPT exports only the edited prompt and its reply (6.11866ms)
+✖ ShareGPT exports the branch picked in the branch picker (6.501381ms)
+✖ ShareGPT leaves out the replaced reply while its regeneration is unsaved (5.403545ms)
+✖ ShareGPT exports nothing from the replaced branch while an edited first prompt is unsaved (3.873477ms)
+✖ ShareGPT keeps the picked branch when the chat is switched during the export (6.287779ms)
+✔ CSV still exports every branch (2.887222ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 1
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 331.980336
+
+✖ failing tests:
+
+test at tests/sharegpt-export-branches.test.ts:148:1
+✖ ShareGPT exports only the regenerated reply (38.654819ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+
+    [
+      {
+        from: 'human',
+        value: 'Name one fruit.'
+      },
+  ...
+      },
+  +   {
+  +     from: 'gpt',
+  +     value: 'Apples.'
+  +   }
+    ]
+
+      at TestContext.<anonymous> (file://<disposable-root>/base/studio/frontend/tests/sharegpt-export-branches.test.ts:149:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { from: 'human', value: 'Name one fruit.' }, { from: 'gpt', value: 'Apples!' }, { from: 'gpt', value: 'Apples.' } ],
+    expected: [ { from: 'human', value: 'Name one fruit.' }, { from: 'gpt', value: 'Apples!' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sharegpt-export-branches.test.ts:155:1
+✖ ShareGPT exports only the edited prompt and its reply (6.11866ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+
+    [
+      {
+        from: 'human',
+        value: 'Name one animal.'
+      },
+  ...
+      },
+  +   {
+  +     from: 'human',
+  +     value: 'Name one color.'
+  +   },
+  +   {
+  +     from: 'gpt',
+  +     value: 'Blue.'
+  +   }
+    ]
+
+      at TestContext.<anonymous> (file://<disposable-root>/base/studio/frontend/tests/sharegpt-export-branches.test.ts:162:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { from: 'human', value: 'Name one animal.' }, { from: 'gpt', value: 'Cat.' }, { from: 'human', value: 'Name one color.' }, { from: 'gpt', value: 'Blue.' } ],
+    expected: [ { from: 'human', value: 'Name one animal.' }, { from: 'gpt', value: 'Cat.' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sharegpt-export-branches.test.ts:168:1
+✖ ShareGPT exports the branch picked in the branch picker (6.501381ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+    [
+      {
+        from: 'human',
+        value: 'Name one fruit.'
+      },
+      {
+        from: 'gpt',
+  +     value: 'Apples!'
+  +   },
+  +   {
+  +     from: 'gpt',
+        value: 'Apples.'
+      }
+    ]
+
+      at TestContext.<anonymous> (file://<disposable-root>/base/studio/frontend/tests/sharegpt-export-branches.test.ts:169:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { from: 'human', value: 'Name one fruit.' }, { from: 'gpt', value: 'Apples!' }, { from: 'gpt', value: 'Apples.' } ],
+    expected: [ { from: 'human', value: 'Name one fruit.' }, { from: 'gpt', value: 'Apples.' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sharegpt-export-branches.test.ts:185:1
+✖ ShareGPT leaves out the replaced reply while its regeneration is unsaved (5.403545ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+    [
+      {
+        from: 'human',
+        value: 'Name one fruit.'
+      },
+  +   {
+  +     from: 'gpt',
+  +     value: 'Apples.'
+  +   }
+    ]
+
+      at TestContext.<anonymous> (file://<disposable-root>/base/studio/frontend/tests/sharegpt-export-branches.test.ts:190:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { from: 'human', value: 'Name one fruit.' }, { from: 'gpt', value: 'Apples.' } ],
+    expected: [ { from: 'human', value: 'Name one fruit.' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sharegpt-export-branches.test.ts:195:1
+✖ ShareGPT exports nothing from the replaced branch while an edited first prompt is unsaved (3.873477ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + [
+  +   '{"conversations":[{"from":"human","value":"Name one color."},{"from":"gpt","value":"Blue."}]}\n'
+  + ]
+  - []
+
+      at TestContext.<anonymous> (file://<disposable-root>/base/studio/frontend/tests/sharegpt-export-branches.test.ts:204:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '{"conversations":[{"from":"human","value":"Name one color."},{"from":"gpt","value":"Blue."}]}\n' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/sharegpt-export-branches.test.ts:208:1
+✖ ShareGPT keeps the picked branch when the chat is switched during the export (6.287779ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+    [
+      {
+        from: 'human',
+        value: 'Name one fruit.'
+      },
+      {
+        from: 'gpt',
+  +     value: 'Apples!'
+  +   },
+  +   {
+  +     from: 'gpt',
+        value: 'Apples.'
+      }
+    ]
+
+      at TestContext.<anonymous> (file://<disposable-root>/base/studio/frontend/tests/sharegpt-export-branches.test.ts:223:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { from: 'human', value: 'Name one fruit.' }, { from: 'gpt', value: 'Apples!' }, { from: 'gpt', value: 'Apples.' } ],
+    expected: [ { from: 'human', value: 'Name one fruit.' }, { from: 'gpt', value: 'Apples.' } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

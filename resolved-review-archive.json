@@ -1,0 +1,122 @@
+[
+  {
+    "id": 4020805350,
+    "in_reply_to_id": null,
+    "pull_request_review_id": 5216484722,
+    "original_commit_id": "fab1c3a7d1132f91ce186628e23cd1478aa74afc",
+    "path": "studio/frontend/src/features/model-picker/api/model-overrides.ts",
+    "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Show reasoning overrides in saved-settings summaries**\n\nWhen a saved override contains only a non-default `reasoning_budget` or `reasoning_budget_message`, `SavedModelSettingsPanel`'s `describeOverride()` ignores both newly exposed fields, so the \u201cSettings applied on API load\u201d panel labels the row \u201cApp defaults\u201d even though an API load will change reasoning behavior. Add both fields to that formatter, checking the numeric value against `undefined` so a budget of `0` is also shown.\n\nUseful? React with \ud83d\udc4d\u00a0/ \ud83d\udc4e.",
+    "created_at": "2026-09-15T22:36:12Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4020805350",
+    "author": "chatgpt-codex-connector[bot]",
+    "fix": "8e24c8c8c"
+  },
+  {
+    "id": 4020846973,
+    "in_reply_to_id": 4020805350,
+    "pull_request_review_id": 5216528820,
+    "original_commit_id": "fab1c3a7d1132f91ce186628e23cd1478aa74afc",
+    "path": "studio/frontend/src/features/model-picker/api/model-overrides.ts",
+    "body": "Fixed in 8e24c8c8c: saved API settings now list the reasoning budget, including zero, and custom budget messages. Three regression assertions failed before repair; all four pass afterward, with actual before/after browser evidence in the verification comment.",
+    "created_at": "2026-09-15T22:43:27Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4020846973",
+    "author": "mahiatlinux",
+    "fix": null
+  },
+  {
+    "id": 4020882791,
+    "in_reply_to_id": null,
+    "pull_request_review_id": 5216569234,
+    "original_commit_id": "8e24c8c8c741a9d8ef1f38846299648b65c6e88a",
+    "path": "studio/frontend/src/features/model-picker/hooks/use-active-model-config.ts",
+    "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Preserve inherited reasoning intent in active config**\n\nWhen `LLAMA_ARG_THINK_BUDGET*` supplies the defaults, these store the effective values reported by `/status` rather than `loadedReasoningBudgetRequested` and its message counterpart. Consequently, changing an unrelated setting or saving the active model sends and persists those inherited values as explicit flags; subsequent recipe reuse sees the request change from `-1`/empty and performs an unnecessary full reload, and the model no longer follows the environment default. Unlike the fixed rollback path, this active-config snapshot still discards the newly tracked requested pair, so use that pair until the user actually edits these controls.\n\nUseful? React with \ud83d\udc4d\u00a0/ \ud83d\udc4e.",
+    "created_at": "2026-09-15T22:49:44Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4020882791",
+    "author": "chatgpt-codex-connector[bot]",
+    "fix": "961080c4f"
+  },
+  {
+    "id": 4020882803,
+    "in_reply_to_id": null,
+    "pull_request_review_id": 5216569234,
+    "original_commit_id": "8e24c8c8c741a9d8ef1f38846299648b65c6e88a",
+    "path": "studio/backend/core/inference/llama_cpp.py",
+    "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Resolve the managed macOS wrapper for the value probe**\n\nOn macOS installations where the managed `llama-server` entrypoint is a shell wrapper, the earlier `--help` probe resolves it through `_exec_path_for_launch()` specifically because SIP strips the wrapper's `DYLD_*` environment, but this positive-budget probe executes the unresolved `binary`. The preflight therefore records a nonzero wrapper startup as rejection of a supported positive budget and blocks the load; execute the same resolved path used by the capability probe and actual launch.\n\nUseful? React with \ud83d\udc4d\u00a0/ \ud83d\udc4e.",
+    "created_at": "2026-09-15T22:49:44Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4020882803",
+    "author": "chatgpt-codex-connector[bot]",
+    "fix": "a0a320132"
+  },
+  {
+    "id": 4020933712,
+    "in_reply_to_id": 4020882791,
+    "pull_request_review_id": 5216639118,
+    "original_commit_id": "8e24c8c8c741a9d8ef1f38846299648b65c6e88a",
+    "path": "studio/frontend/src/features/model-picker/hooks/use-active-model-config.ts",
+    "body": "Fixed in 961080c4f: unchanged reasoning controls retain the requested pair; edits apply independently. Actual Chromium save/reload confirms an unrelated batch change sends -1/empty and saves no reasoning override, while the prior head saved 32 and the environment message.",
+    "created_at": "2026-09-15T22:57:33Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4020933712",
+    "author": "mahiatlinux",
+    "fix": null
+  },
+  {
+    "id": 4020933970,
+    "in_reply_to_id": 4020882803,
+    "pull_request_review_id": 5216639390,
+    "original_commit_id": "8e24c8c8c741a9d8ef1f38846299648b65c6e88a",
+    "path": "studio/backend/core/inference/llama_cpp.py",
+    "body": "Fixed in a0a320132: the positive-budget probe uses the resolved executable and its environment, matching capability discovery and launch. The regression fails before repair and passes afterward. Apple documents DYLD variable purging for protected processes: https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/RuntimeProtections/RuntimeProtections.html",
+    "created_at": "2026-09-15T22:57:36Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4020933970",
+    "author": "mahiatlinux",
+    "fix": null
+  },
+  {
+    "id": 4020968636,
+    "in_reply_to_id": null,
+    "pull_request_review_id": 5216688057,
+    "original_commit_id": "a0a32013278e56d37f7ca85efdd034d6ce07a236",
+    "path": "studio/frontend/src/features/chat/lib/resident-config-match.ts",
+    "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Compare resident reasoning requests instead of effective values**\n\nWhen `LLAMA_ARG_THINK_BUDGET` or `LLAMA_ARG_THINK_BUDGET_MESSAGE` supplies a default, a resident model reports that effective value here while the remembered config correctly retains `-1`/empty as its request. Re-selecting that resident model after switching to an external provider therefore fails the adoption check, follows the idle-model unload path, and reloads the weights even though the backend's request-to-request comparator would reuse the server. Compare against the newly exposed `requested_reasoning_budget` and `requested_reasoning_budget_message` fields instead.\n\nUseful? React with \ud83d\udc4d\u00a0/ \ud83d\udc4e.",
+    "created_at": "2026-09-15T23:03:37Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4020968636",
+    "author": "chatgpt-codex-connector[bot]",
+    "fix": "bb859566a"
+  },
+  {
+    "id": 4021028311,
+    "in_reply_to_id": 4020968636,
+    "pull_request_review_id": 5216766866,
+    "original_commit_id": "a0a32013278e56d37f7ca85efdd034d6ce07a236",
+    "path": "studio/frontend/src/features/chat/lib/resident-config-match.ts",
+    "body": "Fixed in bb859566a, with the shared runtime snapshot corrected in 4b912408e. The comparator uses requested reasoning values and falls back for older status schemas. Two regressions fail before repair; the actual status of the CPU-loaded model now matches its unchanged request. Full frontend tests passed, followed by the targeted snapshot suite, typecheck and build.",
+    "created_at": "2026-09-15T23:12:20Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4021028311",
+    "author": "mahiatlinux",
+    "fix": null
+  },
+  {
+    "id": 4021065498,
+    "in_reply_to_id": null,
+    "pull_request_review_id": 5216817199,
+    "original_commit_id": "4b912408e44f48c01c40e749432e423911424bcd",
+    "path": "studio/frontend/src/features/chat/chat-settings-sheet.tsx",
+    "body": "**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Subscribe preset state to requested reasoning intent**\n\nFresh evidence beyond the earlier dirty-state report is that `capturePresetLoadConfig()` now derives these values from `loadedReasoningBudgetRequested` and its message counterpart when the controls equal the effective values, but this component subscribes only to the effective pair and neither memo depends on the requested pair. If another client reloads the same model from an explicit value to an inherited environment value that resolves identically (or vice versa), status updates only the requested fields; the Preset summary and Update-button dirty state remain stale even though the preset capture intent changed.\n\nUseful? React with \ud83d\udc4d\u00a0/ \ud83d\udc4e.",
+    "created_at": "2026-09-15T23:18:19Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4021065498",
+    "author": "chatgpt-codex-connector[bot]",
+    "fix": "27791b6ce"
+  },
+  {
+    "id": 4021105038,
+    "in_reply_to_id": 4021065498,
+    "pull_request_review_id": 5216870485,
+    "original_commit_id": "4b912408e44f48c01c40e749432e423911424bcd",
+    "path": "studio/frontend/src/features/chat/chat-settings-sheet.tsx",
+    "body": "Fixed in 27791b6ce: the existing memo inputs now subscribe to the same requested values as preset capture, including the loaded baseline used to distinguish edits. Both requested-only transition regressions fail before repair and pass afterward; typecheck, build and all 7622 frontend tests passed.",
+    "created_at": "2026-09-15T23:24:48Z",
+    "html_url": "https://github.com/unslothai/unsloth/pull/7701#discussion_r4021105038",
+    "author": "mahiatlinux",
+    "fix": null
+  }
+]

@@ -1,0 +1,11 @@
+....F                                                                    [100%]
+=================================== FAILURES ===================================
+__________________ test_the_connection_test_ping_omits_top_p ___________________
+fix/studio/backend/tests/test_external_top_p_omission.py:220: in test_the_connection_test_ping_omits_top_p
+    assert results[0].success, results[0].message
+E   AssertionError: Connection failed: Expecting value: line 1 column 1 (char 0)
+E   assert False
+E    +  where False = ProviderTestResult(success=False, message='Connection failed: Expecting value: line 1 column 1 (char 0)', models_count=None).success
+=========================== short test summary info ============================
+FAILED fix/studio/backend/tests/test_external_top_p_omission.py::test_the_connection_test_ping_omits_top_p
+1 failed, 4 passed in 5.03s

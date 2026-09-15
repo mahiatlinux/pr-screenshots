@@ -1,0 +1,23 @@
+{
+  "pr": 10934,
+  "merge_base": "5c04ec19305ecb5f0153c5b4d806a9d7e6e4422d",
+  "original_head": "b78f181210e8d17466368f9507db2b8573fb17a0",
+  "repaired_head": "5222bccffeb69119a40d90b420191b480d47c682",
+  "prospective_merge_tested": "762e505f49d7d5567bfe7d8fa60764b023cd5f01",
+  "platform": "Ubuntu 26.04.1 LTS x86_64",
+  "python": "3.12.13",
+  "node": "26.8.2",
+  "uv": "0.12.1",
+  "playwright": "1.62.0",
+  "browsers": {
+    "chromium": "151.0.7922.34",
+    "firefox": "153.0"
+  },
+  "viewport": [
+    1440,
+    900
+  ],
+  "isolation": "Bubblewrap secret-free sandbox; separate base/head/merge/fix Python environments and base/head frontend builds. All temporary data stored in the disposable task directory.",
+  "gateway": "Loopback HTTP gateway enforcing rejection when both temperature and top_p appear.",
+  "screenshots": "Original base and head production builds. Final repair changes only the backend regression tests."
+}

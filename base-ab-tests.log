@@ -1,0 +1,33 @@
+F.FFF                                                                    [100%]
+=================================== FAILURES ===================================
+________ test_an_omitted_top_p_is_not_forwarded_and_the_gateway_accepts ________
+base/studio/backend/tests/test_external_top_p_omission.py:142: in test_an_omitted_top_p_is_not_forwarded_and_the_gateway_accepts
+    assert "top_p" not in body
+E   AssertionError: assert 'top_p' not in {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'system', 'content': 'The current date is 2026-09-15.'}, {'role': 'user', 'content': 'hi'}], 'stream': True, 'temperature': 0.7, ...}
+----------------------------- Captured stdout call -----------------------------
+2026-09-15 04:48:00 [info     ] Proxying chat completion to http://127.0.0.1:40643/v1/chat/completions (provider=custom, model=claude-sonnet-4-6)
+2026-09-15 04:48:00 [error    ] External provider returned 400: {"error": {"message": "`temperature` and `top_p` cannot both be specified for this model."}}
+_________________ test_the_client_omits_top_p_when_given_none __________________
+base/studio/backend/tests/test_external_top_p_omission.py:169: in test_the_client_omits_top_p_when_given_none
+    assert "top_p" not in gateway.body
+E   AssertionError: assert 'top_p' not in {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'hi'}], 'stream': True, 'temperature': 0.7, ...}
+E    +  where {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'hi'}], 'stream': True, 'temperature': 0.7, ...} = <studio.backend.tests.test_external_top_p_omission._Gateway object at 0x783ee7fa5af0>.body
+----------------------------- Captured stdout call -----------------------------
+2026-09-15 04:48:01 [info     ] Proxying chat completion to http://127.0.0.1:36581/v1/chat/completions (provider=custom, model=claude-sonnet-4-6)
+2026-09-15 04:48:01 [error    ] External provider returned 400: {"error": {"message": "`temperature` and `top_p` cannot both be specified for this model."}}
+__________ test_the_non_streaming_helper_omits_top_p_when_given_none ___________
+base/studio/backend/tests/test_external_top_p_omission.py:191: in test_the_non_streaming_helper_omits_top_p_when_given_none
+    assert "top_p" not in gateway.body
+E   AssertionError: assert 'top_p' not in {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'ping'}], 'stream': False, 'temperature': 0.0, ...}
+E    +  where {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'ping'}], 'stream': False, 'temperature': 0.0, ...} = <studio.backend.tests.test_external_top_p_omission._Gateway object at 0x783ee7fa58e0>.body
+__________________ test_the_connection_test_ping_omits_top_p ___________________
+base/studio/backend/tests/test_external_top_p_omission.py:219: in test_the_connection_test_ping_omits_top_p
+    assert "top_p" not in gateway.body
+E   AssertionError: assert 'top_p' not in {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'ping'}], 'stream': False, 'temperature': 0.0, ...}
+E    +  where {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'ping'}], 'stream': False, 'temperature': 0.0, ...} = <studio.backend.tests.test_external_top_p_omission._Gateway object at 0x783ee7fa7590>.body
+=========================== short test summary info ============================
+FAILED base/studio/backend/tests/test_external_top_p_omission.py::test_an_omitted_top_p_is_not_forwarded_and_the_gateway_accepts
+FAILED base/studio/backend/tests/test_external_top_p_omission.py::test_the_client_omits_top_p_when_given_none
+FAILED base/studio/backend/tests/test_external_top_p_omission.py::test_the_non_streaming_helper_omits_top_p_when_given_none
+FAILED base/studio/backend/tests/test_external_top_p_omission.py::test_the_connection_test_ping_omits_top_p
+4 failed, 1 passed in 5.13s

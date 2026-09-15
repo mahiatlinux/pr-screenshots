@@ -1,0 +1,18 @@
+{
+  "provider_type": "custom",
+  "provider_model": "claude-sonnet-4-6",
+  "top_p_control_display": "Off",
+  "chat_requests_received": 1,
+  "provider_statuses": [
+    200
+  ],
+  "temperature_sent": 0.6,
+  "top_p_in_body": false,
+  "top_p_sent": null,
+  "provider_error": null,
+  "assistant_text": "Hello from the strict test gateway.",
+  "assistant_answered": true,
+  "toast_text": "",
+  "alert_text": "",
+  "error_visible": false
+}

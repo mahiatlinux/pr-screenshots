@@ -1,0 +1,18 @@
+{
+  "provider_type": "custom",
+  "provider_model": "claude-sonnet-4-6",
+  "top_p_control_display": "Off",
+  "chat_requests_received": 1,
+  "provider_statuses": [
+    400
+  ],
+  "temperature_sent": 0.6,
+  "top_p_in_body": true,
+  "top_p_sent": 1.0,
+  "provider_error": "`temperature` and `top_p` cannot both be specified for this model.",
+  "assistant_text": "`temperature` and `top_p` cannot both be specified for this model. (400) Retry",
+  "assistant_answered": false,
+  "toast_text": "Generation failed `temperature` and `top_p` cannot both be specified for this model. (400)",
+  "alert_text": "`temperature` and `top_p` cannot both be specified for this model. (400) Retry",
+  "error_visible": true
+}

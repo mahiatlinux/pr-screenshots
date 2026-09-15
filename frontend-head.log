@@ -1,0 +1,28 @@
+(node:8) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ vLLM server default omits Min P while retaining other sampling fields (0.883812ms)
+✔ vllm carries the min_p and repetition_penalty the panel offers (0.085992ms)
+✔ openrouter carries the min_p and repetition_penalty the panel offers (0.058259ms)
+✔ llama_cpp carries the min_p and repetition_penalty the panel offers (0.044133ms)
+✔ top_p at Off is left out so a provider that forbids it alongside temperature accepts the request (0.112281ms)
+✔ custom stays on the OpenAI-compatible baseline (0.068098ms)
+✔ ollama is sent none of the three its /v1 layer drops (0.060153ms)
+✔ a hosted provider's body is unchanged by the new rows (0.10069ms)
+✔ an unknown provider stays on the OpenAI-compatible shape (0.086332ms)
+✔ the panel and the request read the same capability flags (0.341222ms)
+✔ Codex research keeps provider routing and clamps generation settings (1.173978ms)
+✔ invalid optional settings do not leak into a local research request (0.12259ms)
+✔ top_p at Off is left out of a connection's research request but kept locally (0.146987ms)
+✔ the report ceiling the connection resolved reaches the run config (0.109907ms)
+✔ an undocumented model with no connection override sends no ceiling (0.120516ms)
+✔ an explicit connection override is still sent (0.099397ms)
+✔ the request says whether the saved cap is what grounded its ceiling (0.146836ms)
+✔ the published ceiling rides along, unfolded, when the model has one (0.113514ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 331.824432

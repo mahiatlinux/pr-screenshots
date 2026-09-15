@@ -1,0 +1,9 @@
+{
+  "pr": 10934,
+  "scene": "top_p_off_gateway",
+  "what": "Chat with Top P at Off",
+  "expect": "Base shows temperature/top_p conflict with top_p=1 in the gateway request; head omits top_p and displays the gateway reply.",
+  "kwargs": {},
+  "needs_model": false,
+  "verified": null
+}

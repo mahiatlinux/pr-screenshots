@@ -1,0 +1,17 @@
+[
+  {
+    "display": "0.9",
+    "status": 400,
+    "top_p_present": true,
+    "top_p": 0.9
+  },
+  {
+    "display": "Off",
+    "status": 200,
+    "top_p_present": false,
+    "top_p": null
+  },
+  {
+    "reload_preserved_off": true
+  }
+]

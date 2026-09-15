@@ -1,0 +1,5 @@
+1 file reformatted
+Adjusted kwarg spacing in studio/backend/tests/test_external_top_p_omission.py
+All checks passed!
+.................................................................        [100%]
+65 passed in 12.62s

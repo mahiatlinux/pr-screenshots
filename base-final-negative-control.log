@@ -1,0 +1,46 @@
+F...FFF                                                                  [100%]
+=================================== FAILURES ===================================
+________ test_an_omitted_top_p_is_not_forwarded_and_the_gateway_accepts ________
+base/studio/backend/tests/test_external_top_p_omission.py:149: in test_an_omitted_top_p_is_not_forwarded_and_the_gateway_accepts
+    assert "top_p" not in body
+E   AssertionError: assert 'top_p' not in {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'system', 'content': 'The current date is 2026-09-15.'}, {'role': 'user', 'content': 'hi'}], 'stream': True, 'temperature': 0.7, ...}
+----------------------------- Captured stdout call -----------------------------
+2026-09-15 04:52:27 [info     ] Proxying chat completion to http://127.0.0.1:36619/v1/chat/completions (provider=custom, model=claude-sonnet-4-6)
+2026-09-15 04:52:27 [error    ] External provider returned 400: {"error": {"message": "`temperature` and `top_p` cannot both be specified for this model."}}
+_________________ test_the_client_omits_top_p_when_given_none __________________
+base/studio/backend/tests/test_external_top_p_omission.py:178: in test_the_client_omits_top_p_when_given_none
+    assert "top_p" not in gateway.body
+E   AssertionError: assert 'top_p' not in {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'hi'}], 'stream': True, 'temperature': 0.7, ...}
+E    +  where {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'hi'}], 'stream': True, 'temperature': 0.7, ...} = <studio.backend.tests.test_external_top_p_omission._Gateway object at 0x762f2597e0c0>.body
+----------------------------- Captured stdout call -----------------------------
+2026-09-15 04:52:29 [info     ] Proxying chat completion to http://127.0.0.1:40131/v1/chat/completions (provider=custom, model=claude-sonnet-4-6)
+2026-09-15 04:52:29 [error    ] External provider returned 400: {"error": {"message": "`temperature` and `top_p` cannot both be specified for this model."}}
+__________ test_the_non_streaming_helper_omits_top_p_when_given_none ___________
+base/studio/backend/tests/test_external_top_p_omission.py:197: in test_the_non_streaming_helper_omits_top_p_when_given_none
+    _run(go)
+base/studio/backend/tests/test_external_top_p_omission.py:97: in _run
+    loop.run_until_complete(wrapper())
+downloads/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py:691: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+base/studio/backend/tests/test_external_top_p_omission.py:91: in wrapper
+    await coro()
+base/studio/backend/tests/test_external_top_p_omission.py:188: in go
+    response = await client.chat_completion(
+base/studio/backend/core/inference/external_provider.py:6205: in chat_completion
+    response.raise_for_status()
+base/.venv/lib/python3.12/site-packages/httpx/_models.py:829: in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+E   httpx.HTTPStatusError: Client error '400 Bad Request' for url 'http://127.0.0.1:37017/v1/chat/completions'
+E   For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+__________________ test_the_connection_test_ping_omits_top_p ___________________
+base/studio/backend/tests/test_external_top_p_omission.py:226: in test_the_connection_test_ping_omits_top_p
+    assert "top_p" not in gateway.body
+E   AssertionError: assert 'top_p' not in {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'ping'}], 'stream': False, 'temperature': 0.0, ...}
+E    +  where {'model': 'claude-sonnet-4-6', 'messages': [{'role': 'user', 'content': 'ping'}], 'stream': False, 'temperature': 0.0, ...} = <studio.backend.tests.test_external_top_p_omission._Gateway object at 0x762f259b73b0>.body
+=========================== short test summary info ============================
+FAILED base/studio/backend/tests/test_external_top_p_omission.py::test_an_omitted_top_p_is_not_forwarded_and_the_gateway_accepts
+FAILED base/studio/backend/tests/test_external_top_p_omission.py::test_the_client_omits_top_p_when_given_none
+FAILED base/studio/backend/tests/test_external_top_p_omission.py::test_the_non_streaming_helper_omits_top_p_when_given_none
+FAILED base/studio/backend/tests/test_external_top_p_omission.py::test_the_connection_test_ping_omits_top_p
+4 failed, 3 passed in 5.00s

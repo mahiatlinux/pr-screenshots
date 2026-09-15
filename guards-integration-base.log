@@ -1,0 +1,98 @@
+...........F....F.....F........                                          [100%]
+=================================== FAILURES ===================================
+_ test_a_listed_python_input_brings_its_sibling_imports[studio-mac-install-matrix.yml] _
+
+name = 'studio-mac-install-matrix.yml'
+
+    @pytest.mark.parametrize(
+        "name",
+        [
+            "studio-mac-ui-smoke.yml",
+            "studio-mac-install-matrix.yml",
+            "studio-tauri-smoke.yml",
+        ],
+    )
+    def test_a_listed_python_input_brings_its_sibling_imports(name):
+        """Listing a script but not the module it imports leaves half a dependency in the filter.
+    
+        `studio/install_llama_prebuilt.py` was listed; `studio/prebuilt_core.py`, which it
+        imports at line 55, was not. Editing only the latter changed exactly what the install
+        matrix asserts on and did not run it.
+    
+        Scoped to same-directory imports on purpose. The full transitive closure of an
+        installer is most of the repo, and chasing it would put `pyproject.toml` and every
+        requirements file into a macOS trigger, which is how a filter stops saving anything.
+        Where a deeper dependency matters it is listed by hand with a comment saying why; this
+        covers the one case that is mechanical and therefore easy to forget.
+        """
+        import ast
+    
+        doc = yaml.safe_load((WORKFLOWS / name).read_text(encoding = "utf-8"))
+        on = _on(doc) or {}
+        patterns = (on.get("pull_request") or {}).get("paths") or []
+    
+        missing = []
+        for pattern in patterns:
+            source = REPO / pattern
+            if not (source.is_file() and source.suffix == ".py"):
+                continue
+            tree = ast.parse(source.read_text(encoding = "utf-8", errors = "replace"))
+            names = set()
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    names.update(a.name.split(".")[0] for a in node.names)
+                elif isinstance(node, ast.ImportFrom) and node.level == 0 and node.module:
+                    names.add(node.module.split(".")[0])
+            for module in sorted(names):
+                sibling = source.parent / f"{module}.py"
+                if not sibling.is_file():
+                    continue  # stdlib or third-party, not a checked-in sibling
+                rel = sibling.relative_to(REPO).as_posix()
+                if not _covered(rel, patterns):
+                    missing.append(f"{rel} (imported by {pattern})")
+>       assert not missing, (
+            f"{name} lists a Python input but not a module it imports from the same directory, "
+            f"so editing that module does not run the workflow that depends on it: {missing}"
+        )
+E       AssertionError: studio-mac-install-matrix.yml lists a Python input but not a module it imports from the same directory, so editing that module does not run the workflow that depends on it: ['studio/nvidia_probe.py (imported by studio/install_llama_prebuilt.py)', 'studio/nvidia_probe.py (imported by studio/install_python_stack.py)']
+E       assert not ['studio/nvidia_probe.py (imported by studio/install_llama_prebuilt.py)', 'studio/nvidia_probe.py (imported by studio/install_python_stack.py)']
+
+tests/studio/test_macos_slots_per_commit.py:281: AssertionError
+_________ test_every_workflow_reading_guard_runs_in_the_unfiltered_job _________
+
+    def test_every_workflow_reading_guard_runs_in_the_unfiltered_job():
+        uncovered = sorted(_modules_that_read_a_workflow() - _modules_run_by_the_lint_job() - EXEMPT)
+>       assert not uncovered, (
+            f"these guards read a workflow file but are not run by workflow-trigger-lint, the "
+            f"only job with no paths filter: {uncovered}. A PR that edits only workflow files "
+            f"-- which is exactly the change each of them exists to reject -- never collects "
+            f"them, so they cannot block it. Add them to the guard step, or to EXEMPT with a "
+            f"reason."
+        )
+E       AssertionError: these guards read a workflow file but are not run by workflow-trigger-lint, the only job with no paths filter: ['test_core_setup_zoo_revision_notice.py']. A PR that edits only workflow files -- which is exactly the change each of them exists to reject -- never collects them, so they cannot block it. Add them to the guard step, or to EXEMPT with a reason.
+E       assert not ['test_core_setup_zoo_revision_notice.py']
+
+tests/studio/test_workflow_guards_run_unfiltered.py:90: AssertionError
+________________ test_every_playwright_driver_is_invoked_by_ci _________________
+
+    def test_every_playwright_driver_is_invoked_by_ci():
+        text = _ci_text()
+        orphans = sorted(
+            driver.name
+            for driver in DRIVERS
+            if driver.name not in NOT_IN_CI and not _invoked(driver.name, text)
+        )
+>       assert not orphans, (
+            f"{len(orphans)} Playwright suite(s) under tests/studio are not named by any workflow "
+            f"or CI script, so they run nowhere and every job stays green: {orphans}. Add the step, "
+            f"or add the file to NOT_IN_CI with the reason."
+        )
+E       AssertionError: 1 Playwright suite(s) under tests/studio are not named by any workflow or CI script, so they run nowhere and every job stays green: ['playwright_chat_width.py']. Add the step, or add the file to NOT_IN_CI with the reason.
+E       assert not ['playwright_chat_width.py']
+
+tests/studio/test_playwright_suites_run_in_ci.py:152: AssertionError
+=========================== short test summary info ============================
+FAILED tests/studio/test_macos_slots_per_commit.py::test_a_listed_python_input_brings_its_sibling_imports[studio-mac-install-matrix.yml]
+FAILED tests/studio/test_workflow_guards_run_unfiltered.py::test_every_workflow_reading_guard_runs_in_the_unfiltered_job
+FAILED tests/studio/test_playwright_suites_run_in_ci.py::test_every_playwright_driver_is_invoked_by_ci
+3 failed, 28 passed in 13.87s

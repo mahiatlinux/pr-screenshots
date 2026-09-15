@@ -1,0 +1,18 @@
+{
+  "pr": 10974,
+  "base": "f93c523f09c09870c851a883557f2f5882787db6",
+  "original_head": "d70d07725566deed93b3297bb4242fc05b904fc9",
+  "repaired_head": "d8c87fb7835d1cff1e3339f8102a4731b0906e24",
+  "os": "Ubuntu 26.04 Linux x86_64",
+  "node": "26.8.2",
+  "python": "3.12.13",
+  "playwright": "1.63.0",
+  "screenshot_browser": "Google Chrome 153.0.8010.47",
+  "viewport": [
+    1280,
+    1000
+  ],
+  "data": "memory-only API fixtures; separate frontend installs and fresh browser contexts",
+  "expected": "Data controls become grouped sections and archive cards. Managed and archived chats gain search and project groups; media archives gain search and compact dated rows.",
+  "verified": "Inspected all six before/after surfaces: grouped Data controls, chat project groups, library searches and compact media rows."
+}

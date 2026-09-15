@@ -1,0 +1,1 @@
+Data controls become grouped sections and archive cards. Managed and archived chats gain search and project groups; media archives gain search and compact dated rows.

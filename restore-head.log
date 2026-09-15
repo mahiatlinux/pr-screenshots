@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<task-root>/head/../artifacts/restore_probe.py", line 22, in <module>
+    print(json.dumps({'version': browser.version, 'checks': suite.run_restore_notifications(page)}))
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<task-root>/fix/tests/studio/playwright_data_settings.py", line 894, in run_restore_notifications
+    assert observed == expected_events, {"kind": kind, "completed": completed, "events": observed}
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'kind': 'images', 'completed': 23, 'events': ['images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images', 'images']}

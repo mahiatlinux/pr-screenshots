@@ -23,7 +23,7 @@ Local-load follow-ups must retain their drafts through preparation and then queu
 - ESLint comparison on thread.tsx and chat-runtime-store.ts: the same 62 diagnostics on original head and repair, zero additions.
 - `python tests/studio/playwright_prompt_queue_actions.py` and `python tests/studio/playwright_composer_settings.py`: Chromium 151.0.7922.34 and Firefox 153.0 passed. The initial Firefox composer run exhausted its five-second cold-start allowance; the readiness wait passes without changing interaction assertions.
 
-Local WebKit could not launch because the host lacks its required system libraries. Hosted compatibility checks cover the supported runner images and native Safari.
+Google Chrome 153.0.8010.47 and Microsoft Edge 153.0.4234.32 also pass both suites using official packages extracted inside the task sandbox. WebKit 26.5 passes after supplying its Ubuntu 24.04 runtime libraries inside that sandbox. Native Safari 26.6.2 passes on the hosted macOS runner: https://github.com/unslothai/unsloth/actions/runs/35030954725/job/104589078176. The macOS browser job still needs a retry: one Google Chrome 152 assertion received a truncated typed value, while the other nine suites passed.
 
 ## UI evidence
 

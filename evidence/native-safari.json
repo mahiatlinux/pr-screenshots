@@ -1,0 +1,37 @@
+{
+  "browser": "native Safari",
+  "passed": true,
+  "version": "26.6.2",
+  "drag_points": [
+    {
+      "x": 162,
+      "y": 361
+    },
+    {
+      "x": 162,
+      "y": 265
+    }
+  ],
+  "pointer_trace": [
+    {
+      "type": "pointermove",
+      "x": 162,
+      "y": 361
+    },
+    {
+      "type": "pointerdown",
+      "x": 162,
+      "y": 361
+    },
+    {
+      "type": "pointermove",
+      "x": 162,
+      "y": 265
+    },
+    {
+      "type": "pointerup",
+      "x": 162,
+      "y": 265
+    }
+  ]
+}

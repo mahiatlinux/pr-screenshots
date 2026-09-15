@@ -1,0 +1,11 @@
+{
+  "head": "27791b6ce84993d7b19c85a6d9927d6e91d4b0bd",
+  "merge_commit": "af4e98e2f63f1907eb4b5d5f8b9375311d9b667a",
+  "merged_at": "2026-09-15T23:32:20Z",
+  "codex_verdict": "https://github.com/unslothai/unsloth/pull/7701#issuecomment-5689583997",
+  "final_approval": "https://github.com/unslothai/unsloth/pull/7701#pullrequestreview-5216931639",
+  "evidence": "https://github.com/unslothai/unsloth/pull/7701#issuecomment-5688965104",
+  "required_checks": "none reported by gh pr checks --required",
+  "precommit": "success",
+  "merge_mode": "squash, normal merge API, exact-head guard, no protection bypass"
+}

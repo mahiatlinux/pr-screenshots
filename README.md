@@ -59,3 +59,7 @@ The full frontend suite was then rerun on exact latest head `4b912408e44f48c01c4
 Latest head: `27791b6ce84993d7b19c85a6d9927d6e91d4b0bd`. The preset summary and dirty-state subscriptions now select the same requested pair as preset capture, so a same-effective-value reload from another client still updates them when its request changes. Both subscription regression cases fail before repair; 14 focused tests, typecheck, production build and the full frontend suite pass afterward. Latest full frontend count: **7622 passed, zero failed** (`frontend-preset-final.log`).
 
 Review decision: the combined Windows command-limit report was not taken under the strict normal-input correctness scope. It requires both near-limit extra arguments and an 8 KiB exhaustion message. This boundary-hardening rejection does not dispute Microsoft's documented 32767-character CreateProcessW limit. The rationale is recorded on the original review thread: https://github.com/unslothai/unsloth/pull/7701#discussion_r4021083341.
+
+## Completion
+
+Squash-merged as `af4e98e2f63f1907eb4b5d5f8b9375311d9b667a` on 2026-09-15 at 23:32:20 UTC. The clean final review explicitly names tested head `27791b6ce8`: https://github.com/unslothai/unsloth/pull/7701#issuecomment-5689583997. Exact final approval: https://github.com/unslothai/unsloth/pull/7701#pullrequestreview-5216931639. Pre-commit passed; GitHub reported no required check contexts. The normal squash merge used an exact-head guard and no protection bypass.

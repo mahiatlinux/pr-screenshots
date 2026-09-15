@@ -1,0 +1,11 @@
+{
+  "browser": "chromium",
+  "version": "153.0.8010.12",
+  "marker": "Blocked command(s) for safety: ssh",
+  "result": "Blocked command(s) for safety: ssh",
+  "url": "http://127.0.0.1:8010/chat?thread=pr10642-ui-evidence",
+  "viewport": [
+    1280,
+    900
+  ]
+}

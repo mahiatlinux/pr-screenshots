@@ -1,0 +1,10 @@
+{
+  "implicit_config": [
+    "hostname 127.0.0.2",
+    "proxyjump hidden.example"
+  ],
+  "disabled_config": [
+    "hostname approved.example"
+  ],
+  "tool_result": "Blocked: SSH command includes a non-literal or redirected target that is not approved. Use -F none to disable implicit SSH configuration and a literal hostname for an approved server."
+}

@@ -1,0 +1,10 @@
+{
+  "fabric": "3.2.3",
+  "asyncssh": "2.24.0",
+  "default_fabric": "127.0.0.2",
+  "configured_asyncssh": "127.0.0.2",
+  "disabled_fabric": "approved.example",
+  "disabled_asyncssh": "approved.example",
+  "fabric_policy": "Blocked: SSH usage with a non-literal host or implicit configuration is not allowed. Disable configuration with -F none for OpenSSH, config=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric.",
+  "asyncssh_policy": "Blocked: SSH usage with a non-literal host or implicit configuration is not allowed. Disable configuration with -F none for OpenSSH, config=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric."
+}

@@ -14,5 +14,7 @@
   ],
   "data": "memory-only API fixtures; separate frontend installs and fresh browser contexts",
   "expected": "Data controls become grouped sections and archive cards. Managed and archived chats gain search and project groups; media archives gain search and compact dated rows.",
-  "verified": "Inspected all six before/after surfaces: grouped Data controls, chat project groups, library searches and compact media rows."
+  "verified": "Inspected all six before/after surfaces: grouped Data controls, chat project groups, library searches and compact media rows.",
+  "prospective_merge": "d93751311f7144d72adbdfd0dbbda38fb19be075",
+  "edge": "153.0.4234.32"
 }

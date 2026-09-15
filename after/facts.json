@@ -1,0 +1,27 @@
+{
+  "data": {
+    "searchboxes": 0,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\n\nManage chat history and uploaded files stored on this device.\n\nChats & archives\nManage chats\nSelect multiple chats to move, pin, archive, export, or delete.\nManage\n\nArchives\n\nChats\nImages\nVideos\nAudio\nArchive all chats\nMove every chat in Recents and Projects to the archive.\nArchive all\nImport & export\nImport chats\nImport JSON, JSONL, NDJSON, or CSV files into Recents.\nImport\nExport chat history\nDownload all chats and messages as JSON.\nExport\nExport Recents and Projects\nExport Recents and project chats in your preferred format.\nExport\nUse chats as training data\nTurn your chats into a fine-tuning dataset.\nLoad in Train tab\nDeletion\nConfirm before deleting\nAsk before deleting individual chats.\nChat sandbox files\nDefault action when deleting a chat.\nKeep sandbox files\n\nSandboxes are folders created for individual chats. Files saved in project workspaces are kept.\n\nClear all chats\nPermanently delete all 3 chats on this device.\nDelete all\nFiles\nUploaded files\nView and manage files uploaded to chats, projects, and knowledge bases.\nManage\nDocuments & RAG\nEmbedding model\nHugging Face model or local path used to index and search your documents. Default is .\nOnly affects newly indexed documents. Re-upload existing ones after changing the model."
+  },
+  "manage": {
+    "searchboxes": 1,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nManage chats\n\nSelect multiple chats to move, pin, archive, export, or delete.\n\nAll chats\nAll projects\n3 chats\nResearch notes\n2 chats\nProject notes\n\nNov 14, 2023, 10:13 PM\n\nResearch summary\n\nNov 14, 2023, 10:13 PM\n\nNo project\n1 chat\nWeekend ideas\n\nNov 14, 2023, 10:13 PM"
+  },
+  "chats": {
+    "searchboxes": 1,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nArchived chats\n\nView and manage chats you have archived.\n\nExport\nAll chats\nAll projects\n3 chats\nUnarchive all\nDelete all\nResearch notes\n2 chats\nProject notes\n\nNov 14, 2023, 10:13 PM\n\nUnarchive\nResearch summary\n\nNov 14, 2023, 10:13 PM\n\nUnarchive\nNo project\n1 chat\nWeekend ideas\n\nNov 14, 2023, 10:13 PM\n\nUnarchive"
+  },
+  "images": {
+    "searchboxes": 1,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nArchived images\n\nView and manage images you have archived.\n\nSort\nItems: 3\nUnarchive all\nDelete all\n\nForest at sunrise\n\nNov 14, 2023, 10:13 PM\n\nUnarchive\n\nOcean waves\n\nNov 14, 2023, 10:13 PM\n\nUnarchive\n\nCity lights\n\nNov 14, 2023, 10:13 PM\n\nUnarchive"
+  },
+  "videos": {
+    "searchboxes": 1,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nArchived videos\n\nView and manage videos you have archived.\n\nSort\nItems: 3\nUnarchive all\nDelete all\n\nForest at sunrise\n\nNov 14, 2023, 10:13 PM\n\nUnarchive\n\nOcean waves\n\nNov 14, 2023, 10:13 PM\n\nUnarchive\n\nCity lights\n\nNov 14, 2023, 10:13 PM\n\nUnarchive"
+  },
+  "audio": {
+    "searchboxes": 1,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nArchived audio\n\nView and manage audio clips you have archived.\n\nSort\nItems: 3\nUnarchive all\nDelete all\n\nForest at sunrise\n\nNov 14, 2023, 10:13 PM\n\nUnarchive\n\nOcean waves\n\nNov 14, 2023, 10:13 PM\n\nUnarchive\n\nCity lights\n\nNov 14, 2023, 10:13 PM\n\nUnarchive"
+  },
+  "browser": "153.0.8010.47"
+}

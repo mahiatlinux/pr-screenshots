@@ -1,0 +1,27 @@
+{
+  "data": {
+    "searchboxes": 0,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\n\nManage chat history and uploaded files stored on this device.\n\nUse chats as training data\nCreate a fine-tuning JSONL dataset from your chats. Load it in Train, refine in Recipes, or export it.\nLoad in Train tab\nManage chats\nSelect multiple chats to move, pin, archive, export, or delete.\nManage\nArchived chats\nView and manage chats you have archived.\nManage\nArchived images\nView and manage images you have archived.\nManage\nArchived videos\nView and manage videos you have archived.\nManage\nArchived audio\nView and manage audio clips you have archived.\nManage\nArchive all chats\nMove every chat in Recents and Projects to the archive.\nArchive all\nConfirm before deleting\nAsk for confirmation before a chat is deleted. Turn off to delete instantly.\nAlways delete files\nDeleting a chat also removes its own sandbox folder from disk. Files it wrote inside a project stay in that project workspace.\nExport chat history\nDownload all chats and messages as JSON.\nExport\nExport Recents and Projects\nDownload Recents or Recents plus project chats as Training JSONL, CSV, or ShareGPT JSONL, combined or per chat. Message JSONL is available per chat.\nExport\nClear all chats\nPermanently delete all 3 chats on this device.\nClear chats\nImport chats\nImport an Open WebUI, JSONL, NDJSON, or CSV export into Recents.\nImport\nFiles\nUploaded files\nView and manage files uploaded to chats, projects, and knowledge bases.\nManage\nDocuments & RAG\nEmbedding model\nHugging Face model or local path used to index and search your documents. Default is .\nOnly affects newly indexed documents. Re-upload existing ones after changing the model."
+  },
+  "manage": {
+    "searchboxes": 0,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nManage chats\n\nSelect multiple chats to move, pin, archive, export, or delete.\n\n3 chats\nMove\nPin\nArchive\nExport\nDelete\nName\nProject\nDate created\nResearch summary\nResearch notes\nNovember 14, 2023\nProject notes\nResearch notes\nNovember 14, 2023\nWeekend ideas\nNovember 14, 2023"
+  },
+  "chats": {
+    "searchboxes": 0,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nArchived chats\n\nView and manage chats you have archived.\n\nExport\nName\nDate created\nResearch summary\nNovember 14, 2023\nProject notes\nNovember 14, 2023\nWeekend ideas\nNovember 14, 2023"
+  },
+  "images": {
+    "searchboxes": 0,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nArchived images\n\nView and manage images you have archived.\n\nPrompt\nDate created\nForest at sunrise\nNovember 14, 2023\nOcean waves\nNovember 14, 2023\nCity lights\nNovember 14, 2023"
+  },
+  "videos": {
+    "searchboxes": 0,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nArchived videos\n\nView and manage videos you have archived.\n\nPrompt\nDate created\nForest at sunrise\nNovember 14, 2023\nOcean waves\nNovember 14, 2023\nCity lights\nNovember 14, 2023"
+  },
+  "audio": {
+    "searchboxes": 0,
+    "text": "Settings\n\nManage your Unsloth preferences.\n\nSettings\n\nAccounts\nGeneral\nProfile\nAppearance\nSystem\nChat\nAPI\nRemote & LAN\nConnections\nAgents\nVoice\nData\nShortcuts\nLogs\nAbout\nData\nArchived audio\n\nView and manage audio clips you have archived.\n\nPrompt\nDate created\nForest at sunrise\nNovember 14, 2023\nOcean waves\nNovember 14, 2023\nCity lights\nNovember 14, 2023"
+  },
+  "browser": "153.0.8010.47"
+}

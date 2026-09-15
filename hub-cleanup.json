@@ -1,0 +1,32 @@
+[
+  {
+    "repo": "mahiatlinux/pr10943-test-20260915-head-base-private",
+    "delete_http_status": 200,
+    "verified_absent": true
+  },
+  {
+    "repo": "mahiatlinux/pr10943-test-20260915-head-base-public",
+    "delete_http_status": 200,
+    "verified_absent": true
+  },
+  {
+    "repo": "mahiatlinux/pr10943-test-20260915-head-nvfp4-private",
+    "delete_http_status": 200,
+    "verified_absent": true
+  },
+  {
+    "repo": "mahiatlinux/pr10943-test-20260915-head-selftest-private",
+    "delete_http_status": 200,
+    "verified_absent": true
+  },
+  {
+    "repo": "mahiatlinux/pr10943-test-20260915-head-torchao_fp8-private",
+    "delete_http_status": 200,
+    "verified_absent": true
+  },
+  {
+    "repo": "mahiatlinux/pr10943-test-20260915-ui-fp8-private",
+    "delete_http_status": 200,
+    "verified_absent": true
+  }
+]

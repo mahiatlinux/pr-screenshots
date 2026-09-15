@@ -1,0 +1,11 @@
+{
+  "stopped": [
+    "studio-base.pid",
+    "studio-head.pid",
+    "hub.pid",
+    "relay.pid",
+    "download-relay.pid"
+  ],
+  "credential_file_removed": true,
+  "disposable_live_test_directory_removed": true
+}

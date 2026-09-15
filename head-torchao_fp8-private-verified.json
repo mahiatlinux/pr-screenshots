@@ -1,0 +1,42 @@
+{
+  "repo": "mahiatlinux/pr10943-test-20260915-head-torchao_fp8-private",
+  "private": true,
+  "verified_files": [
+    {
+      "file": "chat_template.jinja",
+      "size": 2507,
+      "sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f"
+    },
+    {
+      "file": "config.json",
+      "size": 1824,
+      "sha256": "7d7940ccc3cc88189fac22cf518880a04316350d7c642dd232030d43441add9f"
+    },
+    {
+      "file": "export_metadata.json",
+      "size": 24,
+      "sha256": "21deb04dd71d375d691881f139284d853eab8423c4751d641793f27ed57923ef"
+    },
+    {
+      "file": "generation_config.json",
+      "size": 264,
+      "sha256": "9d493ac1563a8cb4723d09790fa5e7b609a41f84873055c1eee6cd0171305ea5"
+    },
+    {
+      "file": "model.safetensors",
+      "size": 631588328,
+      "sha256": "f60413910de46eddfa99775d07ea10d9a6492edbfd101858a954cbec6fc30a22"
+    },
+    {
+      "file": "tokenizer.json",
+      "size": 11422166,
+      "sha256": "6b4360dd6a184650ffc48056c2569bc603f896c5adfe94b10f1c79f809638aa5"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "size": 374,
+      "sha256": "c3d7f2fed47190141a077e9620b2e64f9480ccc54a4573ad3b8d0994cba22a24"
+    }
+  ],
+  "revision": "2db08bfb3edc9a7fd8f375d0996fc942efe9c4dc"
+}

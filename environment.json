@@ -1,0 +1,23 @@
+{
+  "os": "Linux",
+  "release": "7.0.0-31-generic",
+  "architecture": "x86_64",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "browser": "Chromium 151.0.7922.34",
+  "gpu": "NVIDIA GeForce RTX 5060 Ti",
+  "driver": "595.91.07",
+  "python": "3.13.14",
+  "torch": "2.11.0+cu130",
+  "studio_transformers": "5.5.0",
+  "studio_huggingface_hub": "1.31.0",
+  "quantization_shadow_transformers": "5.10.2",
+  "quantization_shadow_compressed_tensors": "0.17.2a20260702",
+  "legacy_transformers": "4.57.6",
+  "legacy_huggingface_hub": "0.36.2",
+  "merge_base": "03af220ac0023ab846727397b3a1de9efa0aec42",
+  "head": "b493068c60ca4b05c77e40032aa9b73791757341",
+  "merge": "82ce8645628f4a3cae88494973d91e9cfc055b87"
+}

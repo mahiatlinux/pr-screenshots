@@ -1,0 +1,47 @@
+{
+  "repo": "mahiatlinux/pr10943-test-20260915-ui-fp8-private",
+  "private": true,
+  "verified_files": [
+    {
+      "file": "chat_template.jinja",
+      "size": 2507,
+      "sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f"
+    },
+    {
+      "file": "config.json",
+      "size": 2658,
+      "sha256": "0c74d59f892f8bbb59ba60c2fb16005ce295ce925b128842dff3cb5e2c5e98ad"
+    },
+    {
+      "file": "export_metadata.json",
+      "size": 24,
+      "sha256": "21deb04dd71d375d691881f139284d853eab8423c4751d641793f27ed57923ef"
+    },
+    {
+      "file": "generation_config.json",
+      "size": 265,
+      "sha256": "4c8f09a34c52e6b9e477065da965079e183b12a5f8ab781952d58e747910d2b3"
+    },
+    {
+      "file": "model.safetensors",
+      "size": 630899568,
+      "sha256": "8938e250f8055129176ba101b6b5c20185c2aa2b6763ddd498f9e018e0b19cb6"
+    },
+    {
+      "file": "recipe.yaml",
+      "size": 237,
+      "sha256": "c10768f8927d8dff6ab352abfc58ea1f3b9fefb2a39d4f7b4d42ddd884ae6e06"
+    },
+    {
+      "file": "tokenizer.json",
+      "size": 11422166,
+      "sha256": "6b4360dd6a184650ffc48056c2569bc603f896c5adfe94b10f1c79f809638aa5"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "size": 403,
+      "sha256": "b69bd4ec41002d08237dfd2e61d76492e5e287aeed7c5182640f60589546ff41"
+    }
+  ],
+  "revision": "0121b5c37a95689d2c8056628b747894d00c5f61"
+}

@@ -1,0 +1,26 @@
+{
+  "source_model": {
+    "id": "unsloth/Qwen2.5-0.5B-Instruct",
+    "revision": "ae616882a38b36759fc46ac3fd6769498833b913"
+  },
+  "tests": {
+    "head_export_suite": 292,
+    "merge_base_existing_export_suite": 288,
+    "head_hub_contract": 41,
+    "legacy_focused": 28,
+    "legacy_hub_contract": 41,
+    "prior_merge_focused_and_contract": 69
+  },
+  "transport": "Pinned source weights were served from a disposable local cache. All destination repository creation, privacy updates, model cards, uploads and downloaded artifact verification used the live huggingface.co service through a credential-isolating relay.",
+  "harness_notes": [
+    "Initial downloaded JSON failed size checks because the relay reserialized JSON. Final checks used a byte-preserving relay and verified SHA-256 for every listed artifact.",
+    "A preliminary existing-repository scenario loaded a model from a local directory and encountered Hub model-card base_model validation. The final public-to-private scenario used the pinned Hugging Face model ID and passed. The unchanged local-path model-card case remains outside this PR fix."
+  ],
+  "limitations": [
+    "16-bit merged upload fails on both merge base and head with an unexpected safe_serialization keyword.",
+    "Three existing Core zoo CI jobs still fail; this verification does not claim all repository CI is green.",
+    "GPU execution was limited to one NVIDIA card and one small text model. No live macOS/MLX, Windows, XPU, multi-GPU, adapter, vision, audio, GGUF-export or training matrix was run.",
+    "GPU reload was an inference smoke check, not a model-quality or quantized-kernel performance evaluation.",
+    "Permission-denied and partial-failure cases were HTTP-mocked contract checks, not tests with a second restricted live credential."
+  ]
+}

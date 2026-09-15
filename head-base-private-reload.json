@@ -1,0 +1,6 @@
+{
+  "label": "head-base-private",
+  "device": "cuda:0",
+  "finite_logits": true,
+  "generated_tokens": 16
+}

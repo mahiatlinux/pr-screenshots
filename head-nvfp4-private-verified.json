@@ -1,0 +1,47 @@
+{
+  "mode": "nvfp4",
+  "success": true,
+  "private": true,
+  "verified_files": [
+    {
+      "path": "chat_template.jinja",
+      "sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "size": 2507
+    },
+    {
+      "path": "config.json",
+      "sha256": "45ce6ad6982e530ac31f6b4ef876d0a312e42e0efcdbf869e5517172dbc595ca",
+      "size": 2724
+    },
+    {
+      "path": "export_metadata.json",
+      "sha256": "21deb04dd71d375d691881f139284d853eab8423c4751d641793f27ed57923ef",
+      "size": 24
+    },
+    {
+      "path": "generation_config.json",
+      "sha256": "4c8f09a34c52e6b9e477065da965079e183b12a5f8ab781952d58e747910d2b3",
+      "size": 265
+    },
+    {
+      "path": "model.safetensors",
+      "sha256": "b4a9f22e42036daace499cae877d0d69ae3230852aa4d647fbad1210aba85b0e",
+      "size": 473780136
+    },
+    {
+      "path": "recipe.yaml",
+      "sha256": "b0232995da52a572e6c27ef41c9e3bb81fd5767a021fe7ee83608b5b88c45f3b",
+      "size": 231
+    },
+    {
+      "path": "tokenizer.json",
+      "sha256": "32776f1c1f1f1c80dba6c2c1acde129c9716bd09f7ade3d77dda735df6658db1",
+      "size": 11422264
+    },
+    {
+      "path": "tokenizer_config.json",
+      "sha256": "b69bd4ec41002d08237dfd2e61d76492e5e287aeed7c5182640f60589546ff41",
+      "size": 403
+    }
+  ]
+}

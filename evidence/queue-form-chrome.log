@@ -1,0 +1,23 @@
+Browser: chromium 153.0.8010.47
+PASS: queue controls preserve the unsent composer draft without submitting
+PASS: compact menu, persistent queueing preference, steer, edit, keyboard, mouse drag, file drop, resume, races and locked states
+PASS: continuous drag, sliding rows, deferred commit, cancellation, dispatch race and edge scrolling
+LAYOUT: direction=ltr, width=320, zoom=1
+LAYOUT: direction=ltr, width=768, zoom=0.8
+LAYOUT: direction=ltr, width=768, zoom=1.25
+LAYOUT: direction=ltr, width=1440, zoom=2
+LAYOUT: direction=rtl, width=320, zoom=1
+LAYOUT: direction=rtl, width=768, zoom=0.8
+LAYOUT: direction=rtl, width=768, zoom=1.25
+LAYOUT: direction=rtl, width=1440, zoom=2
+PASS: lifecycle cancellation, mixed inputs, IME, RTL, zoom and responsive queue layouts
+PASS: reduced motion keeps direct dragging without settling animations
+PASS: touch drag and menu editing at 320px
+MOUNT: rows=3, cold_page_ms=1875
+PERF: {"rows": 3, "p95_frame_ms": 16.7, "max_frame_ms": 16.8, "idle_style_updates": 0}
+MOUNT: rows=25, cold_page_ms=1372
+PERF: {"rows": 25, "p95_frame_ms": 16.7, "max_frame_ms": 16.8, "idle_style_updates": 0}
+MOUNT: rows=100, cold_page_ms=1131
+PERF: {"rows": 100, "p95_frame_ms": 16.7, "max_frame_ms": 16.8, "idle_style_updates": 0}
+MOUNT: rows=500, cold_page_ms=2389
+PERF: {"rows": 500, "p95_frame_ms": 16.8, "max_frame_ms": 16.8, "idle_style_updates": 0}

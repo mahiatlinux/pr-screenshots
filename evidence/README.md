@@ -36,3 +36,11 @@ The identical-toolchain startup build increased from 5381.0 to 5384.0 KiB raw an
 Merged main at f7ab2098 to resolve pre-commit's failed application of formatting to a newly added installer test. Applied only the reproduced five-line formatting change. Frontend tree identical to 6673a5b5; base frontend identical to 0ab40fee.
 
 Reverification: 408 Python tests pass, 4 skip; 101 queue/store/pasted-text tests pass; TypeScript, production build, startup budget, Ruff lint and pinned formatting pass. Ten consecutive Chrome composer interaction suites pass locally with separate browser contexts. The new workflow run retains the macOS Chrome assertion unchanged.
+
+### Queue form regression at 0739d854cc
+
+Confirmed that clicking a reorder handle submitted the enclosing composer form and cleared an unsent draft. The new browser regression fails on `9e137a6c` with one unexpected submission. The three direct row controls now use `type="button"`; the menu trigger already receives that type from Radix. [Radix intentionally leaves the tooltip trigger type unset](https://github.com/radix-ui/primitives/blob/main/packages/react/tooltip/src/tooltip.tsx#L267-L269).
+
+The complete queue browser suite passes in Chromium, Firefox, WebKit, Google Chrome and Microsoft Edge after the fix, including mouse and keyboard activation and rejected steering with an unsent draft. Also passed: 208 focused frontend tests, 25 Python guards, production/test TypeScript, production build, bundle budget, Ruff lint and pinned formatting. The component appearance is unchanged; the earlier screenshots still represent its layout.
+
+Pre-commit and [all ten macOS browser suites](https://github.com/unslothai/unsloth/actions/runs/35032475357/job/104593917077) passed at `9e137a6c`, resolving the earlier intermittent Chrome typing failure without changing its assertion. A fresh review is required for `0739d854cc`.

@@ -1,0 +1,29 @@
+Browser: chromium 151.0.7922.34
+Traceback (most recent call last):
+  File "/task/fix/tests/studio/playwright_prompt_queue_actions.py", line 421, in <module>
+    main()
+  File "/task/fix/tests/studio/playwright_prompt_queue_actions.py", line 391, in main
+    check_form_actions(page)
+  File "/task/fix/tests/studio/playwright_prompt_queue_actions.py", line 39, in check_form_actions
+    expect(page.get_by_label("Composer submissions", exact = True)).to_have_text("0")
+  File "/task/fix/.venv/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 22839, in to_have_text
+    self._sync(
+  File "/task/fix/.venv/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/task/fix/.venv/lib/python3.12/site-packages/playwright/_impl/_assertions.py", line 648, in to_have_text
+    await self._expect_impl(
+  File "/task/fix/.venv/lib/python3.12/site-packages/playwright/_impl/_assertions.py", line 128, in _expect_impl
+    _record_soft_or_raise(
+  File "/task/fix/.venv/lib/python3.12/site-packages/playwright/_impl/_assertions.py", line 60, in _record_soft_or_raise
+    raise error
+AssertionError: Locator expected to have text '0'
+Actual value: 1 
+Call log:
+  - Expect "to_have_text" with timeout 5000ms
+  - waiting for get_by_label("Composer submissions", exact=True)
+    14 × locator resolved to <output aria-label="Composer submissions">1</output>
+       - unexpected value "1"
+
+Aria snapshot:
+- status "Composer submissions": "1"

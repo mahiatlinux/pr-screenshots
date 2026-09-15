@@ -1,0 +1,26 @@
+[
+  {
+    "action": "Steer with queued prompt 1",
+    "type": "submit",
+    "submits": 0,
+    "draft": "Unsent draft"
+  },
+  {
+    "action": "Remove queued prompt 1",
+    "type": "submit",
+    "submits": 0,
+    "draft": "Unsent draft"
+  },
+  {
+    "action": "Reorder queued prompt 1 of 3",
+    "type": "submit",
+    "submits": 1,
+    "draft": ""
+  },
+  {
+    "action": "More options for queued prompt 1",
+    "type": "button",
+    "submits": 0,
+    "draft": "Unsent draft"
+  }
+]

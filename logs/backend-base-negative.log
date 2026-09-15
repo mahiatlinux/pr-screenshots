@@ -1,0 +1,257 @@
+......FF.....................F.FFFF..                                    [100%]
+=================================== FAILURES ===================================
+_________________________ test_customization_defaults __________________________
+
+    def test_customization_defaults():
+        p = PersonalizationPayload.model_validate({})
+        c = p.appearance.customization
+        assert c.contrast == 50
+        assert c.reduceMotion == "system"
+        assert c.fontSmoothing is True
+        assert c.pointerCursors is False
+        assert c.colors.light.accent is None
+        assert c.headingFont is None
+        assert c.chatFont is None
+        assert c.uiFontSize is None
+>       assert c.chatWidth == "standard"
+               ^^^^^^^^^^^
+
+artifacts/test_base_personalization.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PersonalizationCustomization(colors=PersonalizationCustomColorModes(light=PersonalizationCustomColors(accent=None, bac...lse), PersonalizationSidebarNavItem(id='export', pinned=False), PersonalizationSidebarNavItem(id='api', pinned=False)])
+item = 'chatWidth'
+
+    def __getattr__(self, item: str) -> Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra and item in pydantic_extra:
+                return pydantic_extra[item]
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+>                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'PersonalizationCustomization' object has no attribute 'chatWidth'
+
+base/.venv/lib/python3.12/site-packages/pydantic/main.py:1042: AttributeError
+__________________ test_customization_invalid_values_rejected __________________
+
+    def test_customization_invalid_values_rejected():
+>       with pytest.raises(ValidationError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValidationError
+
+artifacts/test_base_personalization.py:106: Failed
+_______________ test_personalization_route_roundtrip_real_shape ________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x75fd24f37830>
+
+    def test_personalization_route_roundtrip_real_shape(monkeypatch):
+        store: dict = {}
+        client = _shared_setup_1(monkeypatch, store)
+    
+        initial = client.get("/api/settings/personalization")
+        assert initial.status_code == 200
+        assert initial.json()["saved"] is False
+    
+        payload = {
+            "version": 1,
+            "profile": {
+                "displayName": "Mike",
+                "nickname": "M",
+                "avatarDataUrl": "/Sloth%20emojis/large%20sloth%20yay.png",
+                "avatarShape": "rounded",
+                "showGreetingSloth": False,
+            },
+            "appearance": {
+                "theme": "dark",
+                "palette": "classic",
+                "language": "en",
+                "customization": {
+                    "colors": {
+                        "light": {"accent": "#339cff", "background": None, "foreground": None},
+                        "dark": {"accent": None, "background": "#111111", "foreground": None},
+                    },
+                    "uiFont": "SF Pro Text",
+                    "headingFont": "Avenir Next",
+                    "chatFont": "Georgia",
+                    "chatWidth": "full",
+                    "codeFont": None,
+                    "importedFonts": [
+                        {"name": "SF Pro Text", "dataUrl": "data:font/woff2;base64,AAAA"}
+                    ],
+                    "uiFontSize": 14,
+                    "codeFontSize": 13,
+                    "contrast": 60,
+                    "pointerCursors": True,
+                    "reduceMotion": "off",
+                    "fontSmoothing": True,
+                    "sidebarMenu": [
+                        {"id": "darkMode", "visible": True},
+                        {"id": "api", "visible": False},
+                        {"id": "guidedTour", "visible": True},
+                        {"id": "profile", "visible": True},
+                        {"id": "appearance", "visible": False},
+                        {"id": "resources", "visible": False},
+                        {"id": "chat", "visible": False},
+                        {"id": "connections", "visible": False},
+                    ],
+                    # Reordered and partly unpinned, so the round-trip proves order survives a save.
+                    "sidebarNav": [
+                        {"id": "images", "pinned": True},
+                        {"id": "video", "pinned": True},
+                        {"id": "audio", "pinned": False},
+                        {"id": "hub", "pinned": True},
+                        {"id": "train", "pinned": True},
+                        {"id": "projects", "pinned": False},
+                        {"id": "recipes", "pinned": False},
+                        {"id": "export", "pinned": False},
+                        {"id": "api", "pinned": False},
+                    ],
+                },
+            },
+        }
+        put = client.put("/api/settings/personalization", json = payload)
+        assert put.status_code == 200
+    
+        saved = client.get("/api/settings/personalization")
+        assert saved.status_code == 200
+        body = saved.json()
+        assert body["saved"] is True
+        assert body["customizationSaved"] is True
+        assert body["paletteSaved"] is True
+        assert body["greetingSlothSaved"] is True
+        assert body["profile"] == payload["profile"]
+>       assert body["appearance"] == payload["appearance"]
+E       AssertionError: assert {'theme': 'da...eorgia', ...}} == {'theme': 'da...eorgia', ...}}
+E         
+E         Omitting 3 identical items, use -vv to show
+E         Differing items:
+E         {'customization': {'colors': {'light': {'accent': '#339cff', 'background': None, 'foreground': None}, 'dark': {'accent...': '#111111', 'foreground': None}}, 'uiFont': 'SF Pro Text', 'headingFont': 'Avenir Next', 'chatFont': 'Georgia', ...}} != {'customization': {'colors': {'light': {'accent': '#339cff', 'background': None, 'foreground': None}, 'dark': {'accent...': '#111111', 'foreground': None}}, 'uiFont': 'SF Pro Text', 'headingFont': 'Avenir Next', 'chatFont': 'Georgia', ...}}
+E         Use -v to get more diff
+
+artifacts/test_base_personalization.py:502: AssertionError
+_______________ test_personalization_legacy_chat_width_presence ________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x75fd24f41970>
+
+    def test_personalization_legacy_chat_width_presence(monkeypatch):
+        store = {
+            pers.PERSONALIZATION_SETTING_KEY: {
+                "appearance": {"customization": {"uiFont": "Georgia"}},
+            }
+        }
+        client = _shared_setup_1(monkeypatch, store)
+        body = client.get("/api/settings/personalization").json()
+        assert body["customizationSaved"] is True
+>       assert body["chatWidthSaved"] is False
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'chatWidthSaved'
+
+artifacts/test_base_personalization.py:536: KeyError
+_____ test_personalization_saved_chat_width_survives_stale_write[standard] _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x75fd24f3dd30>
+width = 'standard'
+
+    @pytest.mark.parametrize("width", ["standard", "wide", "full"])
+    def test_personalization_saved_chat_width_survives_stale_write(monkeypatch, width):
+        store = {
+            pers.PERSONALIZATION_SETTING_KEY: {
+                "appearance": {"customization": {"chatWidth": width}},
+            }
+        }
+        client = _shared_setup_1(monkeypatch, store)
+        put = client.put(
+            "/api/settings/personalization",
+            json = {"appearance": {"customization": {"uiFont": "Georgia"}}},
+        )
+        assert put.status_code == 200
+        body = client.get("/api/settings/personalization").json()
+>       assert body["chatWidthSaved"] is True
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'chatWidthSaved'
+
+artifacts/test_base_personalization.py:572: KeyError
+_______ test_personalization_saved_chat_width_survives_stale_write[wide] _______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x75fd24f4a450>
+width = 'wide'
+
+    @pytest.mark.parametrize("width", ["standard", "wide", "full"])
+    def test_personalization_saved_chat_width_survives_stale_write(monkeypatch, width):
+        store = {
+            pers.PERSONALIZATION_SETTING_KEY: {
+                "appearance": {"customization": {"chatWidth": width}},
+            }
+        }
+        client = _shared_setup_1(monkeypatch, store)
+        put = client.put(
+            "/api/settings/personalization",
+            json = {"appearance": {"customization": {"uiFont": "Georgia"}}},
+        )
+        assert put.status_code == 200
+        body = client.get("/api/settings/personalization").json()
+>       assert body["chatWidthSaved"] is True
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'chatWidthSaved'
+
+artifacts/test_base_personalization.py:572: KeyError
+_______ test_personalization_saved_chat_width_survives_stale_write[full] _______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x75fd24f4df40>
+width = 'full'
+
+    @pytest.mark.parametrize("width", ["standard", "wide", "full"])
+    def test_personalization_saved_chat_width_survives_stale_write(monkeypatch, width):
+        store = {
+            pers.PERSONALIZATION_SETTING_KEY: {
+                "appearance": {"customization": {"chatWidth": width}},
+            }
+        }
+        client = _shared_setup_1(monkeypatch, store)
+        put = client.put(
+            "/api/settings/personalization",
+            json = {"appearance": {"customization": {"uiFont": "Georgia"}}},
+        )
+        assert put.status_code == 200
+        body = client.get("/api/settings/personalization").json()
+>       assert body["chatWidthSaved"] is True
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'chatWidthSaved'
+
+artifacts/test_base_personalization.py:572: KeyError
+=============================== warnings summary ===============================
+base/.venv/lib/python3.12/site-packages/starlette/testclient.py:53
+  $TASK_ROOT/base/.venv/lib/python3.12/site-packages/starlette/testclient.py:53: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = Callable[[], AbstractContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED artifacts/test_base_personalization.py::test_customization_defaults - ...
+FAILED artifacts/test_base_personalization.py::test_customization_invalid_values_rejected
+FAILED artifacts/test_base_personalization.py::test_personalization_route_roundtrip_real_shape
+FAILED artifacts/test_base_personalization.py::test_personalization_legacy_chat_width_presence
+FAILED artifacts/test_base_personalization.py::test_personalization_saved_chat_width_survives_stale_write[standard]
+FAILED artifacts/test_base_personalization.py::test_personalization_saved_chat_width_survives_stale_write[wide]
+FAILED artifacts/test_base_personalization.py::test_personalization_saved_chat_width_survives_stale_write[full]
+7 failed, 30 passed, 1 warning in 2.57s

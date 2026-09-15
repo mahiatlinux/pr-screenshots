@@ -1,0 +1,144 @@
+{
+  "standard": {
+    "390": {
+      "pane": 390,
+      "message": 350,
+      "composer": 366,
+      "overflow": false
+    },
+    "768": {
+      "pane": 488,
+      "message": 448,
+      "composer": 454,
+      "overflow": false
+    },
+    "900": {
+      "pane": 620,
+      "message": 580,
+      "composer": 570,
+      "overflow": false
+    },
+    "1280": {
+      "pane": 1000,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "1536": {
+      "pane": 1256,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "1920": {
+      "pane": 1640,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "2560": {
+      "pane": 2280,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    }
+  },
+  "wide": {
+    "390": {
+      "pane": 390,
+      "message": 350,
+      "composer": 366,
+      "overflow": false
+    },
+    "768": {
+      "pane": 488,
+      "message": 448,
+      "composer": 454,
+      "overflow": false
+    },
+    "900": {
+      "pane": 620,
+      "message": 580,
+      "composer": 570,
+      "overflow": false
+    },
+    "1280": {
+      "pane": 1000,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "1536": {
+      "pane": 1256,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "1920": {
+      "pane": 1640,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "2560": {
+      "pane": 2280,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    }
+  },
+  "full": {
+    "390": {
+      "pane": 390,
+      "message": 350,
+      "composer": 366,
+      "overflow": false
+    },
+    "768": {
+      "pane": 488,
+      "message": 448,
+      "composer": 454,
+      "overflow": false
+    },
+    "900": {
+      "pane": 620,
+      "message": 580,
+      "composer": 570,
+      "overflow": false
+    },
+    "1280": {
+      "pane": 1000,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "1536": {
+      "pane": 1256,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "1920": {
+      "pane": 1640,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    },
+    "2560": {
+      "pane": 2280,
+      "message": 744,
+      "composer": 736,
+      "overflow": false
+    }
+  },
+  "edit": 744,
+  "welcome": 736,
+  "compare": [
+    739.5,
+    739.5
+  ],
+  "compareComposers": [
+    768
+  ],
+  "sidebarClosed": 744
+}

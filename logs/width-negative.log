@@ -1,0 +1,36 @@
+unsloth
+BETA
+New chat
+Model hub
+Projects
+Images
+Video
+Train
+More
+Recents
+Chat width review
+U
+Unsloth
+Unsloth
+Command Palette
+
+Search for a command to run...
+
+Drop to add model chip
+Review it before loading.
+Select model
+
+Explain how chat width affects a conversation.
+
+A wider conversation keeps longer explanations easy to read. This saved conversation uses the same content in every build, so the width of the messages and composer can be compared directly. A wider conversation keeps longer explanations easy to read. This saved conversation uses the same content in every build, so the width of the messages and composer can be compared directly. A wider conversation keeps longer explanations easy to read. This saved conversation uses the same content in every build, so the width of the messages and composer can be compared directly. A wider conversation keeps longer explanations easy to rea
+[{'label': 'Search', 'title': None}, {'label': 'Close sidebar', 'title': None}, {'label': 'Open sidebar', 'title': None}, {'label': 'New project', 'title': None}, {'label': 'Show workflows', 'title': None}, {'label': 'Organize chats', 'title': None}, {'label': 'New chat', 'title': None}, {'label': 'Chat options', 'title': None}, {'label': 'Unsloth account menu', 'title': None}, {'label': 'Settings', 'title': None}, {'label': 'Resize or collapse sidebar', 'title': None}, {'label': 'Turn on temporary chat', 'title': None}, {'label': 'Open run settings', 'title': None}, {'label': 'Read aloud', 'title': None}, {'label': 'Tools and attachments', 'title': None}, {'label': 'Permission level for tool calls', 'title': 'Approve for me: Run tool calls, but ask before high-risk actions like credential access, privilege escalation, or destructive commands'}, {'label': 'Enable web search', 'title': None}, {'label': 'Enable code execution', 'title': None}, {'label': 'Dictate', 'title': None}, {'label': 'Send message', 'title': None}, {'label': 'Close run settings', 'title': None}, {'label': 'More info', 'title': None}, {'label': 'Collapse Preset', 'title': None}, {'label': 'No unsaved changes', 'title': 'No unsaved changes'}, {'label': None, 'title': 'No saved override to delete'}, {'label': 'Edit system prompt', 'title': None}, {'label': 'Collapse System Prompt', 'title': None}, {'label': 'More info', 'title': None}, {'label': 'More info', 'title': None}, {'label': 'More info', 'title': None}, {'label': 'More info', 'title': None}, {'label': 'More info', 'title': None}, {'label': 'More info', 'title': None}, {'label': 'More info', 'title': None}]
+standard {390: {'pane': 390, 'message': 340, 'composer': 366, 'overflow': False}, 768: {'pane': 488, 'message': 438, 'composer': 454, 'overflow': False}, 900: {'pane': 620, 'message': 570, 'composer': 570, 'overflow': False}, 1280: {'pane': 1000, 'message': 744, 'composer': 736, 'overflow': False}, 1536: {'pane': 1256, 'message': 744, 'composer': 736, 'overflow': False}, 1920: {'pane': 1640, 'message': 744, 'composer': 736, 'overflow': False}, 2560: {'pane': 2280, 'message': 744, 'composer': 736, 'overflow': False}}
+wide {390: {'pane': 390, 'message': 340, 'composer': 366, 'overflow': False}, 768: {'pane': 488, 'message': 438, 'composer': 454, 'overflow': False}, 900: {'pane': 620, 'message': 570, 'composer': 570, 'overflow': False}, 1280: {'pane': 1000, 'message': 950, 'composer': 950, 'overflow': False}, 1536: {'pane': 1256, 'message': 1128, 'composer': 1152, 'overflow': False}, 1920: {'pane': 1640, 'message': 1128, 'composer': 1152, 'overflow': False}, 2560: {'pane': 2280, 'message': 1128, 'composer': 1152, 'overflow': False}}
+full {390: {'pane': 390, 'message': 220, 'composer': 270, 'overflow': False}, 768: {'pane': 488, 'message': 318, 'composer': 358, 'overflow': False}, 900: {'pane': 620, 'message': 450, 'composer': 474, 'overflow': False}, 1280: {'pane': 1000, 'message': 830, 'composer': 854, 'overflow': False}, 1536: {'pane': 1256, 'message': 1086, 'composer': 1110, 'overflow': False}, 1920: {'pane': 1640, 'message': 1470, 'composer': 1494, 'overflow': False}, 2560: {'pane': 2280, 'message': 2110, 'composer': 2134, 'overflow': False}}
+Traceback (most recent call last):
+  File "$TASK_ROOT/evidence.py", line 102, in <module>
+    test.check_widths(page)
+  File "$TASK_ROOT/fix/tests/studio/playwright_chat_width.py", line 43, in check_widths
+    assert full[surface] >= wide[surface] - 1, (width, surface, full, wide)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (390, 'message', {'message': 220, 'composer': 270, 'overflow': False}, {'message': 340, 'composer': 366, 'overflow': False})

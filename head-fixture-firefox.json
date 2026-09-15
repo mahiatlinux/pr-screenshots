@@ -1,0 +1,255 @@
+{
+  "browser": "firefox",
+  "platform": "linux",
+  "failed": 0,
+  "checks": [
+    {
+      "name": "path: plot.png",
+      "passed": true
+    },
+    {
+      "name": "path: ./plot.png",
+      "passed": true
+    },
+    {
+      "name": "path: outputs/plot.png",
+      "passed": true
+    },
+    {
+      "name": "path: ./outputs/plot.png",
+      "passed": true
+    },
+    {
+      "name": "path: outputs/./plot.png",
+      "passed": true
+    },
+    {
+      "name": "filename: loss curve.png",
+      "passed": true
+    },
+    {
+      "name": "filename: caf\u00e9.png",
+      "passed": true
+    },
+    {
+      "name": "filename: \u65e5\u672c\u8a9e.png",
+      "passed": true
+    },
+    {
+      "name": "filename: 100%.png",
+      "passed": true
+    },
+    {
+      "name": "filename: plot #1.png",
+      "passed": true
+    },
+    {
+      "name": "filename: plot?1.png",
+      "passed": true
+    },
+    {
+      "name": "filename: literal%2F.png",
+      "passed": true
+    },
+    {
+      "name": "filename: a+b.png",
+      "passed": true
+    },
+    {
+      "name": "filename: paren(1).png",
+      "passed": true
+    },
+    {
+      "name": "format: png",
+      "passed": true
+    },
+    {
+      "name": "format: jpg",
+      "passed": true
+    },
+    {
+      "name": "format: jpeg",
+      "passed": true
+    },
+    {
+      "name": "format: gif",
+      "passed": true
+    },
+    {
+      "name": "format: webp",
+      "passed": true
+    },
+    {
+      "name": "format: bmp",
+      "passed": true
+    },
+    {
+      "name": "format: avif",
+      "passed": true
+    },
+    {
+      "name": "project scope",
+      "passed": true
+    },
+    {
+      "name": "recorded scope",
+      "passed": true
+    },
+    {
+      "name": "query session",
+      "passed": true
+    },
+    {
+      "name": "markup: <img src=\"outputs/plot.png\" alt=\"Pl",
+      "passed": true
+    },
+    {
+      "name": "markup: ![Plot][chart]\n\n[chart]: outputs/pl",
+      "passed": true
+    },
+    {
+      "name": "markup: [![Plot](outputs/plot.png)](https:/",
+      "passed": true
+    },
+    {
+      "name": "embedded PNG",
+      "passed": true
+    },
+    {
+      "name": "root asset remains supported",
+      "passed": true
+    },
+    {
+      "name": "reject: ../secret.png",
+      "passed": true
+    },
+    {
+      "name": "reject: outputs/../../secret.png",
+      "passed": true
+    },
+    {
+      "name": "reject: ..%2Fsecret.png",
+      "passed": true
+    },
+    {
+      "name": "reject: ..%5Csecret.png",
+      "passed": true
+    },
+    {
+      "name": "reject: /api/inference/sandbox/thread-a/../other/secret.png",
+      "passed": true
+    },
+    {
+      "name": "reject: /api/inference/sandbox/thread-a/%2E%2E/other/secret.png",
+      "passed": true
+    },
+    {
+      "name": "reject: ./api/inference/sandbox/thread-a/../other/secret.png",
+      "passed": true
+    },
+    {
+      "name": "reject: /api/inference/sandbox/thread-a/outputs%2F..%2F..%2Fother/secret.png",
+      "passed": true
+    },
+    {
+      "name": "reject: /api/inference/sandbox/thread-a/%00plot.png",
+      "passed": true
+    },
+    {
+      "name": "reject: //example.invalid/api/inference/sandbox/other/plot.png",
+      "passed": true
+    },
+    {
+      "name": "reject: https://example.invalid/plot.png",
+      "passed": true
+    },
+    {
+      "name": "reject: http://127.0.0.1/plot.png",
+      "passed": true
+    },
+    {
+      "name": "reject: file:///tmp/plot.png",
+      "passed": true
+    },
+    {
+      "name": "reject: C:\\Users\\test\\plot.png",
+      "passed": true
+    },
+    {
+      "name": "reject: outputs\\plot.png",
+      "passed": true
+    },
+    {
+      "name": "reject: javascript:alert%281%29",
+      "passed": true
+    },
+    {
+      "name": "reject: data:text/html;base64,PGgxPnRlc3Q8L2gxPg==",
+      "passed": true
+    },
+    {
+      "name": "non-image: plot.png",
+      "passed": true
+    },
+    {
+      "name": "non-image: `![Plot](plot.png)`",
+      "passed": true
+    },
+    {
+      "name": "non-image: ```python\n![Plot](plot.png)\n``",
+      "passed": true
+    },
+    {
+      "name": "non-image: [Documentation](https://exampl",
+      "passed": true
+    },
+    {
+      "name": "HTML event handlers are removed",
+      "passed": true
+    },
+    {
+      "name": "failure and recovery: missing.png",
+      "passed": true
+    },
+    {
+      "name": "failure and recovery: forbidden.png",
+      "passed": true
+    },
+    {
+      "name": "failure and recovery: broken.png",
+      "passed": true
+    },
+    {
+      "name": "unauthenticated direct request is denied",
+      "passed": true
+    },
+    {
+      "name": "scope switches invalidate cached Markdown",
+      "passed": true
+    },
+    {
+      "name": "late response cannot replace a newer scope",
+      "passed": true
+    },
+    {
+      "name": "offscreen images wait for visibility",
+      "passed": true
+    },
+    {
+      "name": "streaming image link completes",
+      "passed": true
+    }
+  ],
+  "variant": "after",
+  "unsupportedFormats": [],
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:153.0) Gecko/20100101 Firefox/153.0",
+  "passed": 59,
+  "browser_version": "153.0",
+  "downloads": [
+    "plot.png",
+    "Embedded.png",
+    "loss curve #1.png"
+  ],
+  "csp_violations": "",
+  "page_errors": []
+}

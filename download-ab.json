@@ -1,0 +1,14 @@
+[
+  {
+    "side": "base",
+    "downloads": 0,
+    "csp_violations": [
+      "connect-src"
+    ]
+  },
+  {
+    "side": "head",
+    "downloads": 1,
+    "csp_violations": []
+  }
+]

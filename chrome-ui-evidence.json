@@ -1,0 +1,32 @@
+[
+  {
+    "side": "base",
+    "expected": "The base shows [Image blocked: Plot]; the head displays the red line plot from the same relative filename.",
+    "browser": "chrome",
+    "version": "153.0.8010.36",
+    "dimensions": null,
+    "sandbox_responses": [],
+    "download_identical": false,
+    "page_errors": [],
+    "plot_sha256": "d8aa9297755803c6238c7da0cfe0b2a5eded7c9cb2a6b965b84ecb5aa034dd76"
+  },
+  {
+    "side": "head",
+    "expected": "The base shows [Image blocked: Plot]; the head displays the red line plot from the same relative filename.",
+    "browser": "chrome",
+    "version": "153.0.8010.36",
+    "dimensions": [
+      600,
+      320
+    ],
+    "sandbox_responses": [
+      {
+        "path": "/api/inference/sandbox/review-plot/line_plot.png",
+        "status": 200
+      }
+    ],
+    "download_identical": true,
+    "page_errors": [],
+    "plot_sha256": "d8aa9297755803c6238c7da0cfe0b2a5eded7c9cb2a6b965b84ecb5aa034dd76"
+  }
+]

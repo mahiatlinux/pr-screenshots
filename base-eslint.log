@@ -1,0 +1,68 @@
+
+/task/base/studio/frontend/src/components/assistant-ui/markdown-text.tsx
+    11:1   error    '@/features/chat/artifacts/html-fences' import is restricted from being used by a pattern. Import from feature index only: @/features/[name]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-restricted-imports
+   152:11  error    '_node' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+   814:14  warning  Fast refresh only works when a file only exports components. Move your React context(s) to a separate file                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          react-refresh/only-export-components
+   875:7   error    Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/task/base/studio/frontend/src/components/assistant-ui/markdown-text.tsx:875:7
+  873 |     cache: new IncrementalMarkdownCache(),
+  874 |   });
+> 875 |   if (incrementalCacheRef.current.messageId !== messageId) {
+      |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  876 |     incrementalCacheRef.current = {
+  877 |       messageId,
+  878 |       cache: new IncrementalMarkdownCache(),                                                                                                                       react-hooks/refs
+   876:5   error    Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/task/base/studio/frontend/src/components/assistant-ui/markdown-text.tsx:876:5
+  874 |   });
+  875 |   if (incrementalCacheRef.current.messageId !== messageId) {
+> 876 |     incrementalCacheRef.current = {
+      |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot update ref during render
+  877 |       messageId,
+  878 |       cache: new IncrementalMarkdownCache(),
+  879 |     };                                                                                                                                                                             react-hooks/refs
+   883:7   error    Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/task/base/studio/frontend/src/components/assistant-ui/markdown-text.tsx:883:7
+  881 |   const incrementalCache = incrementalCacheRef.current.cache;
+  882 |   const incrementalRender = isStreaming
+> 883 |     ? incrementalCache.update(processedText)
+      |       ^^^^^^^^^^^^^^^^ Passing a ref to a function may read its value during render
+  884 |     : null;
+  885 |   const renderKey = markdownRenderKey(processedText);
+  886 |                                                                                                                react-hooks/refs
+   883:7   error    Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/task/base/studio/frontend/src/components/assistant-ui/markdown-text.tsx:883:7
+  881 |   const incrementalCache = incrementalCacheRef.current.cache;
+  882 |   const incrementalRender = isStreaming
+> 883 |     ? incrementalCache.update(processedText)
+      |       ^^^^^^^^^^^^^^^^^^^^^^^ Passing a ref to a function may read its value during render
+  884 |     : null;
+  885 |   const renderKey = markdownRenderKey(processedText);
+  886 |                                                                                                         react-hooks/refs
+   899:34  error    Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+/task/base/studio/frontend/src/components/assistant-ui/markdown-text.tsx:899:34
+  897 |         <div data-status={statusType} className="min-w-0 max-w-full">
+  898 |           <Streamdown
+> 899 |             key={`${messageId}:${incrementalCache.renderGeneration}:${renderKey}`}
+      |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  900 |             mode="streaming"
+  901 |             parseIncompleteMarkdown={!incrementalRender}
+  902 |             parseMarkdownIntoBlocksFn={  react-hooks/refs
+  1001:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      react-refresh/only-export-components
+
+✖ 9 problems (7 errors, 2 warnings)

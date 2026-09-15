@@ -1,0 +1,17 @@
+✔ relative Python images survive the full Markdown pipeline (28.64563ms)
+✔ relative images use project scope and explicit URLs keep their session (2.430723ms)
+✔ HTML image sources are resolved after raw HTML is parsed (2.108267ms)
+✔ data images still render and remote image URLs stay blocked (6.55425ms)
+✔ URL normalization cannot turn traversal into another sandbox image (6.959973ms)
+✔ encoded filenames and image formats resolve across Markdown, HTML, and scopes (498.134122ms)
+✔ path mutations cannot escape scope through Markdown or HTML (67.564595ms)
+✔ A to B to A does not reuse a cancelled loaded result (35.215389ms)
+✔ A to B to A does not reuse a cancelled failed result (6.177562ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 837.677256

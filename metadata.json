@@ -1,0 +1,20 @@
+{
+  "pr": 10954,
+  "merge_base": "c3329b9dbf2defc1e333dff30862e4bf31fb3718",
+  "head": "ff8f0ca287fdfcdba19d85122d0108d337f1cec1",
+  "merge": "e402f7e75900b06d4c12ce47a2dca9dc4225e041",
+  "merge_parent": "de1f4a743409f0c8403947d6a94144b65dc67635",
+  "os": "Ubuntu 26.04.1 LTS",
+  "architecture": "x86_64",
+  "node": "26.8.2",
+  "python": "3.13.14",
+  "playwright": "1.62.0",
+  "pillow": "12.3.0",
+  "viewport": [
+    1280,
+    900
+  ],
+  "frontend_tests": 7475,
+  "head_and_merge_browser_cases": 620,
+  "repairs": []
+}

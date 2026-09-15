@@ -1,0 +1,23 @@
+{
+  "browser": "msedge",
+  "platform": "linux",
+  "failed": 1,
+  "checks": [
+    {
+      "name": "path: plot.png",
+      "passed": false,
+      "error": "Error: Condition timed out"
+    },
+    {
+      "name": "recorded scope",
+      "passed": true
+    }
+  ],
+  "variant": "before",
+  "unsupportedFormats": [],
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+  "passed": 1,
+  "browser_version": "153.0.4234.32",
+  "csp_violations": "",
+  "page_errors": []
+}

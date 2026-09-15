@@ -15,8 +15,9 @@ Local-load follow-ups must retain their drafts through preparation and then queu
 ## Executed commands
 
 - `npm test`: 7,667 passed.
-- `node --experimental-strip-types --test tests/composer-steering.test.ts tests/loading-model-selection.test.ts tests/pasted-text.test.ts`: 67 passed.
+- `node --experimental-strip-types --test tests/composer-steering.test.ts tests/loading-model-selection.test.ts`: 67 passed.
 - `python -m pytest tests/studio/test_multi_chat_prompt_queue_contract.py tests/studio/test_apt_steps_are_bounded.py tests/studio/test_playwright_suites_run_in_ci.py tests/studio/test_macos_slots_per_commit.py tests/studio/test_workflow_guards_run_unfiltered.py -q`: 321 passed.
+- `node --experimental-strip-types --test tests/pasted-text-attachment.test.ts`: 34 passed.
 - `npm run build`, `npm run typecheck`, `npm run i18n:check`, and `npm run bundle:check`: passed.
 - Ruff 0.15.18 lint and repository formatting with Ruff 0.6.9 passed for the three changed Python files.
 - ESLint comparison on thread.tsx and chat-runtime-store.ts: the same 62 diagnostics on original head and repair, zero additions.

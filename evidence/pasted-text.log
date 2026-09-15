@@ -1,0 +1,42 @@
+✔ short pastes stay inline (0.933143ms)
+✔ bulk pastes become attachments by length (0.111239ms)
+✔ the threshold is configurable (0.103926ms)
+✔ the off choice keeps every paste inline (0.094628ms)
+✔ the default is one of the offered choices (0.576543ms)
+✔ the file is named after the opening of the paste (4.306975ms)
+✔ pasted text files are recognised by identity (0.482327ms)
+✔ the pasted text is kept beside the file, not re-read from it (0.176101ms)
+✔ a file the paste check accepts always has its body, byte for byte (0.478199ms)
+✔ the sent wrapper is what marks a paste after the File is gone (0.2341ms)
+✔ the chip size is read off the header, never measured (0.179157ms)
+✔ previewing sent content never materialises the body (0.236915ms)
+✔ a paste-only message still has something to name the thread with (0.293261ms)
+✔ chat search still finds what the paste moved out of the message (0.149642ms)
+✔ copies and exports carry the paste, not its wrapper (0.064071ms)
+✔ a sample of unwrapped content is left as it is (0.050114ms)
+✔ the preview is capped, and says how much it is holding back (0.067768ms)
+✔ a long text paste is swallowed and handed over as a file (0.250822ms)
+✔ normal pastes and file pastes fall through untouched (0.126127ms)
+✔ a paste too big to hold inline still attaches (0.081183ms)
+✔ an attachment that throws on the spot reports instead of vanishing (0.150453ms)
+✔ a .txt named like a pasted one keeps the normal tile (0.092794ms)
+✔ native image and file payloads stay on the file paste path (0.196259ms)
+✔ paste without formatting is the chord each platform binds (0.128171ms)
+✔ an ordinary paste is left to the attachment threshold (0.086392ms)
+✔ a keyboard reporting no code reads the physical key (0.09047ms)
+✔ the chord follows the layout, not the board (0.09563ms)
+✔ the Option chord follows the layout too (0.068169ms)
+✔ a keyboard reporting no code falls back to the key (0.082565ms)
+✔ the composer reads the chord from the keydown and clears it (6.579988ms)
+✔ the chord carries a bulk paste past the threshold, inline (0.22345ms)
+✔ every locale keeps the shortcut in the threshold description (3.470483ms)
+✔ the settings label names the chord the composer accepts (1.914649ms)
+✔ the chord only stands for the paste it asks for (0.086262ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 95.759108

@@ -44,3 +44,9 @@ Confirmed that clicking a reorder handle submitted the enclosing composer form a
 The complete queue browser suite passes in Chromium, Firefox, WebKit, Google Chrome and Microsoft Edge after the fix, including mouse and keyboard activation and rejected steering with an unsent draft. Also passed: 208 focused frontend tests, 25 Python guards, production/test TypeScript, production build, bundle budget, Ruff lint and pinned formatting. The component appearance is unchanged; the earlier screenshots still represent its layout.
 
 Pre-commit and [all ten macOS browser suites](https://github.com/unslothai/unsloth/actions/runs/35032475357/job/104593917077) passed at `9e137a6c`, resolving the earlier intermittent Chrome typing failure without changing its assertion. A fresh review is required for `0739d854cc`.
+
+### Completed
+
+[Latest-head review](https://github.com/unslothai/unsloth/pull/10980#issuecomment-5689317709) found no major issues on `0739d854ccc496393fac1a99827b2ef908741b25`. [Final approval](https://github.com/unslothai/unsloth/pull/10980#pullrequestreview-5216736344) was recorded on that exact head. Pre-commit passed; no checks were failing and no review threads remained unresolved at approval. Other CI jobs were pending, and GitHub reported no required checks.
+
+Squash-merged through GitHub without a protection bypass as [`f4958cee8`](https://github.com/unslothai/unsloth/commit/f4958cee8a92664899fd46ff764578bfe62887b0).

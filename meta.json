@@ -2,7 +2,7 @@
   "pr": 10958,
   "base": "de1f4a743409f0c8403947d6a94144b65dc67635",
   "original_head": "e5b58c2973686e7b14e9bb74ba3833fefc6b34e7",
-  "head": "3120f13743463ecc2fa89d8a7e98960ee8722b68",
+  "head": "8621a4297566a7c1633bc81b8d99f9b28b425890",
   "original_merge": "a56d91495541e3daf98d53ba9a19659c27bd2145",
   "repaired_merge": "original merge plus 3120f1374 patch",
   "os": "Ubuntu 26.04 x86_64",
@@ -34,6 +34,19 @@
     "fixed_firefox_width_regression": "passed",
     "repaired_merge_width_regression": "passed",
     "standalone_browser_regression_on_repaired_merge": "passed",
-    "live_personalization_save_reload_reset": "passed"
+    "live_personalization_save_reload_reset": "passed",
+    "welcome_transition_negative": "fails on 3120f1374",
+    "welcome_transition_final": "passes in Chromium and Firefox"
+  },
+  "repairs": [
+    "3120f13743463ecc2fa89d8a7e98960ee8722b68",
+    "8621a4297566a7c1633bc81b8d99f9b28b425890"
+  ],
+  "conflict_preview": {
+    "upstream": "1811677f024a88b6cbe6d36e7d3d91b27c2c0190",
+    "head": "8621a4297566a7c1633bc81b8d99f9b28b425890",
+    "resolution": "Keep upstream symmetric comparison padding and PR width cap.",
+    "tests": "typecheck, build, Chromium live API/UI checks and standalone browser regression passed",
+    "pushed": false
   }
 }

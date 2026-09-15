@@ -1,0 +1,11 @@
+browser chromium 151.0.7922.34
+standard {390: {'pane': 390, 'message': 340, 'composer': 366, 'overflow': False}, 768: {'pane': 488, 'message': 438, 'composer': 454, 'overflow': False}, 900: {'pane': 620, 'message': 570, 'composer': 570, 'overflow': False}, 1280: {'pane': 1000, 'message': 744, 'composer': 736, 'overflow': False}, 1536: {'pane': 1256, 'message': 744, 'composer': 736, 'overflow': False}, 1920: {'pane': 1640, 'message': 744, 'composer': 736, 'overflow': False}, 2560: {'pane': 2280, 'message': 744, 'composer': 736, 'overflow': False}}
+wide {390: {'pane': 390, 'message': 340, 'composer': 366, 'overflow': False}, 768: {'pane': 488, 'message': 438, 'composer': 454, 'overflow': False}, 900: {'pane': 620, 'message': 570, 'composer': 570, 'overflow': False}, 1280: {'pane': 1000, 'message': 950, 'composer': 950, 'overflow': False}, 1536: {'pane': 1256, 'message': 1128, 'composer': 1152, 'overflow': False}, 1920: {'pane': 1640, 'message': 1128, 'composer': 1152, 'overflow': False}, 2560: {'pane': 2280, 'message': 1128, 'composer': 1152, 'overflow': False}}
+full {390: {'pane': 390, 'message': 340, 'composer': 366, 'overflow': False}, 768: {'pane': 488, 'message': 438, 'composer': 454, 'overflow': False}, 900: {'pane': 620, 'message': 570, 'composer': 570, 'overflow': False}, 1280: {'pane': 1000, 'message': 950, 'composer': 950, 'overflow': False}, 1536: {'pane': 1256, 'message': 1128, 'composer': 1152, 'overflow': False}, 1920: {'pane': 1640, 'message': 1470, 'composer': 1494, 'overflow': False}, 2560: {'pane': 2280, 'message': 2110, 'composer': 2134, 'overflow': False}}
+Traceback (most recent call last):
+  File "$TASK_ROOT/evidence.py", line 152, in <module>
+    test.check_widths(page)
+  File "$TASK_ROOT/fix/tests/studio/playwright_chat_width.py", line 47, in check_widths
+    assert abs(welcome_width - measurements[preset][1920]["composer"]) <= 1
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

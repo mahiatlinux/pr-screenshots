@@ -1,0 +1,20 @@
+diff --git a/studio/frontend/src/features/chat/chat-page.tsx b/studio/frontend/src/features/chat/chat-page.tsx
+index 70fff46c9..c2466dc5a 100644
+--- a/studio/frontend/src/features/chat/chat-page.tsx
++++ b/studio/frontend/src/features/chat/chat-page.tsx
+@@ -805,15 +805,10 @@ function CompareShell({
+         >
+           {children}
+         </div>
+-<<<<<<< FETCH_HEAD
+         {/* Symmetric: the extra right inset mirrored the viewport's one-sided
+             scrollbar gutter, which is now reserved on both edges. */}
+         <div className="shrink-0 bg-background pl-5 pr-5 md:px-[30px] pb-2 pt-1">
+-          <div className="mx-auto w-full max-w-[48rem]">{composer}</div>
+-=======
+-        <div className="shrink-0 bg-background pl-5 pr-5 md:pr-[30px] pb-2 pt-1">
+           <div className="mx-auto w-full max-w-[var(--custom-chat-max-width,48rem)]">{composer}</div>
+->>>>>>> 3120f13743463ecc2fa89d8a7e98960ee8722b68
+           {showModelDisclaimer && (
+             <p className="composer-footer-note">
+               LLMs can make mistakes. Double-check responses.

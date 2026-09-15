@@ -1,0 +1,6 @@
+{"input": {"reasoning_budget": -1, "reasoning_budget_message": "  Conclude now.  ", "custom_context_length": 2048}, "stored": {"custom_context_length": 2048}, "budget": null, "message": null}
+Traceback (most recent call last):
+  File "/task/base/../artifacts/reasoning_roundtrip.py", line 14, in <module>
+    assert actual.get('reasoning_budget') == budget, 'budget lost between persistence and load'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: budget lost between persistence and load

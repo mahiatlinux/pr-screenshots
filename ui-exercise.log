@@ -1,0 +1,9 @@
+{
+  side: 'fix',
+  browser: '145.0.7632.6',
+  budgetControls: 1,
+  messageControls: 1,
+  budget: '32',
+  message: '  Conclude now.  '
+}
+PASS: UI edit, remember, reload real model and browser refresh preserve budget 0 and message

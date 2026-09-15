@@ -1,0 +1,8 @@
+b6000 
+{"binary": "b6000", "budget": -1, "flags": [], "exit": 0}
+{"binary": "b6000", "budget": 0, "flags": ["--reasoning-budget", "0"], "exit": 0}
+{"binary": "b6000", "budget": 32, "error": "llama-server at /task/tools/llama-old/build/bin/llama-server does not accept positive reasoning budgets. Update llama.cpp, use 0 or -1, or clear the Reasoning Budget setting."}
+b10909 
+{"binary": "b10909", "budget": -1, "flags": [], "exit": 0}
+{"binary": "b10909", "budget": 0, "flags": ["--reasoning-budget", "0"], "exit": 0}
+{"binary": "b10909", "budget": 32, "flags": ["--reasoning-budget", "32"], "exit": 0}

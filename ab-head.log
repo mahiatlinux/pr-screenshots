@@ -1,0 +1,5 @@
+{"input": {"reasoning_budget": -1, "reasoning_budget_message": "  Conclude now.  ", "custom_context_length": 2048}, "stored": {"custom_context_length": 2048, "reasoning_budget": -1, "reasoning_budget_message": "  Conclude now.  "}, "budget": -1, "message": "  Conclude now.  "}
+{"input": {"reasoning_budget": 0, "reasoning_budget_message": "  Conclude now.  ", "custom_context_length": 2048}, "stored": {"custom_context_length": 2048, "reasoning_budget": 0, "reasoning_budget_message": "  Conclude now.  "}, "budget": 0, "message": "  Conclude now.  "}
+{"input": {"reasoning_budget": 32, "reasoning_budget_message": "  Conclude now.  ", "custom_context_length": 2048}, "stored": {"custom_context_length": 2048, "reasoning_budget": 32, "reasoning_budget_message": "  Conclude now.  "}, "budget": 32, "message": "  Conclude now.  "}
+{"input": {"reasoning_budget": 2147483647, "reasoning_budget_message": "  Conclude now.  ", "custom_context_length": 2048}, "stored": {"custom_context_length": 2048, "reasoning_budget": 2147483647, "reasoning_budget_message": "  Conclude now.  "}, "budget": 2147483647, "message": "  Conclude now.  "}
+PASS: four persistence-to-load round trips

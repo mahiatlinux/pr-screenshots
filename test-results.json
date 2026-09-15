@@ -1,0 +1,24 @@
+{
+  "base": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "2",
+      "tests": "2593",
+      "time": "580.008",
+      "timestamp": "2026-09-15T02:47:43.340761+00:00"
+    }
+  ],
+  "head": [
+    {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "2",
+      "tests": "2602",
+      "time": "617.093",
+      "timestamp": "2026-09-15T02:46:26.485480+00:00"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "base": "03af220ac0023ab846727397b3a1de9efa0aec42",
+  "head": "9717fb14604d7face9e2ebdd3e8878012cb1a52b",
+  "sha256": {
+    "README.md": "c922d3ea2a76e45fe00f6293bd946ed62ca197cee91688107969d7107454b9c4",
+    "expanded-test-files.json": "7cf4d43bdf708fcaae11895a8119a2426d31e72ca4ed7c3dbe0ed3cd35a2f54c",
+    "fresh-chromium-before-after.png": "c6edab6eca42af8dd8b358b95f3a06fab177cc54ca6dcffca8a39c73a171d827",
+    "fresh-firefox-before-after.png": "dcf8d3c1973e67ec662b16eb3dec2609dee07d06f590d3989e9ed7e3df74b370",
+    "live-summary.json": "688e3514ffbfd7155c20f759f7bcc5dfa8eda48582385affef05a6ba29c9c968",
+    "run_expanded.py": "a2428c4b222cadfbc9aa6f730af7961d128330f54ef3410ddbe2f5bc4ea5160a",
+    "test-results.json": "200652a175271a1d7de665b01a0d24195f2093a03adb2683a42e66f6e844d11b"
+  }
+}

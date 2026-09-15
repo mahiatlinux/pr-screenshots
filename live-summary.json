@@ -1,0 +1,110 @@
+{
+  "base": {
+    "/v1/messages": {
+      "correct": 0,
+      "wrong": 6,
+      "no_call": 0
+    },
+    "/v1/chat/completions": {
+      "correct": 0,
+      "wrong": 6,
+      "no_call": 0
+    },
+    "/v1/responses": {
+      "correct": 0,
+      "wrong": 6,
+      "no_call": 0
+    }
+  },
+  "head": {
+    "/v1/messages": {
+      "correct": 4,
+      "wrong": 0,
+      "no_call": 2
+    },
+    "/v1/chat/completions": {
+      "correct": 4,
+      "wrong": 0,
+      "no_call": 2
+    },
+    "/v1/responses": {
+      "correct": 2,
+      "wrong": 0,
+      "no_call": 4
+    }
+  },
+  "miss_reasons": [
+    {
+      "endpoint": "/v1/messages",
+      "stream": false,
+      "seed": 3409,
+      "stop": [
+        "max_tokens"
+      ]
+    },
+    {
+      "endpoint": "/v1/messages",
+      "stream": true,
+      "seed": 3409,
+      "stop": [
+        "max_tokens"
+      ]
+    },
+    {
+      "endpoint": "/v1/chat/completions",
+      "stream": false,
+      "seed": 3409,
+      "stop": [
+        "length"
+      ]
+    },
+    {
+      "endpoint": "/v1/chat/completions",
+      "stream": true,
+      "seed": 3409,
+      "stop": [
+        "length"
+      ]
+    },
+    {
+      "endpoint": "/v1/responses",
+      "stream": false,
+      "seed": 3407,
+      "stop": [
+        {
+          "reason": "max_output_tokens"
+        }
+      ]
+    },
+    {
+      "endpoint": "/v1/responses",
+      "stream": false,
+      "seed": 3408,
+      "stop": [
+        {
+          "reason": "max_output_tokens"
+        }
+      ]
+    },
+    {
+      "endpoint": "/v1/responses",
+      "stream": true,
+      "seed": 3407,
+      "stop": [
+        {
+          "reason": "max_output_tokens"
+        }
+      ]
+    },
+    {
+      "endpoint": "/v1/responses",
+      "stream": true,
+      "seed": 3408,
+      "stop": [
+        {
+          "reason": "max_output_tokens"
+        }
+      ]
+    }
+  ]
+}

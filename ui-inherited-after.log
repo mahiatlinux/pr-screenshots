@@ -1,0 +1,27 @@
+{
+  side: 'fix',
+  browser: '145.0.7632.6',
+  budgetControls: 1,
+  messageControls: 1,
+  budget: '-1',
+  message: ''
+}
+batch controls [
+  { label: 'Prompt batch size', value: '' },
+  { label: 'Prompt micro-batch size', value: '' }
+]
+unrelated batch edit reload {
+  reasoning_budget: -1,
+  reasoning_budget_message: '',
+  requested: -1,
+  effective: 32,
+  n_batch: 128
+}
+saved overrides [
+  {
+    reasoning_budget: undefined,
+    reasoning_budget_message: undefined,
+    n_batch: 128
+  }
+]
+PASS: unrelated setting edit reaches actual reload and saved override with expected reasoning intent

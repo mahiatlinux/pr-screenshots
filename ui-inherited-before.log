@@ -1,0 +1,23 @@
+{
+  side: 'merge',
+  browser: '145.0.7632.6',
+  budgetControls: 1,
+  messageControls: 1,
+  budget: '32',
+  message: 'Conclude now.'
+}
+unrelated batch edit reload {
+  reasoning_budget: 32,
+  reasoning_budget_message: 'Conclude now.',
+  requested: 32,
+  effective: 32,
+  n_batch: 128
+}
+saved overrides [
+  {
+    reasoning_budget: 32,
+    reasoning_budget_message: 'Conclude now.',
+    n_batch: 128
+  }
+]
+PASS: unrelated setting edit reaches actual reload and saved override with expected reasoning intent

@@ -30,3 +30,16 @@ Head `8e24c8c8c741a9d8ef1f38846299648b65c6e88a`, base `f7ab2098fa27d73e5f2e0645b
 The saved API settings summary previously showed App defaults for both a zero reasoning budget and a message-only override. The focused test had three failures before repair and four passes after. Run `cd studio/frontend && node --experimental-strip-types --test tests/saved-reasoning-settings-summary.test.ts`. Chromium screenshots `summary-before.png` and `summary-after.png` capture the actual settings API and rendered panel before and after the repair. Both were manually inspected.
 
 Repeated the real Studio CPU API experiment on the final base and repaired head with the same inputs and observed the same 128-token reasoning-only base result versus a completed 52-token answer. Firefox 146.0.1 passed the visible controls, edit, remember, actual model reload and page-refresh scenario on the final head. Existing screenshots labeled fab1c3a7d retain their original tested SHA.
+
+## Requested intent and managed wrapper repair
+
+Latest tested head: `a0a32013278e56d37f7ca85efdd034d6ce07a236`. Control: `8e24c8c8c741a9d8ef1f38846299648b65c6e88a` in a separate install, environment and application home. Both used `LLAMA_ARG_THINK_BUDGET=32` and `LLAMA_ARG_THINK_BUDGET_MESSAGE=Conclude now.` with an initial request of -1 and an empty message.
+
+The actual Chromium UI on the control turned an unrelated batch-size edit into a request and saved override for budget 32/message Conclude now. The repaired UI sends -1/empty, reports effective budget 32 and saves only the unrelated edit. `inherited-merge.png` and `inherited-fix.png` were manually inspected. Both installs also completed real Qwen3-0.6B CPU inference with the inherited budget.
+
+- `python -m pytest studio/backend/tests/test_openai_auto_switch.py studio/backend/tests/test_llama_cpp_mtp_detection.py studio/backend/tests/test_gguf_reload_inheritance.py studio/backend/tests/test_llama_server_args.py -q --tb=short --timeout=60`: 1420 passed, 1 skipped.
+- `node --experimental-strip-types --test tests/active-reasoning-intent.test.ts tests/saved-reasoning-settings-summary.test.ts tests/reasoning-budget-config.test.ts tests/reasoning-budget-rollback.test.ts`: 16 passed. Typecheck and production build passed afterward.
+- The active-config negative control fails two tests; the positive-budget wrapper negative control raises the reproduced false rejection. The repaired tests pass.
+- Real official b6000 and b10909 CPU binary probes pass the same version matrix after the wrapper-path correction. The wrapper regression uses controlled subprocess outcomes on Linux, not a native macOS execution claim. Apple documents why launching a protected shell purges DYLD variables: https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/RuntimeProtections/RuntimeProtections.html.
+
+The initial scoped backend invocation overlapped the formatter and invalidated inspect-source line offsets in six source-inspection tests; the recorded successful run above started after formatting completed. No test was weakened.

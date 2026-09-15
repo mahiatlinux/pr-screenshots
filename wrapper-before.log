@@ -1,0 +1,11 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_positive_budget_probe_uses_resolved_launch_path _____________
+studio/backend/tests/test_llama_cpp_mtp_detection.py:3939: in test_positive_budget_probe_uses_resolved_launch_path
+    caps = LlamaCppBackend.validate_reasoning_budget_capabilities(
+studio/backend/core/inference/llama_cpp.py:8955: in validate_reasoning_budget_capabilities
+    raise ValueError(
+E   ValueError: llama-server at /runtime/llama-server does not accept positive reasoning budgets. Update llama.cpp, use 0 or -1, or clear the Reasoning Budget setting.
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_llama_cpp_mtp_detection.py::test_positive_budget_probe_uses_resolved_launch_path
+1 failed, 370 deselected in 1.04s

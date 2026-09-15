@@ -1,0 +1,10 @@
+Adjusted kwarg spacing in tests/python/test_installer_differential_comparer.py
+8 files reformatted
+Adjusted kwarg spacing in tests/python/test_installer_differential_comparer.py
+Adjusted kwarg spacing in tests/studio/_prompt_queue_edge_cases.py
+Adjusted kwarg spacing in tests/studio/playwright_composer_settings.py
+Adjusted kwarg spacing in tests/studio/playwright_prompt_queue_actions.py
+Adjusted kwarg spacing in tests/studio/run_composer_compatibility.py
+Adjusted kwarg spacing in tests/studio/selenium_composer_safari.py
+Adjusted kwarg spacing in tests/studio/studiobench/scene/selftest/test_studiobench_queued_idle_live.py
+Adjusted kwarg spacing in tests/studio/test_multi_chat_prompt_queue_contract.py

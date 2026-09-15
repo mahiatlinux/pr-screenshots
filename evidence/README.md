@@ -30,3 +30,9 @@ Google Chrome 153.0.8010.47 and Microsoft Edge 153.0.4234.32 also pass both suit
 Queue and settings screenshots render the production components from separate frontend installs at updated base and repair with identical deterministic state, viewport 1000x750, light theme, English, and isolated Chromium contexts. The queue has the same three prompts. Before has zero Steer controls; after has three. Composer preferences are absent before and present after. No model or backend transport is represented by these component screenshots. Composites show the changed surfaces at original scale; uncropped originals were inspected locally.
 
 The identical-toolchain startup build increased from 5381.0 to 5384.0 KiB raw and 1609.0 to 1610.1 KiB compressed, with 84 eager chunks on both sides. The raw budget now covers this measured increase; the compressed budget is unchanged.
+
+## CI follow-up: 9e137a6c262d2921ad7115867c08cc7ab2cdacac
+
+Merged main at f7ab2098 to resolve pre-commit's failed application of formatting to a newly added installer test. Applied only the reproduced five-line formatting change. Frontend tree identical to 6673a5b5; base frontend identical to 0ab40fee.
+
+Reverification: 408 Python tests pass, 4 skip; 101 queue/store/pasted-text tests pass; TypeScript, production build, startup budget, Ruff lint and pinned formatting pass. Ten consecutive Chrome composer interaction suites pass locally with separate browser contexts. The new workflow run retains the macOS Chrome assertion unchanged.

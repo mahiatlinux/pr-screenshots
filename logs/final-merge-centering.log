@@ -1,0 +1,10 @@
+✔ the thread viewport reserves its scrollbar gutter on both edges (2.198854ms)
+✔ nothing around the composer re-adds a one-sided inset (2.265039ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 69.203037

@@ -1,0 +1,4 @@
+commit 9c42c2e7f20fff81cdf3c96145526bef5821f367
+tree 17b2ec4ec1748ccba92bc049452378e191ec594e
+parents 8621a4297566a7c1633bc81b8d99f9b28b425890 1811677f024a88b6cbe6d36e7d3d91b27c2c0190
+subject merge upstream and preserve chat width controls

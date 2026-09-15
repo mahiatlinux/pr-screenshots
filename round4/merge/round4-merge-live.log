@@ -1,0 +1,23 @@
+{
+  "indirect_before": {
+    "launcher": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "helper": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "qualified_transport": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code."
+  },
+  "indirect_after": {
+    "launcher": "pr10642-live-ssh-ok\n",
+    "helper": "pr10642-live-ssh-ok\n\n",
+    "qualified_transport": "pr10642-live-ssh-ok\n\n"
+  },
+  "exec_before": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+  "exec_after": "pr10642-live-ssh-ok\n",
+  "socket_override": "Error: unsafe code detected (Blocked: SSH usage with a non-literal host or indirect connection settings is not allowed. Disable configuration with -F none for OpenSSH, config=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric.). Please remove unsafe patterns from your code.",
+  "fabric_after": "pr10642-live-ssh-ok\n\n",
+  "asyncssh_after": "pr10642-live-ssh-ok\n\n",
+  "command": "ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o IdentitiesOnly=yes review@127.0.0.2 uptime",
+  "blocked_before": "Blocked: SSH access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.",
+  "terminal_after": "pr10642-live-ssh-ok\n",
+  "python_after": "pr10642-live-ssh-ok\n\n",
+  "connections": 8,
+  "paramiko": "5.0.0"
+}

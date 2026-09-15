@@ -1,0 +1,64 @@
+{"timestamp": "2026-09-15T23:40:32.098732Z", "level": "info", "event": "Removing unsloth compiled cache: /work/.home/studio/compiled_cache"}
+{"timestamp": "2026-09-15T23:40:32.144678Z", "level": "info", "event": "lifespan pre-auth setup completed in 46.0ms"}
+{"timestamp": "2026-09-15T23:40:32.145314Z", "level": "info", "event": "lifespan startup completed in 46.7ms"}
+Hardware detected: CPU training backend (no PyTorch/MLX GPU backend available)
+{"timestamp": "2026-09-15T23:40:32.145972Z", "level": "info", "event": "InferenceOrchestrator initialized (subprocess mode)"}
+{"timestamp": "2026-09-15T23:40:32.388843Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/healthz", "status_code": 200, "process_time_ms": 204.16}
+{"timestamp": "2026-09-15T23:40:32.411561Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/api/auth/login", "status_code": 200, "process_time_ms": 20.47}
+{"timestamp": "2026-09-15T23:40:32.421916Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/api/chat/threads", "status_code": 200, "process_time_ms": 9.17}
+{"timestamp": "2026-09-15T23:40:32.427203Z", "level": "info", "event": "request_completed", "method": "PUT", "path": "/api/chat/threads/pr10642-ui-evidence/messages", "status_code": 200, "process_time_ms": 4.22}
+PyTorch was not found. Models won't be available and only tokenizers, configuration and file/data utilities can be used.
+{"timestamp": "2026-09-15T23:40:32.687808Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/chat", "status_code": 200, "process_time_ms": 2.16}
+{"timestamp": "2026-09-15T23:40:32.698201Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/crypto-boot.js", "status_code": 200, "process_time_ms": 3.87}
+{"timestamp": "2026-09-15T23:40:32.735167Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/theme-boot.js", "status_code": 200, "process_time_ms": 8.05}
+{"timestamp": "2026-09-15T23:40:32.735876Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/reload-snapshot.js", "status_code": 200, "process_time_ms": 7.63}
+{"timestamp": "2026-09-15T23:40:32.871810Z", "level": "warning", "event": "Could not build detection sets from transformers: \nmodeling_auto requires the PyTorch library but it was not found in your environment. Check out the instructions on the\ninstallation page: https://pytorch.org/get-started/locally/ and follow the ones that match your environment.\nPlease note that you may need to restart your runtime after installation.\n"}
+{"timestamp": "2026-09-15T23:40:33.152379Z", "level": "info", "event": "torch warm finished in 1007.1ms"}
+{"timestamp": "2026-09-15T23:40:33.171324Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/health", "status_code": 200, "process_time_ms": 3.39}
+{"timestamp": "2026-09-15T23:40:33.180734Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/auth/status", "status_code": 200, "process_time_ms": 1.78}
+{"timestamp": "2026-09-15T23:40:33.203844Z", "level": "info", "event": "ExportOrchestrator initialized (subprocess mode)"}
+{"timestamp": "2026-09-15T23:40:33.209282Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/settings/hugging-face-token", "status_code": 200, "process_time_ms": 3.03}
+{"timestamp": "2026-09-15T23:40:33.303804Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/settings", "status_code": 200, "process_time_ms": 15.46}
+{"timestamp": "2026-09-15T23:40:33.308265Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/skills", "status_code": 200, "process_time_ms": 13.09}
+{"timestamp": "2026-09-15T23:40:33.309187Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/rag/knowledge-bases", "status_code": 200, "process_time_ms": 8.7}
+{"timestamp": "2026-09-15T23:40:33.310869Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/models/list", "status_code": 200, "process_time_ms": 6.1}
+{"timestamp": "2026-09-15T23:40:33.311334Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/hub/hidden-models", "status_code": 200, "process_time_ms": 8.9}
+{"timestamp": "2026-09-15T23:40:33.315871Z", "level": "warning", "event": "Failed to fetch top models: [Errno -3] Temporary failure in name resolution"}
+{"timestamp": "2026-09-15T23:40:33.320544Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/inference/status", "status_code": 200, "process_time_ms": 13.61}
+{"timestamp": "2026-09-15T23:40:33.328919Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/api/settings/chat-preferences/migrate", "status_code": 200, "process_time_ms": 4.72}
+{"timestamp": "2026-09-15T23:40:33.370735Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/hub/local", "status_code": 200, "process_time_ms": 6.96}
+{"timestamp": "2026-09-15T23:40:33.373952Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/threads/__LOCALID_nYUGH9f", "status_code": 404, "process_time_ms": 1.6}
+{"timestamp": "2026-09-15T23:40:34.230930Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/openapi.json", "status_code": 200, "process_time_ms": 852.45}
+{"timestamp": "2026-09-15T23:40:34.231443Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/threads/__LOCALID_nYUGH9f", "status_code": 404, "process_time_ms": 856.74}
+{"timestamp": "2026-09-15T23:40:34.502915Z", "level": "warning", "event": "Outputs directory not found: /work/.home/studio/outputs"}
+{"timestamp": "2026-09-15T23:40:34.504643Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/models/list", "status_code": 200, "process_time_ms": 5.06}
+{"timestamp": "2026-09-15T23:40:35.322210Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/threads/pr10642-ui-evidence", "status_code": 200, "process_time_ms": 3.9}
+{"timestamp": "2026-09-15T23:40:35.344197Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/inference/chat-runs/active", "status_code": 200, "process_time_ms": 1.88}
+{"timestamp": "2026-09-15T23:40:35.353681Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/threads/pr10642-ui-evidence/forks", "status_code": 200, "process_time_ms": 4.19}
+{"timestamp": "2026-09-15T23:40:35.379846Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/threads/pr10642-ui-evidence/messages", "status_code": 200, "process_time_ms": 4.81}
+{"timestamp": "2026-09-15T23:40:35.385107Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/research-runs/active", "status_code": 200, "process_time_ms": 2.87}
+{"timestamp": "2026-09-15T23:40:38.200511Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/studio/update-status", "status_code": 200, "process_time_ms": 3.92}
+{"timestamp": "2026-09-15T23:40:42.159128Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/chat", "status_code": 200, "process_time_ms": 2.08}
+{"timestamp": "2026-09-15T23:40:42.307128Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/reload-snapshot.js", "status_code": 200, "process_time_ms": 5.17}
+{"timestamp": "2026-09-15T23:40:42.307204Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/crypto-boot.js", "status_code": 200, "process_time_ms": 6.46}
+{"timestamp": "2026-09-15T23:40:42.307253Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/theme-boot.js", "status_code": 200, "process_time_ms": 4.01}
+{"timestamp": "2026-09-15T23:40:42.879961Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/settings/hugging-face-token", "status_code": 200, "process_time_ms": 1.71}
+{"timestamp": "2026-09-15T23:40:42.948071Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/skills", "status_code": 200, "process_time_ms": 5.28}
+{"timestamp": "2026-09-15T23:40:42.951564Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/settings", "status_code": 200, "process_time_ms": 10.02}
+{"timestamp": "2026-09-15T23:40:42.956725Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/hub/hidden-models", "status_code": 200, "process_time_ms": 4.02}
+{"timestamp": "2026-09-15T23:40:42.957724Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/models/list", "status_code": 200, "process_time_ms": 3.95}
+{"timestamp": "2026-09-15T23:40:42.980959Z", "level": "info", "event": "request_completed", "method": "POST", "path": "/api/settings/chat-preferences/migrate", "status_code": 200, "process_time_ms": 2.67}
+{"timestamp": "2026-09-15T23:40:43.054563Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/hub/local", "status_code": 200, "process_time_ms": 7.35}
+{"timestamp": "2026-09-15T23:40:43.072478Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/openapi.json", "status_code": 200, "process_time_ms": 6.74}
+{"timestamp": "2026-09-15T23:40:43.072809Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/threads/__LOCALID_K4jnXha", "status_code": 404, "process_time_ms": 8.53}
+{"timestamp": "2026-09-15T23:40:43.077590Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/threads/__LOCALID_K4jnXha", "status_code": 404, "process_time_ms": 1.67}
+{"timestamp": "2026-09-15T23:40:43.601077Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/inference/status", "status_code": 200, "process_time_ms": 4.9}
+{"timestamp": "2026-09-15T23:40:43.678006Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/rag/knowledge-bases", "status_code": 200, "process_time_ms": 2.3}
+{"timestamp": "2026-09-15T23:40:43.719346Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/inference/chat-runs/active", "status_code": 200, "process_time_ms": 2.07}
+{"timestamp": "2026-09-15T23:40:43.768474Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/threads/pr10642-ui-evidence/messages", "status_code": 200, "process_time_ms": 3.19}
+{"timestamp": "2026-09-15T23:40:43.772617Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/chat/research-runs/active", "status_code": 200, "process_time_ms": 1.94}
+{"timestamp": "2026-09-15T23:40:44.155392Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/models/list", "status_code": 200, "process_time_ms": 3.58}
+{"timestamp": "2026-09-15T23:40:44.155510Z", "level": "warning", "event": "Outputs directory not found: /work/.home/studio/outputs"}
+{"timestamp": "2026-09-15T23:40:47.871389Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/studio/update-status", "status_code": 200, "process_time_ms": 3.8}
+{"timestamp": "2026-09-15T23:40:48.017242Z", "level": "info", "event": "request_completed", "method": "GET", "path": "/api/inference/monitor", "status_code": 200, "process_time_ms": 1.38}
+{"timestamp": "2026-09-15T23:40:50.403293Z", "level": "info", "event": "Removing unsloth compiled cache: /work/.home/studio/compiled_cache"}

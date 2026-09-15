@@ -21,11 +21,11 @@ try:
     robust.wait_for_smoke_page(url, 'smoke-settings-main.tsx', proc=server, timeout_s=60)
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, executable_path=str(root / 'playwright/chrome/opt/google/chrome/chrome'))
-        for shelf in ['data', 'manage', 'chats', 'images', 'videos', 'audio']:
+        for shelf in os.environ.get('UI_SHELVES', 'data,manage,chats,images,videos,audio').split(','):
             context = browser.new_context(viewport={'width':1280, 'height':1000}, locale='en-US', timezone_id='UTC', reduced_motion='reduce')
             page = context.new_page()
             page.add_init_script(suite.FIXTURE.replace("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZwoAAAAASUVORK5CYII=", base64.b64encode((root / "artifacts/thumbnail.png").read_bytes()).decode()))
-            page.route('**/v1/videos/*/content?variant=thumbnail', lambda route: route.fulfill(body=(root/'artifacts/thumbnail.png').read_bytes(), content_type='image/png'))
+            page.add_init_script('''(() => { const previous = window.fetch; const data = ''' + json.dumps(base64.b64encode((root/'artifacts/thumbnail.png').read_bytes()).decode()) + '''; window.fetch = async (input, init) => { const url = new URL(typeof input === 'string' ? input : input.url, location.origin); if(url.pathname.startsWith('/v1/videos/')) return new Response(Uint8Array.from(atob(data), c => c.charCodeAt(0)), {headers:{'Content-Type':'image/png'}}); return previous(input, init); }; })();''')
             page.goto(url)
             page.wait_for_function('!!window.__settingsSmoke', timeout=120000)
             page.evaluate('''shelf => {
@@ -57,5 +57,5 @@ try:
         browser.close()
 finally:
     robust.stop_process(server)
-(output/'facts.json').write_text(json.dumps(results,indent=2))
+(output/('video-facts.json' if os.environ.get('UI_SHELVES') else 'facts.json')).write_text(json.dumps(results,indent=2))
 print(json.dumps({'label':label,'browser':results['browser'],'surfaces':6}))

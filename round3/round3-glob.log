@@ -1,0 +1,4 @@
+{
+  "bash_expansion": "evil.example",
+  "tool_policy": "Blocked: SSH command requires a literal, approved target server. Approve the server when prompted before connecting."
+}

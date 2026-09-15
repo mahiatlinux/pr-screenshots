@@ -1,0 +1,23 @@
+(node:59) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ an always-on catalog model sends thinking on even when the chat stored it off (2.028745ms)
+✔ every Thinking control resolves reasoning for the id the adapter sends, not the router's last pick (1.247045ms)
+✔ a toggleable catalog model still sends the stored choice (0.666162ms)
+(node:65) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ without a live catalog every OpenRouter route keeps the generic toggle (0.666964ms)
+✔ the live catalog carries the effort ladder, default effort, output cap and mandatory routes (0.658719ms)
+✔ variant suffixes and the ~ prefix resolve through the base id (0.242366ms)
+✔ OpenRouter vision follows the live catalog's input modalities (0.176903ms)
+✔ providers other than OpenRouter keep their existing resolvers (0.184988ms)
+✔ a live catalog default of none survives when the model can switch reasoning off (0.13286ms)
+✔ every catalog write notifies subscribers, so a composer already on screen re-renders (0.146135ms)
+✔ a catalog that lands after selection refreshes the stored reasoning fields without resetting a valid effort (0.237105ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 111.306273

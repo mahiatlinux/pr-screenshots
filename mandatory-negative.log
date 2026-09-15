@@ -1,0 +1,44 @@
+(node:9) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ without a live catalog every OpenRouter route keeps the generic toggle (0.69127ms)
+✔ the live catalog carries the effort ladder, default effort, output cap and mandatory routes (0.664089ms)
+✔ variant suffixes and the ~ prefix resolve through the base id (0.261763ms)
+✔ OpenRouter vision follows the live catalog's input modalities (0.167835ms)
+✔ providers other than OpenRouter keep their existing resolvers (0.186ms)
+✔ a live catalog default of none survives when the model can switch reasoning off (0.134994ms)
+✔ every catalog write notifies subscribers, so a composer already on screen re-renders (0.14368ms)
+✔ a catalog that lands after selection refreshes the stored reasoning fields without resetting a valid effort (0.217078ms)
+✖ a mandatory OpenRouter alias keeps its catalog effort ladder (0.632339ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 111.648326
+
+✖ failing tests:
+
+test at tests/model-catalog.test.ts:199:1
+✖ a mandatory OpenRouter alias keeps its catalog effort ladder (0.632339ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'enable_thinking'
+  - 'reasoning_effort'
+  
+      at TestContext.<anonymous> (file://<task>/fix/studio/frontend/tests/model-catalog.test.ts:210:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'enable_thinking',
+    expected: 'reasoning_effort',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,149 @@
+{
+  "browser_version": "146.0.1",
+  "viewport": [
+    1400,
+    1000
+  ],
+  "locale": "en-US",
+  "cases": [
+    {
+      "side": "base",
+      "model": "deepseek/deepseek-v4-pro",
+      "errors": [],
+      "thinking": "Thinking",
+      "aria": "Disable thinking",
+      "disabled": false,
+      "attachments": [
+        {
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "imageRejected": false,
+      "toasts": [],
+      "maxTokens": "384000"
+    },
+    {
+      "side": "base",
+      "model": "~google/gemini-pro-latest",
+      "errors": [],
+      "thinking": "Thinking",
+      "aria": "Thinking is required for this model",
+      "disabled": true
+    },
+    {
+      "side": "base",
+      "model": "openai/gpt-5.1",
+      "errors": [],
+      "thinking": "Thinking",
+      "aria": "Disable thinking",
+      "disabled": false,
+      "attachments": [
+        {
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "imageRejected": false,
+      "toasts": []
+    },
+    {
+      "side": "base",
+      "model": "openrouter/free",
+      "errors": [],
+      "thinking": "Thinking",
+      "aria": "Disable thinking",
+      "disabled": false
+    },
+    {
+      "side": "base",
+      "model": "google/gemini-3.5-flash",
+      "errors": [],
+      "thinking": "Thinking",
+      "aria": "Disable thinking",
+      "disabled": false
+    },
+    {
+      "side": "fix",
+      "model": "deepseek/deepseek-v4-pro",
+      "errors": [
+        "deepseek/deepseek-v4-pro cannot accept images."
+      ],
+      "thinking": "Thinking \u00b7 High",
+      "aria": "Reasoning effort: high",
+      "disabled": false,
+      "menu": [
+        "None",
+        "High",
+        "Extra High"
+      ],
+      "selected": "Reasoning effort: xhigh",
+      "attachments": [],
+      "imageRejected": true,
+      "toasts": [
+        "deepseek/deepseek-v4-pro cannot accept images."
+      ],
+      "maxTokens": "393216"
+    },
+    {
+      "side": "fix",
+      "model": "~google/gemini-pro-latest",
+      "errors": [],
+      "thinking": "Thinking \u00b7 Medium",
+      "aria": "Reasoning effort: medium",
+      "disabled": false,
+      "menu": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "selected": "Reasoning effort: high"
+    },
+    {
+      "side": "fix",
+      "model": "openai/gpt-5.1",
+      "errors": [],
+      "thinking": "",
+      "aria": "Reasoning effort: none",
+      "disabled": false,
+      "menu": [
+        "None",
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "selected": "Reasoning effort: high",
+      "attachments": [
+        {
+          "width": 64,
+          "height": 64
+        }
+      ],
+      "imageRejected": false,
+      "toasts": []
+    },
+    {
+      "side": "fix",
+      "model": "openrouter/free",
+      "errors": [],
+      "thinking": "Thinking",
+      "aria": "Disable thinking",
+      "disabled": false
+    },
+    {
+      "side": "fix",
+      "model": "google/gemini-3.5-flash",
+      "errors": [],
+      "thinking": "Thinking \u00b7 Medium",
+      "aria": "Reasoning effort: medium",
+      "disabled": false,
+      "menu": [
+        "Minimal",
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "selected": "Reasoning effort: high"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "pr": 10933,
+  "merge_base": "7bdace6155acbdc404e2c4e9a480b914fee4629f",
+  "original_head": "61f5537d6beff375dada22e2d191da261d464dc9",
+  "repaired_head": "00fb4ee7b79f97ee6a80238eb789479675e43333",
+  "prospective_merge": "776e3983b50d781c9177c3cec86b85908df886d9",
+  "upstream_parent": "de1f4a743409f0c8403947d6a94144b65dc67635",
+  "os": "Linux",
+  "architecture": "x86_64",
+  "node": "26.8.2",
+  "python": "3.13.14",
+  "playwright": "1.58.2",
+  "catalog_source": "https://openrouter.ai/api/v1/models",
+  "reasoning_contract": "https://openrouter.ai/docs/guides/best-practices/reasoning-tokens",
+  "catalog_models": 445,
+  "catalog_effort_ladders": 171
+}

@@ -1,0 +1,17 @@
+...............F                                                         [100%]
+=================================== FAILURES ===================================
+_ test_null_efforts_accept_the_full_scale_while_omitted_efforts_remain_toggle_only _
+
+    def test_null_efforts_accept_the_full_scale_while_omitted_efforts_remain_toggle_only():
+        unrestricted = openrouter_model_capabilities(
+            {"id": "acme/reasoning", "reasoning": {"supported_efforts": None}}
+        )
+>       assert unrestricted["reasoning"]["supported_efforts"] == [
+            "none", "minimal", "low", "medium", "high", "xhigh", "max"
+        ]
+E       AssertionError: assert None == ['none', 'minimal', 'low', 'medium', 'high', 'xhigh', ...]
+
+studio/backend/tests/test_provider_model_capabilities.py:246: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_provider_model_capabilities.py::test_null_efforts_accept_the_full_scale_while_omitted_efforts_remain_toggle_only
+1 failed, 15 passed in 2.63s

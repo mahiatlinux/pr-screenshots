@@ -1,0 +1,42 @@
+(node:35) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ a provider the registry stopped listing loses its capability (0.692913ms)
+✔ an empty registry clears everything rather than freezing it (0.124595ms)
+✔ a row that stops declaring the capability is corrected in place (0.102613ms)
+✔ pruning a registry that lists everything changes nothing (0.098766ms)
+(node:36) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ a failing OpenRouter connection leaves the catalog for the next connection to refresh (1313.032456ms)
+✔ an OpenRouter connection on a gateway base URL never writes the shared catalog (0.626768ms)
+✔ editing a connection refreshes the catalog with the saved base URL, not the one it replaced (0.68071ms)
+4:50:44 AM [vite] (client) [optimizer] bundling dependencies...
+(node:47) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ the override is offered on every connection except a ChatGPT subscription (0.745571ms)
+✔ a stored override is dropped unless it is a usable value (0.17529ms)
+✔ a documented per-model cap bounds the connection override (0.415561ms)
+✔ every OpenAI family the picker admits carries its documented cap (0.204254ms)
+✔ the dated Anthropic ids carry their documented cap (0.143029ms)
+✔ a model with no documented cap takes the connection override (0.201649ms)
+✔ a provider's own output floor outranks a lower connection override (0.110738ms)
+✔ a live Max Tokens is only lowered when the cap is actually known (0.135295ms)
+✔ an entry saved by an older install loads without gaining a cap (0.416733ms)
+✔ every clamp site waits for a resolved provider (0.822707ms)
+✔ a grounded ceiling is only sent when something documents or overrides it (0.117291ms)
+✔ an openrouter model is not grounded by the direct provider's published cap (0.109085ms)
+✔ the grounding of a ceiling is reported alongside it (0.083016ms)
+✔ the published ceiling is reported without the override folded in (0.081313ms)
+(node:48) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ status capabilities synthesize an audio model missing from the catalog (1.957711ms)
+✔ status capabilities override stale catalog flags (0.152086ms)
+✔ audio-input capability keeps the synthesized model off the output-only path (0.103144ms)
+✔ synthesized audio-only capability reaches image validation (0.196229ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2141.73685

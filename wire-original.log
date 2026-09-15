@@ -1,0 +1,53 @@
+2026-09-15 04:49:11 [info     ] Proxying chat completion to https://openrouter.ai/api/v1/chat/completions (provider=openrouter, model=deepseek/deepseek-v4-pro)
+2026-09-15 04:49:11 [info     ] openrouter stream complete (model=deepseek/deepseek-v4-pro, chosen=None, web_search_requested=False, citations=0, events={'delta': 1, 'done': 1})
+2026-09-15 04:49:11 [info     ] Proxying chat completion to https://openrouter.ai/api/v1/chat/completions (provider=openrouter, model=deepseek/deepseek-v4-pro)
+2026-09-15 04:49:11 [info     ] openrouter stream complete (model=deepseek/deepseek-v4-pro, chosen=None, web_search_requested=False, citations=0, events={'delta': 1, 'done': 1})
+2026-09-15 04:49:11 [info     ] Proxying chat completion to https://openrouter.ai/api/v1/chat/completions (provider=openrouter, model=deepseek/deepseek-v4-pro)
+2026-09-15 04:49:11 [info     ] openrouter stream complete (model=deepseek/deepseek-v4-pro, chosen=None, web_search_requested=False, citations=0, events={'delta': 1, 'done': 1})
+2026-09-15 04:49:11 [info     ] Proxying chat completion to https://openrouter.ai/api/v1/chat/completions (provider=openrouter, model=deepseek/deepseek-v4-pro)
+2026-09-15 04:49:11 [info     ] openrouter stream complete (model=deepseek/deepseek-v4-pro, chosen=None, web_search_requested=False, citations=0, events={'delta': 1, 'done': 1})
+2026-09-15 04:49:11 [info     ] Proxying chat completion to https://openrouter.ai/api/v1/chat/completions (provider=openrouter, model=deepseek/deepseek-v4-pro)
+2026-09-15 04:49:11 [info     ] openrouter stream complete (model=deepseek/deepseek-v4-pro, chosen=None, web_search_requested=False, citations=0, events={'delta': 1, 'done': 1})
+2026-09-15 04:49:11 [info     ] Proxying chat completion to https://openrouter.ai/api/v1/chat/completions (provider=openrouter, model=deepseek/deepseek-v4-pro)
+2026-09-15 04:49:11 [info     ] openrouter stream complete (model=deepseek/deepseek-v4-pro, chosen=None, web_search_requested=False, citations=0, events={'delta': 1, 'done': 1})
+{
+  "results": [
+    {
+      "effort": "minimal",
+      "wire": {
+        "effort": "minimal"
+      }
+    },
+    {
+      "effort": "low",
+      "wire": {
+        "effort": "low"
+      }
+    },
+    {
+      "effort": "medium",
+      "wire": {
+        "effort": "medium"
+      }
+    },
+    {
+      "effort": "high",
+      "wire": {
+        "effort": "high"
+      }
+    },
+    {
+      "effort": "xhigh",
+      "wire": {
+        "effort": "xhigh"
+      }
+    },
+    {
+      "effort": "max",
+      "wire": {
+        "effort": "max"
+      }
+    }
+  ],
+  "failures": []
+}

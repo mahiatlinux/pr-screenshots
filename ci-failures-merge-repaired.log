@@ -1,0 +1,86 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+____________ test_no_skip_guard_reads_a_spoofable_accelerator_probe ____________
+
+    def test_no_skip_guard_reads_a_spoofable_accelerator_probe():
+        offenders = []
+        for path in _python_test_files():
+            try:
+                tree = ast.parse(path.read_text(encoding = "utf-8"))
+            except SyntaxError:
+                # tests/python/ holds fixtures that are deliberately unparseable on this
+                # interpreter (the 3.9 floor checks). Not our business.
+                continue
+            for decorator in _skipif_calls(tree):
+                for call in ast.walk(decorator):
+                    if isinstance(call, ast.Call) and _dotted(call.func) in _SPOOFED_CALLS:
+                        offenders.append(
+                            f"{path.relative_to(_TESTS_ROOT)}:{call.lineno}: "
+                            f"{'.'.join(_dotted(call.func))}()"
+                        )
+>       assert not offenders, (
+            "these skip guards read a probe tests/_zoo_aggressive_cuda_spoof.py patches to "
+            "True process-wide, so they un-skip on a CPU-only box whenever they share a "
+            "pytest session with tests/version_compat or tests/vllm_compat. Use "
+            "`from real_accelerator import has_real_accelerator` instead:\n  " + "\n  ".join(offenders)
+        )
+E       AssertionError: these skip guards read a probe tests/_zoo_aggressive_cuda_spoof.py patches to True process-wide, so they un-skip on a CPU-only box whenever they share a pytest session with tests/version_compat or tests/vllm_compat. Use `from real_accelerator import has_real_accelerator` instead:
+E           test_stopping_criteria_device.py:51: torch.cuda.is_available()
+E       assert not ['test_stopping_criteria_device.py:51: torch.cuda.is_available()']
+
+tests/python/test_accelerator_skip_guards.py:113: AssertionError
+____________________ test_npu_detected_with_count_and_stats ____________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7c038d144fc0>
+
+    def test_npu_detected_with_count_and_stats(monkeypatch):
+        calls = []
+        torch = _fake_torch(properties = CUDA_PROPERTIES, cuda_available = False)
+        torch.npu = _npu_backend(calls = calls)
+    
+        device_type = _load_device_type(monkeypatch, torch)
+    
+        assert device_type.DEVICE_TYPE == "npu"
+        assert device_type.DEVICE_TYPE_TORCH == "npu"
+        assert device_type.DEVICE_COUNT == 4
+        assert device_type._DEVICE_MODULE is torch.npu
+    
+        name, snippet, max_memory = device_type.get_device_stats()
+>       assert (name, snippet, max_memory) == ("Ascend910B2. ", "Ascend NPU.", 60.0)
+E       AssertionError: assert ('Ascend910B2... 'NPU.', 60.0) == ('Ascend910B2...d NPU.', 60.0)
+E         
+E         At index 1 diff: 'NPU.' != 'Ascend NPU.'
+E         Use -v to get more diff
+
+tests/test_device_helpers.py:250: AssertionError
+________________________ test_npu_blank_name_falls_back ________________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7c038d1a30b0>
+
+    def test_npu_blank_name_falls_back(monkeypatch):
+        torch = _fake_torch(properties = CUDA_PROPERTIES, cuda_available = False)
+        torch.npu = _npu_backend(
+            properties = types.SimpleNamespace(name = "", total_memory = 60 * 1024**3),
+        )
+    
+        device_type = _load_device_type(monkeypatch, torch)
+        name, snippet, _ = device_type.get_device_stats()
+    
+>       assert name == "Ascend NPU Device. "
+E       AssertionError: assert 'NPU Device. ' == 'Ascend NPU Device. '
+E         
+E         - Ascend NPU Device. 
+E         ? -------
+E         + NPU Device.
+
+tests/test_device_helpers.py:266: AssertionError
+=============================== warnings summary ===============================
+tests/python/test_accelerator_skip_guards.py::test_no_skip_guard_reads_a_spoofable_accelerator_probe
+  <unknown>:582: SyntaxWarning: invalid escape sequence '\.'
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/python/test_accelerator_skip_guards.py::test_no_skip_guard_reads_a_spoofable_accelerator_probe
+FAILED tests/test_device_helpers.py::test_npu_detected_with_count_and_stats
+FAILED tests/test_device_helpers.py::test_npu_blank_name_falls_back - Asserti...
+3 failed, 1 warning in 1.90s

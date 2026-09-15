@@ -1,0 +1,30 @@
+{"id":"deepseek/deepseek-v4-pro","caps":{"supportsReasoning":true,"reasoningStyle":"reasoning_effort","reasoningAlwaysOn":false,"supportsReasoningOff":true,"reasoningEffortLevels":["none","high","xhigh"],"defaultEffort":"high"},"vision":false}
+{"id":"~google/gemini-pro-latest","caps":{"supportsReasoning":true,"reasoningStyle":"enable_thinking","reasoningAlwaysOn":true,"supportsReasoningOff":false,"reasoningEffortLevels":["low","medium","high"]},"vision":true}
+{"id":"openai/gpt-5.1","caps":{"supportsReasoning":true,"reasoningStyle":"reasoning_effort","reasoningAlwaysOn":false,"supportsReasoningOff":true,"reasoningEffortLevels":["none","low","medium","high"],"defaultEffort":"none"},"vision":true}
+{"id":"openrouter/free","caps":{"supportsReasoning":true,"reasoningStyle":"enable_thinking","reasoningAlwaysOn":false,"supportsReasoningOff":true,"reasoningEffortLevels":["low","medium","high"]},"vision":true}
+{
+  "models": 445,
+  "missingLadders": [
+    {
+      "id": "~google/gemini-pro-latest",
+      "expected": [
+        "high",
+        "medium",
+        "low"
+      ],
+      "actual": {
+        "supportsReasoning": true,
+        "reasoningStyle": "enable_thinking",
+        "reasoningAlwaysOn": true,
+        "supportsReasoningOff": false,
+        "reasoningEffortLevels": [
+          "low",
+          "medium",
+          "high"
+        ]
+      }
+    }
+  ]
+}
+(node:3) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)

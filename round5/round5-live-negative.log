@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/evidence/round5_live.py", line 90, in <module>
+    assert len(connections) == 0 and all('unapproved' in result for result in indirect_before.values()), indirect_before
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'launcher': 'Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.', 'helper': 'Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.', 'qualified_transport': 'Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.', 'async_exec': 'pr10642-live-ssh-ok\n\n', 'async_shell': 'pr10642-live-ssh-ok\n\n'}

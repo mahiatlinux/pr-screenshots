@@ -1,0 +1,46 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_asyncio_requires_approval[import asyncio; asyncio.run(asyncio.create_subprocess_exec('ssh','-F','none','approved.example'))] _
+/evidence/round5_regressions.py:14: in test_asyncio_requires_approval
+    assert _check_code_safety(code,session_id='round5') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncio; asyncio.run(asyncio.create_subprocess_exec('ssh','-F','none','approved.example'))", session_id='round5')
+_ test_asyncio_requires_approval[import asyncio as a; a.run(a.create_subprocess_shell('ssh -F none approved.example'))] _
+/evidence/round5_regressions.py:14: in test_asyncio_requires_approval
+    assert _check_code_safety(code,session_id='round5') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncio as a; a.run(a.create_subprocess_shell('ssh -F none approved.example'))", session_id='round5')
+_ test_asyncio_requires_approval[from asyncio import create_subprocess_exec as launch; launch('ssh','-F','none','approved.example')] _
+/evidence/round5_regressions.py:14: in test_asyncio_requires_approval
+    assert _check_code_safety(code,session_id='round5') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from asyncio import create_subprocess_exec as launch; launch('ssh','-F','none','approved.example')", session_id='round5')
+_ test_asyncio_requires_approval[import asyncio; launch=asyncio.create_subprocess_exec; launch('ssh','-F','none','approved.example')] _
+/evidence/round5_regressions.py:14: in test_asyncio_requires_approval
+    assert _check_code_safety(code,session_id='round5') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncio; launch=asyncio.create_subprocess_exec; launch('ssh','-F','none','approved.example')", session_id='round5')
+_ test_asyncio_requires_approval[from asyncio.subprocess import create_subprocess_exec; create_subprocess_exec('ssh','-F','none','approved.example')] _
+/evidence/round5_regressions.py:14: in test_asyncio_requires_approval
+    assert _check_code_safety(code,session_id='round5') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from asyncio.subprocess import create_subprocess_exec; create_subprocess_exec('ssh','-F','none','approved.example')", session_id='round5')
+_ test_asyncio_requires_approval[import asyncio; asyncio.create_subprocess_shell(cmd='ssh -F none approved.example')] _
+/evidence/round5_regressions.py:14: in test_asyncio_requires_approval
+    assert _check_code_safety(code,session_id='round5') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncio; asyncio.create_subprocess_shell(cmd='ssh -F none approved.example')", session_id='round5')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round5_regressions.py::test_asyncio_requires_approval[import asyncio; asyncio.run(asyncio.create_subprocess_exec('ssh','-F','none','approved.example'))]
+FAILED ../evidence/round5_regressions.py::test_asyncio_requires_approval[import asyncio as a; a.run(a.create_subprocess_shell('ssh -F none approved.example'))]
+FAILED ../evidence/round5_regressions.py::test_asyncio_requires_approval[from asyncio import create_subprocess_exec as launch; launch('ssh','-F','none','approved.example')]
+FAILED ../evidence/round5_regressions.py::test_asyncio_requires_approval[import asyncio; launch=asyncio.create_subprocess_exec; launch('ssh','-F','none','approved.example')]
+FAILED ../evidence/round5_regressions.py::test_asyncio_requires_approval[from asyncio.subprocess import create_subprocess_exec; create_subprocess_exec('ssh','-F','none','approved.example')]
+FAILED ../evidence/round5_regressions.py::test_asyncio_requires_approval[import asyncio; asyncio.create_subprocess_shell(cmd='ssh -F none approved.example')]
+6 failed, 1 warning in 0.11s

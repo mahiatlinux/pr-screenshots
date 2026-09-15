@@ -2,7 +2,7 @@
   "pr": 10974,
   "base": "f93c523f09c09870c851a883557f2f5882787db6",
   "original_head": "d70d07725566deed93b3297bb4242fc05b904fc9",
-  "repaired_head": "d8c87fb7835d1cff1e3339f8102a4731b0906e24",
+  "repaired_head": "305693264cee992a3f28a289d4e6cfef53b9a5cb",
   "os": "Ubuntu 26.04 Linux x86_64",
   "node": "26.8.2",
   "python": "3.12.13",

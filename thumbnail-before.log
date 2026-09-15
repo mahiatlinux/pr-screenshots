@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<task-root>/repaired-merge/../artifacts/thumbnail_probe.py", line 23, in <module>
+    print(json.dumps({'version': browser.version, 'checks': suite.run_thumbnail_retention(page)}))
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<task-root>/fix/tests/studio/playwright_data_settings.py", line 962, in run_thumbnail_retention
+    assert page.evaluate("window.__dataFixture.thumbnailRequests") == 6, page.evaluate("window.__dataFixture.thumbnailRequests")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 7

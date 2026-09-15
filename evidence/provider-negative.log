@@ -1,0 +1,46 @@
+✖ an explicit hosted selection during a local load retains its provider: queue (2.464422ms)
+✖ an explicit hosted selection during a local load retains its provider: steer (0.343565ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 356.996826
+
+✖ failing tests:
+
+test at tests/review-provider-regression.test.ts:1063:3
+✖ an explicit hosted selection during a local load retains its provider: queue (2.464422ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///task/head/studio/frontend/tests/review-provider-regression.test.ts:1071:14)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/review-provider-regression.test.ts:1063:3
+✖ an explicit hosted selection during a local load retains its provider: steer (0.343565ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///task/head/studio/frontend/tests/review-provider-regression.test.ts:1071:14)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

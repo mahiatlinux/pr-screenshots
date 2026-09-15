@@ -1,0 +1,9 @@
+{
+  "side": "upstream",
+  "expect": "after adds steer and menu controls for each prompt, and composer preferences in chat settings",
+  "browser": "151.0.7922.34",
+  "steer_controls": 0,
+  "queue_text": "Queued follow-ups\nExplain the training results\nEdit\nRemove from queue\nCompare the two checkpoints\nEdit\nRemove from queue\nSummarize the next steps\nEdit\nRemove from queue",
+  "composer_controls": 0,
+  "errors": []
+}

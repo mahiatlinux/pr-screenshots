@@ -1,0 +1,17 @@
+
+> unsloth-theme@0.0.0 bundle:check
+> node --experimental-strip-types scripts/check-bundle-budget.ts
+
+eager startup JS: 5381.0 KB raw, 1609.0 KB transfer, 84 chunks
+largest:
+   1889.5 KB raw   558.5 KB transfer  assets/chat-BTOhHn3w.js
+    496.7 KB raw   148.8 KB transfer  assets/index-BaW335gd.js
+    439.0 KB raw   132.2 KB transfer  assets/chunk-BO2N2NFS-D-a-g3Yv.js
+    311.4 KB raw    82.8 KB transfer  assets/providers-api-C0CpHFKx.js
+    251.0 KB raw    74.5 KB transfer  assets/katex-QVq56Mr3.js
+    224.0 KB raw    33.4 KB transfer  assets/chunk-CSCIHK7Q-DiVWxGrh.js
+    212.3 KB raw    65.7 KB transfer  assets/settings-BzyWhhDV.js
+    200.9 KB raw    61.3 KB transfer  assets/training-0oXbEDQj.js
+
+over the startup budget: raw 5381.0 KB > 5380.9 KB
+Something is now imported statically that the first screen does not need. Either load it on use (React.lazy, lazyRouteComponent, or a dynamic import at the point of use), or raise BUDGET in this file in the same PR, with the measurement that justifies it.

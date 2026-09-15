@@ -1,0 +1,9 @@
+{
+  "side": "fix",
+  "expect": "after adds steer and menu controls for each prompt, and composer preferences in chat settings",
+  "browser": "151.0.7922.34",
+  "steer_controls": 3,
+  "queue_text": "Queued follow-ups\n\nDrag the handle to reorder. With the handle focused, use Up or Down to move one position, or Home or End to move to the front or end.\n\nDrag to reorder\nExplain the training results\nSteer\nInterrupt the response and send this prompt next\nRemove from queue\nMore options\nDrag to reorder\nCompare the two checkpoints\nSteer\nInterrupt the response and send this prompt next\nRemove from queue\nMore options\nDrag to reorder\nSummarize the next steps\nSteer\nInterrupt the response and send this prompt next\nRemove from queue\nMore options",
+  "composer_controls": 1,
+  "errors": []
+}

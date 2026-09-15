@@ -1,0 +1,35 @@
+accepted 0
+✖ three follow-ups are accepted and reorderable during loading, then dispatch in order after the first response (2.30364ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 334.310661
+
+✖ failing tests:
+
+test at ../artifacts/ab-base.ts:293:1
+✖ three follow-ups are accepted and reorderable during loading, then dispatch in order after the first response (2.30364ms)
+  AssertionError [ERR_ASSERTION]: the composer clears each accepted prompt so another can be entered
+  + actual - expected
+  
+  + []
+  - [
+  -   'second',
+  -   'third',
+  -   'fourth'
+  - ]
+  
+      at TestContext.<anonymous> (file:///task/artifacts/ab-base.ts:307:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'second', 'third', 'fourth' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

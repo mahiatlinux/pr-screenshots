@@ -1,0 +1,17 @@
+........................................................................ [ 54%]
+.......................................s....................             [100%]
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  <review-workspace>/merge/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+studio/backend/tests/test_mcp_stdio_real_server.py:53
+  <review-workspace>/merge/studio/backend/tests/test_mcp_stdio_real_server.py:53: PytestUnknownMarkWarning: Unknown pytest.mark.timeout - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.timeout(90)
+
+studio/backend/tests/test_mcp_stdio_real_server.py:152
+  <review-workspace>/merge/studio/backend/tests/test_mcp_stdio_real_server.py:152: PytestUnknownMarkWarning: Unknown pytest.mark.timeout - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.timeout(45)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+131 passed, 1 skipped, 3 warnings in 7.95s

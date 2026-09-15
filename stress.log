@@ -1,0 +1,2 @@
+PASS 20000 seeded mixed attachment cases; payload omission, independent fields, input immutability, error status, image counts
+PASS 500 concurrent results match sequential results across 8 threads

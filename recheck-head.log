@@ -1,0 +1,21 @@
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.prefix, expected <review-workspace>/head/.venv, got <review-workspace>/head/studio/backend/../../.venv
+<frozen site>:107: RuntimeWarning: Unexpected value in sys.exec_prefix, expected <review-workspace>/head/.venv, got <review-workspace>/head/studio/backend/../../.venv
+..........F.                                                             [100%]
+=================================== FAILURES ===================================
+________ test_nesting_deep_enough_to_exhaust_the_stack_is_unsplittable _________
+tests/test_parallel_tool_call_arguments.py:210: in test_nesting_deep_enough_to_exhaust_the_stack_is_unsplittable
+    assert _split_top_level_json_objects(payload) == ([], payload)
+E   assert (['{"x":{"x":...}}}}}}}'], '') == ([], '{"x":{"...}}}}}}}}}}}}')
+E
+E     At index 0 diff: ['{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"x":{"...
+E
+E     ...Full output truncated (2 lines hidden), use '-vv' to show
+=============================== warnings summary ===============================
+core/inference/tool_confinement.py:262
+  <review-workspace>/head/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_parallel_tool_call_arguments.py::test_nesting_deep_enough_to_exhaust_the_stack_is_unsplittable
+1 failed, 11 passed, 1 warning in 4.40s

@@ -1,0 +1,54 @@
+{
+  "base": {
+    "read_media_file": {
+      "answer": "The file contains an audio file in WAV format.",
+      "usage": {
+        "completion_tokens": 13,
+        "prompt_tokens": 402,
+        "total_tokens": 415,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "input_chars": 1197
+    },
+    "export_report": {
+      "answer": "I cannot read the file because no file was provided. Please provide the file content or upload the file so I can analyze it.",
+      "usage": {
+        "completion_tokens": 28,
+        "prompt_tokens": 74,
+        "total_tokens": 102,
+        "prompt_tokens_details": {
+          "cached_tokens": 25
+        }
+      },
+      "input_chars": 0
+    }
+  },
+  "head": {
+    "read_media_file": {
+      "answer": "The file contains an audio attachment in WAV format.",
+      "usage": {
+        "completion_tokens": 13,
+        "prompt_tokens": 89,
+        "total_tokens": 102,
+        "prompt_tokens_details": {
+          "cached_tokens": 25
+        }
+      },
+      "input_chars": 53
+    },
+    "export_report": {
+      "answer": "I cannot open or read the file. Please provide the content of the file or upload it again.",
+      "usage": {
+        "completion_tokens": 22,
+        "prompt_tokens": 97,
+        "total_tokens": 119,
+        "prompt_tokens_details": {
+          "cached_tokens": 25
+        }
+      },
+      "input_chars": 91
+    }
+  }
+}

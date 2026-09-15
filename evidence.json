@@ -1,0 +1,139 @@
+{
+  "pr": 10940,
+  "identity": "mahiatlinux",
+  "platform": "Ubuntu 26.04.1 LTS x86_64",
+  "snapshots": {
+    "base": {
+      "sha": "03af220ac0023ab846727397b3a1de9efa0aec42",
+      "mcp_client_sha256": "94ec9391e57a4093ef0040c7f754a6374f70491a57ff58b99e604a093fad5934",
+      "clean": true
+    },
+    "head": {
+      "sha": "5c91199048eceb37bc8da16d67f322c1578ed855",
+      "mcp_client_sha256": "d0f63578fd20413df812d678ea58937be363e7da71ea3940e7ac3626485fe92d",
+      "clean": true
+    },
+    "merge": {
+      "sha": "7f35cab7ea17148e3d50119c4d7dccafcbc328d2",
+      "mcp_client_sha256": "d0f63578fd20413df812d678ea58937be363e7da71ea3940e7ac3626485fe92d",
+      "clean": true
+    },
+    "fix": {
+      "sha": "5c91199048eceb37bc8da16d67f322c1578ed855",
+      "mcp_client_sha256": "d0f63578fd20413df812d678ea58937be363e7da71ea3940e7ac3626485fe92d",
+      "clean": true
+    }
+  },
+  "browsers": {
+    "chromium": {
+      "base": {
+        "version": "151.0.7922.34",
+        "model_chars": [
+          1197,
+          0
+        ],
+        "base64_reached_model": true,
+        "tool_cards": 2,
+        "provider_completions": 3
+      },
+      "head": {
+        "version": "151.0.7922.34",
+        "model_chars": [
+          53,
+          91
+        ],
+        "base64_reached_model": false,
+        "tool_cards": 2,
+        "provider_completions": 3
+      }
+    },
+    "firefox": {
+      "base": {
+        "version": "153.0",
+        "model_chars": [
+          1197,
+          0
+        ],
+        "base64_reached_model": true,
+        "tool_cards": 2,
+        "provider_completions": 3
+      },
+      "head": {
+        "version": "153.0",
+        "model_chars": [
+          53,
+          91
+        ],
+        "base64_reached_model": false,
+        "tool_cards": 2,
+        "provider_completions": 3
+      }
+    },
+    "chrome": {
+      "base": {
+        "version": "153.0.8010.36",
+        "model_chars": [
+          1197,
+          0
+        ],
+        "base64_reached_model": true,
+        "tool_cards": 2,
+        "provider_completions": 3
+      },
+      "head": {
+        "version": "153.0.8010.36",
+        "model_chars": [
+          53,
+          91
+        ],
+        "base64_reached_model": false,
+        "tool_cards": 2,
+        "provider_completions": 3
+      }
+    },
+    "edge": {
+      "base": {
+        "version": "153.0.4234.32",
+        "model_chars": [
+          1197,
+          0
+        ],
+        "base64_reached_model": true,
+        "tool_cards": 2,
+        "provider_completions": 3
+      },
+      "head": {
+        "version": "153.0.4234.32",
+        "model_chars": [
+          53,
+          91
+        ],
+        "base64_reached_model": false,
+        "tool_cards": 2,
+        "provider_completions": 3
+      }
+    },
+    "webkit": {
+      "base": {
+        "version": "26.5",
+        "model_chars": [
+          1197,
+          0
+        ],
+        "base64_reached_model": true,
+        "tool_cards": 2,
+        "provider_completions": 3
+      },
+      "head": {
+        "version": "26.5",
+        "model_chars": [
+          53,
+          91
+        ],
+        "base64_reached_model": false,
+        "tool_cards": 2,
+        "provider_completions": 3
+      }
+    }
+  }
+}

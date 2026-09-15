@@ -1,0 +1,14 @@
+......................................................................s. [ 54%]
+............................................................             [100%]
+=============================== warnings summary ===============================
+studio/backend/tests/test_mcp_upgrade_compat.py::test_the_transports_this_code_builds_still_exist
+  <review-workspace>/head/.venv-3.13/lib/python3.13/site-packages/fastmcp/server/auth/providers/jwt.py:11: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+  It will be compatible before version 2.0.0.
+    from authlib.jose import JsonWebKey, JsonWebToken
+
+studio/backend/tests/test_mcp_upgrade_compat.py::test_the_transports_this_code_builds_still_exist
+  <review-workspace>/head/.venv-3.13/lib/python3.13/site-packages/authlib/integrations/httpx_client/assertion_client.py:5: AuthlibDeprecationWarning: The httpx module is deprecated; please use httpx2 instead.
+    from ._compat import httpx2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+131 passed, 1 skipped, 2 warnings in 14.18s

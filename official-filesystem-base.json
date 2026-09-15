@@ -1,0 +1,65 @@
+{
+  "clip.wav": {
+    "model_chars": 1197,
+    "raw_payload_reached_model": true,
+    "attachment_noted": false,
+    "error": false,
+    "image_displayed": false
+  },
+  "report.pdf": {
+    "model_chars": 272,
+    "raw_payload_reached_model": true,
+    "attachment_noted": false,
+    "error": false,
+    "image_displayed": false
+  },
+  "rows.csv": {
+    "model_chars": 234,
+    "raw_payload_reached_model": true,
+    "attachment_noted": false,
+    "error": false,
+    "image_displayed": false
+  },
+  "bundle.zip": {
+    "model_chars": 388,
+    "raw_payload_reached_model": true,
+    "attachment_noted": false,
+    "error": false,
+    "image_displayed": false
+  },
+  "empty.csv": {
+    "model_chars": 207,
+    "raw_payload_reached_model": false,
+    "attachment_noted": false,
+    "error": false,
+    "image_displayed": false
+  },
+  "empty.wav": {
+    "model_chars": 69,
+    "raw_payload_reached_model": false,
+    "attachment_noted": false,
+    "error": false,
+    "image_displayed": false
+  },
+  "image.png": {
+    "model_chars": 203,
+    "raw_payload_reached_model": true,
+    "attachment_noted": false,
+    "error": false,
+    "image_displayed": true
+  },
+  "readme.txt": {
+    "model_chars": 15,
+    "raw_payload_reached_model": false,
+    "attachment_noted": false,
+    "error": false,
+    "image_displayed": false
+  },
+  "missing.txt": {
+    "model_chars": 139,
+    "raw_payload_reached_model": false,
+    "attachment_noted": false,
+    "error": true,
+    "image_displayed": false
+  }
+}

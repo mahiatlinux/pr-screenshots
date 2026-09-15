@@ -1,0 +1,17 @@
+{
+  "stdio": {
+    "audio": "[audio attachment (audio/wav) not shown to the model]",
+    "pdf": "[file attachment (application/pdf) <file:///reports/report.pdf> not shown to the model]",
+    "plain": "{'rows': 3, 'status': 'ok', 'content': {'type': 'audio', 'data': 'ordinary data'}}",
+    "text": "hello \u65e5\u672c\u8a9e",
+    "text_resource": "readable text",
+    "link": "[resource: report <file:///report.pdf>]",
+    "empty_audio": "[audio attachment (audio/wav) not shown to the model]",
+    "mirrored_audio": "{'transcript': 'hello', 'duration_s': 0.1}\n[audio attachment (audio/wav) not shown to the model]",
+    "error_pdf": "Error: [file attachment (application/pdf) <file:///reports/report.pdf> not shown to the model]"
+  },
+  "plain_cases": 10000,
+  "plain_digest": "142a9c7e0a8b5a76cd3324839360d1b549cc3fa5a9600f5b7ff211307377ff1e",
+  "plain_seconds": 0.06902181599980395,
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]"
+}

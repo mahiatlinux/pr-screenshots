@@ -1,0 +1,8 @@
+Settings applied on API load
+
+When a request names one of these models, Unsloth loads it with these settings, the same ones you saved in the model's settings page. Models without an entry load with app defaults. Edit an entry from that model's settings, or forget it here, which clears it from the picker too.
+
+unsloth/Qwen3-0.6B-GGUF
+reasoning budget 0
+unsloth/Qwen3-1.7B-GGUF
+custom reasoning budget message

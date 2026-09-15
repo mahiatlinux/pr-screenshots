@@ -1,0 +1,77 @@
+(node:8) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✖ saved reasoning budget 0 is visible in the API load summary (4.210486ms)
+✖ saved reasoning budget 32 is visible in the API load summary (0.192942ms)
+✖ a saved budget message alone does not appear as app defaults (0.209964ms)
+✔ absent reasoning overrides leave the default summary unchanged (0.371218ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 1
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67.030027
+
+✖ failing tests:
+
+test at tests/saved-reasoning-settings-summary.test.ts:16:3
+✖ saved reasoning budget 0 is visible in the API load summary (4.210486ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(describeOverride({ reasoning_budget: budget }).includes(`reasoning budget ${budget}`))
+  
+      at TestContext.<anonymous> (file:///task/fix/studio/frontend/tests/saved-reasoning-settings-summary.test.ts:17:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/saved-reasoning-settings-summary.test.ts:16:3
+✖ saved reasoning budget 32 is visible in the API load summary (0.192942ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(describeOverride({ reasoning_budget: budget }).includes(`reasoning budget ${budget}`))
+  
+      at TestContext.<anonymous> (file:///task/fix/studio/frontend/tests/saved-reasoning-settings-summary.test.ts:17:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/saved-reasoning-settings-summary.test.ts:21:1
+✖ a saved budget message alone does not appear as app defaults (0.209964ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(describeOverride({ reasoning_budget_message: "  Conclude now.  " }).includes("custom reasoning budget message"))
+  
+      at TestContext.<anonymous> (file:///task/fix/studio/frontend/tests/saved-reasoning-settings-summary.test.ts:22:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

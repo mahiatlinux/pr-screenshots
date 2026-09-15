@@ -1,0 +1,14 @@
+(node:8) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ saved reasoning budget 0 is visible in the API load summary (0.652456ms)
+✔ saved reasoning budget 32 is visible in the API load summary (0.072817ms)
+✔ a saved budget message alone does not appear as app defaults (0.068338ms)
+✔ absent reasoning overrides leave the default summary unchanged (0.35611ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64.644994

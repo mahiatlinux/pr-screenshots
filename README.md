@@ -22,3 +22,11 @@ Chromium 145.0.7632.6, Playwright 1.58.2, 1440x1100, en-US, light theme. Open ru
 ## Compatibility probe
 
 Official llama.cpp b6000 and b10909 CPU binaries: defaults and zero parse successfully on both; b6000 rejects positive budgets before launch, while b10909 accepts 32. Sources: https://github.com/ggml-org/llama.cpp/releases/tag/b6000 and https://github.com/ggml-org/llama.cpp/releases/tag/b10909; flag contract: https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md.
+
+## Final repair round
+
+Head `8e24c8c8c741a9d8ef1f38846299648b65c6e88a`, base `f7ab2098fa27d73e5f2e0645b5a9c4bb0b6f5c3e`. Merged the current base to reproduce GitHub's merge result, then corrected its installer test formatting without changing the AST. The full Python lint pass succeeded. The backend command above plus `studio/backend/tests/test_video_chat_completions_behaviour.py tests/python/test_installer_differential_comparer.py` passed: 1833 tests, 5 skipped, 3 subtests passed. The frontend suite passed 7609 tests before the six-line summary fix; after that fix, the four new summary tests, typecheck and production build passed.
+
+The saved API settings summary previously showed App defaults for both a zero reasoning budget and a message-only override. The focused test had three failures before repair and four passes after. Run `cd studio/frontend && node --experimental-strip-types --test tests/saved-reasoning-settings-summary.test.ts`. Chromium screenshots `summary-before.png` and `summary-after.png` capture the actual settings API and rendered panel before and after the repair. Both were manually inspected.
+
+Repeated the real Studio CPU API experiment on the final base and repaired head with the same inputs and observed the same 128-token reasoning-only base result versus a completed 52-token answer. Firefox 146.0.1 passed the visible controls, edit, remember, actual model reload and page-refresh scenario on the final head. Existing screenshots labeled fab1c3a7d retain their original tested SHA.

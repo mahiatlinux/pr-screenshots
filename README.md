@@ -43,3 +43,11 @@ The actual Chromium UI on the control turned an unrelated batch-size edit into a
 - Real official b6000 and b10909 CPU binary probes pass the same version matrix after the wrapper-path correction. The wrapper regression uses controlled subprocess outcomes on Linux, not a native macOS execution claim. Apple documents why launching a protected shell purges DYLD variables: https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/RuntimeProtections/RuntimeProtections.html.
 
 The initial scoped backend invocation overlapped the formatter and invalidated inspect-source line offsets in six source-inspection tests; the recorded successful run above started after formatting completed. No test was weakened.
+
+## Resident adoption and shared snapshots
+
+Head `4b912408e44f48c01c40e749432e423911424bcd` includes the requested-value resident comparison (`bb859566a`) and the corresponding snapshot used by ordinary re-selection, presets and failed-switch restoration. The old comparator failed two focused tests; the shared snapshot failed all three parity scenarios before repair. Older backends without request echoes retain their effective-value fallback.
+
+The full frontend suite passed 7620 tests after the comparator change. After the shared snapshot change, `node --experimental-strip-types --test tests/active-reasoning-intent.test.ts tests/reasoning-budget-config.test.ts tests/reasoning-budget-rollback.test.ts tests/resident-config-match.test.ts tests/model-config-instance-key.test.ts` passed 129 tests, followed by typecheck and production build.
+
+The real Studio CPU-loaded model reported requested budget -1 and effective budget 32. Its actual status was passed to the production comparator with the matching load config: the unchanged comparator at control 8e24c8c8c rejected reuse, and the repaired comparator accepted it. These logs demonstrate the reuse decision; they do not claim a browser-driven external-provider roundtrip.

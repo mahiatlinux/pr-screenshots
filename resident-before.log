@@ -1,0 +1,167 @@
+(node:8) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ no config at all adopts the resident model (1.041016ms)
+✔ a config that pins nothing adopts the resident model (0.336021ms)
+✔ a remembered context length the resident load does not run is a reload (0.077215ms)
+✔ a remembered context length the resident load already runs adopts it (0.064652ms)
+✔ a matching context length adopts the resident model (0.067757ms)
+✔ a differing context length is a real reload (0.060774ms)
+✔ a context length the resident load never reported is a real reload (0.059171ms)
+✔ a matching KV cache dtype adopts the resident model (0.049974ms)
+✔ a differing KV cache dtype is a real reload (0.05302ms)
+✔ a KV cache dtype the resident load never reported is a real reload (0.080531ms)
+✔ a matching MLX KV bits adopts the resident model (0.056015ms)
+✔ a differing MLX KV bits is a real reload (0.054353ms)
+✔ a MLX KV bits the resident load never reported is a real reload (0.039515ms)
+✔ a matching speculative mode adopts the resident model (0.045115ms)
+✔ a differing speculative mode is a real reload (0.036388ms)
+✔ a speculative mode the resident load never reported is a real reload (0.035787ms)
+✔ a matching draft depth adopts the resident model (0.0373ms)
+✔ a differing draft depth is a real reload (0.028263ms)
+✔ a draft depth the resident load never reported is a real reload (0.02652ms)
+✔ a matching parallel slots adopts the resident model (0.038943ms)
+✔ a differing parallel slots is a real reload (0.059462ms)
+✔ a parallel slots the resident load never reported is a real reload (0.047409ms)
+✔ a matching batch size adopts the resident model (0.047139ms)
+✔ a differing batch size is a real reload (0.02642ms)
+✔ a batch size the resident load never reported is a real reload (0.027541ms)
+✔ a matching micro-batch size adopts the resident model (0.039865ms)
+✔ a differing micro-batch size is a real reload (0.025288ms)
+✔ a micro-batch size the resident load never reported is a real reload (0.02636ms)
+✔ a matching tensor parallel adopts the resident model (0.045325ms)
+✔ a differing tensor parallel is a real reload (0.028855ms)
+✔ a tensor parallel the resident load never reported is a real reload (0.040215ms)
+✔ a matching chat template override adopts the resident model (0.045926ms)
+✔ a differing chat template override is a real reload (0.027592ms)
+✔ a chat template override the resident load never reported is a real reload (0.036188ms)
+✔ a matching pass-through llama args adopts the resident model (0.141786ms)
+✔ a differing pass-through llama args is a real reload (0.050234ms)
+✔ a pass-through llama args the resident load never reported is a real reload (0.023594ms)
+✔ a matching GPU memory mode adopts the resident model (0.081262ms)
+✔ a differing GPU memory mode is a real reload (0.022943ms)
+✔ a GPU memory mode the resident load never reported is a real reload (0.017924ms)
+✔ a matching GPU layers adopts the resident model (0.033323ms)
+✔ a differing GPU layers is a real reload (0.017523ms)
+✔ a GPU layers the resident load never reported is a real reload (0.016181ms)
+✔ a matching CPU MoE layers adopts the resident model (0.04271ms)
+✔ a differing CPU MoE layers is a real reload (0.027762ms)
+✔ a CPU MoE layers the resident load never reported is a real reload (0.019015ms)
+✔ a matching GPU placement adopts the resident model (0.047219ms)
+✔ a differing GPU placement is a real reload (0.022563ms)
+✔ a GPU placement the resident load never reported is a real reload (0.018946ms)
+✔ GPU placement compares as a set, not as an order (0.041578ms)
+✔ automatic placement does not adopt a load pinned to chosen GPUs (0.061486ms)
+✔ llama args never read by this copy express no opinion (0.054312ms)
+✔ llama args the user cleared only agree with a load that has none (0.05333ms)
+✔ llama args differing only in order are a real reload (0.043832ms)
+✔ tensor parallel off agrees with a status that omits the field (0.047029ms)
+✔ tensor parallel off is a reload when the resident load split tensors (0.041678ms)
+✔ a generation cap alone still adopts the resident model (0.041017ms)
+✔ zero is a pinned value, not an absent one (0.064041ms)
+✔ one differing field among many agreeing ones is still a reload (0.060173ms)
+✔ selectModel weighs the config and the lease before confirming a reload (0.165451ms)
+✔ an unset speculative mode is the standing preference, not silence (0.068399ms)
+✔ a config that names a mode still beats the standing preference (0.044915ms)
+✔ the speculative mode is normalized on both sides (0.039755ms)
+✔ the GPU pick is compared after reconciliation, not as saved (0.428675ms)
+✔ an unset context length is resolved the way the load resolves it (0.077646ms)
+✔ an unset slot count is the server default, not null (0.076203ms)
+✔ a pick naming the fitted subset of a wider pool is not a reload (0.075823ms)
+✔ a retry arm that records no fallback reason still declines the shortcut (0.082866ms)
+✔ a binary stand-down that cannot repair does not decline the shortcut (0.064321ms)
+✔ a non-GGUF resident is not judged on a GGUF invocation field (0.093797ms)
+✔ a hidden MoE count under Auto layers is not a reload (0.08016ms)
+✔ a standalone .gguf never reaches the drafter retry arm (0.051958ms)
+✔ a permanently absent drafter does not decline the shortcut (0.054292ms)
+✔ a tensor split the architecture gate normalized away still matches (0.067196ms)
+✔ the arch-gate excuse reads the resolved split, not the toggle (0.077596ms)
+✔ a malformed manual layer override declines rather than normalizing away (0.195638ms)
+✔ a virtualised Metal host cannot disagree about placement (0.08497ms)
+✔ a diffusion resident is not judged on the chat-only invocation fields (0.100238ms)
+✔ a dropped diffusion split is rechecked once the shim can apply it (0.086012ms)
+✔ a diffusion pick is reduced to its lowest GPU, as the backend reduces it (0.077015ms)
+✔ no llama.cpp invocation field decides against a non-GGUF resident (0.05835ms)
+✔ a diffusion resident is judged on its NGL, not on the placement fields (0.072135ms)
+✔ a model switch is judged on the defaults it resets to, not the outgoing settings (0.056076ms)
+✔ a pass-through split mode decides the tensor-parallel comparison (0.061235ms)
+✔ a manual pass-through layer count is compared as the field it becomes (0.091111ms)
+✔ a custom tensor split the config cannot carry is still a reload (0.0852ms)
+✔ a preserved Vulkan CPU fallback is not a placement disagreement (0.085621ms)
+✔ an unset GPU memory mode is the standing preference, not silence (0.068629ms)
+✔ unset GPU layers and CPU MoE layers resolve to Auto and 0 (0.072817ms)
+✔ no config at all still adopts, whatever the resident runtime is (0.043732ms)
+✔ unset nullable settings ask for the default, not for the resident value (0.104587ms)
+✔ a blank chat template agrees with a load that has none (0.05325ms)
+✔ a retryable drafter failure declines the shortcut (0.067888ms)
+✔ a repaired drafter has to reach the backend to be re-checked (0.054552ms)
+✔ an Auto-mode policy downgrade is not a repair the load can make (0.044253ms)
+✔ a healthy runtime and a pick wanting no drafter both stay on the shortcut (0.050726ms)
+✔ the resident shortcut keeps the picked model's own sequence cap (0.159079ms)
+✔ an outstanding audio probe keeps the shortcut from skipping the load (0.122991ms)
+✔ the shortcut re-reads and re-judges the status before adopting (0.132929ms)
+✔ with no saved config the gate compares what the load would send (0.19707ms)
+✔ adopting reseeds the slot and batch controls the rollback left behind (0.747635ms)
+✔ selectModel asks about a repairable drafter before adopting (0.064501ms)
+✔ the speculative normalizer reads llama.cpp's disable spellings as off (0.295836ms)
+✔ a forced ngram stand-down reloads onto an updated binary (0.045987ms)
+✔ a runtime_error resident does not claim its draft depth is the default (0.073789ms)
+✔ an auto tensor-parallel server that reports a split still adopts (0.045735ms)
+✔ a pending ratio the auto resident is not running is still a reload (0.038853ms)
+✔ a pending ratio the auto resident IS running adopts (0.036679ms)
+✔ a remembered manual split the resident load does not run is still a reload (0.038622ms)
+✖ inherited reasoning defaults do not reload an unchanged resident (0.469313ms)
+✖ pinning the effective reasoning value changes the resident request (0.117501ms)
+✔ an explicit zero reasoning request can reuse the resident (0.046718ms)
+✔ legacy status without reasoning request echoes keeps its comparison (0.04258ms)
+ℹ tests 113
+ℹ suites 0
+ℹ pass 111
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 116.624033
+
+✖ failing tests:
+
+test at tests/resident-config-match.test.ts:1897:1
+✖ inherited reasoning defaults do not reload an unchanged resident (0.469313ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///task/fix/studio/frontend/tests/resident-config-match.test.ts:1898:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/resident-config-match.test.ts:1906:1
+✖ pinning the effective reasoning value changes the resident request (0.117501ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///task/fix/studio/frontend/tests/resident-config-match.test.ts:1907:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

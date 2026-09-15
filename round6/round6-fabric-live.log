@@ -1,0 +1,4 @@
+{
+  "policy_result": "Error: unsafe code detected (Blocked: SSH usage with a non-literal host or indirect connection settings is not allowed. Disable configuration with -F none for OpenSSH, config=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric.). Please remove unsafe patterns from your code.",
+  "connections": 0
+}

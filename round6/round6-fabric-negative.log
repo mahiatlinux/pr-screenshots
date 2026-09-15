@@ -1,0 +1,9 @@
+{
+  "policy_result": "Exit code 1:\nTraceback (most recent call last):\n  File \"/work/.home/studio/sandbox/ssh-live/studio_exec_3n3xdpyu.py\", line 1, in <module>\n    import fabric,paramiko; fabric.Connection('approved.example', config=fabric.Config(lazy=True), connect_timeout=1, connect_kwargs={'sock':paramiko.ProxyCommand('ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o IdentitiesOnly=yes review@127.0.0.2 uptime')}).open()\n                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\n  File \"/work/.venv/lib/python3.14/site-packages/fabric/connection.py\", line 665, in open\n    result = self.client.connect(**kwargs)\n  File \"/work/.venv/lib/python3.14/site-packages/paramiko/client.py\", line 445, in connect\n    server_key = t.get_remote_server_key()\n  File \"/work/.venv/lib/python3.14/site-packages/paramiko/transport.py\", line 880, in get_remote_server_key\n    raise SSHException(\"No existing session\")\nparamiko.ssh_exception.SSHException: No existing session\n",
+  "connections": 1
+}
+Traceback (most recent call last):
+  File "/evidence/fabric_proxy_live.py", line 76, in <module>
+    assert 'Blocked:' in result and len(connections) == 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

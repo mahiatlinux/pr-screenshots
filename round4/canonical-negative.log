@@ -1,0 +1,8 @@
+{
+  "policy": null,
+  "returncode": 0,
+  "hostname": [
+    "hostname approved.evil.example"
+  ],
+  "stderr": "Pseudo-terminal will not be allocated because stdin is not a terminal.\n"
+}

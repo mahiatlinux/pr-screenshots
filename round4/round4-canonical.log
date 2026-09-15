@@ -1,0 +1,8 @@
+{
+  "policy": "Blocked: SSH command includes a non-literal or redirected target that is not approved. Use -F none to disable implicit SSH configuration and a literal hostname for an approved server.",
+  "returncode": 0,
+  "hostname": [
+    "hostname approved.evil.example"
+  ],
+  "stderr": "Pseudo-terminal will not be allocated because stdin is not a terminal.\n"
+}

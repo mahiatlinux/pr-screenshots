@@ -1,0 +1,16 @@
+{
+  "command": "ssh -F none -G approved.example -o HostName=evil.example",
+  "policy": "Blocked: SSH access to unapproved server(s): evil.example. Approve the server when prompted to allow deployment workflows.",
+  "returncode": 0,
+  "hostname": [
+    "hostname evil.example"
+  ],
+  "stderr": "Pseudo-terminal will not be allocated because stdin is not a terminal.\n"
+}
+{
+  "command": "sftp -F none -o ConnectTimeout=1 approved.example -o HostName=evil.example",
+  "policy": null,
+  "returncode": 1,
+  "hostname": [],
+  "stderr": "usage: sftp [-46AaCfNpqrv] [-B buffer_size] [-b batchfile] [-c cipher]\n          [-D sftp_server_command] [-F ssh_config] [-i identity_file]\n          [-J destination] [-l limit] [-o ssh_option] [-P port]\n          [-R num_requests] [-S program] [-s subsystem | sftp_server]\n          [-X sftp_option] destination\n"
+}

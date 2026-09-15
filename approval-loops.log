@@ -1,0 +1,2 @@
+{"decision": "deny", "execution_approvals": [], "events": ["status", "tool_start", "tool_end", "status", "content", "status"]}
+{"decision": "allow", "execution_approvals": [["approved.example"]], "events": ["status", "tool_start", "status", "tool_end", "status", "content", "status"]}

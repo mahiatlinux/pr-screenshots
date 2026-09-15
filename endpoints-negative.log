@@ -1,0 +1,82 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+______ test_ipv6_uri_destinations_remain_distinct[ssh 2001:db8::1 uptime] ______
+
+command = 'ssh 2001:db8::1 uptime'
+
+    @pytest.mark.parametrize("command", [
+        "ssh 2001:db8::1 uptime",
+        "scp scp://[2001:db8::1]/file ./file",
+        "sftp sftp://[2001:db8::1]/file",
+    ])
+    def test_ipv6_uri_destinations_remain_distinct(command):
+        approve_hosts("review", collect_ssh_hosts_for_approval("terminal", {"command": command}))
+        assert check_ssh_command_access(command, "review") is None
+>       assert check_ssh_command_access(command.replace("2001:db8::1", "2001:dead::2"), "review") is not None
+E       AssertionError: assert None is not None
+E        +  where None = check_ssh_command_access('ssh 2001:dead::2 uptime', 'review')
+E        +    where 'ssh 2001:dead::2 uptime' = <built-in method replace of str object at 0x723f25b91530>('2001:db8::1', '2001:dead::2')
+E        +      where <built-in method replace of str object at 0x723f25b91530> = 'ssh 2001:db8::1 uptime'.replace
+
+/evidence/test_endpoints_regression.py:363: AssertionError
+_ test_ipv6_uri_destinations_remain_distinct[scp scp://[2001:db8::1]/file ./file] _
+
+command = 'scp scp://[2001:db8::1]/file ./file'
+
+    @pytest.mark.parametrize("command", [
+        "ssh 2001:db8::1 uptime",
+        "scp scp://[2001:db8::1]/file ./file",
+        "sftp sftp://[2001:db8::1]/file",
+    ])
+    def test_ipv6_uri_destinations_remain_distinct(command):
+        approve_hosts("review", collect_ssh_hosts_for_approval("terminal", {"command": command}))
+        assert check_ssh_command_access(command, "review") is None
+>       assert check_ssh_command_access(command.replace("2001:db8::1", "2001:dead::2"), "review") is not None
+E       AssertionError: assert None is not None
+E        +  where None = check_ssh_command_access('scp scp://[2001:dead::2]/file ./file', 'review')
+E        +    where 'scp scp://[2001:dead::2]/file ./file' = <built-in method replace of str object at 0x723f25b662e0>('2001:db8::1', '2001:dead::2')
+E        +      where <built-in method replace of str object at 0x723f25b662e0> = 'scp scp://[2001:db8::1]/file ./file'.replace
+
+/evidence/test_endpoints_regression.py:363: AssertionError
+__ test_ipv6_uri_destinations_remain_distinct[sftp sftp://[2001:db8::1]/file] __
+
+command = 'sftp sftp://[2001:db8::1]/file'
+
+    @pytest.mark.parametrize("command", [
+        "ssh 2001:db8::1 uptime",
+        "scp scp://[2001:db8::1]/file ./file",
+        "sftp sftp://[2001:db8::1]/file",
+    ])
+    def test_ipv6_uri_destinations_remain_distinct(command):
+        approve_hosts("review", collect_ssh_hosts_for_approval("terminal", {"command": command}))
+        assert check_ssh_command_access(command, "review") is None
+>       assert check_ssh_command_access(command.replace("2001:db8::1", "2001:dead::2"), "review") is not None
+E       AssertionError: assert None is not None
+E        +  where None = check_ssh_command_access('sftp sftp://[2001:dead::2]/file', 'review')
+E        +    where 'sftp sftp://[2001:dead::2]/file' = <built-in method replace of str object at 0x723f25b66380>('2001:db8::1', '2001:dead::2')
+E        +      where <built-in method replace of str object at 0x723f25b66380> = 'sftp sftp://[2001:db8::1]/file'.replace
+
+/evidence/test_endpoints_regression.py:363: AssertionError
+_____________ test_paramiko_transport_uses_constructor_destination _____________
+
+    def test_paramiko_transport_uses_constructor_destination():
+        code = "import paramiko; t=paramiko.Transport(('approved.example', 22)); t.connect(username='deploy')"
+        assert check_ssh_python_access(code, "review") is not None
+        approve_hosts("review", ["approved.example"])
+>       assert _check_code_safety(code, session_id="review") is None
+E       assert 'Error: unsafe code detected (Blocked: SSH library usage with a non-literal host requires approving the target server first.). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: SSH library usage with a non-literal host requires approving the target server first.). Please remove unsafe patterns from your code.' = _check_code_safety("import paramiko; t=paramiko.Transport(('approved.example', 22)); t.connect(username='deploy')", session_id='review')
+
+/evidence/test_endpoints_regression.py:370: AssertionError
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/test_endpoints_regression.py::test_ipv6_uri_destinations_remain_distinct[ssh 2001:db8::1 uptime]
+FAILED ../evidence/test_endpoints_regression.py::test_ipv6_uri_destinations_remain_distinct[scp scp://[2001:db8::1]/file ./file]
+FAILED ../evidence/test_endpoints_regression.py::test_ipv6_uri_destinations_remain_distinct[sftp sftp://[2001:db8::1]/file]
+FAILED ../evidence/test_endpoints_regression.py::test_paramiko_transport_uses_constructor_destination
+4 failed, 58 deselected, 1 warning in 0.12s

@@ -1,0 +1,27 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_approvals_are_scoped_to_account _____________________
+
+    def test_approvals_are_scoped_to_account():
+        from utils.account_context import AccountContext, run_as
+    
+        alice = AccountContext("alice", "alice")
+        bob = AccountContext("bob", "bob")
+        run_as(alice, approve_hosts, "shared-id", ["approved.example"])
+>       assert run_as(bob, approved_hosts, "shared-id") == frozenset()
+E       AssertionError: assert frozenset({'a...ved.example'}) == frozenset()
+E         
+E         Extra items in the left set:
+E         'approved.example'
+E         Use -v to get more diff
+
+/evidence/test_account_regression.py:350: AssertionError
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/test_account_regression.py::test_approvals_are_scoped_to_account
+1 failed, 57 deselected, 1 warning in 0.12s

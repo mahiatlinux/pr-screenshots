@@ -1,0 +1,108 @@
+...................................FFFFFF..FFFFFFFF..F...                [100%]
+=================================== FAILURES ===================================
+_ test_cli_redirects_require_approval[ssh -P approved.example unapproved.example uptime] _
+/evidence/test_ssh_policy_regression.py:286: in test_cli_redirects_require_approval
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -P approved.example unapproved.example uptime', 'review')
+_ test_cli_redirects_require_approval[ssh -F alternate.conf approved.example uptime] _
+/evidence/test_ssh_policy_regression.py:286: in test_cli_redirects_require_approval
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -F alternate.conf approved.example uptime', 'review')
+_ test_cli_redirects_require_approval[scp -o HostName=unapproved.example file approved.example:/tmp/file] _
+/evidence/test_ssh_policy_regression.py:286: in test_cli_redirects_require_approval
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('scp -o HostName=unapproved.example file approved.example:/tmp/file', 'review')
+_ test_cli_redirects_require_approval[sftp -o HostName=unapproved.example approved.example] _
+/evidence/test_ssh_policy_regression.py:286: in test_cli_redirects_require_approval
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('sftp -o HostName=unapproved.example approved.example', 'review')
+_ test_cli_redirects_require_approval[find . -maxdepth 0 -exec ssh unapproved.example uptime \\;] _
+/evidence/test_ssh_policy_regression.py:286: in test_cli_redirects_require_approval
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('find . -maxdepth 0 -exec ssh unapproved.example uptime \\;', 'review')
+_ test_cli_redirects_require_approval[ssh -voHostName=unapproved.example approved.example] _
+/evidence/test_ssh_policy_regression.py:286: in test_cli_redirects_require_approval
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh -voHostName=unapproved.example approved.example', 'review')
+_ test_approval_does_not_authorize_shell_expansions[ssh deploy@$TARGET uptime] _
+/evidence/test_ssh_policy_regression.py:296: in test_approval_does_not_authorize_shell_expansions
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh deploy@$TARGET uptime', 'review')
+_ test_approval_does_not_authorize_shell_expansions[ssh deploy@${TARGET} uptime] _
+/evidence/test_ssh_policy_regression.py:296: in test_approval_does_not_authorize_shell_expansions
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('ssh deploy@${TARGET} uptime', 'review')
+_ test_approval_does_not_authorize_shell_expansions[scp file deploy@$TARGET:/tmp/file] _
+/evidence/test_ssh_policy_regression.py:296: in test_approval_does_not_authorize_shell_expansions
+    assert check_ssh_command_access(command, "review") is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('scp file deploy@$TARGET:/tmp/file', 'review')
+_ test_python_aliases_require_approval[import paramiko as p; c=p.SSHClient(); c.connect(hostname='unapproved.example')] _
+/evidence/test_ssh_policy_regression.py:306: in test_python_aliases_require_approval
+    assert _check_code_safety(code, session_id="review") is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko as p; c=p.SSHClient(); c.connect(hostname='unapproved.example')", session_id='review')
+_ test_python_aliases_require_approval[from paramiko import SSHClient; c=SSHClient(); c.connect(hostname='unapproved.example')] _
+/evidence/test_ssh_policy_regression.py:306: in test_python_aliases_require_approval
+    assert _check_code_safety(code, session_id="review") is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from paramiko import SSHClient; c=SSHClient(); c.connect(hostname='unapproved.example')", session_id='review')
+_ test_python_aliases_require_approval[from paramiko import SSHClient as Client; c=Client(); c.connect(hostname='unapproved.example')] _
+/evidence/test_ssh_policy_regression.py:306: in test_python_aliases_require_approval
+    assert _check_code_safety(code, session_id="review") is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from paramiko import SSHClient as Client; c=Client(); c.connect(hostname='unapproved.example')", session_id='review')
+_ test_python_aliases_require_approval[import subprocess; subprocess.run(['env', 'ssh', 'unapproved.example'])] _
+/evidence/test_ssh_policy_regression.py:306: in test_python_aliases_require_approval
+    assert _check_code_safety(code, session_id="review") is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import subprocess; subprocess.run(['env', 'ssh', 'unapproved.example'])", session_id='review')
+__________________ test_nested_http_call_keeps_its_host_block __________________
+/evidence/test_ssh_policy_regression.py:316: in test_nested_http_call_keeps_its_host_block
+    assert _check_code_safety(code, session_id="review") is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko, requests; paramiko.SSHClient().connect('approved.example', password=requests.get('https://unapproved.example').text)", session_id='review')
+_ test_supported_literal_destinations_after_approval[ssh -o "StrictHostKeyChecking no" approved.example uptime] _
+/evidence/test_ssh_policy_regression.py:329: in test_supported_literal_destinations_after_approval
+    assert check_ssh_command_access(command, "review") is None
+E   assert 'Blocked: SSH access to unapproved server(s): uptime. Approve the server when prompted to allow deployment workflows.' is None
+E    +  where 'Blocked: SSH access to unapproved server(s): uptime. Approve the server when prompted to allow deployment workflows.' = check_ssh_command_access('ssh -o "StrictHostKeyChecking no" approved.example uptime', 'review')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+.venv/lib/python3.14/site-packages/_pytest/cacheprovider.py:469
+  /work/.venv/lib/python3.14/site-packages/_pytest/cacheprovider.py:469: PytestCacheWarning: could not create cache path /evidence/.pytest_cache/v/cache/nodeids: [Errno 30] Read-only file system: '/evidence/pytest-cache-files-e2i8jt5l'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+.venv/lib/python3.14/site-packages/_pytest/cacheprovider.py:423
+  /work/.venv/lib/python3.14/site-packages/_pytest/cacheprovider.py:423: PytestCacheWarning: could not create cache path /evidence/.pytest_cache/v/cache/lastfailed: [Errno 30] Read-only file system: '/evidence/pytest-cache-files-3qhc5bnb'
+    config.cache.set("cache/lastfailed", self.lastfailed)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/test_ssh_policy_regression.py::test_cli_redirects_require_approval[ssh -P approved.example unapproved.example uptime]
+FAILED ../evidence/test_ssh_policy_regression.py::test_cli_redirects_require_approval[ssh -F alternate.conf approved.example uptime]
+FAILED ../evidence/test_ssh_policy_regression.py::test_cli_redirects_require_approval[scp -o HostName=unapproved.example file approved.example:/tmp/file]
+FAILED ../evidence/test_ssh_policy_regression.py::test_cli_redirects_require_approval[sftp -o HostName=unapproved.example approved.example]
+FAILED ../evidence/test_ssh_policy_regression.py::test_cli_redirects_require_approval[find . -maxdepth 0 -exec ssh unapproved.example uptime \\;]
+FAILED ../evidence/test_ssh_policy_regression.py::test_cli_redirects_require_approval[ssh -voHostName=unapproved.example approved.example]
+FAILED ../evidence/test_ssh_policy_regression.py::test_approval_does_not_authorize_shell_expansions[ssh deploy@$TARGET uptime]
+FAILED ../evidence/test_ssh_policy_regression.py::test_approval_does_not_authorize_shell_expansions[ssh deploy@${TARGET} uptime]
+FAILED ../evidence/test_ssh_policy_regression.py::test_approval_does_not_authorize_shell_expansions[scp file deploy@$TARGET:/tmp/file]
+FAILED ../evidence/test_ssh_policy_regression.py::test_python_aliases_require_approval[import paramiko as p; c=p.SSHClient(); c.connect(hostname='unapproved.example')]
+FAILED ../evidence/test_ssh_policy_regression.py::test_python_aliases_require_approval[from paramiko import SSHClient; c=SSHClient(); c.connect(hostname='unapproved.example')]
+FAILED ../evidence/test_ssh_policy_regression.py::test_python_aliases_require_approval[from paramiko import SSHClient as Client; c=Client(); c.connect(hostname='unapproved.example')]
+FAILED ../evidence/test_ssh_policy_regression.py::test_python_aliases_require_approval[import subprocess; subprocess.run(['env', 'ssh', 'unapproved.example'])]
+FAILED ../evidence/test_ssh_policy_regression.py::test_nested_http_call_keeps_its_host_block
+FAILED ../evidence/test_ssh_policy_regression.py::test_supported_literal_destinations_after_approval[ssh -o "StrictHostKeyChecking no" approved.example uptime]
+15 failed, 42 passed, 3 warnings in 0.89s

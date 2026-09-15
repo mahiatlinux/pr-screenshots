@@ -1,0 +1,1 @@
+{"commands": ["ls -la", "ssh -p 22 deploy@approved.example uptime", "scp ./file approved.example:/tmp/file", "find . -type f -exec ls -l {} \\;", "env A=b bash -c \"ssh approved.example uptime\""], "seconds_per_500_checks": [0.041637771000750945, 0.0399864669998351, 0.03980308300015167, 0.039880468999399454, 0.04002651300015714], "median_ms_per_command": 0.0799729339996702}

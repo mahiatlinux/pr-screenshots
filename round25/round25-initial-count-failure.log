@@ -1,0 +1,138 @@
+watch before: 'Blocked: SSH access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.' connections: 0
+sftp results: {"batch": "Blocked: SSH command includes a non-literal or redirected target that is not approved. Use -F none to disable implicit SSH configuration and a literal hostname for an approved server.", "stdin": "Blocked: SSH command includes a non-literal or redirected target that is not approved. Use -F none to disable implicit SSH configuration and a literal hostname for an approved server.", "python_input": "Error: unsafe code detected (Blocked: SSH usage with a non-literal host or indirect connection settings is not allowed. Disable configuration with -F none for OpenSSH, config=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric.). Please remove unsafe patterns from your code."} connections: 0
+container before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+xargs before: Blocked: SSH command includes a non-literal or redirected target that is not approved. Use -F none to disable implicit SSH configuration and a literal hostname for an approved server. connections: 0
+pty before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+reflective before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+dynamic_import before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+class_client before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+partial before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+parameter before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+expanded command before: Blocked command(s) for safety: command substitution connections: 0
+method before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+constructor before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+loop before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+conditional_client before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+boolean_client before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+instance_client before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+inline_instance_client before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+iterator_client before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+reversed_client before: Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code. connections: 0
+min selection before: Error: unsafe code detected (Blocked: SSH usage with a non-literal host or indirect connection settings is not allowed. Disable configuration with -F none for OpenSSH, config=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric.). Please remove unsafe patterns from your code. connections: 0
+heredoc before: Blocked: SSH access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows. connections: 0
+min selection after approval: Error: unsafe code detected (Blocked: SSH usage with a non-literal host or indirect connection settings is not allowed. Disable configuration with -F none for OpenSSH, config=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric.). Please remove unsafe patterns from your code. connections: 0
+watch after approval: 'Exit code 124:\n\x1b[?1049h\x1b[22;0;0t\x1b[1;24r\x1b(B\x1b[m\x1b[4l\x1b[?7h\x1b[39;49m\x1b[39;49m\x1b(B\x1b[m\x1b[H\x1b[2Jpr10642-live-ssh-ok\x1b[24;80H\x1b(B\x1b[m\x1b[24;1H\x1b[?1049l\x1b[23;0;0t\n\x1b[?1l\x1b>' connections: 1
+{
+  "terminal_before_cases": {
+    "multiple_at": "Blocked: SSH access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.",
+    "coproc": "Blocked: SSH access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.",
+    "heredoc": "Blocked: SSH access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows."
+  },
+  "terminal_after_cases": {
+    "multiple_at": "pr10642-live-ssh-ok\n",
+    "coproc": "pr10642-live-ssh-ok\n",
+    "heredoc": "pr10642-live-ssh-ok\n"
+  },
+  "indirect_before": {
+    "launcher": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "helper": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "qualified_transport": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "async_exec": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "async_shell": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "factory_alias": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "bound_method_alias": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "asyncssh_alias": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "proxy_command": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "context_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "asyncssh_create": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "asyncssh_host_key": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "asyncssh_auth_methods": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "kwargs_subprocess": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "kwargs_proxy": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "kwargs_async": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "subclass_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "subclass_override": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "subclass_transport": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "lambda_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "inline_lambda": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "SerialGroup": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "ThreadingGroup": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "container_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "container_transport": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "named_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "pty": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "reflective": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "dynamic_import": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "class_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "partial": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "helper_parameter": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "method_parameter": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "constructor_parameter": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "loop_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "conditional_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "boolean_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "instance_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "inline_instance_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "iterator_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+    "reversed_client": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code."
+  },
+  "indirect_after": {
+    "launcher": "pr10642-live-ssh-ok\n",
+    "helper": "pr10642-live-ssh-ok\n\n",
+    "qualified_transport": "pr10642-live-ssh-ok\n\n",
+    "async_exec": "pr10642-live-ssh-ok\n\n",
+    "async_shell": "pr10642-live-ssh-ok\n\n",
+    "factory_alias": "pr10642-live-ssh-ok\n\n",
+    "bound_method_alias": "pr10642-live-ssh-ok\n\n",
+    "asyncssh_alias": "pr10642-live-ssh-ok\n\n",
+    "proxy_command": "b'pr10642-live-ssh-ok\\n'\n",
+    "context_client": "pr10642-live-ssh-ok\n\n",
+    "asyncssh_create": "pr10642-live-ssh-ok\n\n",
+    "asyncssh_host_key": "pr10642-live-ssh-ok\n",
+    "asyncssh_auth_methods": "pr10642-live-ssh-ok\n",
+    "kwargs_subprocess": "pr10642-live-ssh-ok\n",
+    "kwargs_proxy": "b'pr10642-live-ssh-ok\\n'\n",
+    "kwargs_async": "pr10642-live-ssh-ok\n\n",
+    "subclass_client": "pr10642-live-ssh-ok\n\n",
+    "subclass_override": "pr10642-live-ssh-ok\n\n",
+    "subclass_transport": "pr10642-live-ssh-ok\n\n",
+    "lambda_client": "pr10642-live-ssh-ok\n\n",
+    "inline_lambda": "pr10642-live-ssh-ok\n\n",
+    "SerialGroup": "['pr10642-live-ssh-ok\\n']\n",
+    "ThreadingGroup": "['pr10642-live-ssh-ok\\n']\n",
+    "container_client": "pr10642-live-ssh-ok\n\n",
+    "container_transport": "pr10642-live-ssh-ok\n\n",
+    "named_client": "pr10642-live-ssh-ok\n\n",
+    "pty": "pr10642-live-ssh-ok\n",
+    "reflective": "pr10642-live-ssh-ok\n\n",
+    "dynamic_import": "pr10642-live-ssh-ok\n\n",
+    "class_client": "pr10642-live-ssh-ok\n\n",
+    "partial": "pr10642-live-ssh-ok\n\n",
+    "helper_parameter": "pr10642-live-ssh-ok\n\n",
+    "method_parameter": "pr10642-live-ssh-ok\n\n",
+    "constructor_parameter": "pr10642-live-ssh-ok\n\n",
+    "loop_client": "pr10642-live-ssh-ok\n\n",
+    "conditional_client": "pr10642-live-ssh-ok\n\n",
+    "boolean_client": "pr10642-live-ssh-ok\n\n",
+    "instance_client": "pr10642-live-ssh-ok\n\n",
+    "inline_instance_client": "pr10642-live-ssh-ok\n",
+    "iterator_client": "pr10642-live-ssh-ok\n\n",
+    "reversed_client": "pr10642-live-ssh-ok\n\n"
+  },
+  "exec_before": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+  "exec_after": "pr10642-live-ssh-ok\n",
+  "socket_override": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.",
+  "fabric_after": "pr10642-live-ssh-ok\n\n",
+  "asyncssh_after": "pr10642-live-ssh-ok\n\n",
+  "command": "ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o IdentitiesOnly=yes review@127.0.0.2 uptime",
+  "blocked_before": "Blocked: SSH access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.",
+  "terminal_after": "pr10642-live-ssh-ok\n",
+  "python_after": "pr10642-live-ssh-ok\n\n",
+  "connections": 50,
+  "paramiko": "5.0.0"
+}
+Traceback (most recent call last):
+  File "/evidence/round25_live.py", line 246, in <module>
+    assert report['connections'] == 49
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

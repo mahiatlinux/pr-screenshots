@@ -1,0 +1,52 @@
+FFFFFFF..                                                                [100%]
+=================================== FAILURES ===================================
+_ test_unknown_client_selection_fails_closed[client=min([paramiko.SSHClient()])] _
+/evidence/round25_regressions.py:17: in test_unknown_client_selection_fails_closed
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient=min([paramiko.SSHClient()])\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_unknown_client_selection_fails_closed[pool=[paramiko.SSHClient()]; client=min(pool)] _
+/evidence/round25_regressions.py:17: in test_unknown_client_selection_fails_closed
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\npool=[paramiko.SSHClient()]; client=min(pool)\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_unknown_client_selection_fails_closed[client=max([paramiko.SSHClient()])] _
+/evidence/round25_regressions.py:17: in test_unknown_client_selection_fails_closed
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient=max([paramiko.SSHClient()])\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_unknown_client_selection_fails_closed[pool=[paramiko.SSHClient()]; client=pool.pop()] _
+/evidence/round25_regressions.py:17: in test_unknown_client_selection_fails_closed
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\npool=[paramiko.SSHClient()]; client=pool.pop()\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_unknown_client_selection_fails_closed[import random; client=random.choice([paramiko.SSHClient()])] _
+/evidence/round25_regressions.py:17: in test_unknown_client_selection_fails_closed
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nimport random; client=random.choice([paramiko.SSHClient()])\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_unknown_client_selection_fails_closed[import operator; client=operator.itemgetter(0)([paramiko.SSHClient()])] _
+/evidence/round25_regressions.py:17: in test_unknown_client_selection_fails_closed
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nimport operator; client=operator.itemgetter(0)([paramiko.SSHClient()])\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_unknown_client_selection_fails_closed[import copy; original=paramiko.SSHClient(); client=copy.copy(original)] _
+/evidence/round25_regressions.py:17: in test_unknown_client_selection_fails_closed
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nimport copy; original=paramiko.SSHClient(); client=copy.copy(original)\nclient.connect(hostname='evil.example')", session_id='review')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round25_regressions.py::test_unknown_client_selection_fails_closed[client=min([paramiko.SSHClient()])]
+FAILED ../evidence/round25_regressions.py::test_unknown_client_selection_fails_closed[pool=[paramiko.SSHClient()]; client=min(pool)]
+FAILED ../evidence/round25_regressions.py::test_unknown_client_selection_fails_closed[client=max([paramiko.SSHClient()])]
+FAILED ../evidence/round25_regressions.py::test_unknown_client_selection_fails_closed[pool=[paramiko.SSHClient()]; client=pool.pop()]
+FAILED ../evidence/round25_regressions.py::test_unknown_client_selection_fails_closed[import random; client=random.choice([paramiko.SSHClient()])]
+FAILED ../evidence/round25_regressions.py::test_unknown_client_selection_fails_closed[import operator; client=operator.itemgetter(0)([paramiko.SSHClient()])]
+FAILED ../evidence/round25_regressions.py::test_unknown_client_selection_fails_closed[import copy; original=paramiko.SSHClient(); client=copy.copy(original)]
+7 failed, 2 passed, 1 warning in 0.17s

@@ -1,0 +1,8 @@
+Paramiko 5.0.0
+Exit code 1:
+Traceback (most recent call last):
+  File "/work/.home/studio/sandbox/unsupported-api/studio_exec_0qf57wxw.py", line 1, in <module>
+    import paramiko; paramiko.Transport.open_client(('127.0.0.2',22222))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'Transport' has no attribute 'open_client'. Did you mean: 'open_sftp_client'?
+

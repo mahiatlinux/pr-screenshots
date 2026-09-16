@@ -1,0 +1,16 @@
+......F                                                                  [100%]
+=================================== FAILURES ===================================
+______________ test_demonstrates_the_underlying_stdlib_regression ______________
+studio/backend/tests/test_recommended_folders_permission.py:120: in test_demonstrates_the_underlying_stdlib_regression
+    with pytest.raises(PermissionError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE PermissionError
+=============================== warnings summary ===============================
+studio/backend/tests/test_recommended_folders_permission.py::test_helper_exists_in_source
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_recommended_folders_permission.py::test_demonstrates_the_underlying_stdlib_regression
+1 failed, 6 passed, 1 warning in 0.95s

@@ -1,0 +1,239 @@
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	﻿2026-09-16T07:42:03.7832240Z ##[group]Run python ../driver/probes/prepare.py
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7832630Z ^[[36;1mpython ../driver/probes/prepare.py^[[0m
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7833410Z ^[[36;1m.venv/bin/python .review-probes/live_ssh.py^[[0m
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7833720Z ^[[36;1m.venv/bin/python .review-probes/ui_scene.py^[[0m
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7895700Z shell: /bin/bash -e {0}
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7895950Z env:
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7896230Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.13.15/arm64
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7896920Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.13.15/arm64/lib/pkgconfig
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7898480Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.13.15/arm64
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7899490Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.13.15/arm64
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7900550Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.13.15/arm64
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7901460Z   HOME: /Users/runner/work/unsloth/unsloth/source/.home
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7902740Z   UNSLOTH_STUDIO_HOME: /Users/runner/work/unsloth/unsloth/source/.home/studio
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7903580Z   XDG_CACHE_HOME: /Users/runner/work/unsloth/unsloth/source/.cache
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7903970Z   HF_HOME: /Users/runner/work/unsloth/unsloth/source/.cache/huggingface
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7904400Z   PYTHONPATH: /Users/runner/work/unsloth/unsloth/source/studio/backend
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7904820Z   UNSLOTH_STUDIO_DISABLE_DEVICE_PROBE: 1
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:03.7905060Z ##[endgroup]
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:11.5559730Z {
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:11.5562480Z   "command": "ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o IdentitiesOnly=yes review@127.0.0.2 uptime",
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:11.5563650Z   "blocked_before": "Blocked: SSH access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.",
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:11.5564390Z   "terminal_after": "pr10642-live-ssh-ok\n",
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:11.5564910Z   "python_after": "pr10642-live-ssh-ok\n\n",
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:11.5565430Z   "connections": 2,
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:11.5565690Z   "paramiko": "5.0.0"
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:11.5565970Z }
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.8812870Z initial http://127.0.0.1:8010/chat unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.8910680Z BETA
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.8982730Z New chat
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.8983320Z Model hub
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.8983660Z Projects
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.8984060Z Images
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.8984520Z Video
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.8984900Z Train
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9009930Z More
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9010290Z Recents
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9010600Z Approved SSH deployment
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9010990Z U
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9011190Z Unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9011480Z Unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9011670Z Command Palette
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9011870Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9012040Z Search for a command to run...
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9012240Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9012320Z Drop to add model chip
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9012680Z Review it before loading.
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9012990Z Select model
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9013540Z Good to see you
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9013870Z Approve for me
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9014110Z Search
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9014370Z Code
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9014810Z Dictate
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9015110Z Send message (Enter)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9015430Z Drop files here
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9015660Z Run settings
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9015990Z Preset
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9016200Z Saved
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9016580Z Delete
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9016820Z System Prompt
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9016990Z Sampling
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9017230Z Temperature
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9017410Z Top P
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9017610Z Top K
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9017780Z Min P
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9018050Z Repetition Penalty
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9018350Z Presence Penalty
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9018560Z Max Tokens
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9018790Z Tools
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:38.9018970Z Retrieval
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1802490Z thread http://127.0.0.1:8010/chat?thread=pr10642-ui-evidence unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1804000Z BETA
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1804470Z New chat
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1807430Z Model hub
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1807940Z Projects
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1808770Z Images
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1809450Z Video
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1811130Z Train
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1811700Z More
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1812280Z Recents
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1813010Z Approved SSH deployment
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1813640Z U
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1814090Z Unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1814850Z Unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1815470Z Command Palette
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1815720Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1816340Z Search for a command to run...
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1816830Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1817180Z Drop to add model chip
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1817930Z Review it before loading.
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1818640Z Select model
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1818980Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1819520Z Connect to the approved deployment server and run uptime.
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1820160Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1820960Z Used tool: $ ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1821920Z Copy
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1822540Z Edit response
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1823120Z Refresh
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1823610Z Delete message
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1824260Z Read aloud
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1825010Z More
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1825480Z Approve for me
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1826070Z Search
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1826580Z Code
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1827230Z Dictate
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1827760Z Send message (Enter)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1828410Z Drop files here
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1829110Z Run settings
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1829600Z Preset
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1830150Z Saved
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1830660Z Delete
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1831270Z System Prompt
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1831740Z Sampling
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1832310Z Temperature
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1832850Z Top P
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1833300Z Top K
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1833800Z Min P
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1834380Z Repetition Penalty
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1834960Z Presence Penalty
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1835560Z Max Tokens
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1836180Z Tools
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:40.1836840Z Retrieval
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0562110Z initial http://127.0.0.1:8010/chat unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0563980Z BETA
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0568210Z New chat
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0571380Z Model hub
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0574620Z Projects
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0578930Z Images
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0582740Z Video
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0583710Z Train
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0584750Z More
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0586380Z Recents
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0587060Z Approved SSH deployment
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0587950Z U
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0588480Z Unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0592070Z Unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0593650Z Command Palette
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0594950Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0595230Z Search for a command to run...
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0596040Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0597230Z Drop to add model chip
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0600930Z Review it before loading.
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0602870Z Select model
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0603280Z Ready when you are
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0603690Z Approve for me
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0604480Z Search
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0604950Z Code
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0608560Z Dictate
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0609420Z Send message (Enter)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0609950Z Drop files here
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0611310Z Run settings
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0612760Z Preset
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0634890Z Saved
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0636700Z Delete
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0639430Z System Prompt
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0641200Z Sampling
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0641890Z Temperature
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0648340Z Top P
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0648730Z Top K
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0649330Z Min P
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0650750Z Repetition Penalty
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0651180Z Presence Penalty
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0651620Z Max Tokens
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0651890Z Tools
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:56.0652310Z Retrieval
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2677050Z thread http://127.0.0.1:8010/chat?thread=pr10642-ui-evidence unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2720600Z BETA
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2721280Z New chat
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2721640Z Model hub
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2722040Z Projects
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2722650Z Images
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2722990Z Video
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2732930Z Train
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2733220Z More
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2733420Z Recents
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2733720Z Approved SSH deployment
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2742740Z U
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2743440Z Unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2743660Z Unsloth
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2743940Z Command Palette
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2744090Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2744280Z Search for a command to run...
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2744410Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2744570Z Drop to add model chip
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2744890Z Review it before loading.
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2745120Z Select model
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2745290Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2745540Z Connect to the approved deployment server and run uptime.
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2745810Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2746150Z Used tool: $ ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2746570Z Copy
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2746870Z Edit response
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2747040Z Refresh
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2747320Z Delete message
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2747630Z Read aloud
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2747830Z More
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2748100Z Approve for me
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2748300Z Search
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2748600Z Code
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2748820Z Dictate
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2749160Z Send message (Enter)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2749540Z Drop files here
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2749730Z Run settings
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2749980Z Preset
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2750160Z Saved
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2750410Z Delete
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2750590Z System Prompt
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2750850Z Sampling
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2751160Z Temperature
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2751460Z Top P
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2752100Z Top K
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2752480Z Min P
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2753190Z Repetition Penalty
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2753950Z Presence Penalty
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2757040Z Max Tokens
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2759640Z Tools
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:42:57.2760330Z Retrieval
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.2667990Z Traceback (most recent call last):
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.2771230Z   File "/Users/runner/work/unsloth/unsloth/source/.review-probes/ui_scene.py", line 72, in <module>
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.2915910Z     driver=webdriver.Safari()
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3026950Z   File "/Users/runner/work/unsloth/unsloth/source/.venv/lib/python3.13/site-packages/selenium/webdriver/safari/webdriver.py", line 57, in __init__
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3129210Z     super().__init__(command_executor=executor, options=self.options)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3233140Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3335760Z   File "/Users/runner/work/unsloth/unsloth/source/.venv/lib/python3.13/site-packages/selenium/webdriver/common/webdriver.py", line 25, in __init__
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3441550Z     super().__init__(*args, **kwargs)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3542600Z     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3644820Z   File "/Users/runner/work/unsloth/unsloth/source/.venv/lib/python3.13/site-packages/selenium/webdriver/remote/webdriver.py", line 296, in __init__
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3912540Z     self.start_session(capabilities)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.3966240Z     ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4076670Z   File "/Users/runner/work/unsloth/unsloth/source/.venv/lib/python3.13/site-packages/selenium/webdriver/remote/webdriver.py", line 401, in start_session
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4077450Z     response = self.execute(Command.NEW_SESSION, caps)["value"]
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4131680Z                ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4133710Z   File "/Users/runner/work/unsloth/unsloth/source/.venv/lib/python3.13/site-packages/selenium/webdriver/remote/webdriver.py", line 506, in execute
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4135370Z     self.error_handler.check_response(response)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4136280Z     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4138200Z   File "/Users/runner/work/unsloth/unsloth/source/.venv/lib/python3.13/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4140560Z     raise exception_class(message, screen, stacktrace)
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4164550Z selenium.common.exceptions.SessionNotCreatedException: Message: Could not create a session: The session timed out while connecting to a Safari instance. The following asynchronous operation timed out: Finding or launching a compatible local Safari and waiting for its RWIApplication to appear and become ready.; For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#sessionnotcreatedexception
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4303880Z 
+browser (repaired, d76ee3ea2e28cfe8d04c9e3c520838ca71246c6b)	Execute SSH and capture three branded browsers	2026-09-16T07:43:36.4837570Z ##[error]Process completed with exit code 1.

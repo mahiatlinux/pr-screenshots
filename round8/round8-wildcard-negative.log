@@ -1,0 +1,6 @@
+{'code': "from asyncssh import *; create_connection(factory, 'evil.example', config=None)", 'result': None}
+Traceback (most recent call last):
+  File "/evidence/asyncssh_wildcard_probe.py", line 6, in <module>
+    assert result is not None
+           ^^^^^^^^^^^^^^^^^^
+AssertionError

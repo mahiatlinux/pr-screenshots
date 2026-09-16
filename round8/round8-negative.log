@@ -1,0 +1,46 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_ssh_api_and_context_bindings[import asyncssh; asyncssh.create_connection(factory, 'approved.example', config=None)] _
+/evidence/round8_regressions.py:15: in test_ssh_api_and_context_bindings
+    assert _check_code_safety(code,session_id='round8') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncssh; asyncssh.create_connection(factory, 'approved.example', config=None)", session_id='round8')
+_ test_ssh_api_and_context_bindings[from asyncssh import create_connection as connect; connect(factory, host='approved.example', config=None)] _
+/evidence/round8_regressions.py:15: in test_ssh_api_and_context_bindings
+    assert _check_code_safety(code,session_id='round8') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from asyncssh import create_connection as connect; connect(factory, host='approved.example', config=None)", session_id='round8')
+_ test_ssh_api_and_context_bindings[import asyncssh; asyncssh.get_server_host_key('approved.example', config=None)] _
+/evidence/round8_regressions.py:15: in test_ssh_api_and_context_bindings
+    assert _check_code_safety(code,session_id='round8') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncssh; asyncssh.get_server_host_key('approved.example', config=None)", session_id='round8')
+_ test_ssh_api_and_context_bindings[import asyncssh; asyncssh.get_server_auth_methods('approved.example', config=None)] _
+/evidence/round8_regressions.py:15: in test_ssh_api_and_context_bindings
+    assert _check_code_safety(code,session_id='round8') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncssh; asyncssh.get_server_auth_methods('approved.example', config=None)", session_id='round8')
+_ test_ssh_api_and_context_bindings[import paramiko\nwith paramiko.SSHClient() as client:\n client.connect(hostname='approved.example')] _
+/evidence/round8_regressions.py:15: in test_ssh_api_and_context_bindings
+    assert _check_code_safety(code,session_id='round8') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nwith paramiko.SSHClient() as client:\n client.connect(hostname='approved.example')", session_id='round8')
+_ test_ssh_api_and_context_bindings[from paramiko import SSHClient as Client\nwith Client() as client:\n client.connect(hostname='approved.example')] _
+/evidence/round8_regressions.py:15: in test_ssh_api_and_context_bindings
+    assert _check_code_safety(code,session_id='round8') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from paramiko import SSHClient as Client\nwith Client() as client:\n client.connect(hostname='approved.example')", session_id='round8')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round8_regressions.py::test_ssh_api_and_context_bindings[import asyncssh; asyncssh.create_connection(factory, 'approved.example', config=None)]
+FAILED ../evidence/round8_regressions.py::test_ssh_api_and_context_bindings[from asyncssh import create_connection as connect; connect(factory, host='approved.example', config=None)]
+FAILED ../evidence/round8_regressions.py::test_ssh_api_and_context_bindings[import asyncssh; asyncssh.get_server_host_key('approved.example', config=None)]
+FAILED ../evidence/round8_regressions.py::test_ssh_api_and_context_bindings[import asyncssh; asyncssh.get_server_auth_methods('approved.example', config=None)]
+FAILED ../evidence/round8_regressions.py::test_ssh_api_and_context_bindings[import paramiko\nwith paramiko.SSHClient() as client:\n client.connect(hostname='approved.example')]
+FAILED ../evidence/round8_regressions.py::test_ssh_api_and_context_bindings[from paramiko import SSHClient as Client\nwith Client() as client:\n client.connect(hostname='approved.example')]
+6 failed, 1 warning in 0.12s

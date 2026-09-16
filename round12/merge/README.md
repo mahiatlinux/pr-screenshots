@@ -1,0 +1,3 @@
+# Prospective merge verification
+
+Merge and parents: `8ca595d94d65f1b2e3908d294845f464896844d5 71d85d5bb5fec3806efc428c6d2a264f4d00d60d 8c5af053c90453fea17a5f672d414f1fb1bbb566`. Policy/sandbox/permission suites: 2,817 passed and one skip. All 32 real approved connection controls pass, while the unapproved container client and xargs SCP destination are blocked. Frontend assets reuse the verified production build on unchanged base 71d85d5bb5fec3806efc428c6d2a264f4d00d60d from round10. Fresh authenticated Chromium 153 and Firefox 155 captures passed and were manually inspected. They restore executed tool outputs through chat history, without model inference or a browser-driven Allow click.

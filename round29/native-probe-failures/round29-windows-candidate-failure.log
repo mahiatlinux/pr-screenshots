@@ -1,0 +1,9 @@
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	﻿2026-09-16T11:12:40.0278540Z ##[group]Run git apply ../driver/probes/round29.patch
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	2026-09-16T11:12:40.0279046Z ^[[36;1mgit apply ../driver/probes/round29.patch^[[0m
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	2026-09-16T11:12:40.0354744Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	2026-09-16T11:12:40.0355126Z ##[endgroup]
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	2026-09-16T11:12:40.3522026Z error: patch failed: studio/backend/core/inference/tools.py:1352
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	2026-09-16T11:12:40.3522705Z error: studio/backend/core/inference/tools.py: patch does not apply
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	2026-09-16T11:12:40.3524812Z error: patch failed: studio/backend/tests/test_ssh_policy.py:1546
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	2026-09-16T11:12:40.3525631Z error: studio/backend/tests/test_ssh_policy.py: patch does not apply
+cmd-ssh (fix, 318746441f80064c1275ce59b6351d5b8f421418, --fixed)	Apply candidate repair	2026-09-16T11:12:40.4654873Z ##[error]Process completed with exit code 1.

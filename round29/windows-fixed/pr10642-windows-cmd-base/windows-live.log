@@ -1,0 +1,5 @@
+{"probe": "original", "returncode": 255, "stdout": "", "stderr": ""}
+{"probe": "programdata", "returncode": 0, "stdout": "", "stderr": "OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2\n"}
+{"probe": "profile", "returncode": 255, "stdout": "", "stderr": ""}
+RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+{"platform": "win32", "shell": ["cmd", "/c"], "command": "set PROGRAMDATA=C:\\ProgramData&echo ok&C:\\Windows\\System32\\OpenSSH\\ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=DEBUG3 -o IdentitiesOnly=yes review@127.0.0.1 uptime", "before": "Blocked command(s) for safety: ssh", "connections": 0}

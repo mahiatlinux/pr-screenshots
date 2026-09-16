@@ -1,0 +1,23 @@
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	﻿2026-09-16T10:04:59.4294183Z ##[group]Run .venv/Scripts/python ../driver/probes/round29_windows_live.py --negative 2>&1 | Tee-Object -FilePath windows-live.log
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4295223Z ^[[36;1m.venv/Scripts/python ../driver/probes/round29_windows_live.py --negative 2>&1 | Tee-Object -FilePath windows-live.log^[[0m
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4295866Z ^[[36;1mif ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }^[[0m
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4328492Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4328847Z env:
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4329119Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4329565Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4330023Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4330424Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4330826Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4331218Z   UNSLOTH_STUDIO_HOME: D:\a\unsloth\unsloth/source/.home/studio
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4331617Z   XDG_CACHE_HOME: D:\a\unsloth\unsloth/source/.cache
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4331957Z   PYTHONPATH: D:\a\unsloth\unsloth/source/studio/backend
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:04:59.4332248Z ##[endgroup]
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:01.2420486Z ssh version: 
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:04.8455027Z ^[[31;1mRAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')^[[0m
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:04.8798230Z {"platform": "win32", "shell": ["cmd", "/c"], "command": "echo ok&C:\\Windows\\System32\\OpenSSH\\ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=DEBUG3 -o IdentitiesOnly=yes review@127.0.0.1 uptime", "before": "Exit code 255:\nok\n", "connections": 0}
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:04.8809745Z ^[[31;1mTraceback (most recent call last):^[[0m
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:04.8818642Z ^[[31;1m  File "D:\a\unsloth\unsloth\driver\probes\round29_windows_live.py", line 89, in <module>^[[0m
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:04.8827099Z ^[[31;1m    assert 'pr10642-live-ssh-ok' in result and len(connections)==1^[[0m
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:04.8835685Z ^[[31;1m           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[[0m
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:04.8856321Z ^[[31;1mAssertionError^[[0m
+cmd-ssh (head, 318746441f80064c1275ce59b6351d5b8f421418, --negative)	Execute real cmd fallback and SSH	2026-09-16T10:05:05.1768983Z ##[error]Process completed with exit code 1.

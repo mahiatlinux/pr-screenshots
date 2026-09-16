@@ -1,0 +1,3 @@
+# Prospective merge verification
+
+Merge and parents: `d691db67d0c54befea94b05952f91213b21c8410 71d85d5bb5fec3806efc428c6d2a264f4d00d60d ea031db32356234a111aa94f3ac53408b7fce5cd`. Policy/sandbox/permission suites: 2,823 passed and one skip. All 32 real approved connection controls pass. Three SFTP escape attempts make zero connections; a separate direct approved SFTP session connects successfully. Frontend assets reuse the verified production build on unchanged base 71d85d5bb5fec3806efc428c6d2a264f4d00d60d from round10. Fresh authenticated Chromium 153 and Firefox 155 captures passed and were manually inspected. They restore executed tool outputs through chat history, without model inference or a browser-driven Allow click.

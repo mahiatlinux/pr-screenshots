@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/evidence/round9_live.py", line 107, in <module>
+    assert len(connections) == 0 and all('unapproved' in value for value in terminal_before.values()), terminal_before
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'multiple_at': 'pr10642-live-ssh-ok\n', 'coproc': 'pr10642-live-ssh-ok\n'}

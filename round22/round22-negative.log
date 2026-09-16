@@ -1,0 +1,52 @@
+FFFFFFF.                                                                 [100%]
+=================================== FAILURES ===================================
+_ test_conditional_client_requires_approval[client = paramiko.SSHClient() if use_paramiko else fallback] _
+/evidence/round22_regressions.py:17: in test_conditional_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient = paramiko.SSHClient() if use_paramiko else fallback\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_conditional_client_requires_approval[client = fallback if use_fallback else paramiko.SSHClient()] _
+/evidence/round22_regressions.py:17: in test_conditional_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient = fallback if use_fallback else paramiko.SSHClient()\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_conditional_client_requires_approval[client = paramiko.SSHClient() if first else (fallback if second else paramiko.SSHClient())] _
+/evidence/round22_regressions.py:17: in test_conditional_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient = paramiko.SSHClient() if first else (fallback if second else paramiko.SSHClient())\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_conditional_client_requires_approval[client = paramiko.SSHClient() or fallback] _
+/evidence/round22_regressions.py:17: in test_conditional_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient = paramiko.SSHClient() or fallback\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_conditional_client_requires_approval[client = enabled and paramiko.SSHClient()] _
+/evidence/round22_regressions.py:17: in test_conditional_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient = enabled and paramiko.SSHClient()\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_conditional_client_requires_approval[Factory = paramiko.SSHClient if enabled else fallback; client=Factory()] _
+/evidence/round22_regressions.py:17: in test_conditional_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nFactory = paramiko.SSHClient if enabled else fallback; client=Factory()\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_conditional_client_requires_approval[Factory = enabled and paramiko.SSHClient; client=Factory()] _
+/evidence/round22_regressions.py:17: in test_conditional_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nFactory = enabled and paramiko.SSHClient; client=Factory()\nclient.connect(hostname='evil.example')", session_id='review')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round22_regressions.py::test_conditional_client_requires_approval[client = paramiko.SSHClient() if use_paramiko else fallback]
+FAILED ../evidence/round22_regressions.py::test_conditional_client_requires_approval[client = fallback if use_fallback else paramiko.SSHClient()]
+FAILED ../evidence/round22_regressions.py::test_conditional_client_requires_approval[client = paramiko.SSHClient() if first else (fallback if second else paramiko.SSHClient())]
+FAILED ../evidence/round22_regressions.py::test_conditional_client_requires_approval[client = paramiko.SSHClient() or fallback]
+FAILED ../evidence/round22_regressions.py::test_conditional_client_requires_approval[client = enabled and paramiko.SSHClient()]
+FAILED ../evidence/round22_regressions.py::test_conditional_client_requires_approval[Factory = paramiko.SSHClient if enabled else fallback; client=Factory()]
+FAILED ../evidence/round22_regressions.py::test_conditional_client_requires_approval[Factory = enabled and paramiko.SSHClient; client=Factory()]
+7 failed, 1 passed, 1 warning in 0.13s

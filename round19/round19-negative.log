@@ -1,0 +1,58 @@
+FFFF.FFFF                                                                [100%]
+=================================== FAILURES ===================================
+_ test_method_clients_require_approval[import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nD().deploy(paramiko.SSHClient())] _
+/evidence/round19_regressions.py:18: in test_method_clients_require_approval
+    assert _check_code_safety(code,session_id='round19') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nD().deploy(paramiko.SSHClient())", session_id='round19')
+_ test_method_clients_require_approval[import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); d.deploy(paramiko.SSHClient())] _
+/evidence/round19_regressions.py:18: in test_method_clients_require_approval
+    assert _check_code_safety(code,session_id='round19') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); d.deploy(paramiko.SSHClient())", session_id='round19')
+_ test_method_clients_require_approval[import paramiko\nclass D:\n @classmethod\n def deploy(cls,client): client.connect(hostname='evil.example')\nD.deploy(paramiko.SSHClient())] _
+/evidence/round19_regressions.py:18: in test_method_clients_require_approval
+    assert _check_code_safety(code,session_id='round19') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass D:\n @classmethod\n def deploy(cls,client): client.connect(hostname='evil.example')\nD.deploy(paramiko.SSHClient())", session_id='round19')
+_ test_method_clients_require_approval[import paramiko\nclass D:\n @staticmethod\n def deploy(client): client.connect(hostname='evil.example')\nD.deploy(paramiko.SSHClient())] _
+/evidence/round19_regressions.py:18: in test_method_clients_require_approval
+    assert _check_code_safety(code,session_id='round19') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass D:\n @staticmethod\n def deploy(client): client.connect(hostname='evil.example')\nD.deploy(paramiko.SSHClient())", session_id='round19')
+_ test_method_clients_require_approval[import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); D.deploy(d,paramiko.SSHClient())] _
+/evidence/round19_regressions.py:18: in test_method_clients_require_approval
+    assert _check_code_safety(code,session_id='round19') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); D.deploy(d,paramiko.SSHClient())", session_id='round19')
+_ test_method_clients_require_approval[import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); run=d.deploy; run(paramiko.SSHClient())] _
+/evidence/round19_regressions.py:18: in test_method_clients_require_approval
+    assert _check_code_safety(code,session_id='round19') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); run=d.deploy; run(paramiko.SSHClient())", session_id='round19')
+_ test_method_clients_require_approval[import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\nrun=deploy; run(paramiko.SSHClient())] _
+/evidence/round19_regressions.py:18: in test_method_clients_require_approval
+    assert _check_code_safety(code,session_id='round19') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\nrun=deploy; run(paramiko.SSHClient())", session_id='round19')
+_ test_method_clients_require_approval[import paramiko\nclass D:\n def __init__(self,client): client.connect(hostname='evil.example')\nD(paramiko.SSHClient())] _
+/evidence/round19_regressions.py:18: in test_method_clients_require_approval
+    assert _check_code_safety(code,session_id='round19') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass D:\n def __init__(self,client): client.connect(hostname='evil.example')\nD(paramiko.SSHClient())", session_id='round19')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round19_regressions.py::test_method_clients_require_approval[import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nD().deploy(paramiko.SSHClient())]
+FAILED ../evidence/round19_regressions.py::test_method_clients_require_approval[import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); d.deploy(paramiko.SSHClient())]
+FAILED ../evidence/round19_regressions.py::test_method_clients_require_approval[import paramiko\nclass D:\n @classmethod\n def deploy(cls,client): client.connect(hostname='evil.example')\nD.deploy(paramiko.SSHClient())]
+FAILED ../evidence/round19_regressions.py::test_method_clients_require_approval[import paramiko\nclass D:\n @staticmethod\n def deploy(client): client.connect(hostname='evil.example')\nD.deploy(paramiko.SSHClient())]
+FAILED ../evidence/round19_regressions.py::test_method_clients_require_approval[import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); D.deploy(d,paramiko.SSHClient())]
+FAILED ../evidence/round19_regressions.py::test_method_clients_require_approval[import paramiko\nclass D:\n def deploy(self,client): client.connect(hostname='evil.example')\nd=D(); run=d.deploy; run(paramiko.SSHClient())]
+FAILED ../evidence/round19_regressions.py::test_method_clients_require_approval[import paramiko\ndef deploy(client): client.connect(hostname='evil.example')\nrun=deploy; run(paramiko.SSHClient())]
+FAILED ../evidence/round19_regressions.py::test_method_clients_require_approval[import paramiko\nclass D:\n def __init__(self,client): client.connect(hostname='evil.example')\nD(paramiko.SSHClient())]
+8 failed, 1 passed, 1 warning in 0.14s

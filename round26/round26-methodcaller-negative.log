@@ -1,0 +1,6 @@
+{"result": "pr10642-live-ssh-ok\n\n", "connections": 1}
+Traceback (most recent call last):
+  File "/evidence/round26_methodcaller_live.py", line 76, in <module>
+    assert 'Blocked' in result and not connections
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,6 @@
+{"command": "printf %s 'ssh -F none -p 22222 -i review-key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR -o IdentitiesOnly=yes review@127.0.0.2 uptime\n' > run.sh; bash run.sh", "result": "pr10642-live-ssh-ok\n\n__FILES__:[{\"name\": \"run.sh\", \"size\": 159}]", "connections": 1}
+Traceback (most recent call last):
+  File "/evidence/round26_script_live.py", line 76, in <module>
+    assert 'Blocked' in result and not connections
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

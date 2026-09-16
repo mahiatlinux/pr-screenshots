@@ -74,4 +74,12 @@ command="git -C /tmp -c core.sshCommand="+shlex.quote(git_ssh)+" ls-remote ssh:/
 result=_bash_exec(command,session_id=session,timeout=10)
 print(json.dumps(dict(command=command,result=result,connections=len(connections))),flush=True)
 assert len(connections)==0, "git connected before SSH approval"
+approve_hosts(session,['127.0.0.2'])
+approved_result=_bash_exec(command,session_id=session,timeout=10)
+assert len(connections)==0 and 'Blocked' in approved_result,approved_result
+import subprocess
+subprocess.run(['git','init','--bare','/tmp/git-source'],check=True,capture_output=True)
+local_result=_bash_exec('git clone /tmp/git-source /tmp/git-clone',session_id=session,timeout=10)
+assert 'Cloning into' in local_result and 'Exit code' not in local_result,local_result
+print(json.dumps(dict(approved_result=approved_result,local_result=local_result,connections=len(connections))),flush=True)
 stop.set(); listener.close()

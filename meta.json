@@ -1,0 +1,31 @@
+{
+  "pr": 11161,
+  "head_ref": "22c5d5403",
+  "base_sha": "38d4a4869ad3173ba7cad99682f5c8726e72f14d",
+  "head_sha": "22c5d54039442db5a5451fbff41a4d8f47f6f77d",
+  "scene": "prefill_progress",
+  "expect": "With the same seeded monitor payload, BEFORE shows running and AFTER shows Prompt processing \u00b7 60%.",
+  "facts": {
+    "BEFORE": {
+      "running_phase": "prompt_processing",
+      "percent": 60.0,
+      "rendered_status": "RUNNING"
+    },
+    "AFTER": {
+      "running_phase": "prompt_processing",
+      "percent": 60.0,
+      "rendered_status": "PROMPT PROCESSING \u00b7 60%"
+    }
+  },
+  "studio_env": {},
+  "pairs": [
+    "before_after.png"
+  ],
+  "environment": {
+    "os": "Linux x86_64",
+    "browser": "Chromium 153.0.8010.12",
+    "viewport": "1500x920",
+    "python": "3.12.13"
+  },
+  "method": "Two isolated Studio installs; same seeded monitor API response. Rendering evidence, not live model inference."
+}

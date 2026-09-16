@@ -1,0 +1,11 @@
+{
+  "browser": "chromium",
+  "version": "153.0.8010.12",
+  "marker": "pr10642-live-ssh-ok",
+  "result": "pr10642-live-ssh-ok\n",
+  "url": "http://127.0.0.1:8010/chat?thread=pr10642-ui-evidence",
+  "viewport": [
+    1280,
+    900
+  ]
+}

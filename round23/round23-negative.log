@@ -1,0 +1,34 @@
+FFFF..                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_constructed_instance_client_requires_approval[import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\nPool().client.connect(hostname='evil.example')] _
+/evidence/round23_regressions.py:14: in test_constructed_instance_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\nPool().client.connect(hostname='evil.example')", session_id='review')
+_ test_constructed_instance_client_requires_approval[import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\npool=Pool(); pool.client.connect(hostname='evil.example')] _
+/evidence/round23_regressions.py:14: in test_constructed_instance_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\npool=Pool(); pool.client.connect(hostname='evil.example')", session_id='review')
+_ test_constructed_instance_client_requires_approval[import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\npool=Pool(); alias=pool; alias.client.connect(hostname='evil.example')] _
+/evidence/round23_regressions.py:14: in test_constructed_instance_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\npool=Pool(); alias=pool; alias.client.connect(hostname='evil.example')", session_id='review')
+_ test_constructed_instance_client_requires_approval[import paramiko\nclass Pool:\n def __init__(this): this.client=paramiko.SSHClient()\nPool().client.connect(hostname='evil.example')] _
+/evidence/round23_regressions.py:14: in test_constructed_instance_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclass Pool:\n def __init__(this): this.client=paramiko.SSHClient()\nPool().client.connect(hostname='evil.example')", session_id='review')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round23_regressions.py::test_constructed_instance_client_requires_approval[import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\nPool().client.connect(hostname='evil.example')]
+FAILED ../evidence/round23_regressions.py::test_constructed_instance_client_requires_approval[import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\npool=Pool(); pool.client.connect(hostname='evil.example')]
+FAILED ../evidence/round23_regressions.py::test_constructed_instance_client_requires_approval[import paramiko\nclass Pool:\n def __init__(self): self.client=paramiko.SSHClient()\npool=Pool(); alias=pool; alias.client.connect(hostname='evil.example')]
+FAILED ../evidence/round23_regressions.py::test_constructed_instance_client_requires_approval[import paramiko\nclass Pool:\n def __init__(this): this.client=paramiko.SSHClient()\nPool().client.connect(hostname='evil.example')]
+4 failed, 2 passed, 1 warning in 0.14s

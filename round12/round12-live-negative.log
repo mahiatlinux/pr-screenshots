@@ -1,0 +1,13 @@
+container before: pr10642-live-ssh-ok
+
+ connections: 1
+xargs before: Exit code 124:
+subsystem request failed on channel 0
+scp: Connection closed
+xargs: scp: exited with status 255; aborting
+ connections: 2
+Traceback (most recent call last):
+  File "/evidence/round12_live.py", line 119, in <module>
+    assert len(connections)==0 and 'Blocked' in container_before and 'Blocked' in xargs_before
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

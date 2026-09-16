@@ -1,0 +1,2 @@
+{"before": "Error: unsafe code detected (Blocked: SSH library access to unapproved server(s): 127.0.0.2. Approve the server when prompted to allow deployment workflows.). Please remove unsafe patterns from your code.", "connections": 0}
+{"after": "pr10642-reverse-ssh-ok\n", "connections": 1}

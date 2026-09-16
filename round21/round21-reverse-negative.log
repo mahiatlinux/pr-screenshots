@@ -1,0 +1,6 @@
+{"before": "pr10642-reverse-ssh-ok\n", "connections": 1}
+Traceback (most recent call last):
+  File "/evidence/round21_reverse_live.py", line 29, in <module>
+    assert not connections and 'Blocked' in before
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

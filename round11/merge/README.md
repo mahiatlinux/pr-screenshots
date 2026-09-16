@@ -1,0 +1,3 @@
+# Prospective merge verification
+
+Merge and parents: `190a06b6fae082f4d15e433ce033e895682ab532 71d85d5bb5fec3806efc428c6d2a264f4d00d60d 1f8c52328d9b7347534d0da51236dba43890aec4`. Policy/sandbox/permission suites: 2,807 passed and one skip. All 30 real SSH connection controls pass. Frontend assets reuse the verified production build on unchanged base 71d85d5bb5fec3806efc428c6d2a264f4d00d60d from round10; only SSH policy and tests changed. Fresh authenticated Chromium 153 and Firefox 155 captures passed and were manually inspected. They restore real executed tool output through chat history, without model inference or a browser-driven Allow click.

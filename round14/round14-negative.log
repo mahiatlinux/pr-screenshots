@@ -1,0 +1,53 @@
+FFFFFFF.                                                                 [100%]
+=================================== FAILURES ===================================
+_ test_newline_ssh_requires_approval[bash -s <<'EOF'\nssh -F none evil.example uptime\nEOF] _
+/evidence/round14_regressions.py:13: in test_newline_ssh_requires_approval
+    assert check_ssh_command_access(command,'round14') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access("bash -s <<'EOF'\nssh -F none evil.example uptime\nEOF", 'round14')
+_ test_newline_ssh_requires_approval[bash -s <<'EOF'\n# comment\nssh -F none evil.example uptime\nEOF] _
+/evidence/round14_regressions.py:13: in test_newline_ssh_requires_approval
+    assert check_ssh_command_access(command,'round14') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access("bash -s <<'EOF'\n# comment\nssh -F none evil.example uptime\nEOF", 'round14')
+_ test_newline_ssh_requires_approval[echo ready\nssh -F none evil.example uptime] _
+/evidence/round14_regressions.py:13: in test_newline_ssh_requires_approval
+    assert check_ssh_command_access(command,'round14') is not None
+E   AssertionError: assert None is not None
+E    +  where None = check_ssh_command_access('echo ready\nssh -F none evil.example uptime', 'round14')
+_ test_named_client_requires_approval[import paramiko; (client:=paramiko.SSHClient()).connect(hostname='evil.example')] _
+/evidence/round14_regressions.py:23: in test_named_client_requires_approval
+    assert _check_code_safety(code,session_id='round14') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; (client:=paramiko.SSHClient()).connect(hostname='evil.example')", session_id='round14')
+_ test_named_client_requires_approval[import paramiko; (client:=paramiko.SSHClient()); client.connect(hostname='evil.example')] _
+/evidence/round14_regressions.py:23: in test_named_client_requires_approval
+    assert _check_code_safety(code,session_id='round14') is not None
+E   assert None is not None
+E    +  where None = _check_code_safety("import paramiko; (client:=paramiko.SSHClient()); client.connect(hostname='evil.example')", session_id='round14')
+________________ test_ssh_line_continuation_preserves_arguments ________________
+/evidence/round14_regressions.py:30: in test_ssh_line_continuation_preserves_arguments
+    assert check_ssh_command_access('ssh -F none '+chr(92)+'\n approved.example uptime','round14') is None
+E   AssertionError: assert 'Blocked: SSH command requires a literal, approved target server. Approve the server when prompted before connecting.' is None
+E    +  where 'Blocked: SSH command requires a literal, approved target server. Approve the server when prompted before connecting.' = check_ssh_command_access((('ssh -F none ' + '\\') + '\n approved.example uptime'), 'round14')
+E    +    where '\\' = chr(92)
+_________________ test_blank_lines_preserve_command_boundaries _________________
+/evidence/round14_regressions.py:36: in test_blank_lines_preserve_command_boundaries
+    assert check_ssh_command_access(command,'round14') is not None
+E   assert None is not None
+E    +  where None = check_ssh_command_access("bash -s <<'EOF'\n\nssh -F none evil.example uptime\nEOF", 'round14')
+=============================== warnings summary ===============================
+studio/backend/core/inference/tool_confinement.py:262
+  /work/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED ../evidence/round14_regressions.py::test_newline_ssh_requires_approval[bash -s <<'EOF'\nssh -F none evil.example uptime\nEOF]
+FAILED ../evidence/round14_regressions.py::test_newline_ssh_requires_approval[bash -s <<'EOF'\n# comment\nssh -F none evil.example uptime\nEOF]
+FAILED ../evidence/round14_regressions.py::test_newline_ssh_requires_approval[echo ready\nssh -F none evil.example uptime]
+FAILED ../evidence/round14_regressions.py::test_named_client_requires_approval[import paramiko; (client:=paramiko.SSHClient()).connect(hostname='evil.example')]
+FAILED ../evidence/round14_regressions.py::test_named_client_requires_approval[import paramiko; (client:=paramiko.SSHClient()); client.connect(hostname='evil.example')]
+FAILED ../evidence/round14_regressions.py::test_ssh_line_continuation_preserves_arguments
+FAILED ../evidence/round14_regressions.py::test_blank_lines_preserve_command_boundaries
+7 failed, 1 passed, 1 warning in 0.13s

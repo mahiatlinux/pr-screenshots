@@ -1,0 +1,9 @@
+2026-09-17 00:18:04 [info     ] Remote image fetch: refusing non-https scheme=http
+2026-09-17 00:18:04 [warning  ] Remote image fetch: refusing host=127.0.0.1 reason=Blocked: refusing to fetch non-public address 127.0.0.1.
+2026-09-17 00:18:04 [warning  ] Remote image fetch: refusing host=localhost reason=Blocked: refusing to fetch non-public address ::1.
+2026-09-17 00:18:04 [warning  ] Remote image fetch: refusing host=169.254.169.254 reason=Blocked: refusing to fetch non-public address 169.254.169.254.
+2026-09-17 00:18:04 [info     ] Remote image fetch: refusing non-https scheme=file
+2026-09-17 00:18:04 [info     ] Remote image fetch: refusing non-https scheme=ftp
+{"os": "macOS-15.7.9-arm64-arm-64bit-Mach-O", "python": "3.13.15 (v3.13.15:4061bc4c35f, Aug  5 2026, 09:08:51) [Clang 21.0.0 (clang-2100.1.1.101)]", "side": "head", "public_bytes": 30605, "public_seconds": 0.032}
+{"side": "head", "deadline_seconds": 0.2, "elapsed_seconds": 0.205, "refused": true}
+PASS head

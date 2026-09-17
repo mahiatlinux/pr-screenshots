@@ -1,0 +1,332 @@
+[
+  {
+    "case": "http_loopback",
+    "shape": "chat",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "http://127.0.0.1:9/image.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.043
+  },
+  {
+    "case": "http_loopback",
+    "shape": "tools",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "http://127.0.0.1:9/image.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.015
+  },
+  {
+    "case": "http_loopback",
+    "shape": "anthropic",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "http://127.0.0.1:9/image.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.007
+  },
+  {
+    "case": "http_loopback",
+    "shape": "responses",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "http://127.0.0.1:9/image.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.007
+  },
+  {
+    "case": "http_loopback",
+    "shape": "count",
+    "status": 200,
+    "dispatched": [],
+    "counted": [
+      {
+        "kind": "remote",
+        "url": "http://127.0.0.1:9/image.png"
+      }
+    ],
+    "seconds": 0.004
+  },
+  {
+    "case": "https_loopback",
+    "shape": "chat",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "https://127.0.0.1:9/image.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "https_loopback",
+    "shape": "tools",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "https://127.0.0.1:9/image.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.013
+  },
+  {
+    "case": "https_loopback",
+    "shape": "anthropic",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "https://127.0.0.1:9/image.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.006
+  },
+  {
+    "case": "https_loopback",
+    "shape": "responses",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "https://127.0.0.1:9/image.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "https_loopback",
+    "shape": "count",
+    "status": 200,
+    "dispatched": [],
+    "counted": [
+      {
+        "kind": "remote",
+        "url": "https://127.0.0.1:9/image.png"
+      }
+    ],
+    "seconds": 0.003
+  },
+  {
+    "case": "metadata",
+    "shape": "chat",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "http://169.254.169.254/latest/meta-data/"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "metadata",
+    "shape": "tools",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "http://169.254.169.254/latest/meta-data/"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.009
+  },
+  {
+    "case": "metadata",
+    "shape": "anthropic",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "http://169.254.169.254/latest/meta-data/"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "metadata",
+    "shape": "responses",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "http://169.254.169.254/latest/meta-data/"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "metadata",
+    "shape": "count",
+    "status": 200,
+    "dispatched": [],
+    "counted": [
+      {
+        "kind": "remote",
+        "url": "http://169.254.169.254/latest/meta-data/"
+      }
+    ],
+    "seconds": 0.003
+  },
+  {
+    "case": "inline",
+    "shape": "chat",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "inline",
+    "shape": "tools",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.014
+  },
+  {
+    "case": "inline",
+    "shape": "anthropic",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "inline",
+    "shape": "responses",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.005
+  },
+  {
+    "case": "inline",
+    "shape": "count",
+    "status": 200,
+    "dispatched": [],
+    "counted": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "seconds": 0.002
+  },
+  {
+    "case": "public",
+    "shape": "chat",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "https://raw.githubusercontent.com/python-pillow/Pillow/main/Tests/images/hopper.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "public",
+    "shape": "tools",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "https://raw.githubusercontent.com/python-pillow/Pillow/main/Tests/images/hopper.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.01
+  },
+  {
+    "case": "public",
+    "shape": "anthropic",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "https://raw.githubusercontent.com/python-pillow/Pillow/main/Tests/images/hopper.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.006
+  },
+  {
+    "case": "public",
+    "shape": "responses",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "remote",
+        "url": "https://raw.githubusercontent.com/python-pillow/Pillow/main/Tests/images/hopper.png"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "public",
+    "shape": "count",
+    "status": 200,
+    "dispatched": [],
+    "counted": [
+      {
+        "kind": "remote",
+        "url": "https://raw.githubusercontent.com/python-pillow/Pillow/main/Tests/images/hopper.png"
+      }
+    ],
+    "seconds": 0.002
+  }
+]

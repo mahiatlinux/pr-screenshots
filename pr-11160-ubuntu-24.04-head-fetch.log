@@ -1,0 +1,9 @@
+2026-09-17 00:17:52 [info     ] Remote image fetch: refusing non-https scheme=http
+2026-09-17 00:17:52 [warning  ] Remote image fetch: refusing host=127.0.0.1 reason=Blocked: refusing to fetch non-public address 127.0.0.1.
+2026-09-17 00:17:52 [warning  ] Remote image fetch: refusing host=localhost reason=Blocked: refusing to fetch non-public address ::1.
+2026-09-17 00:17:52 [warning  ] Remote image fetch: refusing host=169.254.169.254 reason=Blocked: refusing to fetch non-public address 169.254.169.254.
+2026-09-17 00:17:52 [info     ] Remote image fetch: refusing non-https scheme=file
+2026-09-17 00:17:52 [info     ] Remote image fetch: refusing non-https scheme=ftp
+{"os": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39", "python": "3.13.15 (main, Aug  6 2026, 02:15:18) [GCC 13.3.0]", "side": "head", "public_bytes": 30605, "public_seconds": 0.06}
+{"side": "head", "deadline_seconds": 0.2, "elapsed_seconds": 0.2, "refused": true}
+PASS head

@@ -1,0 +1,268 @@
+[
+  {
+    "case": "http_loopback",
+    "shape": "chat",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.041
+  },
+  {
+    "case": "http_loopback",
+    "shape": "tools",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.002
+  },
+  {
+    "case": "http_loopback",
+    "shape": "anthropic",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "http_loopback",
+    "shape": "responses",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "http_loopback",
+    "shape": "count",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.002
+  },
+  {
+    "case": "https_loopback",
+    "shape": "chat",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "https_loopback",
+    "shape": "tools",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.002
+  },
+  {
+    "case": "https_loopback",
+    "shape": "anthropic",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.002
+  },
+  {
+    "case": "https_loopback",
+    "shape": "responses",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "https_loopback",
+    "shape": "count",
+    "status": 200,
+    "dispatched": [],
+    "counted": [
+      {
+        "kind": "inline",
+        "bytes": 69,
+        "sha256": "c47dd9465c00e9a0c8b85e9ea58d3034a0d23b9cf926113602f3460752a4eb96"
+      }
+    ],
+    "seconds": 0.003
+  },
+  {
+    "case": "metadata",
+    "shape": "chat",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "metadata",
+    "shape": "tools",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.002
+  },
+  {
+    "case": "metadata",
+    "shape": "anthropic",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "metadata",
+    "shape": "responses",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "metadata",
+    "shape": "count",
+    "status": 400,
+    "dispatched": [],
+    "counted": [],
+    "seconds": 0.001
+  },
+  {
+    "case": "inline",
+    "shape": "chat",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.003
+  },
+  {
+    "case": "inline",
+    "shape": "tools",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.012
+  },
+  {
+    "case": "inline",
+    "shape": "anthropic",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "inline",
+    "shape": "responses",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.004
+  },
+  {
+    "case": "inline",
+    "shape": "count",
+    "status": 200,
+    "dispatched": [],
+    "counted": [
+      {
+        "kind": "inline",
+        "bytes": 79,
+        "sha256": "6fdd920b34509b36318610d400d58a31a750823bb513df95835d1822f4e6bf8f"
+      }
+    ],
+    "seconds": 0.002
+  },
+  {
+    "case": "public",
+    "shape": "chat",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 30343,
+        "sha256": "4b69699aab174d8bcb5f1c57cbf41b14cece83f4c001ad72f5ce3ca9492b1bf3"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.046
+  },
+  {
+    "case": "public",
+    "shape": "tools",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 30343,
+        "sha256": "4b69699aab174d8bcb5f1c57cbf41b14cece83f4c001ad72f5ce3ca9492b1bf3"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.056
+  },
+  {
+    "case": "public",
+    "shape": "anthropic",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 30343,
+        "sha256": "4b69699aab174d8bcb5f1c57cbf41b14cece83f4c001ad72f5ce3ca9492b1bf3"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.048
+  },
+  {
+    "case": "public",
+    "shape": "responses",
+    "status": 200,
+    "dispatched": [
+      {
+        "kind": "inline",
+        "bytes": 30343,
+        "sha256": "4b69699aab174d8bcb5f1c57cbf41b14cece83f4c001ad72f5ce3ca9492b1bf3"
+      }
+    ],
+    "counted": [],
+    "seconds": 0.044
+  },
+  {
+    "case": "public",
+    "shape": "count",
+    "status": 200,
+    "dispatched": [],
+    "counted": [
+      {
+        "kind": "inline",
+        "bytes": 69,
+        "sha256": "c47dd9465c00e9a0c8b85e9ea58d3034a0d23b9cf926113602f3460752a4eb96"
+      }
+    ],
+    "seconds": 0.003
+  }
+]

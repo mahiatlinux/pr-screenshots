@@ -59,7 +59,7 @@ The original PR has three failed GitHub checks. Their historical run-log endpoin
 | Repository Python plus CLI | 6,544 passed, 128 skipped | 6,544 passed, 128 skipped | Both pass |
 | Extra browser UI | FLUX.2 picker timeout in download-only cancel/retry | All selected steps pass | Base-only failure |
 
-The shared backend failure is `test_base_model_dir_name_fallback.py::test_the_transcribed_repo_id_rule_is_never_looser_than_the_hubs`: `assert ['Café-8B'] == []`. Dependency versions match between each pair; the repository test environments differ only in the editable Unsloth commit. Every serial backend test passed.
+The shared backend failure is `test_base_model_dir_name_fallback.py::test_the_transcribed_repo_id_rule_is_never_looser_than_the_hubs`: `assert ['Café-8B'] == []`. Backend package resolutions match exactly; repository Python packages differ only in the editable Unsloth commit. The recorded browser test-driver packages also match. Every serial backend test passed.
 
 The browser base failed to keep the FLUX.2-klein-4B picker open across five attempts. Head passed that exact scenario and the remaining extra UI checks, including model settings, memory estimates and IME behavior. Two head screenshots were inspected and preserved in `ci-gap/`.
 

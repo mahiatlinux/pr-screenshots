@@ -115,5 +115,5 @@
   },
   "ui_base_failure": "playwright_image_download_cancel_retry.py:140: the picker did not stay open for FLUX.2-klein-4B across 5 attempts; Locator.wait_for timed out after 15000 ms",
   "ui_head_result": "all selected extra UI steps passed, including download-only cancel/retry, per-model settings, memory estimates and IME checks",
-  "dependency_comparison": "matching package versions in each base/head pair; only the editable Unsloth commit differs in the repo-python pair"
+  "dependency_comparison": "backend packages match exactly; repo-python packages differ only in editable Unsloth commit; browser test-driver packages match"
 }

@@ -1,0 +1,76 @@
+.F                                                                       [100%]
+=================================== FAILURES ===================================
+___ test_complete_gguf_ignores_newer_state_but_keeps_state_only_quant[False] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7cf12937f5c0>
+tmp_path = PosixPath('/tmp/regression/test_complete_gguf_ignores_new1')
+pin_snapshot = False
+
+    @pytest.mark.parametrize("pin_snapshot", [True, False])
+    def test_complete_gguf_ignores_newer_state_but_keeps_state_only_quant(
+        monkeypatch, tmp_path, pin_snapshot
+    ):
+        repo_id = "Org/PinnedRepo"
+        hub_cache = tmp_path / "hub"
+        repo_dir = hub_cache / "models--Org--PinnedRepo"
+        old_snapshot = repo_dir / "snapshots" / "old"
+        new_snapshot = repo_dir / "snapshots" / "new"
+        old_snapshot.mkdir(parents = True)
+        new_snapshot.mkdir(parents = True)
+        (repo_dir / "blobs").mkdir()
+        (repo_dir / "refs").mkdir()
+        (repo_dir / "refs" / "main").write_text("new", encoding = "utf-8")
+        (old_snapshot / "Model-Q4_K_M.gguf").write_bytes(b"4")
+        (new_snapshot / "Model-Q8_0.gguf").write_bytes(b"8")
+        os.utime(old_snapshot, (1, 1))
+        os.utime(new_snapshot, (2, 2))
+
+        monkeypatch.setattr(state_dir, "cache_root", lambda: tmp_path / "studio-state")
+        monkeypatch.setattr(inventory_scan, "hf_cache_roots", lambda **_kw: [hub_cache])
+        monkeypatch.setattr(
+            "utils.hf_cache_settings.get_hf_cache_paths",
+            lambda: SimpleNamespace(hub_cache = hub_cache),
+        )
+        inventory_scan.invalidate_hf_cache_scans()
+        assert download_manifest.write_manifest(
+            "model",
+            repo_id,
+            "Q4_K_M",
+            [
+                download_manifest.ExpectedFile(
+                    path = "Model-Q4_K_M.gguf",
+                    size = 1,
+                    sha256 = "newer-main",
+                )
+            ],
+            "xet",
+            hub_cache = hub_cache,
+        )
+        assert download_manifest.write_cancel_marker(
+            "model", repo_id, "Q4_K_M", "xet", hub_cache = hub_cache
+        )
+        assert download_manifest.write_cancel_marker(
+            "model", repo_id, "q5_k_m", "xet", hub_cache = hub_cache
+        )
+
+        try:
+            result = asyncio.run(
+                gguf_variants.get_gguf_variants_response(
+                    repo_id,
+                    prefer_local_cache = True,
+                    local_path = str(old_snapshot) if pin_snapshot else None,
+                )
+            )
+        finally:
+            inventory_scan.invalidate_hf_cache_scans()
+
+        q4 = next(row for row in result.variants if row.quant == "Q4_K_M")
+        assert q4.filename == "Model-Q4_K_M.gguf"
+>       assert q4.downloaded is True
+E       AssertionError: assert False is True
+E        +  where False = GgufVariantDetail(filename='Model-Q4_K_M.gguf', quant='Q4_K_M', display_label=None, size_bytes=1, download_size_bytes=..._available=False, partial=True, cleanable=False, partial_transport='xet', partial_resumable=False, dependency_key=None).downloaded
+
+studio/backend/hub/tests/test_model_services.py:4462: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/hub/tests/test_model_services.py::test_complete_gguf_ignores_newer_state_but_keeps_state_only_quant[False]
+1 failed, 1 passed, 292 deselected in 0.88s

@@ -1,0 +1,12 @@
+........................................................................ [ 22%]
+........................................................................ [ 44%]
+........................................................................ [ 66%]
+........................................................................ [ 88%]
+.....................................                                    [100%]
+=============================== warnings summary ===============================
+studio/backend/tests/test_gguf_variant_rows.py::test_gguf_variant_key[Wan2.2-TI2V-5B-Q8_0.gguf-Q8_0]
+  <task-root>/fix/studio/backend/core/inference/tool_confinement.py:262: DeprecationWarning: Due to '_pack_', the '_PathBeneathAttr' Structure will use memory layout compatible with MSVC (Windows). If this is intended, set _layout_ to 'ms'. The implicit default is deprecated and slated to become an error in Python 3.19.
+    class _PathBeneathAttr(ctypes.Structure):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+325 passed, 1 warning in 110.60s (0:01:50)

@@ -1,0 +1,37 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_complete_sibling_with_newer_cancelled_attempt ______________
+
+tmp_path = PosixPath('/tmp/sibling/test_complete_sibling_with_new0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa239772b10>
+
+    def test_complete_sibling_with_newer_cancelled_attempt(tmp_path, monkeypatch):
+        repo='Org/SiblingRepo'
+        hub=tmp_path/'hub'
+        entry=hub/'models--Org--SiblingRepo'
+        old=entry/'snapshots/old'
+        new=entry/'snapshots/new'
+        old.mkdir(parents=True)
+        new.mkdir()
+        (old/'Model-Q4_K_M.gguf').write_bytes(b'4')
+        (new/'Model-Q8_0.gguf').write_bytes(b'8')
+        (entry/'blobs').mkdir()
+        (entry/'refs').mkdir()
+        (entry/'refs/main').write_text('new')
+        os.utime(old,(1,1))
+        os.utime(new,(2,2))
+        monkeypatch.setattr(state_dir,'cache_root',lambda: tmp_path/'state')
+        monkeypatch.setattr(inventory_scan,'hf_cache_roots',lambda **kw:[hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths',lambda:SimpleNamespace(hub_cache=hub))
+        download_manifest.write_cancel_marker('model',repo,'Q4_K_M','xet',hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result=asyncio.run(gguf_variants.get_gguf_variants_response(repo,prefer_local_cache=True))
+        row=next(v for v in result.variants if v.quant=='Q4_K_M')
+>       assert row.downloaded and not row.partial
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-Q4_K_M.gguf', quant='Q4_K_M', display_label=None, size_bytes=1, download_size_bytes=..._available=False, partial=True, cleanable=False, partial_transport='xet', partial_resumable=False, dependency_key=None).downloaded
+
+../artifacts/test_companion_matrix.py:76: AssertionError
+=========================== short test summary info ============================
+FAILED ../artifacts/test_companion_matrix.py::test_complete_sibling_with_newer_cancelled_attempt
+1 failed, 16 deselected in 0.72s

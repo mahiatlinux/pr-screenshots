@@ -1,0 +1,29 @@
+{
+  "repo_id": "Org/CompanionRepo",
+  "variants": [
+    {
+      "filename": "Model-UD-Q4_K_XL.gguf",
+      "quant": "UD-Q4_K_XL",
+      "display_label": null,
+      "size_bytes": 1048576,
+      "download_size_bytes": 1048576,
+      "pending_drafter_filename": null,
+      "pending_drafter_size_bytes": 0,
+      "shard_count": 0,
+      "download_remaining_bytes": null,
+      "downloaded": true,
+      "update_available": false,
+      "partial": false,
+      "cleanable": false,
+      "partial_transport": null,
+      "partial_resumable": false,
+      "dependency_key": null
+    }
+  ],
+  "has_vision": false,
+  "default_variant": "UD-Q4_K_XL",
+  "resolved_locally": false,
+  "dependencies_resolved": false,
+  "loadable_variants": null,
+  "loadable": null
+}

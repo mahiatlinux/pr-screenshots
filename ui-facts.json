@@ -1,0 +1,29 @@
+{
+  "viewport": {
+    "width": 800,
+    "height": 480
+  },
+  "os": "Linux x86_64",
+  "kind": "production GgufDownloadCard with live GGUF service, seeded cache, and fixture responses for unrelated endpoints",
+  "before": "bda17fd83c4b7fdbe24f83bda2c0477f402668c5",
+  "after": "9e73b4a14",
+  "expect": "On device / Run becomes Partial / Continue for a missing MTP companion",
+  "chromium": {
+    "version": "145.0.7632.6",
+    "base": {
+      "text": "CompanionRepo\n\nOrg · GGUF\n\nUD-Q4_K_XL\nOn device\nGGUF\nRun"
+    },
+    "head": {
+      "text": "CompanionRepo\n\nOrg · GGUF\n\nUD-Q4_K_XL\nPartial\nGGUF\n3.1 MB left\nContinue"
+    }
+  },
+  "firefox": {
+    "version": "146.0.1",
+    "base": {
+      "text": "CompanionRepo\n\nOrg · GGUF\n\nUD-Q4_K_XL\nOn device\nGGUF\nRun"
+    },
+    "head": {
+      "text": "CompanionRepo\n\nOrg · GGUF\n\nUD-Q4_K_XL\nPartial\nGGUF\n3.1 MB left\nContinue"
+    }
+  }
+}

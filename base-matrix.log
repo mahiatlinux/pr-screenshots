@@ -1,0 +1,692 @@
+FFFFFFFFFFFFFFFF                                                         [100%]
+=================================== FAILURES ===================================
+__________________ test_companion_lifecycle[False-http-local] __________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_False0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da26a68b0>
+mode = 'local', transport = 'http', marker = False
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+_________________ test_companion_lifecycle[False-http-offline] _________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_False1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da26a6c40>
+mode = 'offline', transport = 'http', marker = False
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+________________ test_companion_lifecycle[False-http-fallback] _________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_False2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da2609250>
+mode = 'fallback', transport = 'http', marker = False
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+_________________ test_companion_lifecycle[False-http-pinned] __________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_False3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da25f9e10>
+mode = 'pinned', transport = 'http', marker = False
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+__________________ test_companion_lifecycle[False-xet-local] ___________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_False4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da25fa470>
+mode = 'local', transport = 'xet', marker = False
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+_________________ test_companion_lifecycle[False-xet-offline] __________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_False5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da25e3150>
+mode = 'offline', transport = 'xet', marker = False
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+_________________ test_companion_lifecycle[False-xet-fallback] _________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_False6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da25e3450>
+mode = 'fallback', transport = 'xet', marker = False
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+__________________ test_companion_lifecycle[False-xet-pinned] __________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_False7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da273e4e0>
+mode = 'pinned', transport = 'xet', marker = False
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+__________________ test_companion_lifecycle[True-http-local] ___________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_True_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da273f200>
+mode = 'local', transport = 'http', marker = True
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+_________________ test_companion_lifecycle[True-http-offline] __________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_True_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da261e0b0>
+mode = 'offline', transport = 'http', marker = True
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+_________________ test_companion_lifecycle[True-http-fallback] _________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_True_2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da261e890>
+mode = 'fallback', transport = 'http', marker = True
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+__________________ test_companion_lifecycle[True-http-pinned] __________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_True_3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da27642c0>
+mode = 'pinned', transport = 'http', marker = True
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+___________________ test_companion_lifecycle[True-xet-local] ___________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_True_4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da2750650>
+mode = 'local', transport = 'xet', marker = True
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+__________________ test_companion_lifecycle[True-xet-offline] __________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_True_5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da27501d0>
+mode = 'offline', transport = 'xet', marker = True
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+_________________ test_companion_lifecycle[True-xet-fallback] __________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_True_6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da2a90310>
+mode = 'fallback', transport = 'xet', marker = True
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+__________________ test_companion_lifecycle[True-xet-pinned] ___________________
+
+tmp_path = PosixPath('/tmp/matrix/test_companion_lifecycle_True_7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x780da2a43e30>
+mode = 'pinned', transport = 'xet', marker = True
+
+    @pytest.mark.parametrize('mode', ['local', 'offline', 'fallback', 'pinned'])
+    @pytest.mark.parametrize('transport', ['http', 'xet'])
+    @pytest.mark.parametrize('marker', [False, True])
+    def test_companion_lifecycle(tmp_path, monkeypatch, mode, transport, marker):
+        repo = 'Org/CompanionRepo'
+        quant = 'UD-Q4_K_XL'
+        hub = tmp_path / 'hub'
+        entry = hub / 'models--Org--CompanionRepo'
+        snap = entry / 'snapshots' / ('a' * 40)
+        snap.mkdir(parents=True)
+        (entry / 'blobs').mkdir()
+        (entry / 'refs').mkdir()
+        (entry / 'refs/main').write_text(snap.name)
+        name = 'Model-UD-Q4_K_XL.gguf'
+        (snap / name).write_bytes(b'm')
+        (snap / 'Model-Q8_0.gguf').write_bytes(b'8')
+        monkeypatch.setattr(state_dir, 'cache_root', lambda: tmp_path / 'state')
+        monkeypatch.setattr(inventory_scan, 'hf_cache_roots', lambda **kw: [hub])
+        monkeypatch.setattr('utils.hf_cache_settings.get_hf_cache_paths', lambda: SimpleNamespace(hub_cache=hub))
+        def offline(*a, **kw):
+            raise OSError('offline fixture')
+        monkeypatch.setattr(gguf_variants, 'list_gguf_variants', offline)
+        kwargs = {'prefer_local_cache': mode in ('local', 'pinned'), 'offline': mode == 'offline'}
+        if mode == 'pinned':
+            kwargs['local_path'] = str(snap)
+        download_manifest.write_manifest('model', repo, quant, [download_manifest.ExpectedFile(path=name, size=1), download_manifest.ExpectedFile(path='MTP/mtp-Q8_0.gguf', size=2)], transport, hub_cache=hub)
+        if marker:
+            download_manifest.write_cancel_marker('model', repo, quant, transport, hub_cache=hub)
+        inventory_scan.invalidate_hf_cache_scans()
+        result = asyncio.run(gguf_variants.get_gguf_variants_response(repo, **kwargs))
+        row = next(v for v in result.variants if v.quant == quant)
+>       assert row.partial and not row.downloaded
+E       AssertionError: assert (False)
+E        +  where False = GgufVariantDetail(filename='Model-UD-Q4_K_XL.gguf', quant='UD-Q4_K_XL', display_label=None, size_bytes=1, download_siz..._available=False, partial=False, cleanable=False, partial_transport=None, partial_resumable=False, dependency_key=None).partial
+
+../artifacts/test_companion_matrix.py:41: AssertionError
+=========================== short test summary info ============================
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[False-http-local]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[False-http-offline]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[False-http-fallback]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[False-http-pinned]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[False-xet-local]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[False-xet-offline]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[False-xet-fallback]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[False-xet-pinned]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[True-http-local]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[True-http-offline]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[True-http-fallback]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[True-http-pinned]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[True-xet-local]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[True-xet-offline]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[True-xet-fallback]
+FAILED ../artifacts/test_companion_matrix.py::test_companion_lifecycle[True-xet-pinned]
+16 failed in 0.90s

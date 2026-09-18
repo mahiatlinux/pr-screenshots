@@ -1,0 +1,861 @@
+name: pr 11160 historical ci comparison
+'on':
+  push:
+    branches:
+    - pr-11160-ci-gap-repro-ci
+  workflow_dispatch: {}
+permissions:
+  contents: read
+env:
+  PYTHON_FLOOR: '3.10'
+jobs:
+  backend:
+    name: backend (${{ matrix.revision }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - python: '3.13'
+          scope: full
+          shard: a-k
+          selection: tests/ --ignore-glob=tests/*/* --ignore-glob=tests/*_test.py --ignore-glob=tests/test_[!a-k]*.py
+          revision: base
+          ref: f6cf06dece62234d2a79cc4b4852dd6ed3c309c2
+        - python: '3.13'
+          scope: full
+          shard: a-k
+          selection: tests/ --ignore-glob=tests/*/* --ignore-glob=tests/*_test.py --ignore-glob=tests/test_[!a-k]*.py
+          revision: head
+          ref: 485fa2b2a613391e99225925ea94b24d4eefc1e6
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        persist-credentials: false
+        repository: unslothai/unsloth
+        ref: ${{ matrix.ref }}
+    - name: Record immutable source
+      run: 'git rev-parse HEAD
+
+        mkdir -p ci-evidence
+
+        git rev-parse HEAD > ci-evidence/source-sha.txt
+
+        uname -a > ci-evidence/platform.txt'
+    - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+      with:
+        python-version: ${{ matrix.python }}
+    - name: Restore the pip cache
+      id: pip-cache
+      uses: ./.github/actions/pip-cache-restore
+      with:
+        name: studio-backend
+        key-files: 'pyproject.toml
+
+          studio/backend/requirements/*.txt
+
+          '
+    - name: Install bubblewrap, so the sandbox tests run instead of skipping
+      timeout-minutes: 25
+      env:
+        RETRY_ATTEMPTS: '2'
+        RETRY_ATTEMPT_TIMEOUT: '300'
+      run: "bash .github/scripts/retry-with-apt-lock.sh sudo sh -c \\\n  'apt-get install -y --no-install-recommends bubblewrap\
+        \ || { apt-get update && apt-get install -y --no-install-recommends bubblewrap; }'\n# Ubuntu 24.04 restricts user\
+        \ namespaces. Apply the recommended bwrap\n# AppArmor profile without disabling the host restriction.\nif [ \"$(cat\
+        \ /proc/sys/kernel/apparmor_restrict_unprivileged_userns 2>/dev/null || echo 0)\" = \"1\" ]; then\n  bash .github/scripts/retry-with-apt-lock.sh\
+        \ sudo sh -c \\\n    'apt-get install -y --no-install-recommends apparmor-profiles || { apt-get update && apt-get\
+        \ install -y --no-install-recommends apparmor-profiles; }'\n  sudo apparmor_parser -r /etc/apparmor.d/bwrap-userns-restrict\
+        \ || true\nfi\n# Report unavailable isolation so host-dependent skips are explicit.\nif bwrap --ro-bind / / --unshare-user\
+        \ true; then\n  echo \"bubblewrap can build a sandbox on this runner\"\nelse\n  echo \"::warning::bubblewrap cannot\
+        \ build a sandbox here; confinement tests will skip\"\nfi\n"
+    - name: Install backend test dependencies (CPU only)
+      run: "python -m pip install --upgrade pip\n# Unsloth's declared backend deps:\npip install -r studio/backend/requirements/studio.txt\n\
+        # Extras that studio.txt does not list but the import chain needs\n# (python-multipart for FastAPI form/file uploads,\
+        \ sqlalchemy/cryptography\n#  for the auth DB, yaml/jinja2 for utils.models.model_config, psutil for\n#  the orphan-cleanup\
+        \ process scan, etc.):\npip install \\\n  python-multipart aiofiles sqlalchemy cryptography psutil \\\n  pyyaml jinja2\
+        \ mammoth unpdf requests \\\n  'numpy<3' pytest pytest-asyncio pytest-xdist pytest-timeout httpx \\\n  soundfile librosa\n\
+        # pytest-timeout: see the --timeout flags below. Without it a test that never\n# returns is indistinguishable from\
+        \ a slow suite, and the job reports only\n# \"cancelled\".\n# soundfile + librosa: test_audio_dataset_decode importorskips\
+        \ both, so without\n# them the no-torchcodec decode path is silently untested here.\n# Torch CPU + transformers are\
+        \ required by a chunk of the backend test\n# suite (gpu_selection, kv_cache_estimation, utils). CPU-only torch\n#\
+        \ keeps the install ~250 MB / ~1 min on a clean runner.\npip install --index-url https://download.pytorch.org/whl/cpu\
+        \ --extra-index-url https://pypi.org/simple \\\n  'torch>=2.4,<2.11' 'torchaudio<2.11'\npip install 'transformers>=4.51,<5.5'\n\
+        # peft: core/inference/inference.py imports it at module scope, and it is listed\n# only in extras-no-deps.txt and\
+        \ no-torch-runtime.txt, neither of which this job\n# installs. Without it every importorskip of that module SKIPS\
+        \ instead of running,\n# which is invisible: test_safetensors_reasoning_stream.py reported 10 passed and\n# 3 skipped\
+        \ here, green. Stubbing it instead does not work -- transformers probes\n# `importlib.util.find_spec(\"peft\")`, which\
+        \ raises on a stub whose __spec__ is None.\n# AFTER the CPU torch line above, not before it: peft depends on torch,\
+        \ so pip\n# would resolve that from PyPI, and the CUDA wheel it picks satisfies the range\n# the next line asks for,\
+        \ leaving this nominally CPU-only job carrying the CUDA\n# distribution and its nvidia-* dependencies.\n# The version\
+        \ comes from the requirements file rather than being written here:\n# extras-no-deps.txt pins peft==0.18.1 deliberately\
+        \ (0.19.0 breaks Unsloth's\n# export subprocess), and an unconstrained install takes the newest release,\n# so this\
+        \ job would test against a peft production never ships and no other\n# job installs. Read out of the file so the two\
+        \ cannot drift apart.\npip install \"$(grep -m1 -E '^peft==' studio/backend/requirements/extras-no-deps.txt)\"\n#\
+        \ torchao: the pre-quant allowlist is built by importing the torchao tensor\n# constructors a checkpoint names, and\
+        \ registration refuses unless at least one of\n# them resolves. Without it every pre-quant load returns None and 21\
+        \ tests across\n# test_diffusion_prequant.py and test_diffusion_convrot.py fail on an install that is\n# simply missing\
+        \ a dependency they need. CPU-only is fine: it declines to load its cpp\n# extensions under torch < 2.11 and the pure-Python\
+        \ constructors still import.\npip install torchao\n"
+    - name: Backend tests
+      if: ${{ !cancelled() && matrix.scope == 'full' }}
+      working-directory: studio/backend
+      run: "timeout --signal=INT --kill-after=60 1500 \\\npython -m pytest --junitxml=\"${{ github.workspace }}/ci-evidence/backend-tests.xml\"\
+        \ ${{ matrix.selection }} -q --tb=short -n 4 --dist loadgroup --timeout=330 \\\n  --ignore=tests/test_studio_api.py\
+        \ \\\n  --ignore=tests/test_streaming_stripper.py \\\n  --ignore=tests/test_llama_cpp_wait_for_vram_settle.py \\\n\
+        \  --ignore=tests/test_tool_xml_strip.py \\\n  --ignore=tests/test_diffusion_checkpoint_resume.py \\\n  --ignore=tests/test_tool_output_streaming.py\
+        \ \\\n  --ignore=tests/test_web_fetch_extraction.py \\\n  --ignore=tests/test_tool_call_parser_strict.py \\\n  --ignore=tests/test_tunnel_safe_long_post.py\
+        \ \\\n  --ignore=tests/test_scan_loras_off_event_loop.py \\\n  --ignore=tests/test_anthropic_messages.py \\\n  --ignore=tests/test_profile_stats.py\
+        \ \\\n  --ignore=tests/test_media_auto_switch.py \\\n  -k 'not llama_cpp_load_progress_live and not TestGpuAutoSelection\
+        \ and not TestPreSpawnGpuResolution and not TestPerGpuFitGuardAllCounts and not TestTransformersIntrospection and\
+        \ not test_returns_cuda_when_cuda_available and not test_calls_cuda_cache_when_cuda'\n"
+    - name: Backend tests that cannot share a worker
+      if: ${{ !cancelled() && matrix.scope == 'full' && matrix.shard == 'a-k' }}
+      working-directory: studio/backend
+      run: "python -m pytest --junitxml=\"${{ github.workspace }}/ci-evidence/backend-tests-that-cannot-share-a-worker.xml\"\
+        \ -q --tb=short --timeout=330 \\\n  tests/test_streaming_stripper.py \\\n  tests/test_llama_cpp_wait_for_vram_settle.py\
+        \ \\\n  tests/test_tool_xml_strip.py \\\n  tests/test_diffusion_checkpoint_resume.py \\\n  tests/test_tool_output_streaming.py\
+        \ \\\n  tests/test_web_fetch_extraction.py \\\n  tests/test_tool_call_parser_strict.py \\\n  tests/test_tunnel_safe_long_post.py\
+        \ \\\n  tests/test_scan_loras_off_event_loop.py \\\n  tests/test_anthropic_messages.py \\\n  tests/test_profile_stats.py\
+        \ \\\n  tests/test_media_auto_switch.py\n"
+    - name: Pre-3.12 branches, on the newest interpreter that takes them
+      if: ${{ !cancelled() && matrix.scope == 'floor-spot-check' }}
+      working-directory: studio/backend
+      run: "python -m pytest --junitxml=\"${{ github.workspace }}/ci-evidence/pre-3-12-branches--on-the-newest-interpreter-that-takes-them.xml\"\
+        \ -q --tb=short --timeout=330 \\\n  tests/test_third_party_source.py \\\n  tests/test_recommended_folders_permission.py\
+        \ \\\n  tests/test_hf_cache_settings.py\n"
+    - name: Save the pip cache
+      if: always()
+      uses: ./.github/actions/pip-cache-save
+      with:
+        dir: ${{ steps.pip-cache.outputs.dir }}
+        key: ${{ steps.pip-cache.outputs.key }}
+        cache-hit: ${{ steps.pip-cache.outputs.cache-hit }}
+    - name: Record resolved packages
+      if: always()
+      run: 'python --version > ci-evidence/python.txt
+
+        python -m pip freeze > ci-evidence/packages.txt'
+    - name: Upload comparison evidence
+      if: always()
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      with:
+        name: backend-${{ matrix.revision }}-results
+        path: ci-evidence/
+        retention-days: 30
+    env: {}
+  repo-python:
+    name: repo-python (${{ matrix.revision }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - shard: python
+          selection: tests/python tests/kaggle
+          revision: base
+          ref: f6cf06dece62234d2a79cc4b4852dd6ed3c309c2
+        - shard: python
+          selection: tests/python tests/kaggle
+          revision: head
+          ref: 485fa2b2a613391e99225925ea94b24d4eefc1e6
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        persist-credentials: false
+        repository: unslothai/unsloth
+        ref: ${{ matrix.ref }}
+    - name: Record immutable source
+      run: 'git rev-parse HEAD
+
+        mkdir -p ci-evidence
+
+        git rev-parse HEAD > ci-evidence/source-sha.txt
+
+        uname -a > ci-evidence/platform.txt'
+    - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+      with:
+        python-version: '3.12'
+    - name: Restore the pip cache
+      id: pip-cache
+      uses: ./.github/actions/pip-cache-restore
+      with:
+        name: repo-cpu-tests
+        key-files: 'pyproject.toml
+
+          studio/backend/requirements/*.txt
+
+          '
+    - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+      with:
+        node-version: '22'
+    - name: Install uv (for tests/python/* sandboxed venvs)
+      run: pip install uv
+    - name: Install deps (shared shape with backend pytest job)
+      run: "python -m pip install --upgrade pip\npip install -r studio/backend/requirements/studio.txt\npip install \\\n \
+        \ python-multipart aiofiles sqlalchemy cryptography psutil \\\n  pyyaml jinja2 mammoth unpdf requests typer \\\n \
+        \ 'numpy<3' pytest pytest-asyncio pytest-xdist pytest-timeout httpx\n# pytest-timeout: the --timeout flag on the pytest\
+        \ step below. Same reason as the\n# backend pytest job -- without it a test that never returns is reported as the\n\
+        # job being \"cancelled\", naming nothing.\n# torchvision: unsloth_zoo.vision_utils imports it at module scope.\n\
+        pip install --index-url https://download.pytorch.org/whl/cpu --extra-index-url https://pypi.org/simple \\\n  'torch>=2.4,<2.11'\
+        \ 'torchvision<0.26' 'torchaudio<2.11'\npip install 'transformers>=4.51,<5.5'\n# bitsandbytes: hard import in unsloth/models/_utils.py.\
+        \ Recent\n# versions ship a CPU build that imports cleanly on Linux.\npip install 'bitsandbytes>=0.45'\n# unsloth.device_type\
+        \ imports unsloth_zoo.utils.Version at module\n# scope, so the conftest preload needs unsloth_zoo. Pull from\n# git\
+        \ main so this job sees the same zoo HEAD as Core / MLX /\n# install.sh do (otherwise a fix on zoo main hides until\
+        \ release).\n# No --no-deps: matches prior `pip install 'unsloth_zoo>=2026.5.1'`\n# behaviour so triton etc. still\
+        \ come in for the Repo tests CPU\n# collection imports.\nfor attempt in 1 2 3; do\n  if pip install \"unsloth_zoo\
+        \ @ git+https://github.com/unslothai/unsloth-zoo@f5254a8e60dfe0f5494b275ee331fc2f35b212c6\"; then\n    break\n  fi\n\
+        \  [ \"$attempt\" -eq 3 ] && { echo \"::error::unsloth_zoo install failed after 3 attempts\"; exit 1; }\n  sleep $((5\
+        \ * attempt))\ndone\npip install -e . --no-deps\n"
+    - name: Install the pinned ruff (formatter fixed-point guard)
+      run: "pin=\"$(python -c 'import sys; sys.path.insert(0, \"scripts\"); import run_ruff_format as r; print(r.pinned_ruff_version(r.CONFIG.read_text(encoding\
+        \ = \"utf-8\")) or \"\")')\"\nif [ -z \"$pin\" ]; then\n  echo \"::error::.pre-commit-config.yaml no longer pins a\
+        \ ruff for ruff-format-with-kwargs\"\n  exit 1\nfi\npip install \"ruff==$pin\"\n"
+    - name: Repo tests (CPU, auto-discovered)
+      env:
+        PYTHONPATH: ${{ github.workspace }}/studio
+        UNSLOTH_COMPILE_DISABLE: '1'
+      run: "timeout --signal=INT --kill-after=60 2100 \\\npython -m pytest --junitxml=\"${{ github.workspace }}/ci-evidence/repo-tests--cpu--auto-discovered.xml\"\
+        \ ${{ matrix.selection }} -q --tb=short -n 4 --dist loadgroup --timeout=330 \\\n  -m 'not server and not e2e'\n"
+      if: ${{ !cancelled() && true }}
+    - name: Hardware-spoof tests (state-sensitive, run in isolation)
+      if: ${{ !cancelled() && matrix.shard == 'studio' }}
+      env:
+        PYTHONPATH: ${{ github.workspace }}/studio
+        UNSLOTH_COMPILE_DISABLE: '1'
+      run: "python -m pytest --junitxml=\"${{ github.workspace }}/ci-evidence/hardware-spoof-tests--state-sensitive--run-in-isolation.xml\"\
+        \ -q --tb=short \\\n  tests/studio/test_hardware_dispatch_matrix.py \\\n  tests/studio/test_is_mlx_dispatch_gate.py\
+        \ \\\n  tests/studio/test_xpu_spoof_pipeline.py \\\n  tests/studio/test_mlx_context_platform_matrix.py\n"
+    - name: Event-loop latency tests (wall clock, run without CPU contention)
+      if: ${{ !cancelled() && matrix.shard == 'studio' }}
+      env:
+        PYTHONPATH: ${{ github.workspace }}/studio
+        UNSLOTH_COMPILE_DISABLE: '1'
+      run: python -m pytest --junitxml="${{ github.workspace }}/ci-evidence/event-loop-latency-tests--wall-clock--run-without-cpu-contention.xml"
+        tests/studio/load_freeze -q --tb=short
+    - name: CLI tests (unsloth_cli)
+      if: ${{ !cancelled() && matrix.shard == 'python' }}
+      run: python -m pytest --junitxml="${{ github.workspace }}/ci-evidence/cli-tests--unsloth-cli.xml" unsloth_cli/tests
+        -q --tb=short
+    - name: Docker JupyterLab/notebook feature validation
+      if: matrix.shard == 'rest'
+      run: python tests/validate_studio_features.py
+    - name: Save the pip cache
+      if: always()
+      uses: ./.github/actions/pip-cache-save
+      with:
+        dir: ${{ steps.pip-cache.outputs.dir }}
+        key: ${{ steps.pip-cache.outputs.key }}
+        cache-hit: ${{ steps.pip-cache.outputs.cache-hit }}
+    - name: Record resolved packages
+      if: always()
+      run: 'python --version > ci-evidence/python.txt
+
+        python -m pip freeze > ci-evidence/packages.txt'
+    - name: Upload comparison evidence
+      if: always()
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      with:
+        name: repo-python-${{ matrix.revision }}-results
+        path: ci-evidence/
+        retention-days: 30
+    env: {}
+  ui-extra:
+    name: ui-extra (${{ matrix.revision }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - shard: extra
+          engines: chromium
+          engine_key: c
+          revision: base
+          ref: f6cf06dece62234d2a79cc4b4852dd6ed3c309c2
+        - shard: extra
+          engines: chromium
+          engine_key: c
+          revision: head
+          ref: 485fa2b2a613391e99225925ea94b24d4eefc1e6
+    env:
+      GGUF_REPO: unsloth/gemma-3-270m-it-GGUF
+      GGUF_VARIANT: UD-Q4_K_XL
+      GGUF_FILE: gemma-3-270m-it-UD-Q4_K_XL.gguf
+      STUDIO_PORT: '18892'
+      HF_HOME: ${{ github.workspace }}/hf-cache
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        persist-credentials: false
+        repository: unslothai/unsloth
+        ref: ${{ matrix.ref }}
+    - name: Record immutable source
+      run: 'git rev-parse HEAD
+
+        mkdir -p ci-evidence
+
+        git rev-parse HEAD > ci-evidence/source-sha.txt
+
+        uname -a > ci-evidence/platform.txt'
+    - name: Linux deps
+      timeout-minutes: 20
+      env:
+        RETRY_ATTEMPTS: '2'
+        RETRY_ATTEMPT_TIMEOUT: '360'
+      run: "bash .github/scripts/retry-with-apt-lock.sh sudo sh -c \\\n  'apt-get install -y --no-install-recommends libcurl4-openssl-dev\
+        \ libssl-dev jq || { apt-get update && apt-get install -y --no-install-recommends libcurl4-openssl-dev libssl-dev\
+        \ jq; }'\n"
+    - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+      with:
+        node-version: '22'
+    - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+      with:
+        python-version: '3.12'
+    - name: Playwright locator contract (static)
+      if: ${{ !cancelled() && matrix.shard == 'chat' }}
+      run: 'python -m pip install --quiet ''pytest>=8''
+
+        python -m pytest --junitxml="${{ github.workspace }}/ci-evidence/playwright-locator-contract--static.xml" tests/studio/test_stt_model_search_locator_contract.py
+        -q
+
+        '
+    - name: Restore HF_HOME for ${{ env.GGUF_REPO }}
+      id: cache-hf
+      uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+      continue-on-error: true
+      with:
+        path: hf-cache
+        key: hf-${{ env.GGUF_REPO }}-${{ env.GGUF_VARIANT }}-v3
+        enableCrossOsArchive: true
+    - name: Prime HF_HOME with the GGUF
+      id: prime-hf
+      if: steps.cache-hf.outputs.cache-hit != 'true' || steps.cache-hf.outcome != 'success'
+      env:
+        HF_TOKEN: ''
+      run: 'python -m pip install --upgrade huggingface_hub
+
+        mkdir -p hf-cache
+
+        bash .github/scripts/hf-download-with-retry.sh "$GGUF_REPO" "$GGUF_FILE"
+
+        bash .github/scripts/hf-download-with-retry.sh ggml-org/models tinyllamas/stories260K.gguf
+
+        '
+    - name: Save HF_HOME for ${{ env.GGUF_REPO }}
+      if: always() && github.ref == 'refs/heads/main' && steps.prime-hf.outcome == 'success' && hashFiles('hf-cache/**/*.gguf')
+        != ''
+      uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+      with:
+        path: hf-cache
+        key: hf-${{ env.GGUF_REPO }}-${{ env.GGUF_VARIANT }}-v3
+        enableCrossOsArchive: true
+    - name: Install Unsloth (--local, --no-torch)
+      uses: ./.github/actions/install-unsloth-local
+      with:
+        gh-token: ''
+        hf-token: ''
+    - name: Pin the Playwright version so the browser cache has a key
+      id: pw
+      run: 'pip install ''playwright>=1.45,<2''
+
+        echo "version=$(python -c ''import playwright; from importlib.metadata import version; print(version("playwright"))'')"
+        >> "$GITHUB_OUTPUT"
+
+        '
+    - name: Restore the Playwright browser cache
+      id: pw-cache
+      uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+      continue-on-error: true
+      with:
+        path: ~/.cache/ms-playwright
+        key: ms-playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}-${{ matrix.engine_key }}-v2
+    - name: Restore the apt archive cache (webkit's .deb set)
+      id: apt-cache
+      uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+      continue-on-error: true
+      with:
+        path: ${{ github.workspace }}/.apt-archives
+        key: apt-archives-${{ runner.os }}-${{ env.ImageOS }}-${{ env.ImageVersion }}-${{ matrix.engine_key }}-v1
+    - name: Install Playwright browsers
+      id: pw-install
+      timeout-minutes: 25
+      env:
+        RETRY_ATTEMPTS: '2'
+        RETRY_ATTEMPT_TIMEOUT: '300'
+        APT_ACQUIRE_RETRIES: '0'
+      run: "# The browsers first, and WITHOUT --with-deps. That flag makes playwright\n# run its own `apt-get update` internally,\
+        \ which is the one apt call this\n# repo cannot restructure: on 2026-08-19 it spent 16m14s here against a\n# dead\
+        \ azure.archive.ubuntu.com while every other apt step in CI had\n# already been taught to skip the update entirely.\
+        \ A CDN download and an\n# apt transaction are two different failures and they are separated here.\nif [ \"${{ steps.pw-cache.outputs.cache-hit\
+        \ }}\" != \"true\" ]; then\n  bash .github/scripts/retry-with-apt-lock.sh \\\n    python -m playwright install ${{\
+        \ matrix.engines }}\nfi\n\n# Then ask whether the system libraries are actually missing, instead of\n# assuming they\
+        \ are. ubuntu-latest is a browser-testing image and ships\n# nearly all of them; when it does, `install-deps` is a\
+        \ full apt update\n# and transaction to install nothing. Launching each engine is the honest\n# test of that -- it\
+        \ is exactly what the suites are about to do.\nprobe() {\n  python - \"$@\" <<'PY'\nimport sys\nfrom playwright.sync_api\
+        \ import sync_playwright\n\nmissing = []\nwith sync_playwright() as p:\n    for name in sys.argv[1:]:\n        try:\n\
+        \            browser = getattr(p, name).launch()\n            browser.close()\n        except Exception as exc:\n\
+        \            missing.append(f\"{name}: {type(exc).__name__}\")\nif missing:\n    print(\"engines that will not start:\
+        \ \" + \"; \".join(missing))\n    sys.exit(1)\nprint(\"all three engines launch; system libraries are present\")\n\
+        PY\n}\n\nif probe ${{ matrix.engines }}; then\n  echo \"::notice::skipped playwright install-deps; the runner image\
+        \ already has the libraries\"\nelse\n  echo \"system libraries are missing, installing them\"\n  # Hand apt last run's\
+        \ .debs before it goes looking for them. apt checks each\n  # file against its index and re-fetches only what does\
+        \ not match, so a stale\n  # cache costs a download rather than a wrong install.\n  if [ -d \"${{ github.workspace\
+        \ }}/.apt-archives\" ]; then\n    sudo cp \"${{ github.workspace }}\"/.apt-archives/*.deb /var/cache/apt/archives/\
+        \ 2>/dev/null || true\n    echo \"seeded $(ls \"${{ github.workspace }}\"/.apt-archives/*.deb 2>/dev/null | wc -l)\
+        \ cached .deb files\"\n  fi\n  bash .github/scripts/retry-with-apt-lock.sh \\\n    python -m playwright install-deps\
+        \ ${{ matrix.engines }}\n  # Harvest for next time. apt keeps what it installed in the archive dir until\n  # something\
+        \ runs `apt-get clean`, so this is exactly what it just used --\n  # seeded or downloaded, and only the packages this\
+        \ engine set needs.\n  mkdir -p \"${{ github.workspace }}/.apt-archives\"\n  sudo cp /var/cache/apt/archives/*.deb\
+        \ \"${{ github.workspace }}/.apt-archives/\" 2>/dev/null || true\n  sudo chown -R \"$(id -u):$(id -g)\" \"${{ github.workspace\
+        \ }}/.apt-archives\" || true\n  # Fail loudly rather than proceeding into suites that cannot launch a\n  # browser:\
+        \ without this the real error surfaces later as an opaque\n  # per-test timeout in whichever suite happens to run\
+        \ first.\n  probe ${{ matrix.engines }}\nfi\n"
+    - name: Save the apt archive cache
+      if: github.ref == 'refs/heads/main' && steps.apt-cache.outputs.cache-hit != 'true'
+      continue-on-error: true
+      uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+      with:
+        path: ${{ github.workspace }}/.apt-archives
+        key: ${{ steps.apt-cache.outputs.cache-primary-key }}
+    - name: Save the Playwright browser cache
+      if: always() && github.ref == 'refs/heads/main' && steps.pw-cache.outputs.cache-hit != 'true' && steps.pw-install.outcome
+        == 'success'
+      uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+      continue-on-error: true
+      with:
+        path: ~/.cache/ms-playwright
+        key: ms-playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}-${{ matrix.engine_key }}-v2
+    - name: Drive MTP companion download visibility
+      if: matrix.shard == 'extra'
+      env:
+        PW_SIDE: AFTER
+        PW_ART_DIR: logs/playwright_mtp
+      run: "# A restored dist does not include the dependencies for the Vite fixture.\nif [ ! -x studio/frontend/node_modules/.bin/vite\
+        \ ]; then\n  npm ci --prefix studio/frontend\nfi\npython -m pip install 'pillow>=10,<13'\nexport PW_BACKEND_PYTHON=\"\
+        $HOME/.unsloth/studio/unsloth_studio/bin/python\"\npython tests/studio/playwright_mtp_download_visibility.py\n"
+    - name: Reset auth + boot Unsloth
+      if: matrix.shard == 'chat'
+      run: '# Wipe (not reset-password): the boot below must re-seed a fresh .bootstrap_password.
+
+        bash .github/scripts/boot-studio-api-only.sh --port "$STUDIO_PORT"
+
+        '
+    - name: Wait for /api/health
+      if: matrix.shard == 'chat'
+      run: 'bash .github/scripts/wait-for-health.sh --port "$STUDIO_PORT"
+
+        '
+    - name: Pass bootstrap password to the Playwright step
+      if: matrix.shard == 'chat'
+      run: 'OLD=$(cat ~/.unsloth/studio/auth/.bootstrap_password)
+
+        NEW="CIUi-$(python -c ''import secrets; print(secrets.token_urlsafe(16))'')"
+
+        NEW2="CIUi-$(python -c ''import secrets; print(secrets.token_urlsafe(16))'')"
+
+        echo "::add-mask::$OLD"
+
+        echo "::add-mask::$NEW"
+
+        echo "::add-mask::$NEW2"
+
+        echo "STUDIO_OLD_PW=$OLD"   >> "$GITHUB_ENV"
+
+        echo "STUDIO_NEW_PW=$NEW"   >> "$GITHUB_ENV"
+
+        echo "STUDIO_NEW2_PW=$NEW2" >> "$GITHUB_ENV"
+
+        '
+    - name: Drive the chat UI with Playwright
+      if: matrix.shard == 'chat'
+      env:
+        BASE_URL: http://127.0.0.1:18892
+        PW_ART_DIR: logs/playwright
+        STUDIO_UI_STRICT: '1'
+      run: 'mkdir -p logs/playwright
+
+        python tests/studio/playwright_chat_ui.py
+
+        '
+    - name: Stop Unsloth (chat-ui ends with Shutdown click; this is belt-and-suspenders)
+      if: (always()) && (matrix.shard == 'chat')
+      run: 'kill "${STUDIO_PID}" 2>/dev/null || true
+
+        sleep 2
+
+        '
+    - name: Cross-browser permission controls
+      if: matrix.shard == 'chat'
+      run: 'bash .github/scripts/run-studio-permission-browser.sh 18893 firefox
+
+        bash .github/scripts/run-studio-permission-browser.sh 18893 webkit
+
+        bash .github/scripts/run-studio-permission-browser.sh 18893 chromium chrome
+
+        '
+    - name: Reset auth + boot Unsloth for extra UI tests (port 18894)
+      if: matrix.shard == 'extra' || matrix.shard == 'chat'
+      run: "bash .github/scripts/boot-studio-api-only.sh \\\n  --port 18894 --log logs/studio_extra.log --pid-var STUDIO_EXTRA_PID\n"
+    - name: Wait for /api/health on 18894
+      if: matrix.shard == 'extra' || matrix.shard == 'chat'
+      run: "bash .github/scripts/wait-for-health.sh \\\n  --port 18894 --log logs/studio_extra.log --tmp /tmp/health2.json\n"
+    - name: Pass bootstrap pw for extra UI test
+      if: matrix.shard == 'extra' || matrix.shard == 'chat'
+      run: 'OLD=$(cat ~/.unsloth/studio/auth/.bootstrap_password)
+
+        NEW="CIUiExtra-$(python -c ''import secrets; print(secrets.token_urlsafe(16))'')"
+
+        echo "::add-mask::$OLD"
+
+        echo "::add-mask::$NEW"
+
+        echo "STUDIO_EXTRA_OLD_PW=$OLD" >> "$GITHUB_ENV"
+
+        echo "STUDIO_EXTRA_NEW_PW=$NEW" >> "$GITHUB_ENV"
+
+        '
+    - name: Drive Compare/Recipes/Export/Unsloth/Settings with Playwright
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_OLD_PW: ${{ env.STUDIO_EXTRA_OLD_PW }}
+        STUDIO_NEW_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_extra
+        STUDIO_UI_STRICT: '1'
+        GGUF_REPO: ${{ env.GGUF_REPO }}
+        GGUF_VARIANT: ${{ env.GGUF_VARIANT }}
+      run: 'mkdir -p logs/playwright_extra
+
+        python tests/studio/playwright_extra_ui.py
+
+        '
+    - name: MCP arguments end to end (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_OLD_PW: ${{ env.STUDIO_EXTRA_OLD_PW }}
+        STUDIO_NEW_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_mcp_arguments
+        STUDIO_UI_STRICT: '1'
+      run: 'mkdir -p logs/playwright_mcp_arguments
+
+        studio_home="${UNSLOTH_STUDIO_HOME:-$HOME/.unsloth/studio}"
+
+        export STUDIO_MCP_PYTHON="$studio_home/unsloth_studio/bin/python"
+
+        test -x "$STUDIO_MCP_PYTHON"
+
+        python tests/studio/playwright_mcp_arguments.py
+
+        '
+    - name: Per-chat settings persistence (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_NEW_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_thread_settings
+      run: 'mkdir -p logs/playwright_thread_settings
+
+        python tests/studio/playwright_thread_scoped_settings.py
+
+        '
+    - name: UI font size scaling regression (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_fontscale
+      run: 'mkdir -p logs/playwright_fontscale
+
+        python tests/studio/playwright_ui_font_scale.py
+
+        '
+    - name: Chat width presets (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_NEW_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_chat_width
+      run: 'mkdir -p logs/playwright_chat_width
+
+        python tests/studio/playwright_chat_width.py
+
+        '
+    - name: Multi-account switch flow (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        STUDIO_E2E_URL: http://127.0.0.1:18894
+        STUDIO_E2E_OWNER_PASSWORD: ${{ env.STUDIO_EXTRA_NEW_PW }}
+      run: 'python tests/studio/playwright_multi_account.py
+
+        '
+    - name: Update banner layout regression (Playwright)
+      if: matrix.shard == 'chat'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_OLD_PW: ${{ env.STUDIO_EXTRA_OLD_PW }}
+        STUDIO_NEW_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_update_banner
+      run: 'mkdir -p logs/playwright_update_banner
+
+        python tests/studio/playwright_update_banner_layout.py
+
+        '
+    - name: Update banner layout, other engines (Playwright)
+      if: matrix.shard == 'chat'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_OLD_PW: ${{ env.STUDIO_EXTRA_OLD_PW }}
+        STUDIO_NEW_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_update_banner
+        STUDIO_UI_BANNER_SCOPE: spot
+      run: "for engine in firefox webkit; do\n  STUDIO_PLAYWRIGHT_BROWSER=\"$engine\" \\\n    python tests/studio/playwright_update_banner_layout.py\n\
+        done\n"
+    - name: Image model full-footprint selector regression (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_image_footprint
+      run: 'mkdir -p logs/playwright_image_footprint
+
+        python tests/studio/playwright_image_model_footprint.py
+
+        '
+    - name: Image staged-download cancel/retry regression (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_image_cancel_retry
+      run: 'mkdir -p logs/playwright_image_cancel_retry
+
+        python tests/studio/playwright_image_download_cancel_retry.py
+
+        PW_DOWNLOAD_ONLY=1 PW_ART_DIR="$PW_ART_DIR/download-only" python tests/studio/playwright_image_download_cancel_retry.py
+
+        '
+    - name: Image staged-download cancel/retry regression, cold checkpoint (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_image_cancel_retry_cold
+        PW_CHECKPOINT_CACHED: '0'
+      run: 'mkdir -p logs/playwright_image_cancel_retry_cold
+
+        python tests/studio/playwright_image_download_cancel_retry.py
+
+        PW_DOWNLOAD_ONLY=1 PW_ART_DIR="$PW_ART_DIR/download-only" python tests/studio/playwright_image_download_cancel_retry.py
+
+        '
+    - name: Image download queue regression (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        PW_ART_DIR: logs/playwright_image_download_queue
+      run: 'PW_ART_DIR="$PW_ART_DIR/queue" python tests/studio/playwright_image_download_queue.py
+
+        PW_ART_DIR="$PW_ART_DIR/load" PW_LOAD_SECOND=1 python tests/studio/playwright_image_download_queue.py
+
+        PW_ART_DIR="$PW_ART_DIR/late-plan" PW_LOAD_SECOND=1 PW_HOLD_FIRST_PLAN=1 python tests/studio/playwright_image_download_queue.py
+
+        PW_ART_DIR="$PW_ART_DIR/late-filename" PW_RESOLVE_FIRST=1 python tests/studio/playwright_image_download_queue.py
+
+        PW_ART_DIR="$PW_ART_DIR/late-quant" PW_LOAD_SECOND=1 PW_HOLD_FIRST_PLAN=1 PW_DIFFERENT_QUANT=1 python tests/studio/playwright_image_download_queue.py
+
+        '
+    - name: Image text encoder precision regression (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_image_text_encoder
+      run: "mkdir -p logs/playwright_image_text_encoder\nPW_ART_DIR=\"$PW_ART_DIR/applied\" python tests/studio/playwright_image_text_encoder.py\n\
+        PW_ART_DIR=\"$PW_ART_DIR/completion-first\" PW_COMPLETION_FIRST=1 \\\n  python tests/studio/playwright_image_text_encoder.py\n\
+        PW_ART_DIR=\"$PW_ART_DIR/declined\" PW_DECLINE=1 \\\n  python tests/studio/playwright_image_text_encoder.py\n"
+    - name: Tool activity collapse regression (Playwright)
+      if: matrix.shard == 'extra'
+      run: "if [ ! -x studio/frontend/node_modules/.bin/vite ]; then\n  npm install -g npm@^11 --no-fund --no-audit\n  V=$(npm\
+        \ -v)\n  case \"$V\" in\n    11.1[6-9].*|11.[2-9][0-9].*|1[2-9].*) echo \"npm $V has allowScripts\" ;;\n    *) echo\
+        \ \"::error::npm $V lacks allowScripts (need >=11.16)\"; exit 1 ;;\n  esac\n  npm --prefix studio/frontend ci --strict-allow-scripts\
+        \ --no-fund --no-audit\nfi\npython tests/studio/playwright_tool_activity.py --json\n"
+    - name: Every polled path is declared in the log budget (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18894
+        STUDIO_OLD_PW: ${{ env.STUDIO_EXTRA_OLD_PW }}
+        STUDIO_NEW_PW: ${{ env.STUDIO_EXTRA_NEW_PW }}
+        PW_ART_DIR: logs/playwright_declared_polls
+      run: 'mkdir -p logs/playwright_declared_polls
+
+        python tests/studio/playwright_declared_polls.py
+
+        '
+    - name: Stop second Unsloth
+      if: (always()) && (matrix.shard == 'extra' || matrix.shard == 'chat')
+      run: 'kill "${STUDIO_EXTRA_PID}" 2>/dev/null || true
+
+        sleep 2
+
+        '
+    - name: Reset auth + boot Unsloth for model-config tests (port 18898)
+      if: matrix.shard == 'extra'
+      run: "bash .github/scripts/boot-studio-api-only.sh \\\n  --port 18898 --log logs/studio_modelcfg.log --pid-var STUDIO_MODELCFG_PID\n"
+    - name: Wait for /api/health on 18898
+      if: matrix.shard == 'extra'
+      run: "bash .github/scripts/wait-for-health.sh \\\n  --port 18898 --log logs/studio_modelcfg.log --tmp /tmp/health4.json\n"
+    - name: Pass bootstrap pw for model-config test
+      if: matrix.shard == 'extra'
+      run: 'NEW="CIModelCfg-$(python -c ''import secrets; print(secrets.token_urlsafe(16))'')"
+
+        echo "::add-mask::$NEW"
+
+        echo "STUDIO_MODELCFG_NEW_PW=$NEW" >> "$GITHUB_ENV"
+
+        '
+    - name: Drive model-picker per-model-config with Playwright
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18898
+        STUDIO_NEW_PW: ${{ env.STUDIO_MODELCFG_NEW_PW }}
+        PW_ART_DIR: logs/playwright_modelcfg
+        STUDIO_UI_STRICT: '1'
+        GGUF_REPO: ${{ env.GGUF_REPO }}
+        GGUF_VARIANT: ${{ env.GGUF_VARIANT }}
+        STUDIO_MODEL_HINT: gemma-3-270m
+      run: 'mkdir -p logs/playwright_modelcfg
+
+        python tests/studio/playwright_model_config.py
+
+        '
+    - name: Estimated Memory Usage row (Playwright)
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18898
+        STUDIO_LOGIN_PW: ${{ env.STUDIO_MODELCFG_NEW_PW }}
+        PW_ART_DIR: logs/playwright_memory_estimate
+        STUDIO_UI_STRICT: '1'
+        GGUF_REPO: ${{ env.GGUF_REPO }}
+        GGUF_VARIANT: ${{ env.GGUF_VARIANT }}
+      run: 'mkdir -p logs/playwright_memory_estimate
+
+        python tests/studio/playwright_memory_estimate.py
+
+        '
+    - name: Stop fourth Unsloth
+      if: (always()) && (matrix.shard == 'extra')
+      run: 'kill "${STUDIO_MODELCFG_PID}" 2>/dev/null || true
+
+        sleep 2
+
+        '
+    - name: Reset auth + boot Unsloth for IME / i18n tests (port 18896)
+      if: matrix.shard == 'extra'
+      run: "bash .github/scripts/boot-studio-api-only.sh \\\n  --port 18896 --log logs/studio_ime.log --pid-var STUDIO_IME_PID\n"
+    - name: Wait for /api/health on 18896
+      if: matrix.shard == 'extra'
+      run: "bash .github/scripts/wait-for-health.sh \\\n  --port 18896 --log logs/studio_ime.log --tmp /tmp/health3.json\n"
+    - name: Pass bootstrap pw for IME / i18n test
+      if: matrix.shard == 'extra'
+      run: 'NEW="CIIme-$(python -c ''import secrets; print(secrets.token_urlsafe(16))'')"
+
+        echo "::add-mask::$NEW"
+
+        echo "STUDIO_IME_NEW_PW=$NEW" >> "$GITHUB_ENV"
+
+        '
+    - name: Drive IME + multilingual paste regression with Playwright
+      if: matrix.shard == 'extra'
+      env:
+        BASE_URL: http://127.0.0.1:18896
+        STUDIO_NEW_PW: ${{ env.STUDIO_IME_NEW_PW }}
+        PW_ART_DIR: logs/playwright_ime
+        STUDIO_UI_STRICT: '1'
+      run: 'mkdir -p logs/playwright_ime
+
+        python tests/studio/playwright_chat_ime_i18n.py
+
+        '
+    - name: Stop third Unsloth
+      if: (always()) && (matrix.shard == 'extra')
+      run: 'kill "${STUDIO_IME_PID}" 2>/dev/null || true
+
+        sleep 2
+
+        '
+    - name: Capture the backend and llama-server logs
+      if: always()
+      run: 'mkdir -p logs/server-logs
+
+        cp -r ~/.unsloth/studio/logs/. logs/server-logs/ 2>/dev/null || true
+
+        '
+    - name: Upload Playwright artifacts
+      if: always()
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      with:
+        name: studio-ui-smoke-artifacts-${{ matrix.shard }}-${{ matrix.revision }}
+        path: 'logs/studio.log
+
+          logs/studio_extra.log
+
+          logs/studio_modelcfg.log
+
+          logs/studio_ime.log
+
+          logs/install.log
+
+          logs/server-logs/
+
+          logs/playwright
+
+          logs/playwright_mtp
+
+          logs/playwright-permissions-*
+
+          logs/playwright_extra
+
+          logs/playwright_mcp_arguments
+
+          logs/playwright_thread_settings
+
+          logs/playwright_fontscale
+
+          logs/playwright_update_banner
+
+          logs/playwright_image_footprint
+
+          logs/playwright_image_cancel_retry
+
+          logs/playwright_image_cancel_retry_cold
+
+          logs/playwright_image_download_queue
+
+          logs/playwright_image_text_encoder
+
+          logs/playwright_modelcfg
+
+          logs/playwright_memory_estimate
+
+          logs/playwright_ime
+
+          logs/studio-permissions-*.log
+
+          '
+        retention-days: 1
+    - name: Record resolved packages
+      if: always()
+      run: 'python --version > ci-evidence/python.txt
+
+        python -m pip freeze > ci-evidence/packages.txt'
+    - name: Upload comparison evidence
+      if: always()
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      with:
+        name: ui-extra-${{ matrix.revision }}-results
+        path: ci-evidence/
+        retention-days: 30

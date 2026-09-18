@@ -64,3 +64,5 @@ The shared backend failure is `test_base_model_dir_name_fallback.py::test_the_tr
 The browser base failed to keep the FLUX.2-klein-4B picker open across five attempts. Head passed that exact scenario and the remaining extra UI checks, including model settings, memory estimates and IME behavior. Two head screenshots were inspected and preserved in `ci-gap/`.
 
 The staging workflow remains red because it faithfully reports the shared backend failure and the base-only UI failure. No new PR defect was found. The historical logs remain unavailable; no claim is made about their exact original cause. Full JUnit and browser artifacts are attached to the fresh run. Structured results and package versions are preserved here. The cancelled first staging attempt is excluded because its application-home override did not match the official UI harness.
+
+Verification was followed by confirmation that the reviewed source head was unchanged, [approval](https://github.com/unslothai/unsloth/pull/11160#pullrequestreview-5253329358), and the authorized squash merge. Original PR #11160 merged as `8b3c658c032e9bbf58abf68edb041f2a96937c1e`. The review mirror was not merged.

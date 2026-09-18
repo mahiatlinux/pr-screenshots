@@ -48,3 +48,19 @@ Source head `485fa2b2a613391e99225925ea94b24d4eefc1e6` includes the maintainer's
 - Environment and pinned package resolution are unchanged from the original run.
 
 The original PR has three failed GitHub checks. Their historical run-log endpoints returned HTTP 410 during this resumption; these failures are not represented as successful checks here.
+
+## Historical CI gap resolved, 2026-09-18 UTC
+
+[Fresh scoped staging CI](https://github.com/mahiatlinux/unsloth/actions/runs/35402633351) compared the same immutable base and head using the original three job selections. The workflow is preserved in commit `729555fb4` on mahiatlinux/unsloth.
+
+| Job group | Base | Head | Comparison |
+| --- | --- | --- | --- |
+| Backend a-k plus serial tests | 16,071 passed, 1 failed, 43 skipped | 16,072 passed, 1 failed, 43 skipped | Same test and traceback; no head-only failure |
+| Repository Python plus CLI | 6,544 passed, 128 skipped | 6,544 passed, 128 skipped | Both pass |
+| Extra browser UI | FLUX.2 picker timeout in download-only cancel/retry | All selected steps pass | Base-only failure |
+
+The shared backend failure is `test_base_model_dir_name_fallback.py::test_the_transcribed_repo_id_rule_is_never_looser_than_the_hubs`: `assert ['Café-8B'] == []`. Dependency versions match between each pair; the repository test environments differ only in the editable Unsloth commit. Every serial backend test passed.
+
+The browser base failed to keep the FLUX.2-klein-4B picker open across five attempts. Head passed that exact scenario and the remaining extra UI checks, including model settings, memory estimates and IME behavior. Two head screenshots were inspected and preserved in `ci-gap/`.
+
+The staging workflow remains red because it faithfully reports the shared backend failure and the base-only UI failure. No new PR defect was found. The historical logs remain unavailable; no claim is made about their exact original cause. Full JUnit and browser artifacts are attached to the fresh run. Structured results and package versions are preserved here. The cancelled first staging attempt is excluded because its application-home override did not match the official UI harness.

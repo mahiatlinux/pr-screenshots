@@ -1,0 +1,11 @@
+✔ backup recovery after list-projects failure (122.976128ms)
+✔ backup recovery after save-project failure (48.903299ms)
+✔ backup recovery after sync-messages failure (44.078194ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 455.486068

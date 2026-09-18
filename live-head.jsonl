@@ -1,0 +1,2 @@
+{"case": "conditional_receiver", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "kwargs_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}

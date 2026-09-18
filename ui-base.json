@@ -1,0 +1,19 @@
+{
+  "connections": 1,
+  "requests": 2,
+  "results": [
+    {
+      "role": "tool",
+      "name": "python",
+      "content": "{\"result\": \"local endpoint reached\"}\n",
+      "tool_call_id": "egress_call"
+    }
+  ],
+  "side": "base",
+  "approval_visible": false,
+  "browser": "153.0.8010.12",
+  "viewport": [
+    1200,
+    900
+  ]
+}

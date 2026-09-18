@@ -1,0 +1,20 @@
+{
+  "job_id": "job_20260918_233133_153fd8a9",
+  "start_request_id": null,
+  "start_request_state": null,
+  "phase": "error",
+  "is_training_running": false,
+  "eval_enabled": false,
+  "message": "You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/google/gemma-3-270m-it.\n401 Client Error. (Request ID: Root=1-6aadc9ee-4cd6c3866fd684540ed36141;c4319c18-736a-40b9-b6a2-e874893115cb)\n\nCannot access gated repo for url https://huggingface.co/google/gemma-3-270m-it/resolve/main/config.json.\nAccess to model google/gemma-3-270m-it is restricted. You must have access to it and be authenticated to access it. Please log in.",
+  "error": "You are trying to access a gated repo.\nMake sure to have access to it at https://huggingface.co/google/gemma-3-270m-it.\n401 Client Error. (Request ID: Root=1-6aadc9ee-4cd6c3866fd684540ed36141;c4319c18-736a-40b9-b6a2-e874893115cb)\n\nCannot access gated repo for url https://huggingface.co/google/gemma-3-270m-it/resolve/main/config.json.\nAccess to model google/gemma-3-270m-it is restricted. You must have access to it and be authenticated to access it. Please log in.",
+  "warnings": [],
+  "details": {
+    "epoch": 0,
+    "step": 0,
+    "total_steps": 0,
+    "loss": null,
+    "learning_rate": null,
+    "output_dir": null
+  },
+  "metric_history": null
+}

@@ -1,0 +1,3 @@
+{"model": "google/gemma-2-2b-jpn-it", "gated": "manual", "result": null, "seconds": 0.97}
+{"model": "google/gemma-3-270m-it", "gated": "manual", "result": null, "seconds": 0.53}
+{"model": "unsloth/gemma-3-270m-it-unsloth-bnb-4bit", "gated": false, "result": null, "seconds": 0.58}

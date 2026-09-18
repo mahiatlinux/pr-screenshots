@@ -1,0 +1,10 @@
+......................................................................   [100%]
+=============================== warnings summary ===============================
+studio/backend/tests/test_training_gated_upstream.py::test_pre_detect_reads_the_repo_the_loader_fetches[None-False-None-unsloth/gemma-3-270m-it-unsloth-bnb-4bit]
+  <task>/mirror/unsloth/__init__.py:1568: UserWarning: WARNING: Unsloth should be imported before [transformers] to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
+  
+  Please restructure your imports with 'import unsloth' at the top of your file.
+    from ._gpu_init import *
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+70 passed, 1 warning in 8.37s

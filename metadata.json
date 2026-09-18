@@ -1,0 +1,22 @@
+{
+  "base": "6a5ab1f389f2a7a6a509150fa1b87a91c5044d53",
+  "original_head": "39ff25c6d8f9373c8c272827f1f7266c5d817874",
+  "head": "eb343c8f1c75f4c06ce8c6796a01d186e5efb754",
+  "mirror_head": "c6c37582ffc3a84c7af3670b401b1e004de817dc",
+  "model": "google/gemma-3-270m-it",
+  "dataset": "unsloth/alpaca-cleaned",
+  "token": false,
+  "max_steps": 2,
+  "context_length": 128,
+  "batch_size": 1,
+  "gradient_accumulation_steps": 1,
+  "viewport": [
+    1440,
+    1000
+  ],
+  "browser": "Chromium 145.0.7632.6",
+  "playwright": "1.58.2",
+  "expected": "base fails with raw gated-repo 401; head completes two GPU training steps",
+  "observed": "base raw 401, head completed 2/2, final-step loss 3.178213119506836",
+  "redactions": "local output paths masked in after screenshot"
+}

@@ -1,0 +1,102 @@
+................................................................FFF...   [100%]
+=================================== FAILURES ===================================
+_ test_the_suffix_strip_matches_the_loader[unsloth/gemma-3-270m-it-unsloth-bnb-4bit-unsloth/gemma-3-270m-it] _
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: in from_name
+    return next(iter(cls.discover(name=name)))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+unsloth/_gpu_init.py:170: in <module>
+    unsloth_zoo_version = importlib_version("unsloth_zoo")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: in from_name
+    raise PackageNotFoundError(name)
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for unsloth_zoo
+
+During handling of the above exception, another exception occurred:
+studio/backend/tests/test_training_gated_upstream.py:898: in test_the_suffix_strip_matches_the_loader
+    from unsloth.models.loader import _strip_unsloth_bnb_4bit_suffix as loader_strip
+unsloth/__init__.py:1568: in <module>
+    from ._gpu_init import *
+unsloth/_gpu_init.py:178: in <module>
+    raise ImportError(
+E   ImportError: Unsloth: Please install unsloth_zoo via `pip install unsloth_zoo` then retry!
+_ test_the_suffix_strip_matches_the_loader[unsloth/llama-3-70b-Instruct-bnb-4bit-unsloth/llama-3-70b-Instruct] _
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: in from_name
+    return next(iter(cls.discover(name=name)))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+unsloth/_gpu_init.py:170: in <module>
+    unsloth_zoo_version = importlib_version("unsloth_zoo")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: in from_name
+    raise PackageNotFoundError(name)
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for unsloth_zoo
+
+During handling of the above exception, another exception occurred:
+studio/backend/tests/test_training_gated_upstream.py:898: in test_the_suffix_strip_matches_the_loader
+    from unsloth.models.loader import _strip_unsloth_bnb_4bit_suffix as loader_strip
+unsloth/__init__.py:1568: in <module>
+    from ._gpu_init import *
+unsloth/_gpu_init.py:178: in <module>
+    raise ImportError(
+E   ImportError: Unsloth: Please install unsloth_zoo via `pip install unsloth_zoo` then retry!
+_ test_the_suffix_strip_matches_the_loader[unsloth/gemma-3-270m-it-unsloth/gemma-3-270m-it] _
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:407: in from_name
+    return next(iter(cls.discover(name=name)))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   StopIteration
+
+During handling of the above exception, another exception occurred:
+unsloth/_gpu_init.py:170: in <module>
+    unsloth_zoo_version = importlib_version("unsloth_zoo")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:987: in version
+    return distribution(distribution_name).version
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:960: in distribution
+    return Distribution.from_name(distribution_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../python/cpython-3.13.14-linux-x86_64-gnu/lib/python3.13/importlib/metadata/__init__.py:409: in from_name
+    raise PackageNotFoundError(name)
+E   importlib.metadata.PackageNotFoundError: No package metadata was found for unsloth_zoo
+
+During handling of the above exception, another exception occurred:
+studio/backend/tests/test_training_gated_upstream.py:898: in test_the_suffix_strip_matches_the_loader
+    from unsloth.models.loader import _strip_unsloth_bnb_4bit_suffix as loader_strip
+unsloth/__init__.py:1568: in <module>
+    from ._gpu_init import *
+unsloth/_gpu_init.py:178: in <module>
+    raise ImportError(
+E   ImportError: Unsloth: Please install unsloth_zoo via `pip install unsloth_zoo` then retry!
+=============================== warnings summary ===============================
+studio/backend/tests/test_training_gated_upstream.py::test_pre_detect_reads_the_repo_the_loader_fetches[None-False-None-unsloth/gemma-3-270m-it-unsloth-bnb-4bit]
+studio/backend/tests/test_training_gated_upstream.py::test_the_suffix_strip_matches_the_loader[unsloth/gemma-3-270m-it-unsloth-bnb-4bit-unsloth/gemma-3-270m-it]
+studio/backend/tests/test_training_gated_upstream.py::test_the_suffix_strip_matches_the_loader[unsloth/llama-3-70b-Instruct-bnb-4bit-unsloth/llama-3-70b-Instruct]
+studio/backend/tests/test_training_gated_upstream.py::test_the_suffix_strip_matches_the_loader[unsloth/gemma-3-270m-it-unsloth/gemma-3-270m-it]
+  <task>/head/unsloth/__init__.py:1568: UserWarning: WARNING: Unsloth should be imported before [transformers] to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
+  
+  Please restructure your imports with 'import unsloth' at the top of your file.
+    from ._gpu_init import *
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_training_gated_upstream.py::test_the_suffix_strip_matches_the_loader[unsloth/gemma-3-270m-it-unsloth-bnb-4bit-unsloth/gemma-3-270m-it]
+FAILED studio/backend/tests/test_training_gated_upstream.py::test_the_suffix_strip_matches_the_loader[unsloth/llama-3-70b-Instruct-bnb-4bit-unsloth/llama-3-70b-Instruct]
+FAILED studio/backend/tests/test_training_gated_upstream.py::test_the_suffix_strip_matches_the_loader[unsloth/gemma-3-270m-it-unsloth/gemma-3-270m-it]
+3 failed, 67 passed, 4 warnings in 6.13s

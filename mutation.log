@@ -1,0 +1,21 @@
+FF.                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_the_suffix_strip_matches_the_loader[unsloth/gemma-3-270m-it-unsloth-bnb-4bit-unsloth/gemma-3-270m-it] _
+studio/backend/tests/test_training_gated_upstream.py:915: in test_the_suffix_strip_matches_the_loader
+    assert loader_strip(name) == stripped
+E   AssertionError: assert 'unsloth/gemm...loth-bnb-4bit' == 'unsloth/gemma-3-270m-it'
+E     
+E     - unsloth/gemma-3-270m-it
+E     + unsloth/gemma-3-270m-it-unsloth-bnb-4bit
+_ test_the_suffix_strip_matches_the_loader[unsloth/llama-3-70b-Instruct-bnb-4bit-unsloth/llama-3-70b-Instruct] _
+studio/backend/tests/test_training_gated_upstream.py:915: in test_the_suffix_strip_matches_the_loader
+    assert loader_strip(name) == stripped
+E   AssertionError: assert 'unsloth/llam...ruct-bnb-4bit' == 'unsloth/llama-3-70b-Instruct'
+E     
+E     - unsloth/llama-3-70b-Instruct
+E     + unsloth/llama-3-70b-Instruct-bnb-4bit
+E     ?                             +++++++++
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_training_gated_upstream.py::test_the_suffix_strip_matches_the_loader[unsloth/gemma-3-270m-it-unsloth-bnb-4bit-unsloth/gemma-3-270m-it]
+FAILED studio/backend/tests/test_training_gated_upstream.py::test_the_suffix_strip_matches_the_loader[unsloth/llama-3-70b-Instruct-bnb-4bit-unsloth/llama-3-70b-Instruct]
+2 failed, 1 passed, 67 deselected in 2.86s

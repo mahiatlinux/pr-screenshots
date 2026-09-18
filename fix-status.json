@@ -1,0 +1,45 @@
+{
+  "job_id": "job_20260918_233227_89428c39",
+  "start_request_id": null,
+  "start_request_state": null,
+  "phase": "completed",
+  "is_training_running": false,
+  "eval_enabled": false,
+  "message": "Training completed! Model saved to <task>/home/fix/studio/outputs/google_gemma-3-270m-it_1789774447",
+  "error": null,
+  "warnings": [],
+  "details": {
+    "epoch": 0.22,
+    "step": 2,
+    "total_steps": 2,
+    "loss": 3.178213119506836,
+    "learning_rate": 4e-05,
+    "output_dir": "<task>/home/fix/studio/outputs/google_gemma-3-270m-it_1789774447"
+  },
+  "metric_history": {
+    "steps": [
+      1,
+      2
+    ],
+    "loss": [
+      3.0007801055908203,
+      3.178213119506836
+    ],
+    "lr": [
+      0.0,
+      4e-05
+    ],
+    "grad_norm": [
+      3.533439874649048,
+      3.1210029125213623,
+      3.1210029125213623
+    ],
+    "grad_norm_steps": [
+      1,
+      2,
+      2
+    ],
+    "eval_loss": [],
+    "eval_steps": []
+  }
+}

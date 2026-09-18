@@ -1,0 +1,12 @@
+{"timestamp": "2026-09-18T23:32:47.461454Z", "level": "info", "event": "Reading google/gemma-3-270m-it config and tokenizer from unsloth/gemma-3-270m-it-unsloth-bnb-4bit, the repo Unsloth loads"}
+{"timestamp": "2026-09-18T23:32:58.429947Z", "level": "info", "event": "Pre-loaded tokenizer for google/gemma-3-270m-it"}
+{"timestamp": "2026-09-18T23:33:11.042158Z", "level": "info", "event": "Dataset formatted successfully (9 samples, alpaca)\n"}
+{"timestamp": "2026-09-18T23:33:11.061644Z", "level": "info", "event": "Reading google/gemma-3-270m-it config and tokenizer from unsloth/gemma-3-270m-it-unsloth-bnb-4bit, the repo Unsloth loads"}
+{"timestamp": "2026-09-18T23:34:07.995555Z", "level": "info", "event": "Training for 2 steps\n"}
+{"timestamp": "2026-09-18T23:35:35.127885Z", "level": "info", "event": "trainer summary", "loss": 3.0007801055908203, "grad_norm": 3.533439874649048, "learning_rate": 0.0, "epoch": 0.1111111111111111, "num_input_tokens_seen": 112, "train_runtime": 64.9336, "train_tokens_per_second": 1.725}
+{"timestamp": "2026-09-18T23:35:35.128176Z", "level": "info", "event": "training_progress", "step": 1, "total_steps": 2, "percent": 50, "loss": 3.0008, "epoch": 0.11, "eta_s": 87, "s_per_step": null, "tok_per_s": null}
+{"timestamp": "2026-09-18T23:35:40.131300Z", "level": "info", "event": "trainer summary", "loss": 3.178213119506836, "grad_norm": 3.1210029125213623, "learning_rate": 4e-05, "epoch": 0.2222222222222222, "num_input_tokens_seen": 240, "train_runtime": 69.9371, "train_tokens_per_second": 3.432}
+{"timestamp": "2026-09-18T23:35:40.131574Z", "level": "info", "event": "training_progress", "step": 2, "total_steps": 2, "percent": 100, "loss": 3.1782, "epoch": 0.22, "eta_s": null, "s_per_step": 5.003, "tok_per_s": 25.6}
+{"timestamp": "2026-09-18T23:35:41.094191Z", "level": "info", "event": "trainer summary", "train_runtime": 70.9, "train_samples_per_second": 0.028, "train_steps_per_second": 0.028, "total_flos": 147203297280.0, "train_loss": 3.089496612548828, "epoch": 0.2222222222222222, "num_input_tokens_seen": 240}
+{"timestamp": "2026-09-18T23:35:41.094253Z", "level": "info", "event": "training finished: mean train_loss=3.089496612548828 over 2 steps"}
+{"timestamp": "2026-09-18T23:35:42.275357Z", "level": "info", "event": "\nTraining completed! Model saved to <task>/home/fix/studio/outputs/google_gemma-3-270m-it_1789774447\n"}

@@ -1,0 +1,17 @@
+........................................................................ [ 17%]
+........................................................................ [ 35%]
+........................................................................ [ 52%]
+........................................................................ [ 70%]
+........................................................................ [ 88%]
+.................................................                        [100%]
+=============================== warnings summary ===============================
+unsloth/__init__.py:1568: 1 warning
+studio/backend/tests/test_training_gated_upstream.py: 1 warning
+studio/backend/tests/test_training_preflight.py: 9 warnings
+  <task>/fix/unsloth/__init__.py:1568: UserWarning: WARNING: Unsloth should be imported before [transformers] to ensure all optimizations are applied. Your code may run slower or encounter memory issues without these optimizations.
+  
+  Please restructure your imports with 'import unsloth' at the top of your file.
+    from ._gpu_init import *
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+409 passed, 11 warnings in 12.56s

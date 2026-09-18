@@ -1,0 +1,37 @@
+{
+  "cached": [
+    {
+      "repo_id": "Org/Recovered-Model",
+      "size_bytes": 256,
+      "cache_path": "<isolated-hf-cache>/models--Org--Recovered-Model",
+      "last_modified": 1789773191.8754616,
+      "partial": false,
+      "partial_transport": null,
+      "partial_resumable": false,
+      "inventory_id": "cache:safetensors:Org%2FRecovered-Model",
+      "load_id": "Org/Recovered-Model",
+      "model_format": "safetensors",
+      "runtime": "transformers",
+      "format_variant": null,
+      "capabilities": {
+        "can_train": true,
+        "can_chat": true,
+        "can_delete": true,
+        "can_download": false,
+        "requires_variant": false,
+        "supports_lora": true,
+        "supports_vision": false
+      },
+      "task": null,
+      "audio_type": null,
+      "quant_method": null,
+      "pipeline_tag": null,
+      "library_name": null,
+      "tags": null,
+      "single_file": false,
+      "companion": false,
+      "diffusers": false
+    }
+  ],
+  "scan_confirmed": true
+}

@@ -1,0 +1,27 @@
+{
+  "expect": "On Device has no Org/Recovered-Model on base and one on head after the real dataset PermissionError.",
+  "chromium_base": {
+    "version": "151.0.7922.34",
+    "visible_name_matches": 0,
+    "api_model_rows": 0,
+    "text": "unsloth\nBETA\nNew chat\nModel hub\nProjects\nImages\nVideo\nTrain\nMore\nRecents\n\nNo chats yet\n\nU\nunsloth\nUnsloth\nCommand Palette\n\nSearch for a command to run...\n\nModel hub\n\nDiscover and download models locally.\n\nAuto\nHTTP\nXet\n0\nCache\n0\nLocal\nUnavailable\nVRAM\n30 GiB\nRAM\n6/12\nCPU\nDiscover\nOn Device\nAdd folder\nFree up space\nAll formats\nOn device\nAll types\nRecent\n\nNo matches on device\n\nClear the search or try a different query. No cached or local model matches it.\n\nSelect a model to preview its details."
+  },
+  "chromium_head": {
+    "version": "151.0.7922.34",
+    "visible_name_matches": 2,
+    "api_model_rows": 1,
+    "text": "unsloth\nBETA\nNew chat\nModel hub\nProjects\nImages\nVideo\nTrain\nMore\nRecents\n\nNo chats yet\n\nU\nunsloth\nUnsloth\nCommand Palette\n\nSearch for a command to run...\n\nModel hub\n\nDiscover and download models locally.\n\nAuto\nHTTP\nXet\n1\nCache\n0\nLocal\nUnavailable\nVRAM\n30 GiB\nRAM\n6/12\nCPU\nDiscover\nOn Device\nAdd folder\nFree up space\nAll formats\nOn device\nAll types\nRecent\nO\nRecovered-Model\nOrg\n\u00b7\nSafetensors\n256 B\nRecovered-Model\nOrg\nGeneral\nOn device\nSafetensors\n256 B\n\nCouldn't load full details from Hugging Face. Some fields may be incomplete.\n\nN/A\nN/A\nN/A\nN/A\n256 B\nN/A\nGGUF-only device\n\nModel card unavailable. It may be private, gated, or temporarily unreachable."
+  },
+  "firefox_base": {
+    "version": "153.0",
+    "visible_name_matches": 0,
+    "api_model_rows": 0,
+    "text": "unsloth\nBETA\nNew chat\nModel hub\nProjects\nImages\nVideo\nTrain\nMore\nRecents\n\nNo chats yet\n\nU\nunsloth\nUnsloth\nCommand Palette\n\nSearch for a command to run...\n\nModel hub\n\nDiscover and download models locally.\n\nAuto\nHTTP\nXet\n0\nCache\n0\nLocal\nUnavailable\nVRAM\n30 GiB\nRAM\n6/12\nCPU\nDiscover\nOn Device\nAdd folder\nFree up space\nAll formats\nOn device\nAll types\nRecent\n\nNo matches on device\n\nClear the search or try a different query. No cached or local model matches it.\n\nSelect a model to preview its details."
+  },
+  "firefox_head": {
+    "version": "153.0",
+    "visible_name_matches": 2,
+    "api_model_rows": 1,
+    "text": "unsloth\nBETA\nNew chat\nModel hub\nProjects\nImages\nVideo\nTrain\nMore\nRecents\n\nNo chats yet\n\nU\nunsloth\nUnsloth\nCommand Palette\n\nSearch for a command to run...\n\nModel hub\n\nDiscover and download models locally.\n\nAuto\nHTTP\nXet\n1\nCache\n0\nLocal\nUnavailable\nVRAM\n30 GiB\nRAM\n6/12\nCPU\nDiscover\nOn Device\nAdd folder\nFree up space\nAll formats\nOn device\nAll types\nRecent\nO\nRecovered-Model\nOrg\n\u00b7\nSafetensors\n256 B\nRecovered-Model\nOrg\nGeneral\nOn device\nSafetensors\n256 B\n\nCouldn't load full details from Hugging Face. Some fields may be incomplete.\n\nN/A\nN/A\nN/A\nN/A\n256 B\nN/A\nGGUF-only device\n\nModel card unavailable. It may be private, gated, or temporarily unreachable."
+  }
+}

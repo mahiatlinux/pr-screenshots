@@ -1,0 +1,72 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_oserror_in_one_repo_does_not_hide_healthy_models[datasets--Org--Broken] _
+
+tmp_path = PosixPath('/tmp/pytest-of-unknown/pytest-0/test_oserror_in_one_repo_does_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78f387c16c00>
+bad_repo_name = 'datasets--Org--Broken'
+
+    @pytest.mark.parametrize("bad_repo_name", ["datasets--Org--Broken", "models--Org--Broken"])
+    def test_oserror_in_one_repo_does_not_hide_healthy_models(tmp_path, monkeypatch, bad_repo_name):
+        from huggingface_hub import scan_cache_dir
+    
+        healthy = _build_repo(tmp_path, ref = SNAPSHOT)
+        broken = _build_repo(tmp_path, ref = SNAPSHOT, name = bad_repo_name)
+        bad_file = broken / "snapshots" / SNAPSHOT / "README.md"
+        bad_file.write_text("unreadable", encoding = "utf-8")
+        original_stat = Path.stat
+    
+        def stat_with_windows_error(path, *args, **kwargs):
+            if path == bad_file:
+                raise OSError(1920, "The file cannot be accessed by the system", str(path))
+            return original_stat(path, *args, **kwargs)
+    
+        monkeypatch.setattr(Path, "stat", stat_with_windows_error)
+        with pytest.raises(OSError):
+            scan_cache_dir(tmp_path)
+    
+        scans = _scan(tmp_path, monkeypatch)
+        repos = {repo.repo_id: repo for scan in scans for repo in scan.repos}
+>       assert "Org/Model" in repos
+E       AssertionError: assert 'Org/Model' in {}
+
+../artifacts/test_hf_cache_dangling_refs.py:4757: AssertionError
+----------------------------- Captured stdout call -----------------------------
+2026-09-18 23:12:14 [warning  ] Could not scan HF cache /tmp/pytest-of-unknown/pytest-0/test_oserror_in_one_repo_does_0: [Errno 1920] The file cannot be accessed by the system: '/tmp/pytest-of-unknown/pytest-0/test_oserror_in_one_repo_does_0/datasets--Org--Broken/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/README.md'
+__ test_oserror_in_one_repo_does_not_hide_healthy_models[models--Org--Broken] __
+
+tmp_path = PosixPath('/tmp/pytest-of-unknown/pytest-0/test_oserror_in_one_repo_does_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78f3874f7200>
+bad_repo_name = 'models--Org--Broken'
+
+    @pytest.mark.parametrize("bad_repo_name", ["datasets--Org--Broken", "models--Org--Broken"])
+    def test_oserror_in_one_repo_does_not_hide_healthy_models(tmp_path, monkeypatch, bad_repo_name):
+        from huggingface_hub import scan_cache_dir
+    
+        healthy = _build_repo(tmp_path, ref = SNAPSHOT)
+        broken = _build_repo(tmp_path, ref = SNAPSHOT, name = bad_repo_name)
+        bad_file = broken / "snapshots" / SNAPSHOT / "README.md"
+        bad_file.write_text("unreadable", encoding = "utf-8")
+        original_stat = Path.stat
+    
+        def stat_with_windows_error(path, *args, **kwargs):
+            if path == bad_file:
+                raise OSError(1920, "The file cannot be accessed by the system", str(path))
+            return original_stat(path, *args, **kwargs)
+    
+        monkeypatch.setattr(Path, "stat", stat_with_windows_error)
+        with pytest.raises(OSError):
+            scan_cache_dir(tmp_path)
+    
+        scans = _scan(tmp_path, monkeypatch)
+        repos = {repo.repo_id: repo for scan in scans for repo in scan.repos}
+>       assert "Org/Model" in repos
+E       AssertionError: assert 'Org/Model' in {}
+
+../artifacts/test_hf_cache_dangling_refs.py:4757: AssertionError
+----------------------------- Captured stdout call -----------------------------
+2026-09-18 23:12:14 [warning  ] Could not scan HF cache /tmp/pytest-of-unknown/pytest-0/test_oserror_in_one_repo_does_1: [Errno 1920] The file cannot be accessed by the system: '/tmp/pytest-of-unknown/pytest-0/test_oserror_in_one_repo_does_1/models--Org--Broken/snapshots/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/README.md'
+=========================== short test summary info ============================
+FAILED ../artifacts/test_hf_cache_dangling_refs.py::test_oserror_in_one_repo_does_not_hide_healthy_models[datasets--Org--Broken]
+FAILED ../artifacts/test_hf_cache_dangling_refs.py::test_oserror_in_one_repo_does_not_hide_healthy_models[models--Org--Broken]
+2 failed, 285 deselected in 0.59s

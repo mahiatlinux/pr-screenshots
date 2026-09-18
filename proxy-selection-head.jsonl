@@ -1,0 +1,2 @@
+{"case": "no_proxy", "selected": null, "blocked": null, "prompt": false}
+{"case": "initially_unused_proxy", "initial_selected": null, "status": 200, "origin_requests": ["/"], "proxy_requests": ["http://localhost:1/final"]}

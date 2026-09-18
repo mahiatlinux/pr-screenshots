@@ -1,0 +1,82 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_skipped_receiver_reassignment_preserves_proxy[if False:\n    s = requests.Session()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74053c5eba70>
+reassignment = 'if False:\n    s = requests.Session()'
+
+    @pytest.mark.parametrize(
+        "reassignment",
+        [
+            "if False:\n    s = requests.Session()",
+            "for unused in []:\n    s = requests.Session()",
+        ],
+    )
+    def test_skipped_receiver_reassignment_preserves_proxy(self, reassignment):
+        code = (
+            "import requests\ns = requests.Session()\n"
+            "s.proxies = {'https': 'http://203.0.113.5'}\n"
+            f"{reassignment}\ns.get('https://pypi.org/')"
+        )
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:783: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5'}\nif False:\n    s = requests.Session()\ns.get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         s = requests.Session()
+E         s.proxies = {'https': 'http://203.0.113.5'}
+E         if False:
+E             s = requests.Session()
+E         s.get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_skipped_receiver_reassignment_preserves_proxy[for unused in []:\n    s = requests.Session()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74053c5ebc50>
+reassignment = 'for unused in []:\n    s = requests.Session()'
+
+    @pytest.mark.parametrize(
+        "reassignment",
+        [
+            "if False:\n    s = requests.Session()",
+            "for unused in []:\n    s = requests.Session()",
+        ],
+    )
+    def test_skipped_receiver_reassignment_preserves_proxy(self, reassignment):
+        code = (
+            "import requests\ns = requests.Session()\n"
+            "s.proxies = {'https': 'http://203.0.113.5'}\n"
+            f"{reassignment}\ns.get('https://pypi.org/')"
+        )
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:783: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5'}\nfor unused in []:\n    s = requests.Session()\ns.get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         s = requests.Session()
+E         s.proxies = {'https': 'http://203.0.113.5'}
+E         for unused in []:
+E             s = requests.Session()
+E         s.get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_skipped_receiver_reassignment_preserves_proxy[if False:\n    s = requests.Session()]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_skipped_receiver_reassignment_preserves_proxy[for unused in []:\n    s = requests.Session()]
+2 failed, 552 deselected in 1.19s

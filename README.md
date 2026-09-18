@@ -11,3 +11,5 @@ python -m pytest studio/backend/tests/test_sandbox_tools.py studio/backend/tests
 ```
 
 `merge-tests.log` runs `test_sandbox_tools.py` on the reviewed prospective merge tree `78743ffc8`.
+
+The `regressions/` directory preserves failing tests immediately before each individual repair. Some failures are from intermediate repaired heads, not the original PR head. Final passing output is in `fix-tests.log` and `merge-tests.log`.

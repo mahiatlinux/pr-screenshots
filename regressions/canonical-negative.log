@@ -1,0 +1,40 @@
+.FF                                                                      [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_canonical_proxy_manager_requires_approval['http://203.0.113.5:8080/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ca53ba26900>
+proxy_url = "'http://203.0.113.5:8080/'"
+
+    @pytest.mark.parametrize("proxy_url", ["'http://203.0.113.5:8080/'", "input()"])
+    def test_canonical_proxy_manager_requires_approval(self, proxy_url):
+        code = (
+            "import urllib3\n"
+            f"urllib3.poolmanager.ProxyManager({proxy_url})"
+            ".request('GET', 'https://pypi.org/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib3\nurllib3.poolmanager.ProxyManager('http://203.0.113.5:8080/').request('GET', 'https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:801: AssertionError
+_ TestNetworkTargetResolution.test_canonical_proxy_manager_requires_approval[input()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ca53ba26a80>
+proxy_url = 'input()'
+
+    @pytest.mark.parametrize("proxy_url", ["'http://203.0.113.5:8080/'", "input()"])
+    def test_canonical_proxy_manager_requires_approval(self, proxy_url):
+        code = (
+            "import urllib3\n"
+            f"urllib3.poolmanager.ProxyManager({proxy_url})"
+            ".request('GET', 'https://pypi.org/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib3\nurllib3.poolmanager.ProxyManager(input()).request('GET', 'https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:801: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_canonical_proxy_manager_requires_approval['http://203.0.113.5:8080/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_canonical_proxy_manager_requires_approval[input()]
+2 failed, 1 passed, 555 deselected in 1.64s

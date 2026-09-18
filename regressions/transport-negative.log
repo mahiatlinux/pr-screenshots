@@ -1,0 +1,66 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_httpx_transport_proxy_requires_approval['http://203.0.113.5:8080'-HTTPTransport] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x733978e734a0>
+transport = 'HTTPTransport', proxy = "'http://203.0.113.5:8080'"
+
+    @pytest.mark.parametrize("transport", ["HTTPTransport", "AsyncHTTPTransport"])
+    @pytest.mark.parametrize("proxy", ["'http://203.0.113.5:8080'", "input()"])
+    def test_httpx_transport_proxy_requires_approval(self, transport, proxy):
+        code = f"import httpx\ntransport = httpx.{transport}(proxy={proxy})"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\ntransport = httpx.HTTPTransport(proxy='http://203.0.113.5:8080')"})
+
+studio/backend/tests/test_sandbox_tools.py:878: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_httpx_transport_proxy_requires_approval['http://203.0.113.5:8080'-AsyncHTTPTransport] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x733978e73860>
+transport = 'AsyncHTTPTransport', proxy = "'http://203.0.113.5:8080'"
+
+    @pytest.mark.parametrize("transport", ["HTTPTransport", "AsyncHTTPTransport"])
+    @pytest.mark.parametrize("proxy", ["'http://203.0.113.5:8080'", "input()"])
+    def test_httpx_transport_proxy_requires_approval(self, transport, proxy):
+        code = f"import httpx\ntransport = httpx.{transport}(proxy={proxy})"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\ntransport = httpx.AsyncHTTPTransport(proxy='http://203.0.113.5:8080')"})
+
+studio/backend/tests/test_sandbox_tools.py:878: AssertionError
+_ TestNetworkTargetResolution.test_httpx_transport_proxy_requires_approval[input()-HTTPTransport] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x733978e73950>
+transport = 'HTTPTransport', proxy = 'input()'
+
+    @pytest.mark.parametrize("transport", ["HTTPTransport", "AsyncHTTPTransport"])
+    @pytest.mark.parametrize("proxy", ["'http://203.0.113.5:8080'", "input()"])
+    def test_httpx_transport_proxy_requires_approval(self, transport, proxy):
+        code = f"import httpx\ntransport = httpx.{transport}(proxy={proxy})"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       AssertionError: assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': 'import httpx\ntransport = httpx.HTTPTransport(proxy=input())'})
+
+studio/backend/tests/test_sandbox_tools.py:878: AssertionError
+_ TestNetworkTargetResolution.test_httpx_transport_proxy_requires_approval[input()-AsyncHTTPTransport] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x733978e73a40>
+transport = 'AsyncHTTPTransport', proxy = 'input()'
+
+    @pytest.mark.parametrize("transport", ["HTTPTransport", "AsyncHTTPTransport"])
+    @pytest.mark.parametrize("proxy", ["'http://203.0.113.5:8080'", "input()"])
+    def test_httpx_transport_proxy_requires_approval(self, transport, proxy):
+        code = f"import httpx\ntransport = httpx.{transport}(proxy={proxy})"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       AssertionError: assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': 'import httpx\ntransport = httpx.AsyncHTTPTransport(proxy=input())'})
+
+studio/backend/tests/test_sandbox_tools.py:878: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_transport_proxy_requires_approval['http://203.0.113.5:8080'-HTTPTransport]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_transport_proxy_requires_approval['http://203.0.113.5:8080'-AsyncHTTPTransport]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_transport_proxy_requires_approval[input()-HTTPTransport]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_transport_proxy_requires_approval[input()-AsyncHTTPTransport]
+4 failed, 571 deselected in 1.18s

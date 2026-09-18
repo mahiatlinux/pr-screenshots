@@ -1,0 +1,50 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_session_alias_preserves_proxy_state[s.proxies = {'https': 'http://203.0.113.5'}\nalias = s\nif True:\n    s = requests.Session()\ns.proxies = {}-alias] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7fa9e23c40b0>
+setup = "s.proxies = {'https': 'http://203.0.113.5'}\nalias = s\nif True:\n    s = requests.Session()\ns.proxies = {}"
+receiver = 'alias'
+
+    @pytest.mark.parametrize(
+        "setup, receiver",
+        [
+            ("alias = s\nalias.proxies = {'https': 'http://203.0.113.5'}", "s"),
+            ("s.proxies = {'https': 'http://203.0.113.5'}\nalias = s", "alias"),
+            (
+                "s.proxies = {'https': 'http://203.0.113.5'}\nalias = s\n"
+                "if True:\n    s = requests.Session()\ns.proxies = {}",
+                "alias",
+            ),
+        ],
+    )
+    def test_session_alias_preserves_proxy_state(self, setup, receiver):
+        code = (
+            "import requests\ns = requests.Session()\n"
+            f"{setup}\n{receiver}.get('https://pypi.org/')"
+        )
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:855: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5'}\nalias = s\nif True:\n    s = requests.Session()\ns.proxies = {}\nalias.get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         s = requests.Session()
+E         s.proxies = {'https': 'http://203.0.113.5'}
+E         alias = s
+E         if True:
+E             s = requests.Session()
+E         s.proxies = {}
+E         alias.get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_session_alias_preserves_proxy_state[s.proxies = {'https': 'http://203.0.113.5'}\nalias = s\nif True:\n    s = requests.Session()\ns.proxies = {}-alias]
+1 failed, 2 passed, 573 deselected in 1.05s

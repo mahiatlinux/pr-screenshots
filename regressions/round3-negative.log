@@ -1,0 +1,150 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_additional_client_proxy_destinations_blocked[import requests\nclass Client(requests.Session):\n    pass\nClient().get('http://203.0.113.5/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e8f3cb59a00>
+code = "import requests\nclass Client(requests.Session):\n    pass\nClient().get('http://203.0.113.5/')"
+
+    @pytest.mark.parametrize(
+        "code",
+        [
+            "import requests\nclass Client(requests.Session):\n    pass\n"
+            "Client().get('http://203.0.113.5/')",
+            "import requests\nrequests.get('https://pypi.org/', "
+            "proxies={'https': '203.0.113.5:8080'})",
+            "import requests\ns = requests.Session()\n"
+            "s.proxies |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')",
+        ],
+    )
+    def test_additional_client_proxy_destinations_blocked(self, code):
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:828: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Client(requests.Session):\n    pass\nClient().get('http://203.0.113.5/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         class Client(requests.Session):
+E             pass
+E         Client().get('http://203.0.113.5/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_additional_client_proxy_destinations_blocked[import requests\nrequests.get('https://pypi.org/', proxies={'https': '203.0.113.5:8080'})] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e8f3cb59bb0>
+code = "import requests\nrequests.get('https://pypi.org/', proxies={'https': '203.0.113.5:8080'})"
+
+    @pytest.mark.parametrize(
+        "code",
+        [
+            "import requests\nclass Client(requests.Session):\n    pass\n"
+            "Client().get('http://203.0.113.5/')",
+            "import requests\nrequests.get('https://pypi.org/', "
+            "proxies={'https': '203.0.113.5:8080'})",
+            "import requests\ns = requests.Session()\n"
+            "s.proxies |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')",
+        ],
+    )
+    def test_additional_client_proxy_destinations_blocked(self, code):
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:828: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nrequests.get('https://pypi.org/', proxies={'https': '203.0.113.5:8080'})"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         requests.get('https://pypi.org/', proxies={'https': '203.0.113.5:8080'})
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_additional_client_proxy_destinations_blocked[import requests\ns = requests.Session()\ns.proxies |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e8f3cb59c70>
+code = "import requests\ns = requests.Session()\ns.proxies |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')"
+
+    @pytest.mark.parametrize(
+        "code",
+        [
+            "import requests\nclass Client(requests.Session):\n    pass\n"
+            "Client().get('http://203.0.113.5/')",
+            "import requests\nrequests.get('https://pypi.org/', "
+            "proxies={'https': '203.0.113.5:8080'})",
+            "import requests\ns = requests.Session()\n"
+            "s.proxies |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')",
+        ],
+    )
+    def test_additional_client_proxy_destinations_blocked(self, code):
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:828: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\ns = requests.Session()\ns.proxies |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         s = requests.Session()
+E         s.proxies |= {'https': 'http://203.0.113.5'}
+E         s.get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_runtime_client_proxy_destinations_require_approval[import requests\nclass Client(requests.Session):\n    pass\nClient().get(input())] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e8f3cb5a450>
+code = 'import requests\nclass Client(requests.Session):\n    pass\nClient().get(input())'
+
+    @pytest.mark.parametrize(
+        "code",
+        [
+            "import requests\nclass Client(requests.Session):\n    pass\nClient().get(input())",
+            "import requests\ns = requests.Session()\ns.proxies |= options\ns.get('https://pypi.org/')",
+        ],
+    )
+    def test_runtime_client_proxy_destinations_require_approval(self, code):
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       AssertionError: assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': 'import requests\nclass Client(requests.Session):\n    pass\nClient().get(input())'})
+
+studio/backend/tests/test_sandbox_tools.py:838: AssertionError
+_ TestNetworkTargetResolution.test_runtime_client_proxy_destinations_require_approval[import requests\ns = requests.Session()\ns.proxies |= options\ns.get('https://pypi.org/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e8f3cb5a5d0>
+code = "import requests\ns = requests.Session()\ns.proxies |= options\ns.get('https://pypi.org/')"
+
+    @pytest.mark.parametrize(
+        "code",
+        [
+            "import requests\nclass Client(requests.Session):\n    pass\nClient().get(input())",
+            "import requests\ns = requests.Session()\ns.proxies |= options\ns.get('https://pypi.org/')",
+        ],
+    )
+    def test_runtime_client_proxy_destinations_require_approval(self, code):
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\ns.proxies |= options\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:838: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_additional_client_proxy_destinations_blocked[import requests\nclass Client(requests.Session):\n    pass\nClient().get('http://203.0.113.5/')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_additional_client_proxy_destinations_blocked[import requests\nrequests.get('https://pypi.org/', proxies={'https': '203.0.113.5:8080'})]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_additional_client_proxy_destinations_blocked[import requests\ns = requests.Session()\ns.proxies |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_runtime_client_proxy_destinations_require_approval[import requests\nclass Client(requests.Session):\n    pass\nClient().get(input())]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_runtime_client_proxy_destinations_require_approval[import requests\ns = requests.Session()\ns.proxies |= options\ns.get('https://pypi.org/')]
+5 failed, 560 deselected in 1.29s

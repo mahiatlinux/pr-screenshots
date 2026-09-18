@@ -1,0 +1,40 @@
+.FF                                                                      [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_canonical_aiohttp_session_requires_approval['http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d36834242c0>
+base_url = "'http://203.0.113.5/'"
+
+    @pytest.mark.parametrize("base_url", ["'http://203.0.113.5/'", "input()"])
+    def test_canonical_aiohttp_session_requires_approval(self, base_url):
+        code = (
+            "from aiohttp.client import ClientSession\n"
+            f"async def fetch():\n    async with ClientSession({base_url}) as client:\n"
+            "        await client.get('/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "from aiohttp.client import ClientSession\nasync def fetch():\n    async with ClientSession('http://203.0.113.5/') as client:\n        await client.get('/')"})
+
+studio/backend/tests/test_sandbox_tools.py:812: AssertionError
+_ TestNetworkTargetResolution.test_canonical_aiohttp_session_requires_approval[input()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d3683424440>
+base_url = 'input()'
+
+    @pytest.mark.parametrize("base_url", ["'http://203.0.113.5/'", "input()"])
+    def test_canonical_aiohttp_session_requires_approval(self, base_url):
+        code = (
+            "from aiohttp.client import ClientSession\n"
+            f"async def fetch():\n    async with ClientSession({base_url}) as client:\n"
+            "        await client.get('/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "from aiohttp.client import ClientSession\nasync def fetch():\n    async with ClientSession(input()) as client:\n        await client.get('/')"})
+
+studio/backend/tests/test_sandbox_tools.py:812: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_canonical_aiohttp_session_requires_approval['http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_canonical_aiohttp_session_requires_approval[input()]
+2 failed, 1 passed, 557 deselected in 1.21s

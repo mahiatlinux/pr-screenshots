@@ -1,0 +1,99 @@
+.....FFFFF...                                                            [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_proxy_mapping_alias_mutation_requires_approval[s.get('https://pypi.org/')-p['https'] = 'http://203.0.113.5'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7b1667c0e1b0>
+mutation = "p['https'] = 'http://203.0.113.5'"
+target = "s.get('https://pypi.org/')"
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("target", ["s.get('https://pypi.org/')", "requests.get('https://pypi.org/', proxies=p)"])
+    def test_proxy_mapping_alias_mutation_requires_approval(self, mutation, target):
+        code = (
+            "import requests\ns = requests.Session()\np = {}\ns.proxies = p\n"
+            f"{mutation}\n{target}"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = {}\ns.proxies = p\np['https'] = 'http://203.0.113.5'\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:907: AssertionError
+_ TestNetworkTargetResolution.test_proxy_mapping_alias_mutation_requires_approval[s.get('https://pypi.org/')-p.update({'https': 'http://203.0.113.5'})] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7b1667c0e4b0>
+mutation = "p.update({'https': 'http://203.0.113.5'})"
+target = "s.get('https://pypi.org/')"
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("target", ["s.get('https://pypi.org/')", "requests.get('https://pypi.org/', proxies=p)"])
+    def test_proxy_mapping_alias_mutation_requires_approval(self, mutation, target):
+        code = (
+            "import requests\ns = requests.Session()\np = {}\ns.proxies = p\n"
+            f"{mutation}\n{target}"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = {}\ns.proxies = p\np.update({'https': 'http://203.0.113.5'})\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:907: AssertionError
+_ TestNetworkTargetResolution.test_proxy_mapping_alias_mutation_requires_approval[s.get('https://pypi.org/')-p |= {'https': 'http://203.0.113.5'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7b1667c0e570>
+mutation = "p |= {'https': 'http://203.0.113.5'}"
+target = "s.get('https://pypi.org/')"
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("target", ["s.get('https://pypi.org/')", "requests.get('https://pypi.org/', proxies=p)"])
+    def test_proxy_mapping_alias_mutation_requires_approval(self, mutation, target):
+        code = (
+            "import requests\ns = requests.Session()\np = {}\ns.proxies = p\n"
+            f"{mutation}\n{target}"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = {}\ns.proxies = p\np |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:907: AssertionError
+_ TestNetworkTargetResolution.test_proxy_mapping_alias_mutation_requires_approval[requests.get('https://pypi.org/', proxies=p)-p['https'] = 'http://203.0.113.5'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7b1667c0e630>
+mutation = "p['https'] = 'http://203.0.113.5'"
+target = "requests.get('https://pypi.org/', proxies=p)"
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("target", ["s.get('https://pypi.org/')", "requests.get('https://pypi.org/', proxies=p)"])
+    def test_proxy_mapping_alias_mutation_requires_approval(self, mutation, target):
+        code = (
+            "import requests\ns = requests.Session()\np = {}\ns.proxies = p\n"
+            f"{mutation}\n{target}"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = {}\ns.proxies = p\np['https'] = 'http://203.0.113.5'\nrequests.get('https://pypi.org/', proxies=p)"})
+
+studio/backend/tests/test_sandbox_tools.py:907: AssertionError
+_ TestNetworkTargetResolution.test_proxy_mapping_alias_mutation_requires_approval[requests.get('https://pypi.org/', proxies=p)-p.update({'https': 'http://203.0.113.5'})] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7b1667c0e6f0>
+mutation = "p.update({'https': 'http://203.0.113.5'})"
+target = "requests.get('https://pypi.org/', proxies=p)"
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("target", ["s.get('https://pypi.org/')", "requests.get('https://pypi.org/', proxies=p)"])
+    def test_proxy_mapping_alias_mutation_requires_approval(self, mutation, target):
+        code = (
+            "import requests\ns = requests.Session()\np = {}\ns.proxies = p\n"
+            f"{mutation}\n{target}"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = {}\ns.proxies = p\np.update({'https': 'http://203.0.113.5'})\nrequests.get('https://pypi.org/', proxies=p)"})
+
+studio/backend/tests/test_sandbox_tools.py:907: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_mapping_alias_mutation_requires_approval[s.get('https://pypi.org/')-p['https'] = 'http://203.0.113.5']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_mapping_alias_mutation_requires_approval[s.get('https://pypi.org/')-p.update({'https': 'http://203.0.113.5'})]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_mapping_alias_mutation_requires_approval[s.get('https://pypi.org/')-p |= {'https': 'http://203.0.113.5'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_mapping_alias_mutation_requires_approval[requests.get('https://pypi.org/', proxies=p)-p['https'] = 'http://203.0.113.5']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_mapping_alias_mutation_requires_approval[requests.get('https://pypi.org/', proxies=p)-p.update({'https': 'http://203.0.113.5'})]
+5 failed, 8 passed, 580 deselected in 1.18s

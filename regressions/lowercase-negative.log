@@ -1,0 +1,114 @@
+FFFFFF...                                                                [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_lowercase_session_send_checks_prepared_url['http://203.0.113.5/'-requests.session] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7702213a8fb0>
+factory = 'requests.session', url = "'http://203.0.113.5/'"
+
+    @pytest.mark.parametrize("factory", ["requests.session", "requests.sessions.session", "requests.api.session"])
+    @pytest.mark.parametrize("url", ["'http://203.0.113.5/'", "input()", "'https://pypi.org/'"])
+    def test_lowercase_session_send_checks_prepared_url(self, factory, url):
+        code = (
+            f"import requests\ns = {factory}()\n"
+            f"s.send(s.prepare_request(requests.Request('GET', {url})))"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is (url != "'https://pypi.org/'")
+E       assert False is ("'http://203.0.113.5/'" != "'https://pypi.org/'")
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.session()\ns.send(s.prepare_request(requests.Request('GET', 'http://203.0.113.5/')))"})
+
+studio/backend/tests/test_sandbox_tools.py:894: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_lowercase_session_send_checks_prepared_url['http://203.0.113.5/'-requests.sessions.session] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7702213a9310>
+factory = 'requests.sessions.session', url = "'http://203.0.113.5/'"
+
+    @pytest.mark.parametrize("factory", ["requests.session", "requests.sessions.session", "requests.api.session"])
+    @pytest.mark.parametrize("url", ["'http://203.0.113.5/'", "input()", "'https://pypi.org/'"])
+    def test_lowercase_session_send_checks_prepared_url(self, factory, url):
+        code = (
+            f"import requests\ns = {factory}()\n"
+            f"s.send(s.prepare_request(requests.Request('GET', {url})))"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is (url != "'https://pypi.org/'")
+E       assert False is ("'http://203.0.113.5/'" != "'https://pypi.org/'")
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.sessions.session()\ns.send(s.prepare_request(requests.Request('GET', 'http://203.0.113.5/')))"})
+
+studio/backend/tests/test_sandbox_tools.py:894: AssertionError
+_ TestNetworkTargetResolution.test_lowercase_session_send_checks_prepared_url['http://203.0.113.5/'-requests.api.session] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7702213a93d0>
+factory = 'requests.api.session', url = "'http://203.0.113.5/'"
+
+    @pytest.mark.parametrize("factory", ["requests.session", "requests.sessions.session", "requests.api.session"])
+    @pytest.mark.parametrize("url", ["'http://203.0.113.5/'", "input()", "'https://pypi.org/'"])
+    def test_lowercase_session_send_checks_prepared_url(self, factory, url):
+        code = (
+            f"import requests\ns = {factory}()\n"
+            f"s.send(s.prepare_request(requests.Request('GET', {url})))"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is (url != "'https://pypi.org/'")
+E       assert False is ("'http://203.0.113.5/'" != "'https://pypi.org/'")
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.api.session()\ns.send(s.prepare_request(requests.Request('GET', 'http://203.0.113.5/')))"})
+
+studio/backend/tests/test_sandbox_tools.py:894: AssertionError
+_ TestNetworkTargetResolution.test_lowercase_session_send_checks_prepared_url[input()-requests.session] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7702213a9490>
+factory = 'requests.session', url = 'input()'
+
+    @pytest.mark.parametrize("factory", ["requests.session", "requests.sessions.session", "requests.api.session"])
+    @pytest.mark.parametrize("url", ["'http://203.0.113.5/'", "input()", "'https://pypi.org/'"])
+    def test_lowercase_session_send_checks_prepared_url(self, factory, url):
+        code = (
+            f"import requests\ns = {factory}()\n"
+            f"s.send(s.prepare_request(requests.Request('GET', {url})))"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is (url != "'https://pypi.org/'")
+E       assert False is ('input()' != "'https://pypi.org/'")
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.session()\ns.send(s.prepare_request(requests.Request('GET', input())))"})
+
+studio/backend/tests/test_sandbox_tools.py:894: AssertionError
+_ TestNetworkTargetResolution.test_lowercase_session_send_checks_prepared_url[input()-requests.sessions.session] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7702213a9550>
+factory = 'requests.sessions.session', url = 'input()'
+
+    @pytest.mark.parametrize("factory", ["requests.session", "requests.sessions.session", "requests.api.session"])
+    @pytest.mark.parametrize("url", ["'http://203.0.113.5/'", "input()", "'https://pypi.org/'"])
+    def test_lowercase_session_send_checks_prepared_url(self, factory, url):
+        code = (
+            f"import requests\ns = {factory}()\n"
+            f"s.send(s.prepare_request(requests.Request('GET', {url})))"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is (url != "'https://pypi.org/'")
+E       assert False is ('input()' != "'https://pypi.org/'")
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.sessions.session()\ns.send(s.prepare_request(requests.Request('GET', input())))"})
+
+studio/backend/tests/test_sandbox_tools.py:894: AssertionError
+_ TestNetworkTargetResolution.test_lowercase_session_send_checks_prepared_url[input()-requests.api.session] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7702213a9610>
+factory = 'requests.api.session', url = 'input()'
+
+    @pytest.mark.parametrize("factory", ["requests.session", "requests.sessions.session", "requests.api.session"])
+    @pytest.mark.parametrize("url", ["'http://203.0.113.5/'", "input()", "'https://pypi.org/'"])
+    def test_lowercase_session_send_checks_prepared_url(self, factory, url):
+        code = (
+            f"import requests\ns = {factory}()\n"
+            f"s.send(s.prepare_request(requests.Request('GET', {url})))"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is (url != "'https://pypi.org/'")
+E       assert False is ('input()' != "'https://pypi.org/'")
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.api.session()\ns.send(s.prepare_request(requests.Request('GET', input())))"})
+
+studio/backend/tests/test_sandbox_tools.py:894: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_lowercase_session_send_checks_prepared_url['http://203.0.113.5/'-requests.session]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_lowercase_session_send_checks_prepared_url['http://203.0.113.5/'-requests.sessions.session]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_lowercase_session_send_checks_prepared_url['http://203.0.113.5/'-requests.api.session]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_lowercase_session_send_checks_prepared_url[input()-requests.session]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_lowercase_session_send_checks_prepared_url[input()-requests.sessions.session]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_lowercase_session_send_checks_prepared_url[input()-requests.api.session]
+6 failed, 3 passed, 576 deselected in 1.20s

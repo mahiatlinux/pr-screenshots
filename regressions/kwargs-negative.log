@@ -1,0 +1,40 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unpacked_options_with_explicit_url_require_approval[requests.get] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f87288bce0>
+callee = 'requests.get'
+
+    @pytest.mark.parametrize("callee", ["requests.get", "requests.Session().get"])
+    def test_unpacked_options_with_explicit_url_require_approval(self, callee):
+        code = (
+            "import requests\n"
+            "options = {'proxies': {'https': 'http://203.0.113.5'}}\n"
+            f"{callee}('https://pypi.org/', **options)"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\noptions = {'proxies': {'https': 'http://203.0.113.5'}}\nrequests.get('https://pypi.org/', **options)"})
+
+studio/backend/tests/test_sandbox_tools.py:792: AssertionError
+_ TestNetworkTargetResolution.test_unpacked_options_with_explicit_url_require_approval[requests.Session().get] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f87288be60>
+callee = 'requests.Session().get'
+
+    @pytest.mark.parametrize("callee", ["requests.get", "requests.Session().get"])
+    def test_unpacked_options_with_explicit_url_require_approval(self, callee):
+        code = (
+            "import requests\n"
+            "options = {'proxies': {'https': 'http://203.0.113.5'}}\n"
+            f"{callee}('https://pypi.org/', **options)"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\noptions = {'proxies': {'https': 'http://203.0.113.5'}}\nrequests.Session().get('https://pypi.org/', **options)"})
+
+studio/backend/tests/test_sandbox_tools.py:792: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unpacked_options_with_explicit_url_require_approval[requests.get]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unpacked_options_with_explicit_url_require_approval[requests.Session().get]
+2 failed, 554 deselected in 0.62s

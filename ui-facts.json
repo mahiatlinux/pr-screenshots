@@ -11,19 +11,21 @@
   "chromium": {
     "version": "145.0.7632.6",
     "base": {
-      "text": "CompanionRepo\n\nOrg · GGUF\n\nUD-Q4_K_XL\nOn device\nGGUF\nRun"
+      "text": "CompanionRepo\n\nOrg \u00b7 GGUF\n\nUD-Q4_K_XL\nOn device\nGGUF\nRun"
     },
     "head": {
-      "text": "CompanionRepo\n\nOrg · GGUF\n\nUD-Q4_K_XL\nPartial\nGGUF\n3.1 MB left\nContinue"
+      "text": "CompanionRepo\n\nOrg \u00b7 GGUF\n\nUD-Q4_K_XL\nPartial\nGGUF\n3.1 MB left\nContinue"
     }
   },
   "firefox": {
     "version": "146.0.1",
     "base": {
-      "text": "CompanionRepo\n\nOrg · GGUF\n\nUD-Q4_K_XL\nOn device\nGGUF\nRun"
+      "text": "CompanionRepo\n\nOrg \u00b7 GGUF\n\nUD-Q4_K_XL\nOn device\nGGUF\nRun"
     },
     "head": {
-      "text": "CompanionRepo\n\nOrg · GGUF\n\nUD-Q4_K_XL\nPartial\nGGUF\n3.1 MB left\nContinue"
+      "text": "CompanionRepo\n\nOrg \u00b7 GGUF\n\nUD-Q4_K_XL\nPartial\nGGUF\n3.1 MB left\nContinue"
     }
-  }
+  },
+  "landed_source_head": "5cc2035c3034bc79f36d7b94f57ec30a968a3041",
+  "tested_repair_tree_equals_landed_tree": true
 }

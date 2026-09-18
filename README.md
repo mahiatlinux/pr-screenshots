@@ -10,3 +10,5 @@ The 16 companion lifecycle cases fail on base and pass on head. The sibling-snap
 Commands: `python -m pytest studio/backend/hub/tests/test_model_services.py test_companion_matrix.py -q` and `python -m pytest studio/backend/tests/test_gguf_variant_rows.py studio/backend/tests/test_mtp_drafter_companion.py -q`. Tests ran in separate credential-free Bubblewrap sandboxes with isolated homes and caches.
 
 Screenshots show the production GgufDownloadCard from separate base/head frontend builds, with the actual GGUF backend service and identical seeded local caches. Unrelated endpoints use fixture responses. This is component/service evidence, not a full Studio launch or a model inference test. Both composites were inspected. Browser versions, viewport and observed labels are recorded in ui-facts.json.
+
+Landed source head: 5cc2035c3034bc79f36d7b94f57ec30a968a3041. Its git tree was verified identical to the tested repair. Final mirror review: https://github.com/mahiatlinux/unsloth-staging-review/pull/7#issuecomment-5736934091.

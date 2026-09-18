@@ -1,0 +1,7 @@
+{
+  "browser": "145.0.7632.6",
+  "side": "base",
+  "sqfAttachmentCount": 0,
+  "expected": "unsupported clipboard item rejected",
+  "fixture": "real frontend with mocked backend responses"
+}

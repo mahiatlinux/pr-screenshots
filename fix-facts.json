@@ -1,0 +1,7 @@
+{
+  "browser": "145.0.7632.6",
+  "side": "fix",
+  "sqfAttachmentCount": 1,
+  "expected": "mission.sqf accepted as document",
+  "fixture": "real frontend with mocked backend responses"
+}

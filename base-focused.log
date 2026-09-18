@@ -1,0 +1,396 @@
+(node:8) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+10:32:31 PM [vite] (client) [optimizer] scanning dependencies...
+10:32:32 PM [vite] (client) [optimizer] bundling dependencies...
+✔ message JSONL imports as one conversation (2474.419831ms)
+✔ developer and assistant array content survive message JSONL import (0.394952ms)
+✔ ShareGPT import maps role aliases regardless of case and whitespace (0.255661ms)
+✔ assistant images are represented explicitly in JSONL exports (0.230643ms)
+✔ detection separates an Open WebUI record from the OpenAI and ShareGPT lines we already import (0.784103ms)
+✔ the branch the user had open is imported last, so the thread reopens where they left it (2.853592ms)
+✔ a parent cycle and a dangling currentId are imported instead of hanging or dropping the chat (0.204544ms)
+✔ a message whose parent was deleted becomes a root rather than vanishing (0.109556ms)
+✔ a turn that renders to nothing is dropped and its children relink to the surviving ancestor (0.18107ms)
+✔ older assistant turns keep their inlined tool call and reasoning as real parts (0.499499ms)
+✔ a tool result that contains a code fence is still lifted into a tool-call part (0.215615ms)
+✔ a details block quoted inside a code fence stays text, because the chat is about the markup (0.136827ms)
+✔ modern assistant turns rebuild their tool call from the output items, result included (0.352603ms)
+✔ an inline image survives; a document keeps its name but not the text Open WebUI extracted (0.230283ms)
+✔ a chat with no history falls back to the flat active branch, and archived carries over (0.123602ms)
+✔ an empty chat imports as nothing rather than as a blank thread (0.071544ms)
+✔ epoch seconds on the record and milliseconds on the blob both land in the same era (0.112742ms)
+✔ a tool result stored as a plain string is kept, not flattened to nothing (0.179588ms)
+✔ a user turn that uploaded a file without typing survives, and keeps its descendants (0.1223ms)
+✔ a chat thousands of messages deep converts instead of exhausting the call stack (75.959563ms)
+✔ details markup a user typed stays text rather than becoming reasoning (0.270218ms)
+✔ a legacy flat chat drops repeated ids without rescanning what it already collected (33.370888ms)
+✔ a prompt keeps the whitespace it was written with (0.136276ms)
+✔ a legacy chat with no chat-level date is dated from its earliest message (0.152707ms)
+✔ the assistant answer survives next to a tool result no call in this turn matched (0.107903ms)
+✔ an updated-only chat is still dated from its first message, not its last edit (0.102452ms)
+✔ a timestamped OpenAI conversation is not mistaken for an Open WebUI chat (0.14336ms)
+✔ a generated image comes over as an image, not as a dropped output item (0.177584ms)
+✔ a plain details block the model wrote keeps its markup (0.190608ms)
+✔ an empty history map falls back to the flat branch instead of dropping the chat (0.109796ms)
+✔ built-in Responses tools import as tool parts rather than disappearing (0.188063ms)
+✔ a multimodal turn keeps its text and image when detection routes it here (0.198262ms)
+✔ hex and decimal character references in details attributes are decoded (0.193444ms)
+✔ a doubly escaped ampersand survives one decoding pass as literal text (0.107953ms)
+✔ an out of range timestamp is discarded rather than freezing the clock (0.180349ms)
+✔ a generated image given as a url is not wrapped into a broken data url (0.111159ms)
+✔ malformed tool arguments stay readable instead of posing as an args object (0.13307ms)
+✔ a tool that returned only images carries no empty result body (0.123151ms)
+✔ a tool result keeps its text under any of the three part names, and portable image urls (0.123933ms)
+✔ details markup inside a fence that was never closed stays code (0.112351ms)
+✔ a disconnected cycle does not displace the branch the user had open (0.146035ms)
+✔ a stray inline fence does not swallow the tool calls after it (0.108424ms)
+✔ a reasoning block quoting one backtick run keeps the next tool call (0.413998ms)
+✔ reasoning survives an empty summary next to populated content (0.535787ms)
+✖ a Studio backup restores one chat per thread, with titles, branches, archive flag and project (95.873557ms)
+✖ importing the same backup twice reuses the project and never reuses a thread or message id (40.787372ms)
+✖ an existing project is left as it is, and importing into a project overrides the backup's (31.676503ms)
+✖ the archived-only export imports just its archived chats (31.239143ms)
+✖ a compare pair stays paired under a new pair id, and legacy rows without parentId stay unlinked (30.368086ms)
+✔ Open WebUI and OpenAI records still import as one chat each (30.360561ms)
+✖ restored messages carry no link to the server run that produced them (32.327787ms)
+✖ a chat whose last message was deleted comes back, and so does a project with no chats (38.970268ms)
+✖ a fork keeps its badge when only the branch-point message is gone (30.029199ms)
+✖ a settings snapshot this build rejects costs the settings, not the chat (31.00393ms)
+✖ a backup cannot arm a restored chat with tools, bypassed approval or a system prompt (22.167358ms)
+✖ a settings snapshot with nothing restorable in it leaves no settings behind (31.053102ms)
+✖ a restored project cannot carry instructions into the system prompt (25.120466ms)
+✖ a backend that is merely down keeps the settings instead of quietly dropping them (24.184247ms)
+✖ choosing Recents as the destination puts the chats in Recents, backup or not (29.550018ms)
+✖ a backup cannot restore a message that speaks with the system role (19.835688ms)
+✖ a message whose content was stored as a plain string keeps its text (26.299953ms)
+ℹ tests 61
+ℹ suites 0
+ℹ pass 45
+ℹ fail 16
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3000.249158
+
+✖ failing tests:
+
+test at tests/studio-backup-import.test.ts:160:1
+✖ a Studio backup restores one chat per thread, with titles, branches, archive flag and project (95.873557ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      failed: 0,
+  +   imported: 1
+  -   imported: 2
+    }
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:166:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { imported: 1, failed: 0 },
+    expected: { imported: 2, failed: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:207:1
+✖ importing the same backup twice reuses the project and never reuses a thread or message id (40.787372ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 4
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:212:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:220:1
+✖ an existing project is left as it is, and importing into a project overrides the backup's (31.676503ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'p1',
+  -   'p2'
+    ]
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:231:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'p1' ],
+    expected: [ 'p1', 'p2' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:240:1
+✖ the archived-only export imports just its archived chats (31.239143ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'unsloth-archived-chats-2026-09-17 1'
+  - 'Old recipe'
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:248:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'unsloth-archived-chats-2026-09-17 1',
+    expected: 'Old recipe',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:254:1
+✖ a compare pair stays paired under a new pair id, and legacy rows without parentId stay unlinked (30.368086ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      failed: 0,
+  +   imported: 1
+  -   imported: 2
+    }
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:274:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { imported: 1, failed: 0 },
+    expected: { imported: 2, failed: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:310:1
+✖ restored messages carry no link to the server run that produced them (32.327787ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + undefined
+  - {
+  -   custom: {
+  -     note: 'kept'
+  -   },
+  -   reasoningDuration: 3
+  - }
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:340:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { reasoningDuration: 3, custom: { note: 'kept' } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:347:1
+✖ a chat whose last message was deleted comes back, and so does a project with no chats (38.970268ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      failed: 0,
+  +   imported: 1
+  -   imported: 3
+    }
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:370:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { imported: 1, failed: 0 },
+    expected: { imported: 3, failed: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:380:1
+✖ a fork keeps its badge when only the branch-point message is gone (30.029199ms)
+  TypeError: Cannot read properties of undefined (reading 'forkedFromThreadId')
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:390:23)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/studio-backup-import.test.ts:394:1
+✖ a settings snapshot this build rejects costs the settings, not the chat (31.00393ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      failed: 0,
+  +   imported: 1
+  -   imported: 2
+    }
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:441:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { imported: 1, failed: 0 },
+    expected: { imported: 2, failed: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:448:1
+✖ a backup cannot arm a restored chat with tools, bypassed approval or a system prompt (22.167358ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      failed: 0,
+  +   imported: 1
+  -   imported: 2
+    }
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:476:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { imported: 1, failed: 0 },
+    expected: { imported: 2, failed: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:482:1
+✖ a settings snapshot with nothing restorable in it leaves no settings behind (31.053102ms)
+  TypeError: Cannot read properties of undefined (reading 'settings')
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:493:21)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at tests/studio-backup-import.test.ts:496:1
+✖ a restored project cannot carry instructions into the system prompt (25.120466ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      failed: 0,
+  +   imported: 1
+  -   imported: 2
+    }
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:509:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { imported: 1, failed: 0 },
+    expected: { imported: 2, failed: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:519:1
+✖ a backend that is merely down keeps the settings instead of quietly dropping them (24.184247ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  -   {
+  -     temperature: 0.7
+  -   },
+      undefined
+    ]
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:562:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ undefined ],
+    expected: [ { temperature: 0.7 }, undefined ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:566:1
+✖ choosing Recents as the destination puts the chats in Recents, backup or not (29.550018ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      failed: 0,
+  +   imported: 1
+  -   imported: 2
+    }
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:576:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { imported: 1, failed: 0 },
+    expected: { imported: 2, failed: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:590:1
+✖ a backup cannot restore a message that speaks with the system role (19.835688ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'system',
+      'user',
+  -   'user'
+    ]
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:623:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'system', 'user' ],
+    expected: [ 'user', 'user' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/studio-backup-import.test.ts:630:1
+✖ a message whose content was stored as a plain string keeps its text (26.299953ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      [
+        {
+          text: 'plain string turn',
+          type: 'text'
+  ...
+      ],
+  -   []
+    ]
+  
+      at TestContext.<anonymous> (file://TASK_ROOT/base/studio/frontend/tests/studio-backup-import.test.ts:656:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ [ [Object] ], [ [Object] ] ],
+    expected: [ [ [Object] ], [ [Object] ], [] ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

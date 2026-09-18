@@ -1,0 +1,40 @@
+{
+  "side": "head",
+  "expect": "base shows one fused backup chat; head shows Trip plan, Emptied out and Compare as separate sidebar rows, with Archived recipe and two projects preserved in the API",
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "151.0.7922.34",
+      "exported_threads": 5,
+      "cleared_threads": 0,
+      "restored_threads": 5,
+      "messages": 7,
+      "projects": 2,
+      "titles": [
+        "Archived recipe",
+        "Compare left",
+        "Compare right",
+        "Emptied out",
+        "Trip plan"
+      ],
+      "archived": 1
+    },
+    {
+      "engine": "firefox",
+      "version": "153.0",
+      "exported_threads": 5,
+      "cleared_threads": 0,
+      "restored_threads": 5,
+      "messages": 7,
+      "projects": 2,
+      "titles": [
+        "Archived recipe",
+        "Compare left",
+        "Compare right",
+        "Emptied out",
+        "Trip plan"
+      ],
+      "archived": 1
+    }
+  ]
+}

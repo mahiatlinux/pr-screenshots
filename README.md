@@ -36,3 +36,15 @@ python fetch_probe.py head
 On base, omit the newly added `test_remote_image_url_fetch_behaviour.py` from the existing suite. The route probe expects its artifacts directory at `/task/artifacts`; its `base`, `head` or `merge` argument labels the output. `fetch_probe.py` takes a checkout directory whose final component is `base` or `head`, and asserts the negative control on base and the bounded result on head.
 
 Primary references checked: [Python HTTP client](https://docs.python.org/3/library/http.client.html), [Pillow image decoding](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open).
+
+## Resumed verification, 2026-09-18 UTC
+
+Source head `485fa2b2a613391e99225925ea94b24d4eefc1e6` includes the maintainer's URL-padding and User-Agent fixes. The original writable checkout remains unchanged. Mirror merge `3ed4695ffb19386879a5d67fd7f1c95e9accedae` combines that head with upstream `c7d8980a2`.
+
+- The same affected suite passes: 2,128 tests on source head; 2,139 on the mirror merge.
+- All 25 independent route safety assertions pass on both revisions, including live public HTTPS downloads. The generated PNG hash remains identical to the earlier run.
+- Repeated live public HTTPS/private-address checks pass; the 0.2-second socket-drip deadline completes at 0.20 seconds on head and 0.95 seconds on the exact original base.
+- Ruff passes on all eight changed Python files; `git diff --check` passes.
+- Environment and pinned package resolution are unchanged from the original run.
+
+The original PR has three failed GitHub checks. Their historical run-log endpoints returned HTTP 410 during this resumption; these failures are not represented as successful checks here.

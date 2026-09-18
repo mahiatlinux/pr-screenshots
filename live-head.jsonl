@@ -7,4 +7,5 @@
 {"case": "httpx_transport", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "lowercase_send", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "mapping_alias", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "bound_method", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "environment_proxy_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}

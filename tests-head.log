@@ -1,0 +1,41 @@
+✔ the desktop hook checks at startup and every hour (69.001017ms)
+✔ a manual check suppresses only the startup check (19.557237ms)
+✔ a periodic recheck keeps an offered update available (19.970685ms)
+Update check failed: Error: update check failed
+    at checkDesktopUpdate (file:///task/head/studio/frontend/tests/tauri-update-schedule.test.ts:283:43)
+    at checkForUpdate (eval at loadWithStubs (file:///task/head/studio/frontend/tests/helpers/module-stubs.ts:60:3), <anonymous>:202:73)
+✔ a failed periodic recheck preserves an untouched offer (17.121813ms)
+✔ a withdrawn offer goes back to idle (11.581585ms)
+✔ scheduled checks leave a failed install in its error state (13.017473ms)
+✔ a bundle download the update did not start reports its progress (12.003578ms)
+✔ waiting out a bundle download the update did not start is bounded (18.572538ms)
+✔ restoring an overdue hidden window checks immediately (10.454989ms)
+✔ unmount removes update timers and wake listeners (11.025141ms)
+✔ web sessions do not schedule desktop update checks (10.340013ms)
+✔ the tauri card's header cannot be compressed (0.85164ms)
+✔ the tauri card's action row cannot be compressed (0.158458ms)
+✔ the tauri card stops shrinking at its buttons (0.251452ms)
+✔ the web card's header cannot be compressed (0.072126ms)
+✔ the web card's action row cannot be compressed (0.083015ms)
+✔ the web card stops shrinking at its buttons (0.086402ms)
+✔ a card with no notes panel does not shrink at all (0.223009ms)
+✔ a floored card paints all the height its slot reserves (0.186229ms)
+✔ the desktop failure card can scroll to its own diagnostics (0.322636ms)
+✔ the two update cards do not drift apart (0.315553ms)
+✔ the llama.cpp card takes the desktop updater's floor only with its changelog open (0.219873ms)
+✔ the llama.cpp changelog uses the desktop update notes layout (0.199565ms)
+✔ the llama.cpp header and actions do not compress around its changelog (0.129504ms)
+✔ the llama.cpp progress indicator is not a dead keyboard stop (0.16505ms)
+✔ the notes panel clips whatever height it gives up (0.140594ms)
+✔ the collapsed notes summary scrolls, like the expanded notes (0.120587ms)
+✔ the rail scrolls rather than spilling its cards (0.173636ms)
+✔ the rail's block gutter costs the cards no room (0.460175ms)
+✔ the rail is anchored to its corner, not placed from JS (0.173566ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 467.117577

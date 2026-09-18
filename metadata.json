@@ -1,0 +1,23 @@
+{
+  "base": "062e643086311fc6c276de2a93afcd3e85259796",
+  "head": "14bc06abb2d29a7758acdddae0db6ad801688777",
+  "merge": "7f29c50702e26810142d1ef96bcccf99e6f06405",
+  "reviewed_mirror": "9d369802432f76fa8d450ead5dfd37b789c53304",
+  "patch_id": "252953e62205dc8e661e73a09970f88a74837806",
+  "os": "Ubuntu 26.04.1 LTS x86_64",
+  "node": "26.8.2",
+  "playwright": "1.58.2",
+  "chromium": "145.0.7632.6",
+  "viewport_widths": [
+    360,
+    760
+  ],
+  "viewport_height": 900,
+  "locale_count": 12,
+  "fixture": "real UpdateBanner and DesktopUpdateControl with synthetic Tauri update context; production-built separately per SHA",
+  "manually_inspected": [
+    "before-after-en-760.png",
+    "before-after-de-360.png",
+    "before-after-ar-360.png"
+  ]
+}

@@ -1,0 +1,50 @@
+
+> unsloth-theme@0.0.0 i18n:check:strict
+> node --experimental-strip-types --no-warnings src/i18n/check-parity.ts --strict
+
+
+=== zh-CN ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== pt-BR ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== ja ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== es ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== hi ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== ar ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== fr ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== ru ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== de ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== ko ===
+Missing keys (will fall back to en): 0
+No errors.
+
+=== it ===
+Missing keys (will fall back to en): 0
+No errors.
+
+All locale overlays pass parity.

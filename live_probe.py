@@ -27,6 +27,8 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     cases.update({
         'session_alias': f"import requests\ns=requests.Session()\nalias=s\nalias.proxies={{'http': {proxy!r}}}\nresponse=s.get('http://pypi.org/', timeout=2)",
         'httpx_transport': f"import httpx\nresponse=httpx.Client(transport=httpx.HTTPTransport(proxy={proxy!r})).get('http://pypi.org/', timeout=2)",
+        'lowercase_send': f"import requests\ns=requests.session()\nresponse=s.send(s.prepare_request(requests.Request('GET', {proxy!r})), timeout=2)",
+        'mapping_alias': f"import requests\ns=requests.Session()\np={{}}\ns.proxies=p\np['http']={proxy!r}\nresponse=s.get('http://pypi.org/', timeout=2)",
         'environment_proxy_preexisting': f"import os, requests\nos.environ['HTTP_PROXY']={proxy!r}\nresponse=requests.get('http://pypi.org/', timeout=2)",
     })
     for name, code in cases.items():

@@ -26,6 +26,9 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
         'aiohttp_network_path': f"import asyncio,aiohttp\nasync def fetch():\n    async with aiohttp.ClientSession(base_url='http://pypi.org/') as client:\n        async with client.get('//127.0.0.1:{server.server_port}/path') as result:\n            await result.read()\n            return result\nresponse=asyncio.run(fetch())",
         'unbound_request': f"import requests\ns=requests.Session()\nresponse=requests.Session.request(s, 'GET', {proxy!r}, timeout=2)",
         'unbound_proxy': f"import requests\ns=requests.Session()\ns.proxies={{'http': {proxy!r}}}\nresponse=requests.Session.get(s, 'http://pypi.org/', timeout=2)",
+        'unused_connection_pool': f"import urllib3\npool=urllib3.HTTPConnectionPool('127.0.0.1', port={server.server_port})\nresponse=None\npool.close()",
+        'connection_pool_request': f"import urllib3\npool=urllib3.HTTPConnectionPool('127.0.0.1', port={server.server_port})\nresponse=pool.request('GET', '/', timeout=2)\npool.close()",
+        'changed_connection_pool_host': f"import urllib3\npool=urllib3.HTTPConnectionPool('pypi.org', port={server.server_port})\npool.host='127.0.0.1'\nresponse=pool.request('GET', '/', timeout=2)\npool.close()",
         'conditional_receiver': f"import requests\ns=requests.Session()\ns.proxies={{'http': {proxy!r}}}\nif False:\n    s=requests.Session()\nresponse=s.get('http://pypi.org/', timeout=2)",
         'kwargs_proxy': f"import requests\noptions={{'proxies': {{'http': {proxy!r}}}}}\nresponse=requests.get('http://pypi.org/', timeout=2, **options)",
     }

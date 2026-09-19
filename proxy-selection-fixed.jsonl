@@ -5,3 +5,4 @@
 {"case": "popitem()", "selected": null, "blocked": null, "prompt": false}
 {"case": "del", "selected": null, "blocked": null, "prompt": false}
 {"case": "overwrite_none", "selected": null, "blocked": null, "prompt": false}
+{"case": "update_none", "selected": null, "blocked": null, "prompt": false}

@@ -1,0 +1,74 @@
+FFFF....F.                                                               [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unused_connection_pool_does_not_prompt[urllib3.HTTPConnectionPool] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72baaaa066c0>
+pool = 'urllib3.HTTPConnectionPool'
+
+    @pytest.mark.parametrize("pool", ["urllib3.HTTPConnectionPool", "urllib3.HTTPSConnectionPool", "urllib3.connectionpool.HTTPConnectionPool", "urllib3.connectionpool.HTTPSConnectionPool"])
+    def test_unused_connection_pool_does_not_prompt(self, pool):
+        code = f"import urllib3\npool = {pool}('203.0.113.5')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import urllib3\npool = urllib3.HTTPConnectionPool('203.0.113.5')")
+
+studio/backend/tests/test_sandbox_tools.py:1061: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unused_connection_pool_does_not_prompt[urllib3.HTTPSConnectionPool] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72baaaa068a0>
+pool = 'urllib3.HTTPSConnectionPool'
+
+    @pytest.mark.parametrize("pool", ["urllib3.HTTPConnectionPool", "urllib3.HTTPSConnectionPool", "urllib3.connectionpool.HTTPConnectionPool", "urllib3.connectionpool.HTTPSConnectionPool"])
+    def test_unused_connection_pool_does_not_prompt(self, pool):
+        code = f"import urllib3\npool = {pool}('203.0.113.5')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import urllib3\npool = urllib3.HTTPSConnectionPool('203.0.113.5')")
+
+studio/backend/tests/test_sandbox_tools.py:1061: AssertionError
+_ TestNetworkTargetResolution.test_unused_connection_pool_does_not_prompt[urllib3.connectionpool.HTTPConnectionPool] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72baaaa06960>
+pool = 'urllib3.connectionpool.HTTPConnectionPool'
+
+    @pytest.mark.parametrize("pool", ["urllib3.HTTPConnectionPool", "urllib3.HTTPSConnectionPool", "urllib3.connectionpool.HTTPConnectionPool", "urllib3.connectionpool.HTTPSConnectionPool"])
+    def test_unused_connection_pool_does_not_prompt(self, pool):
+        code = f"import urllib3\npool = {pool}('203.0.113.5')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import urllib3\npool = urllib3.connectionpool.HTTPConnectionPool('203.0.113.5')")
+
+studio/backend/tests/test_sandbox_tools.py:1061: AssertionError
+_ TestNetworkTargetResolution.test_unused_connection_pool_does_not_prompt[urllib3.connectionpool.HTTPSConnectionPool] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72baaaa06a20>
+pool = 'urllib3.connectionpool.HTTPSConnectionPool'
+
+    @pytest.mark.parametrize("pool", ["urllib3.HTTPConnectionPool", "urllib3.HTTPSConnectionPool", "urllib3.connectionpool.HTTPConnectionPool", "urllib3.connectionpool.HTTPSConnectionPool"])
+    def test_unused_connection_pool_does_not_prompt(self, pool):
+        code = f"import urllib3\npool = {pool}('203.0.113.5')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import urllib3\npool = urllib3.connectionpool.HTTPSConnectionPool('203.0.113.5')")
+
+studio/backend/tests/test_sandbox_tools.py:1061: AssertionError
+_ TestNetworkTargetResolution.test_changed_connection_pool_host_requires_approval _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72baaaa07d10>
+
+    def test_changed_connection_pool_host_requires_approval(self):
+        code = "import urllib3\npool = urllib3.HTTPConnectionPool('pypi.org')\npool.host = '203.0.113.5'\npool.request('GET', '/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib3\npool = urllib3.HTTPConnectionPool('pypi.org')\npool.host = '203.0.113.5'\npool.request('GET', '/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1071: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_connection_pool_does_not_prompt[urllib3.HTTPConnectionPool]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_connection_pool_does_not_prompt[urllib3.HTTPSConnectionPool]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_connection_pool_does_not_prompt[urllib3.connectionpool.HTTPConnectionPool]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_connection_pool_does_not_prompt[urllib3.connectionpool.HTTPSConnectionPool]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_changed_connection_pool_host_requires_approval
+5 failed, 5 passed, 735 deselected in 1.24s

@@ -8,6 +8,9 @@
 {"case": "aiohttp_network_path", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/path"]}
 {"case": "unbound_request", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "unbound_proxy", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "unused_connection_pool", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": null, "proxy_requests": []}
+{"case": "connection_pool_request", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}
+{"case": "changed_connection_pool_host", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "conditional_receiver", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "kwargs_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "subclass", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}

@@ -1,0 +1,62 @@
+FFFF.                                                                    [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_proxy_update_replaces_old_destination[{'https': None}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7cf526e978c0>
+update = "{'https': None}"
+
+    @pytest.mark.parametrize("update", ["{'https': None}", "https=None", "[('https', None)]", "options"])
+    def test_proxy_update_replaces_old_destination(self, update):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\noptions = {'https': None}\n" + f"s.proxies.update({update})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\noptions = {'https': None}\ns.proxies.update({'https': None})\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1046: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_proxy_update_replaces_old_destination[https=None] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7cf526e97e90>
+update = 'https=None'
+
+    @pytest.mark.parametrize("update", ["{'https': None}", "https=None", "[('https', None)]", "options"])
+    def test_proxy_update_replaces_old_destination(self, update):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\noptions = {'https': None}\n" + f"s.proxies.update({update})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\noptions = {'https': None}\ns.proxies.update(https=None)\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1046: AssertionError
+_ TestNetworkTargetResolution.test_proxy_update_replaces_old_destination[[('https', None)]] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7cf526e97560>
+update = "[('https', None)]"
+
+    @pytest.mark.parametrize("update", ["{'https': None}", "https=None", "[('https', None)]", "options"])
+    def test_proxy_update_replaces_old_destination(self, update):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\noptions = {'https': None}\n" + f"s.proxies.update({update})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\noptions = {'https': None}\ns.proxies.update([('https', None)])\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1046: AssertionError
+_ TestNetworkTargetResolution.test_proxy_update_replaces_old_destination[options] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7cf526e96f60>
+update = 'options'
+
+    @pytest.mark.parametrize("update", ["{'https': None}", "https=None", "[('https', None)]", "options"])
+    def test_proxy_update_replaces_old_destination(self, update):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\noptions = {'https': None}\n" + f"s.proxies.update({update})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\noptions = {'https': None}\ns.proxies.update(options)\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1046: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_update_replaces_old_destination[{'https': None}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_update_replaces_old_destination[https=None]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_update_replaces_old_destination[[('https', None)]]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_update_replaces_old_destination[options]
+4 failed, 1 passed, 730 deselected in 1.22s

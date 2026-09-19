@@ -46,3 +46,8 @@ code = "import requests\ns=requests.Session()\ns.trust_env=False\ns.proxies={'ht
 namespace = {}
 exec(code, namespace)
 print(json.dumps({'case':'overwrite_none','selected':select_proxy('https://pypi.org/',namespace['s'].proxies),'blocked':_check_code_safety(code + "\ns.get('https://pypi.org/')"),'prompt':is_high_risk_tool_call('python',{'code':code + "\ns.get('https://pypi.org/')"})}))
+
+code = "import requests\ns=requests.Session()\ns.trust_env=False\ns.proxies={'https':'http://203.0.113.5/'}\ns.proxies.update({'https':None})"
+namespace = {}
+exec(code, namespace)
+print(json.dumps({'case':'update_none','selected':select_proxy('https://pypi.org/',namespace['s'].proxies),'blocked':_check_code_safety(code + "\ns.get('https://pypi.org/')"),'prompt':is_high_risk_tool_call('python',{'code':code + "\ns.get('https://pypi.org/')"})}))

@@ -4,3 +4,4 @@
 {"case": "pop('https')", "selected": null, "blocked": null, "prompt": false}
 {"case": "popitem()", "selected": null, "blocked": null, "prompt": false}
 {"case": "del", "selected": null, "blocked": null, "prompt": false}
+{"case": "overwrite_none", "selected": null, "blocked": null, "prompt": false}

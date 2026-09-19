@@ -6,6 +6,8 @@
 {"case": "mounted_httpx_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "direct_httpx_transport", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "aiohttp_network_path", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/path"]}
+{"case": "unbound_request", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "unbound_proxy", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "conditional_receiver", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "kwargs_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "subclass", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}

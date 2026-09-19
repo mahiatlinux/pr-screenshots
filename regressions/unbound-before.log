@@ -1,0 +1,204 @@
+FFFFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unbound_request_checks_shifted_url[requests.Session] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ddfbbab4e00>
+client = 'requests.Session'
+
+    @pytest.mark.parametrize("client", ["requests.Session", "httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "urllib3.PoolManager"])
+    def test_unbound_request_checks_shifted_url(self, client):
+        code = f"import requests, httpx, aiohttp, urllib3\ns = {client}()\n{client}.request(s, 'GET', 'http://203.0.113.5/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:994: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests, httpx, aiohttp, urllib3\ns = requests.Session()\nrequests.Session.request(s, 'GET', 'http://203.0.113.5/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests, httpx, aiohttp, urllib3
+E         s = requests.Session()
+E         requests.Session.request(s, 'GET', 'http://203.0.113.5/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unbound_request_checks_shifted_url[httpx.Client] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ddfbbab48c0>
+client = 'httpx.Client'
+
+    @pytest.mark.parametrize("client", ["requests.Session", "httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "urllib3.PoolManager"])
+    def test_unbound_request_checks_shifted_url(self, client):
+        code = f"import requests, httpx, aiohttp, urllib3\ns = {client}()\n{client}.request(s, 'GET', 'http://203.0.113.5/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:994: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests, httpx, aiohttp, urllib3\ns = httpx.Client()\nhttpx.Client.request(s, 'GET', 'http://203.0.113.5/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests, httpx, aiohttp, urllib3
+E         s = httpx.Client()
+E         httpx.Client.request(s, 'GET', 'http://203.0.113.5/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_unbound_request_checks_shifted_url[httpx.AsyncClient] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ddfbbab4350>
+client = 'httpx.AsyncClient'
+
+    @pytest.mark.parametrize("client", ["requests.Session", "httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "urllib3.PoolManager"])
+    def test_unbound_request_checks_shifted_url(self, client):
+        code = f"import requests, httpx, aiohttp, urllib3\ns = {client}()\n{client}.request(s, 'GET', 'http://203.0.113.5/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:994: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests, httpx, aiohttp, urllib3\ns = httpx.AsyncClient()\nhttpx.AsyncClient.request(s, 'GET', 'http://203.0.113.5/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests, httpx, aiohttp, urllib3
+E         s = httpx.AsyncClient()
+E         httpx.AsyncClient.request(s, 'GET', 'http://203.0.113.5/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_unbound_request_checks_shifted_url[aiohttp.ClientSession] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ddfbbab4290>
+client = 'aiohttp.ClientSession'
+
+    @pytest.mark.parametrize("client", ["requests.Session", "httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "urllib3.PoolManager"])
+    def test_unbound_request_checks_shifted_url(self, client):
+        code = f"import requests, httpx, aiohttp, urllib3\ns = {client}()\n{client}.request(s, 'GET', 'http://203.0.113.5/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:994: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests, httpx, aiohttp, urllib3\ns = aiohttp.ClientSession()\naiohttp.ClientSession.request(s, 'GET', 'http://203.0.113.5/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests, httpx, aiohttp, urllib3
+E         s = aiohttp.ClientSession()
+E         aiohttp.ClientSession.request(s, 'GET', 'http://203.0.113.5/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_unbound_request_checks_shifted_url[urllib3.PoolManager] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ddfbbab65d0>
+client = 'urllib3.PoolManager'
+
+    @pytest.mark.parametrize("client", ["requests.Session", "httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "urllib3.PoolManager"])
+    def test_unbound_request_checks_shifted_url(self, client):
+        code = f"import requests, httpx, aiohttp, urllib3\ns = {client}()\n{client}.request(s, 'GET', 'http://203.0.113.5/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:994: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests, httpx, aiohttp, urllib3\ns = urllib3.PoolManager()\nurllib3.PoolManager.request(s, 'GET', 'http://203.0.113.5/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests, httpx, aiohttp, urllib3
+E         s = urllib3.PoolManager()
+E         urllib3.PoolManager.request(s, 'GET', 'http://203.0.113.5/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_unbound_method_preserves_instance_proxy[requests.Session.get] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ddfbbab6de0>
+callee = 'requests.Session.get'
+
+    @pytest.mark.parametrize("callee", ["requests.Session.get", "getattr(requests.Session, 'get')"])
+    def test_unbound_method_preserves_instance_proxy(self, callee):
+        code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5/'}\n" + f"fetch = {callee}\nfetch(s, 'https://pypi.org/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:999: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5/'}\nfetch = requests.Session.get\nfetch(s, 'https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         s = requests.Session()
+E         s.proxies = {'https': 'http://203.0.113.5/'}
+E         fetch = requests.Session.get
+E         fetch(s, 'https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_unbound_method_preserves_instance_proxy[getattr(requests.Session, 'get')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ddfbbab6f30>
+callee = "getattr(requests.Session, 'get')"
+
+    @pytest.mark.parametrize("callee", ["requests.Session.get", "getattr(requests.Session, 'get')"])
+    def test_unbound_method_preserves_instance_proxy(self, callee):
+        code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5/'}\n" + f"fetch = {callee}\nfetch(s, 'https://pypi.org/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:999: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5/'}\nfetch = getattr(requests.Session, 'get')\nfetch(s, 'https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         s = requests.Session()
+E         s.proxies = {'https': 'http://203.0.113.5/'}
+E         fetch = getattr(requests.Session, 'get')
+E         fetch(s, 'https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_unbound_request_with_dynamic_method_and_allowed_url _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ddfbbab7680>
+
+    def test_unbound_request_with_dynamic_method_and_allowed_url(self):
+        code = "import requests\ns = requests.Session()\nrequests.Session.request(s, method, 'https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nrequests.Session.request(s, method, 'https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1003: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_request_checks_shifted_url[requests.Session]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_request_checks_shifted_url[httpx.Client]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_request_checks_shifted_url[httpx.AsyncClient]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_request_checks_shifted_url[aiohttp.ClientSession]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_request_checks_shifted_url[urllib3.PoolManager]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_method_preserves_instance_proxy[requests.Session.get]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_method_preserves_instance_proxy[getattr(requests.Session, 'get')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_request_with_dynamic_method_and_allowed_url
+8 failed, 716 deselected in 1.28s

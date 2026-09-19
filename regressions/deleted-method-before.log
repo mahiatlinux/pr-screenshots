@@ -1,0 +1,33 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_deleted_instance_override_restores_proxy_receiver _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x742edbb386e0>
+
+    def test_deleted_instance_override_restores_proxy_receiver(self):
+        code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5/'}\ns.get = lambda url: url\ndel s.get\ns.get('https://pypi.org/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:1124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5/'}\ns.get = lambda url: url\ndel s.get\ns.get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         s = requests.Session()
+E         s.proxies = {'https': 'http://203.0.113.5/'}
+E         s.get = lambda url: url
+E         del s.get
+E         s.get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_deleted_instance_override_restores_proxy_receiver
+1 failed, 1 passed, 848 deselected in 1.10s

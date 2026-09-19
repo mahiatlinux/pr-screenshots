@@ -1,0 +1,74 @@
+FFFF....F                                                                [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unused_raw_http_connection_does_not_connect[http.client.HTTPConnection] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7323ee900ad0>
+client = 'http.client.HTTPConnection'
+
+    @pytest.mark.parametrize("client", ["http.client.HTTPConnection", "http.client.HTTPSConnection", "urllib3.connection.HTTPConnection", "urllib3.connection.HTTPSConnection"])
+    def test_unused_raw_http_connection_does_not_connect(self, client):
+        code = f"import http.client, urllib3\nc = {client}('203.0.113.5')\nc.close()"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import http.client, urllib3\nc = http.client.HTTPConnection('203.0.113.5')\nc.close()")
+
+studio/backend/tests/test_sandbox_tools.py:1134: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unused_raw_http_connection_does_not_connect[http.client.HTTPSConnection] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7323ee900c80>
+client = 'http.client.HTTPSConnection'
+
+    @pytest.mark.parametrize("client", ["http.client.HTTPConnection", "http.client.HTTPSConnection", "urllib3.connection.HTTPConnection", "urllib3.connection.HTTPSConnection"])
+    def test_unused_raw_http_connection_does_not_connect(self, client):
+        code = f"import http.client, urllib3\nc = {client}('203.0.113.5')\nc.close()"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import http.client, urllib3\nc = http.client.HTTPSConnection('203.0.113.5')\nc.close()")
+
+studio/backend/tests/test_sandbox_tools.py:1134: AssertionError
+_ TestNetworkTargetResolution.test_unused_raw_http_connection_does_not_connect[urllib3.connection.HTTPConnection] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7323ee900d40>
+client = 'urllib3.connection.HTTPConnection'
+
+    @pytest.mark.parametrize("client", ["http.client.HTTPConnection", "http.client.HTTPSConnection", "urllib3.connection.HTTPConnection", "urllib3.connection.HTTPSConnection"])
+    def test_unused_raw_http_connection_does_not_connect(self, client):
+        code = f"import http.client, urllib3\nc = {client}('203.0.113.5')\nc.close()"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import http.client, urllib3\nc = urllib3.connection.HTTPConnection('203.0.113.5')\nc.close()")
+
+studio/backend/tests/test_sandbox_tools.py:1134: AssertionError
+_ TestNetworkTargetResolution.test_unused_raw_http_connection_does_not_connect[urllib3.connection.HTTPSConnection] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7323ee900e00>
+client = 'urllib3.connection.HTTPSConnection'
+
+    @pytest.mark.parametrize("client", ["http.client.HTTPConnection", "http.client.HTTPSConnection", "urllib3.connection.HTTPConnection", "urllib3.connection.HTTPSConnection"])
+    def test_unused_raw_http_connection_does_not_connect(self, client):
+        code = f"import http.client, urllib3\nc = {client}('203.0.113.5')\nc.close()"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import http.client, urllib3\nc = urllib3.connection.HTTPSConnection('203.0.113.5')\nc.close()")
+
+studio/backend/tests/test_sandbox_tools.py:1134: AssertionError
+___ TestNetworkTargetResolution.test_changed_raw_http_host_requires_approval ___
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7323ee902090>
+
+    def test_changed_raw_http_host_requires_approval(self):
+        code = "import http.client\nc = http.client.HTTPConnection('pypi.org')\nc.host = '203.0.113.5'\nc.request('GET', '/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import http.client\nc = http.client.HTTPConnection('pypi.org')\nc.host = '203.0.113.5'\nc.request('GET', '/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1144: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_raw_http_connection_does_not_connect[http.client.HTTPConnection]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_raw_http_connection_does_not_connect[http.client.HTTPSConnection]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_raw_http_connection_does_not_connect[urllib3.connection.HTTPConnection]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_raw_http_connection_does_not_connect[urllib3.connection.HTTPSConnection]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_changed_raw_http_host_requires_approval
+5 failed, 4 passed, 850 deselected in 1.24s

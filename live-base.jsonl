@@ -1,3 +1,6 @@
+{"case": "unused_raw_http_connection", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "raw_http_request", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "deleted_instance_override", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "setattr_request_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "setattr_base_url_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "unbound_proxy_mutator", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}

@@ -16,6 +16,9 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     thread.start()
     proxy = f'http://127.0.0.1:{server.server_port}'
     cases = {
+        'unused_raw_http_connection': f"import http.client\nc=http.client.HTTPConnection('127.0.0.1',port={server.server_port})\nresponse=None\nc.close()",
+        'raw_http_request': f"import http.client\nc=http.client.HTTPConnection('127.0.0.1',port={server.server_port})\nc.request('GET','/')\nresponse=c.getresponse()\nresponse.read()\nc.close()",
+        'deleted_instance_override': f"import requests\ns=requests.Session()\ns.proxies={{'http': {proxy!r}}}\ns.get=lambda url:url\ndel s.get\nresponse=s.get('http://pypi.org/',timeout=2)",
         'setattr_request_preexisting': f"import requests\ns=requests.Session()\nr=s.prepare_request(requests.Request('GET','http://pypi.org/'))\nsetattr(r,'url',{proxy!r})\nresponse=s.send(r,timeout=2)",
         'setattr_base_url_preexisting': f"import httpx\nc=httpx.Client()\nsetattr(c,'base_url',{proxy!r})\nresponse=c.get('/',timeout=2)",
         'unbound_proxy_mutator': f"import requests\ns=requests.Session()\ndict.update(s.proxies,{{'http': {proxy!r}}})\nresponse=s.get('http://pypi.org/',timeout=2)",

@@ -1,0 +1,60 @@
+FFF........F.                                                            [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unused_httpx_stream_does_not_connect[httpx.stream] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7761b1b49520>
+factory = 'httpx.stream'
+
+    @pytest.mark.parametrize("factory", ["httpx.stream", "httpx.Client().stream", "httpx.AsyncClient().stream"])
+    def test_unused_httpx_stream_does_not_connect(self, factory):
+        code = f"import httpx\ncm = {factory}('GET', 'http://203.0.113.5/')\nalias = cm"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\nalias = cm")
+
+studio/backend/tests/test_sandbox_tools.py:1231: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unused_httpx_stream_does_not_connect[httpx.Client().stream] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7761b1b49550>
+factory = 'httpx.Client().stream'
+
+    @pytest.mark.parametrize("factory", ["httpx.stream", "httpx.Client().stream", "httpx.AsyncClient().stream"])
+    def test_unused_httpx_stream_does_not_connect(self, factory):
+        code = f"import httpx\ncm = {factory}('GET', 'http://203.0.113.5/')\nalias = cm"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\ncm = httpx.Client().stream('GET', 'http://203.0.113.5/')\nalias = cm")
+
+studio/backend/tests/test_sandbox_tools.py:1231: AssertionError
+_ TestNetworkTargetResolution.test_unused_httpx_stream_does_not_connect[httpx.AsyncClient().stream] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7761b1b4b1d0>
+factory = 'httpx.AsyncClient().stream'
+
+    @pytest.mark.parametrize("factory", ["httpx.stream", "httpx.Client().stream", "httpx.AsyncClient().stream"])
+    def test_unused_httpx_stream_does_not_connect(self, factory):
+        code = f"import httpx\ncm = {factory}('GET', 'http://203.0.113.5/')\nalias = cm"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\ncm = httpx.AsyncClient().stream('GET', 'http://203.0.113.5/')\nalias = cm")
+
+studio/backend/tests/test_sandbox_tools.py:1231: AssertionError
+__ TestNetworkTargetResolution.test_httpx_stream_checks_client_state_at_entry __
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7761b1b08aa0>
+
+    def test_httpx_stream_checks_client_state_at_entry(self):
+        code = "import httpx\nc = httpx.Client(base_url='https://pypi.org/')\ncm = c.stream('GET', '/')\nc.base_url = 'http://203.0.113.5/'\nwith cm: pass"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\nc = httpx.Client(base_url='https://pypi.org/')\ncm = c.stream('GET', '/')\nc.base_url = 'http://203.0.113.5/'\nwith cm: pass"})
+
+studio/backend/tests/test_sandbox_tools.py:1250: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_stream_does_not_connect[httpx.stream]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_stream_does_not_connect[httpx.Client().stream]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_stream_does_not_connect[httpx.AsyncClient().stream]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_stream_checks_client_state_at_entry
+4 failed, 9 passed, 881 deselected in 1.24s

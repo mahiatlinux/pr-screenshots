@@ -1,6 +1,7 @@
 import http.server
 import json
 import threading
+import socket
 import requests
 from requests.utils import select_proxy
 from core.inference.tools import _check_code_safety, is_high_risk_tool_call
@@ -17,6 +18,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b'proxy reached after redirect')
+    def do_HEAD(self):
+        self.server.paths.append(self.path)
+        self.send_response(302 if self.server.redirect else 200)
+        if self.server.redirect:
+            self.send_header('Location', 'http://localhost:1/final')
+        self.end_headers()
     def log_message(self,*args):
         pass
 with http.server.HTTPServer(('127.0.0.1',0),Handler) as origin, http.server.HTTPServer(('127.0.0.1',0),Handler) as proxy:
@@ -31,6 +38,15 @@ with http.server.HTTPServer(('127.0.0.1',0),Handler) as origin, http.server.HTTP
     origin.paths.clear(); proxy.paths.clear()
     response=requests.get(url,proxies=proxies,timeout=3,allow_redirects=False)
     print(json.dumps({'case':'disabled_redirects','status':response.status_code,'origin_requests':origin.paths,'proxy_requests':proxy.paths}))
+    resolve = socket.getaddrinfo
+    socket.getaddrinfo = lambda host, port, *args, **kwargs: resolve('127.0.0.1' if host == 'pypi.org' else host, port, *args, **kwargs)
+    for caller, options in [('requests.head', ''), ('requests.Session().head', ''), ('requests.head', ',allow_redirects=True')]:
+        origin.paths.clear(); proxy.paths.clear()
+        code=f"import requests\nresponse={caller}('http://pypi.org:{origin.server_port}/',proxies={proxies!r},timeout=2{options})"
+        namespace={}
+        exec(code,namespace)
+        print(json.dumps({'case':'head_default' if not options else 'head_redirect_enabled','caller':caller,'blocked':_check_code_safety(code),'prompt':is_high_risk_tool_call('python',{'code':code}),'status':namespace['response'].status_code,'origin_requests':origin.paths,'proxy_requests':proxy.paths}))
+    socket.getaddrinfo = resolve
     origin.shutdown()
     proxy.shutdown()
 
@@ -70,3 +86,7 @@ for invocation in ['', 'configure()']:
 for proxies in [{'http':'http://203.0.113.5/'},{'https://example.com':'http://203.0.113.5/'},{'https://pypi.org':None,'https':'http://203.0.113.5/'}]:
     code=f"import requests\nrequests.get('https://pypi.org/',proxies={proxies!r},allow_redirects=False)"
     print(json.dumps({'case':'no_redirect_proxy_selection','proxies':proxies,'selected':select_proxy('https://pypi.org/',proxies),'blocked':_check_code_safety(code),'prompt':is_high_risk_tool_call('python',{'code':code})}))
+
+proxies={'https':'http://203.0.113.5', **{'https':None}}
+code="import requests\nrequests.get('https://pypi.org/',proxies={'https':'http://203.0.113.5', **{'https':None}},allow_redirects=False)"
+print(json.dumps({'case':'unpacked_disabled_proxy','effective_mapping':proxies,'selected':select_proxy('https://pypi.org/',proxies),'blocked':_check_code_safety(code),'prompt':is_high_risk_tool_call('python',{'code':code})}))

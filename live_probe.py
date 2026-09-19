@@ -16,6 +16,11 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     thread.start()
     proxy = f'http://127.0.0.1:{server.server_port}'
     cases = {
+        'unused_httpx_stream': f"import httpx\ncm=httpx.stream('GET',{proxy!r})\nresponse=None",
+        'unused_client_stream': f"import httpx\nc=httpx.Client()\ncm=c.stream('GET',{proxy!r})\nresponse=None\nc.close()",
+        'entered_httpx_stream': f"import httpx\ncm=httpx.stream('GET',{proxy!r})\nwith cm as response:\n    response.read()",
+        'entered_async_stream': f"import asyncio,httpx\nasync def fetch():\n    async with httpx.AsyncClient() as c:\n        cm=c.stream('GET',{proxy!r})\n        async with cm as response:\n            await response.aread()\n            return response\nresponse=asyncio.run(fetch())",
+        'stream_base_mutation': f"import httpx\nc=httpx.Client(base_url='https://pypi.org/')\ncm=c.stream('GET','/')\nc.base_url={proxy!r}\nwith cm as response:\n    response.read()\nc.close()",
         'unused_raw_http_connection': f"import http.client\nc=http.client.HTTPConnection('127.0.0.1',port={server.server_port})\nresponse=None\nc.close()",
         'raw_http_request': f"import http.client\nc=http.client.HTTPConnection('127.0.0.1',port={server.server_port})\nc.request('GET','/')\nresponse=c.getresponse()\nresponse.read()\nc.close()",
         'deleted_instance_override': f"import requests\ns=requests.Session()\ns.proxies={{'http': {proxy!r}}}\ns.get=lambda url:url\ndel s.get\nresponse=s.get('http://pypi.org/',timeout=2)",

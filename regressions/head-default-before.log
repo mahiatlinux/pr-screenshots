@@ -1,0 +1,66 @@
+FFFF..                                                                   [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_requests_head_default_ignores_unused_proxy[requests.head] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7105a2a49010>
+caller = 'requests.head'
+
+    @pytest.mark.parametrize("caller", ["requests.head", "requests.api.head", "requests.Session().head", "requests.Session.head"])
+    def test_requests_head_default_ignores_unused_proxy(self, caller):
+        arguments = "requests.Session(), " if caller == "requests.Session.head" else ""
+        code = f"import requests\n{caller}({arguments}'https://pypi.org/', proxies={{'http': 'http://203.0.113.5/'}})"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nrequests.head('https://pypi.org/', proxies={'http': 'http://203.0.113.5/'})")
+
+studio/backend/tests/test_sandbox_tools.py:1185: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_requests_head_default_ignores_unused_proxy[requests.api.head] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7105a2a488c0>
+caller = 'requests.api.head'
+
+    @pytest.mark.parametrize("caller", ["requests.head", "requests.api.head", "requests.Session().head", "requests.Session.head"])
+    def test_requests_head_default_ignores_unused_proxy(self, caller):
+        arguments = "requests.Session(), " if caller == "requests.Session.head" else ""
+        code = f"import requests\n{caller}({arguments}'https://pypi.org/', proxies={{'http': 'http://203.0.113.5/'}})"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nrequests.api.head('https://pypi.org/', proxies={'http': 'http://203.0.113.5/'})")
+
+studio/backend/tests/test_sandbox_tools.py:1185: AssertionError
+_ TestNetworkTargetResolution.test_requests_head_default_ignores_unused_proxy[requests.Session().head] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7105a2a48590>
+caller = 'requests.Session().head'
+
+    @pytest.mark.parametrize("caller", ["requests.head", "requests.api.head", "requests.Session().head", "requests.Session.head"])
+    def test_requests_head_default_ignores_unused_proxy(self, caller):
+        arguments = "requests.Session(), " if caller == "requests.Session.head" else ""
+        code = f"import requests\n{caller}({arguments}'https://pypi.org/', proxies={{'http': 'http://203.0.113.5/'}})"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nrequests.Session().head('https://pypi.org/', proxies={'http': 'http://203.0.113.5/'})")
+
+studio/backend/tests/test_sandbox_tools.py:1185: AssertionError
+_ TestNetworkTargetResolution.test_requests_head_default_ignores_unused_proxy[requests.Session.head] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7105a2a48530>
+caller = 'requests.Session.head'
+
+    @pytest.mark.parametrize("caller", ["requests.head", "requests.api.head", "requests.Session().head", "requests.Session.head"])
+    def test_requests_head_default_ignores_unused_proxy(self, caller):
+        arguments = "requests.Session(), " if caller == "requests.Session.head" else ""
+        code = f"import requests\n{caller}({arguments}'https://pypi.org/', proxies={{'http': 'http://203.0.113.5/'}})"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nrequests.Session.head(requests.Session(), 'https://pypi.org/', proxies={'http': 'http://203.0.113.5/'})")
+
+studio/backend/tests/test_sandbox_tools.py:1185: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_requests_head_default_ignores_unused_proxy[requests.head]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_requests_head_default_ignores_unused_proxy[requests.api.head]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_requests_head_default_ignores_unused_proxy[requests.Session().head]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_requests_head_default_ignores_unused_proxy[requests.Session.head]
+4 failed, 2 passed, 867 deselected in 1.17s

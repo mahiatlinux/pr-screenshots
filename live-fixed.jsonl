@@ -1,3 +1,8 @@
+{"case": "unused_httpx_stream", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "unused_client_stream", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "entered_httpx_stream", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}
+{"case": "entered_async_stream", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}
+{"case": "stream_base_mutation", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["/"]}
 {"case": "unused_raw_http_connection", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
 {"case": "raw_http_request", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}
 {"case": "deleted_instance_override", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}

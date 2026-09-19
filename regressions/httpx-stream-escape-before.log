@@ -1,0 +1,75 @@
+FF.F                                                                     [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_httpx_stream_escaping_tracking_requires_approval[items = [cm]\nwith items[0]: pass] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d48aaee2150>
+escape = 'items = [cm]\nwith items[0]: pass'
+
+    @pytest.mark.parametrize("escape", ["items = [cm]\nwith items[0]: pass", "f = lambda: cm\nwith f(): pass", "def f(value=cm):\n    with value: pass\nf()", "with globals()['cm']: pass"])
+    def test_httpx_stream_escaping_tracking_requires_approval(self, escape):
+        code = f"import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\n{escape}"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\nitems = [cm]\nwith items[0]: pass"})
+
+studio/backend/tests/test_sandbox_tools.py:1259: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_httpx_stream_escaping_tracking_requires_approval[f = lambda: cm\nwith f(): pass] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d48aaee2300>
+escape = 'f = lambda: cm\nwith f(): pass'
+
+    @pytest.mark.parametrize("escape", ["items = [cm]\nwith items[0]: pass", "f = lambda: cm\nwith f(): pass", "def f(value=cm):\n    with value: pass\nf()", "with globals()['cm']: pass"])
+    def test_httpx_stream_escaping_tracking_requires_approval(self, escape):
+        code = f"import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\n{escape}"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\nf = lambda: cm\nwith f(): pass"})
+
+studio/backend/tests/test_sandbox_tools.py:1259: AssertionError
+_ TestNetworkTargetResolution.test_httpx_stream_escaping_tracking_requires_approval[with globals()['cm']: pass] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d48aaee2480>
+escape = "with globals()['cm']: pass"
+
+    @pytest.mark.parametrize("escape", ["items = [cm]\nwith items[0]: pass", "f = lambda: cm\nwith f(): pass", "def f(value=cm):\n    with value: pass\nf()", "with globals()['cm']: pass"])
+    def test_httpx_stream_escaping_tracking_requires_approval(self, escape):
+        code = f"import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\n{escape}"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\nwith globals()['cm']: pass"})
+
+studio/backend/tests/test_sandbox_tools.py:1259: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_stream_escaping_tracking_requires_approval[items = [cm]\nwith items[0]: pass]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_stream_escaping_tracking_requires_approval[f = lambda: cm\nwith f(): pass]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_stream_escaping_tracking_requires_approval[with globals()['cm']: pass]
+3 failed, 1 passed, 896 deselected in 1.20s
+.F...                                                                    [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_httpx_stream_escaping_tracking_requires_approval[items = [None]\nitems[0]: object = cm\nwith items[0]: pass] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x77c67b996510>
+escape = 'items = [None]\nitems[0]: object = cm\nwith items[0]: pass'
+
+    @pytest.mark.parametrize(
+        "escape",
+        [
+            "items = [cm]\nwith items[0]: pass",
+            "items = [None]\nitems[0]: object = cm\nwith items[0]: pass",
+            "f = lambda: cm\nwith f(): pass",
+            "def f(value=cm):\n    with value: pass\nf()",
+            "with globals()['cm']: pass",
+        ],
+    )
+    def test_httpx_stream_escaping_tracking_requires_approval(self, escape):
+        code = f"import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\n{escape}"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\ncm = httpx.stream('GET', 'http://203.0.113.5/')\nitems = [None]\nitems[0]: object = cm\nwith items[0]: pass"})
+
+studio/backend/tests/test_sandbox_tools.py:1279: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_httpx_stream_escaping_tracking_requires_approval[items = [None]\nitems[0]: object = cm\nwith items[0]: pass]
+1 failed, 4 passed, 896 deselected in 1.11s

@@ -7,3 +7,5 @@
 {"case": "overwrite_none", "selected": null, "blocked": null, "prompt": false}
 {"case": "update_none", "selected": null, "blocked": null, "prompt": false}
 {"case": "setdefault_existing", "selected": "https://pypi.org/", "blocked": null, "prompt": false}
+{"case": "helper_uncalled", "selected": null, "blocked": null, "prompt": false}
+{"case": "helper_called", "selected": "http://203.0.113.5/", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true}

@@ -1,0 +1,34 @@
+FF.....                                                                  [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_uncalled_helper_does_not_change_session_proxy[] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ff4a1844410>
+tail = ''
+
+    @pytest.mark.parametrize("tail", ["", "def unused():\n    configure()"])
+    def test_uncalled_helper_does_not_change_session_proxy(self, tail):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ndef configure():\n    s.proxies = {'https': 'http://203.0.113.5/'}\n" + tail + "\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ndef configure():\n    s.proxies = {'https': 'http://203.0.113.5/'}\n\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:999: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_uncalled_helper_does_not_change_session_proxy[def unused():\n    configure()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ff4a1844590>
+tail = 'def unused():\n    configure()'
+
+    @pytest.mark.parametrize("tail", ["", "def unused():\n    configure()"])
+    def test_uncalled_helper_does_not_change_session_proxy(self, tail):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ndef configure():\n    s.proxies = {'https': 'http://203.0.113.5/'}\n" + tail + "\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ndef configure():\n    s.proxies = {'https': 'http://203.0.113.5/'}\ndef unused():\n    configure()\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:999: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_uncalled_helper_does_not_change_session_proxy[]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_uncalled_helper_does_not_change_session_proxy[def unused():\n    configure()]
+2 failed, 5 passed, 816 deselected in 1.13s

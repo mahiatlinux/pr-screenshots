@@ -28,3 +28,5 @@ Executed tests:
 - Ruff and git diff checks pass.
 
 The local MLX checks are backend contract tests; live vision execution used llama.cpp on CUDA.
+
+Additional execution: a disposable FastMCP 4.0.5 HTTP server returned real ImageContent blocks. Studio's production call_tool_sync and replay builder fed those results to the GPU model. Base passed zero image parts and could not see any of the three colors; repaired code passed one image part and identified all three correctly. Firefox 153.0 reproduced the browser NO_IMAGE to RED result with zero page errors. The repository Python-floor check also passed for Python 3.10.

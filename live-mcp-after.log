@@ -1,0 +1,5 @@
+<task>/fix/studio/backend/core/inference/mcp_client.py:1599: FastMCPDeprecationWarning: Accessing `ImageContent.mimeType` is deprecated; MCP SDK v2 renamed this field to `mime_type`. Update your code to read `.mime_type` instead.
+  mime = getattr(obj, "mimeType", None)
+{"color": "red", "image_parts": 1, "answer": {"role": "assistant", "content": "The image returned is a solid red color.\n\n**RED**"}, "seconds": 0.081, "usage": {"completion_tokens": 14, "prompt_tokens": 154, "total_tokens": 168, "prompt_tokens_details": {"cached_tokens": 150}}}
+{"color": "blue", "image_parts": 1, "answer": {"role": "assistant", "content": "The image returned is a solid blue color.\n\n**BLUE**"}, "seconds": 0.059, "usage": {"completion_tokens": 14, "prompt_tokens": 154, "total_tokens": 168, "prompt_tokens_details": {"cached_tokens": 150}}}
+{"color": "green", "image_parts": 1, "answer": {"role": "assistant", "content": "The image returned is a solid green color.\n\n**GREEN**"}, "seconds": 0.058, "usage": {"completion_tokens": 14, "prompt_tokens": 154, "total_tokens": 168, "prompt_tokens_details": {"cached_tokens": 150}}}

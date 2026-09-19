@@ -1,4 +1,4 @@
-{"case": "tunnel_preexisting", "blocked": null, "prompt": false, "status": 200, "origin_requests": [["GET", "/", ""]], "connects": ["CONNECT 127.0.0.1:43181 HTTP/1.1"]}
+{"case": "tunnel_preexisting", "blocked": null, "prompt": false, "status": 200, "origin_requests": [["GET", "/", ""]], "connects": ["CONNECT 127.0.0.1:41001 HTTP/1.1"]}
 {"case": "unused_aiohttp", "blocked": null, "prompt": false, "status": null, "origin_requests": [], "connects": []}
 {"case": "awaited_aiohttp", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "origin_requests": [["GET", "/", ""]], "connects": []}
 {"case": "entered_aiohttp_module", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "origin_requests": [["GET", "/", ""]], "connects": []}

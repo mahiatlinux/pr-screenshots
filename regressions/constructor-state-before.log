@@ -1,0 +1,111 @@
+FFFF....                                                                 [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_constructor_proxy_state_reaches_instance[Client()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x776f1b78fd70>
+creation = 'Client()'
+
+    @pytest.mark.parametrize("creation", ["Client()", "Child()", "Alias()"])
+    def test_constructor_proxy_state_reaches_instance(self, creation):
+        code = f"import requests\nclass Client(requests.Session):\n    def __init__(self):\n        super().__init__()\n        self.proxies = {{'https': 'http://203.0.113.5/'}}\nclass Child(Client): pass\nAlias = Client\n{creation}.get('https://pypi.org/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:968: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Client(requests.Session):\n    def __init__(self):\n        super().__init__()\n        self.proxies = {'https': 'http://203.0.113.5/'}\nclass Child(Client): pass\nAlias = Client\nClient().get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         class Client(requests.Session):
+E             def __init__(self):
+E                 super().__init__()
+E                 self.proxies = {'https': 'http://203.0.113.5/'}
+E         class Child(Client): pass
+E         Alias = Client
+E         Client().get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_constructor_proxy_state_reaches_instance[Child()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x776f1b53ea80>
+creation = 'Child()'
+
+    @pytest.mark.parametrize("creation", ["Client()", "Child()", "Alias()"])
+    def test_constructor_proxy_state_reaches_instance(self, creation):
+        code = f"import requests\nclass Client(requests.Session):\n    def __init__(self):\n        super().__init__()\n        self.proxies = {{'https': 'http://203.0.113.5/'}}\nclass Child(Client): pass\nAlias = Client\n{creation}.get('https://pypi.org/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:968: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Client(requests.Session):\n    def __init__(self):\n        super().__init__()\n        self.proxies = {'https': 'http://203.0.113.5/'}\nclass Child(Client): pass\nAlias = Client\nChild().get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         class Client(requests.Session):
+E             def __init__(self):
+E                 super().__init__()
+E                 self.proxies = {'https': 'http://203.0.113.5/'}
+E         class Child(Client): pass
+E         Alias = Client
+E         Child().get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_constructor_proxy_state_reaches_instance[Alias()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x776f1b6317f0>
+creation = 'Alias()'
+
+    @pytest.mark.parametrize("creation", ["Client()", "Child()", "Alias()"])
+    def test_constructor_proxy_state_reaches_instance(self, creation):
+        code = f"import requests\nclass Client(requests.Session):\n    def __init__(self):\n        super().__init__()\n        self.proxies = {{'https': 'http://203.0.113.5/'}}\nclass Child(Client): pass\nAlias = Client\n{creation}.get('https://pypi.org/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:968: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Client(requests.Session):\n    def __init__(self):\n        super().__init__()\n        self.proxies = {'https': 'http://203.0.113.5/'}\nclass Child(Client): pass\nAlias = Client\nAlias().get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         class Client(requests.Session):
+E             def __init__(self):
+E                 super().__init__()
+E                 self.proxies = {'https': 'http://203.0.113.5/'}
+E         class Child(Client): pass
+E         Alias = Client
+E         Alias().get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_constructor_base_url_write_requires_approval _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x776f1b76ce90>
+
+    def test_constructor_base_url_write_requires_approval(self):
+        code = "import httpx\nclass Client(httpx.Client):\n    def __init__(self):\n        super().__init__()\n        self.base_url = 'http://203.0.113.5/'\nClient().get('/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\nclass Client(httpx.Client):\n    def __init__(self):\n        super().__init__()\n        self.base_url = 'http://203.0.113.5/'\nClient().get('/')"})
+
+studio/backend/tests/test_sandbox_tools.py:972: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_constructor_proxy_state_reaches_instance[Client()]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_constructor_proxy_state_reaches_instance[Child()]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_constructor_proxy_state_reaches_instance[Alias()]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_constructor_base_url_write_requires_approval
+4 failed, 4 passed, 806 deselected in 1.46s

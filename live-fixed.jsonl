@@ -1,3 +1,5 @@
+{"case": "constructor_proxy_state", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "constructor_base_url_state", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["/"]}
 {"case": "attribute_request_method", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "attribute_proxy_mutator", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "bound_proxy_mutator", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}

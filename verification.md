@@ -45,3 +45,7 @@ python -m pytest tests/test_llama_cpp_tool_loop.py tests/test_studio_tool_loop.p
 python -m pytest tests/test_video_attachment_part.py ../../tests/test_ci_backend_pytest_shards.py -q
 python -m pytest tests/test_llama_cpp_stream_cancel.py tests/test_gguf_stream_slot_release_ordering.py tests/test_context_refusal_units.py -q
 ```
+
+WebKit 26.5 also reproduces NO_IMAGE to RED with zero page errors. Its runtime libraries were extracted into the disposable task directory; the host was unchanged.
+
+Review finding 4051743629 was rejected after verification on exact mirror head 9b8fad07152ec40579306d39244f971e21c05c07. The async-generator closure is defined at line 4236, messages is initialized at line 4918, and the only calls to the generator are at lines 7760 and 7778. TypeScript and the production build pass. An executed probe of the actual lookup block returns the user message with the correct parent ID after initialization. All 17 research frontend contract tests pass. No code change was required.

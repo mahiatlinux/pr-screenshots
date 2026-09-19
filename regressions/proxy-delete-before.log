@@ -1,0 +1,34 @@
+FF..                                                                     [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_deleted_proxy_does_not_block_request[s.proxies] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x705d6fdb1790>
+receiver = 's.proxies'
+
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    def test_deleted_proxy_does_not_block_request(self, receiver):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\n" + f"del {receiver}['https']\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\ndel s.proxies['https']\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:911: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_deleted_proxy_does_not_block_request[mapping] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x705d6fdb1910>
+receiver = 'mapping'
+
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    def test_deleted_proxy_does_not_block_request(self, receiver):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\n" + f"del {receiver}['https']\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\ndel mapping['https']\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:911: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_deleted_proxy_does_not_block_request[s.proxies]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_deleted_proxy_does_not_block_request[mapping]
+2 failed, 2 passed, 695 deselected in 1.12s

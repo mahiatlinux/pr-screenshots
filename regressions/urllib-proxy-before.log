@@ -1,0 +1,66 @@
+FFFF...                                                                  [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_urllib_request_proxy_mutation_requires_approval['203.0.113.5:8080'-r] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7453a9795280>
+receiver = 'r', proxy = "'203.0.113.5:8080'"
+
+    @pytest.mark.parametrize("receiver", ["r", "alias"])
+    @pytest.mark.parametrize("proxy", ["'203.0.113.5:8080'", "input()"])
+    def test_urllib_request_proxy_mutation_requires_approval(self, receiver, proxy):
+        code = f"import urllib.request\nr = urllib.request.Request('https://pypi.org/')\nalias = r\n{receiver}.set_proxy({proxy}, 'http')\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('https://pypi.org/')\nalias = r\nr.set_proxy('203.0.113.5:8080', 'http')\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:860: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_urllib_request_proxy_mutation_requires_approval['203.0.113.5:8080'-alias] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7453a9795580>
+receiver = 'alias', proxy = "'203.0.113.5:8080'"
+
+    @pytest.mark.parametrize("receiver", ["r", "alias"])
+    @pytest.mark.parametrize("proxy", ["'203.0.113.5:8080'", "input()"])
+    def test_urllib_request_proxy_mutation_requires_approval(self, receiver, proxy):
+        code = f"import urllib.request\nr = urllib.request.Request('https://pypi.org/')\nalias = r\n{receiver}.set_proxy({proxy}, 'http')\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('https://pypi.org/')\nalias = r\nalias.set_proxy('203.0.113.5:8080', 'http')\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:860: AssertionError
+_ TestNetworkTargetResolution.test_urllib_request_proxy_mutation_requires_approval[input()-r] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7453a9795640>
+receiver = 'r', proxy = 'input()'
+
+    @pytest.mark.parametrize("receiver", ["r", "alias"])
+    @pytest.mark.parametrize("proxy", ["'203.0.113.5:8080'", "input()"])
+    def test_urllib_request_proxy_mutation_requires_approval(self, receiver, proxy):
+        code = f"import urllib.request\nr = urllib.request.Request('https://pypi.org/')\nalias = r\n{receiver}.set_proxy({proxy}, 'http')\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('https://pypi.org/')\nalias = r\nr.set_proxy(input(), 'http')\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:860: AssertionError
+_ TestNetworkTargetResolution.test_urllib_request_proxy_mutation_requires_approval[input()-alias] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7453aa9a9370>
+receiver = 'alias', proxy = 'input()'
+
+    @pytest.mark.parametrize("receiver", ["r", "alias"])
+    @pytest.mark.parametrize("proxy", ["'203.0.113.5:8080'", "input()"])
+    def test_urllib_request_proxy_mutation_requires_approval(self, receiver, proxy):
+        code = f"import urllib.request\nr = urllib.request.Request('https://pypi.org/')\nalias = r\n{receiver}.set_proxy({proxy}, 'http')\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('https://pypi.org/')\nalias = r\nalias.set_proxy(input(), 'http')\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:860: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_urllib_request_proxy_mutation_requires_approval['203.0.113.5:8080'-r]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_urllib_request_proxy_mutation_requires_approval['203.0.113.5:8080'-alias]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_urllib_request_proxy_mutation_requires_approval[input()-r]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_urllib_request_proxy_mutation_requires_approval[input()-alias]
+4 failed, 3 passed, 745 deselected in 1.29s

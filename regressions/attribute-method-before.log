@@ -1,0 +1,129 @@
+FFFFFFF.                                                                 [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_attribute_stored_request_method_retains_proxy _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f0997921e0>
+
+    def test_attribute_stored_request_method_retains_proxy(self):
+        code = "import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\no.fetch = s.get\ns.proxies = {'https': 'http://203.0.113.5/'}\no.fetch('https://pypi.org/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:929: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\no.fetch = s.get\ns.proxies = {'https': 'http://203.0.113.5/'}\no.fetch('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         class Holder: pass
+E         o = Holder()
+E         s = requests.Session()
+E         o.fetch = s.get
+E         s.proxies = {'https': 'http://203.0.113.5/'}
+E         o.fetch('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_attribute_stored_request_method_retains_base_url _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f099792960>
+
+    def test_attribute_stored_request_method_retains_base_url(self):
+        code = "import httpx\nclass Holder: pass\no = Holder()\nc = httpx.Client(base_url='http://203.0.113.5/')\no.fetch = c.get\no.fetch('/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:933: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import httpx\nclass Holder: pass\no = Holder()\nc = httpx.Client(base_url='http://203.0.113.5/')\no.fetch = c.get\no.fetch('/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import httpx
+E         class Holder: pass
+E         o = Holder()
+E         c = httpx.Client(base_url='http://203.0.113.5/')
+E         o.fetch = c.get
+E         o.fetch('/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_attribute_stored_proxy_mutator_requires_approval[update-{'https': 'http://203.0.113.5/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f099793260>
+method = 'update', arguments = "{'https': 'http://203.0.113.5/'}"
+
+    @pytest.mark.parametrize("method, arguments", [("update", "{'https': 'http://203.0.113.5/'}"), ("setdefault", "'https', 'http://203.0.113.5/'")])
+    def test_attribute_stored_proxy_mutator_requires_approval(self, method, arguments):
+        code = f"import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\no.configure = s.proxies.{method}\no.configure({arguments})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\no.configure = s.proxies.update\no.configure({'https': 'http://203.0.113.5/'})\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:938: AssertionError
+_ TestNetworkTargetResolution.test_attribute_stored_proxy_mutator_requires_approval[setdefault-'https', 'http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f0997933b0>
+method = 'setdefault', arguments = "'https', 'http://203.0.113.5/'"
+
+    @pytest.mark.parametrize("method, arguments", [("update", "{'https': 'http://203.0.113.5/'}"), ("setdefault", "'https', 'http://203.0.113.5/'")])
+    def test_attribute_stored_proxy_mutator_requires_approval(self, method, arguments):
+        code = f"import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\no.configure = s.proxies.{method}\no.configure({arguments})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\no.configure = s.proxies.setdefault\no.configure('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:938: AssertionError
+_ TestNetworkTargetResolution.test_attribute_stored_request_mutator_requires_approval[prepare_url-'http://203.0.113.5/', None] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f099793c80>
+method = 'prepare_url', arguments = "'http://203.0.113.5/', None"
+
+    @pytest.mark.parametrize("method, arguments", [("prepare_url", "'http://203.0.113.5/', None"), ("prepare", "method='GET', url='http://203.0.113.5/'")])
+    def test_attribute_stored_request_mutator_requires_approval(self, method, arguments):
+        code = f"import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\no.retarget = r.{method}\no.retarget({arguments})\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\no.retarget = r.prepare_url\no.retarget('http://203.0.113.5/', None)\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:943: AssertionError
+_ TestNetworkTargetResolution.test_attribute_stored_request_mutator_requires_approval[prepare-method='GET', url='http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f099793dd0>
+method = 'prepare', arguments = "method='GET', url='http://203.0.113.5/'"
+
+    @pytest.mark.parametrize("method, arguments", [("prepare_url", "'http://203.0.113.5/', None"), ("prepare", "method='GET', url='http://203.0.113.5/'")])
+    def test_attribute_stored_request_mutator_requires_approval(self, method, arguments):
+        code = f"import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\no.retarget = r.{method}\no.retarget({arguments})\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\nclass Holder: pass\no = Holder()\ns = requests.Session()\nr = s.prepare_request(requests.Re...('GET', 'https://pypi.org/'))\no.retarget = r.prepare\no.retarget(method='GET', url='http://203.0.113.5/')\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:943: AssertionError
+_ TestNetworkTargetResolution.test_attribute_stored_urllib_mutator_requires_approval _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x75f099780560>
+
+    def test_attribute_stored_urllib_mutator_requires_approval(self):
+        code = "import urllib.request\nclass Holder: pass\no = Holder()\nr = urllib.request.Request('http://pypi.org/')\no.retarget = r.set_proxy\no.retarget('203.0.113.5:8080', 'http')\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nclass Holder: pass\no = Holder()\nr = urllib.request.Request('http://pypi.org/')\no.retarget = r.set_proxy\no.retarget('203.0.113.5:8080', 'http')\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:947: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_attribute_stored_request_method_retains_proxy
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_attribute_stored_request_method_retains_base_url
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_attribute_stored_proxy_mutator_requires_approval[update-{'https': 'http://203.0.113.5/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_attribute_stored_proxy_mutator_requires_approval[setdefault-'https', 'http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_attribute_stored_request_mutator_requires_approval[prepare_url-'http://203.0.113.5/', None]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_attribute_stored_request_mutator_requires_approval[prepare-method='GET', url='http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_attribute_stored_urllib_mutator_requires_approval
+7 failed, 1 passed, 799 deselected in 1.30s

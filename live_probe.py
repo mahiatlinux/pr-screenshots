@@ -16,6 +16,8 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     thread.start()
     proxy = f'http://127.0.0.1:{server.server_port}'
     cases = {
+        'attribute_request_method': f"import requests\nclass Holder: pass\no=Holder()\ns=requests.Session()\no.fetch=s.get\ns.proxies={{'http': {proxy!r}}}\nresponse=o.fetch('http://pypi.org/', timeout=2)",
+        'attribute_proxy_mutator': f"import requests\nclass Holder: pass\no=Holder()\ns=requests.Session()\no.configure=s.proxies.update\no.configure({{'http': {proxy!r}}})\nresponse=s.get('http://pypi.org/', timeout=2)",
         'bound_proxy_mutator': f"import requests\ns=requests.Session()\nconfigure=s.proxies.update\nconfigure({{'http': {proxy!r}}})\nresponse=s.get('http://pypi.org/', timeout=2)",
         'bound_request_mutator': f"import requests\ns=requests.Session()\nr=s.prepare_request(requests.Request('GET','http://pypi.org/'))\nretarget=r.prepare_url\nretarget({proxy!r}, None)\nresponse=s.send(r, timeout=2)",
         'urllib_request_full_url': f"import urllib.request\nr=urllib.request.Request('http://pypi.org/')\nr.full_url={proxy!r}\nresponse=urllib.request.urlopen(r, timeout=2)",

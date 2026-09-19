@@ -1,0 +1,61 @@
+FFFF.                                                                    [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unbound_proxy_mutator_requires_approval[dict.update-{'https': 'http://203.0.113.5/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x70166f448b00>
+lookup = 'dict.update', arguments = "{'https': 'http://203.0.113.5/'}"
+
+    @pytest.mark.parametrize("lookup, arguments", [("dict.update", "{'https': 'http://203.0.113.5/'}"), ("dict.setdefault", "'https', 'http://203.0.113.5/'"), ("getattr(dict, 'update')", "{'https': 'http://203.0.113.5/'}")])
+    def test_unbound_proxy_mutator_requires_approval(self, lookup, arguments):
+        code = f"import requests\ns = requests.Session()\nconfigure = {lookup}\nconfigure(s.proxies, {arguments})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nconfigure = dict.update\nconfigure(s.proxies, {'https': 'http://203.0.113.5/'})\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1080: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unbound_proxy_mutator_requires_approval[dict.setdefault-'https', 'http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x70166f448c80>
+lookup = 'dict.setdefault', arguments = "'https', 'http://203.0.113.5/'"
+
+    @pytest.mark.parametrize("lookup, arguments", [("dict.update", "{'https': 'http://203.0.113.5/'}"), ("dict.setdefault", "'https', 'http://203.0.113.5/'"), ("getattr(dict, 'update')", "{'https': 'http://203.0.113.5/'}")])
+    def test_unbound_proxy_mutator_requires_approval(self, lookup, arguments):
+        code = f"import requests\ns = requests.Session()\nconfigure = {lookup}\nconfigure(s.proxies, {arguments})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nconfigure = dict.setdefault\nconfigure(s.proxies, 'https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1080: AssertionError
+_ TestNetworkTargetResolution.test_unbound_proxy_mutator_requires_approval[getattr(dict, 'update')-{'https': 'http://203.0.113.5/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x70166f448d40>
+lookup = "getattr(dict, 'update')"
+arguments = "{'https': 'http://203.0.113.5/'}"
+
+    @pytest.mark.parametrize("lookup, arguments", [("dict.update", "{'https': 'http://203.0.113.5/'}"), ("dict.setdefault", "'https', 'http://203.0.113.5/'"), ("getattr(dict, 'update')", "{'https': 'http://203.0.113.5/'}")])
+    def test_unbound_proxy_mutator_requires_approval(self, lookup, arguments):
+        code = f"import requests\ns = requests.Session()\nconfigure = {lookup}\nconfigure(s.proxies, {arguments})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nconfigure = getattr(dict, 'update')\nconfigure(s.proxies, {'https': 'http://203.0.113.5/'})\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1080: AssertionError
+_ TestNetworkTargetResolution.test_unbound_direct_proxy_mutator_requires_approval _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x70166f449490>
+
+    def test_unbound_direct_proxy_mutator_requires_approval(self):
+        code = "import requests\ns = requests.Session()\ndict.update(s.proxies, {'https': 'http://203.0.113.5/'})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\ndict.update(s.proxies, {'https': 'http://203.0.113.5/'})\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1084: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_mutator_requires_approval[dict.update-{'https': 'http://203.0.113.5/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_mutator_requires_approval[dict.setdefault-'https', 'http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_mutator_requires_approval[getattr(dict, 'update')-{'https': 'http://203.0.113.5/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_direct_proxy_mutator_requires_approval
+4 failed, 1 passed, 838 deselected in 1.25s

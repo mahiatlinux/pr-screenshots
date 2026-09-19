@@ -16,6 +16,10 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     thread.start()
     proxy = f'http://127.0.0.1:{server.server_port}'
     cases = {
+        'setattr_request_preexisting': f"import requests\ns=requests.Session()\nr=s.prepare_request(requests.Request('GET','http://pypi.org/'))\nsetattr(r,'url',{proxy!r})\nresponse=s.send(r,timeout=2)",
+        'setattr_base_url_preexisting': f"import httpx\nc=httpx.Client()\nsetattr(c,'base_url',{proxy!r})\nresponse=c.get('/',timeout=2)",
+        'unbound_proxy_mutator': f"import requests\ns=requests.Session()\ndict.update(s.proxies,{{'http': {proxy!r}}})\nresponse=s.get('http://pypi.org/',timeout=2)",
+        'instance_method_override': f"import requests\ns=requests.Session()\ns.get=lambda url: url\nresponse=s.get({proxy!r})",
         'assigned_local_override': f"import requests\ndef local(self,url):\n    return url\nclass Client(requests.Session):\n    get=local\nresponse=Client().get({proxy!r})",
         'partial_network_preexisting': f"import functools,requests\nf=functools.partial(requests.get, {proxy!r})\nresponse=f(timeout=2)",
         'unused_url_pool': f"import urllib3\npool=urllib3.connection_from_url({proxy!r})\nresponse=None\npool.close()",

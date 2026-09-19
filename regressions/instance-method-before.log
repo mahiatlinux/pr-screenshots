@@ -1,0 +1,61 @@
+FF..F                                                                    [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_instance_local_method_override_does_not_connect[lambda url: url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x78bf0aaa2990>
+replacement = 'lambda url: url'
+
+    @pytest.mark.parametrize("replacement", ["lambda url: url", "local"])
+    def test_instance_local_method_override_does_not_connect(self, replacement):
+        code = f"import requests\ndef local(url):\n    return url\ns = requests.Session()\ns.get = {replacement}\ns.get('http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ndef local(url):\n    return url\ns = requests.Session()\ns.get = lambda url: url\ns.get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:1100: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_instance_local_method_override_does_not_connect[local] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x78bf0aaa2b10>
+replacement = 'local'
+
+    @pytest.mark.parametrize("replacement", ["lambda url: url", "local"])
+    def test_instance_local_method_override_does_not_connect(self, replacement):
+        code = f"import requests\ndef local(url):\n    return url\ns = requests.Session()\ns.get = {replacement}\ns.get('http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ndef local(url):\n    return url\ns = requests.Session()\ns.get = local\ns.get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:1100: AssertionError
+_ TestNetworkTargetResolution.test_conditional_instance_override_retains_proxy_receiver _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x78bf0aaa3bc0>
+
+    def test_conditional_instance_override_retains_proxy_receiver(self):
+        code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5/'}\nif False:\n    s.get = lambda url: url\ns.get('https://pypi.org/')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:1110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\ns = requests.Session()\ns.proxies = {'https': 'http://203.0.113.5/'}\nif False:\n    s.get = lambda url: url\ns.get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         s = requests.Session()
+E         s.proxies = {'https': 'http://203.0.113.5/'}
+E         if False:
+E             s.get = lambda url: url
+E         s.get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_instance_local_method_override_does_not_connect[lambda url: url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_instance_local_method_override_does_not_connect[local]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_conditional_instance_override_retains_proxy_receiver
+3 failed, 2 passed, 843 deselected in 1.22s

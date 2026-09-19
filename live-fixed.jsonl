@@ -1,3 +1,7 @@
+{"case": "setattr_request_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "setattr_base_url_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "unbound_proxy_mutator", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "instance_method_override", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
 {"case": "assigned_local_override", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
 {"case": "partial_network_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "unused_url_pool", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": null, "proxy_requests": []}

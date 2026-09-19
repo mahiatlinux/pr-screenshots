@@ -16,6 +16,9 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     thread.start()
     proxy = f'http://127.0.0.1:{server.server_port}'
     cases = {
+        'returned_raw_connection': f"import http.client\ndef make():\n    return http.client.HTTPConnection('127.0.0.1',port={server.server_port})\nc=make()\nc.request('GET','/')\nresponse=c.getresponse()\nresponse.read()\nc.close()",
+        'returned_pool': f"import urllib3\ndef make():\n    return urllib3.HTTPConnectionPool('127.0.0.1',port={server.server_port})\nresponse=make().request('GET','/',timeout=2)",
+        'returned_proxy_client': f"import httpx\ndef make():\n    return httpx.Client(proxy={proxy!r})\nc=make()\nresponse=c.get('http://pypi.org/',timeout=2)\nc.close()",
         'unused_httpx_stream': f"import httpx\ncm=httpx.stream('GET',{proxy!r})\nresponse=None",
         'unused_client_stream': f"import httpx\nc=httpx.Client()\ncm=c.stream('GET',{proxy!r})\nresponse=None\nc.close()",
         'entered_httpx_stream': f"import httpx\ncm=httpx.stream('GET',{proxy!r})\nwith cm as response:\n    response.read()",

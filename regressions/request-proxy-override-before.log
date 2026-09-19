@@ -1,0 +1,150 @@
+...FFFFFFF...F                                                           [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_disabled_redirects_still_check_selected_proxy[{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x780c85cba5d0>
+proxies = "{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}"
+
+    @pytest.mark.parametrize(
+        "proxies",
+        [
+            "{'https': 'http://203.0.113.5/'}",
+            "{'https://pypi.org': 'http://203.0.113.5/'}",
+            "{'all': 'http://203.0.113.5/'}",
+            "{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}",
+        ],
+    )
+    def test_disabled_redirects_still_check_selected_proxy(self, proxies):
+        code = f"import requests\nrequests.get('https://pypi.org/', proxies={proxies}, allow_redirects=False)"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:1047: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nrequests.get('https://pypi.org/', proxies={'https://pypi.org': None, 'https': 'http://203.0.113.5/'}, allow_redirects=False)"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         requests.get('https://pypi.org/', proxies={'https://pypi.org': None, 'https': 'http://203.0.113.5/'}, allow_redirects=False)
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_request_proxy_override_replaces_session_value[False-{'https': None}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x780c85cd5f70>
+override = "{'https': None}", redirects = 'False'
+
+    @pytest.mark.parametrize("override", ["{'https': None}", "{'https': 'https://pypi.org/'}"])
+    @pytest.mark.parametrize("redirects", ["False", "True"])
+    def test_request_proxy_override_replaces_session_value(self, override, redirects):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\ns.get('https://pypi.org/', proxies={override}, allow_redirects={redirects})"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\ns.get('https://pypi.org/', proxies={'https': None}, allow_redirects=False)")
+
+studio/backend/tests/test_sandbox_tools.py:1387: AssertionError
+_ TestNetworkTargetResolution.test_request_proxy_override_replaces_session_value[False-{'https': 'https://pypi.org/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x780c85cd6270>
+override = "{'https': 'https://pypi.org/'}", redirects = 'False'
+
+    @pytest.mark.parametrize("override", ["{'https': None}", "{'https': 'https://pypi.org/'}"])
+    @pytest.mark.parametrize("redirects", ["False", "True"])
+    def test_request_proxy_override_replaces_session_value(self, override, redirects):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\ns.get('https://pypi.org/', proxies={override}, allow_redirects={redirects})"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\ns.get('https://pypi.org/', proxies={'https': 'https://pypi.org/'}, allow_redirects=False)")
+
+studio/backend/tests/test_sandbox_tools.py:1387: AssertionError
+_ TestNetworkTargetResolution.test_request_proxy_override_replaces_session_value[True-{'https': None}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x780c85cd6330>
+override = "{'https': None}", redirects = 'True'
+
+    @pytest.mark.parametrize("override", ["{'https': None}", "{'https': 'https://pypi.org/'}"])
+    @pytest.mark.parametrize("redirects", ["False", "True"])
+    def test_request_proxy_override_replaces_session_value(self, override, redirects):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\ns.get('https://pypi.org/', proxies={override}, allow_redirects={redirects})"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\ns.get('https://pypi.org/', proxies={'https': None}, allow_redirects=True)")
+
+studio/backend/tests/test_sandbox_tools.py:1387: AssertionError
+_ TestNetworkTargetResolution.test_request_proxy_override_replaces_session_value[True-{'https': 'https://pypi.org/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x780c85cd63f0>
+override = "{'https': 'https://pypi.org/'}", redirects = 'True'
+
+    @pytest.mark.parametrize("override", ["{'https': None}", "{'https': 'https://pypi.org/'}"])
+    @pytest.mark.parametrize("redirects", ["False", "True"])
+    def test_request_proxy_override_replaces_session_value(self, override, redirects):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\ns.get('https://pypi.org/', proxies={override}, allow_redirects={redirects})"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\ns.get('https://pypi.org/', proxies={'https': 'https://pypi.org/'}, allow_redirects=True)")
+
+studio/backend/tests/test_sandbox_tools.py:1387: AssertionError
+_ TestNetworkTargetResolution.test_request_override_precedes_unused_session_proxy[{'all': 'http://203.0.113.5/'}-{'https': 'https://pypi.org/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x780c85cd6cc0>
+session = "{'all': 'http://203.0.113.5/'}"
+override = "{'https': 'https://pypi.org/'}"
+
+    @pytest.mark.parametrize("session, override", [("{'all': 'http://203.0.113.5/'}", "{'https': 'https://pypi.org/'}"), ("{'https': 'http://203.0.113.5/', 'http': 'http://203.0.113.6/'}", "{'https': None}")])
+    def test_request_override_precedes_unused_session_proxy(self, session, override):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {session}\ns.get('https://pypi.org/', proxies={override}, allow_redirects=False)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'all': 'http://203.0.113.5/'}\ns.get('https://pypi.org/', proxies={'https': 'https://pypi.org/'}, allow_redirects=False)"})
+
+studio/backend/tests/test_sandbox_tools.py:1393: AssertionError
+_ TestNetworkTargetResolution.test_request_override_precedes_unused_session_proxy[{'https': 'http://203.0.113.5/', 'http': 'http://203.0.113.6/'}-{'https': None}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x780c85cd6e10>
+session = "{'https': 'http://203.0.113.5/', 'http': 'http://203.0.113.6/'}"
+override = "{'https': None}"
+
+    @pytest.mark.parametrize("session, override", [("{'all': 'http://203.0.113.5/'}", "{'https': 'https://pypi.org/'}"), ("{'https': 'http://203.0.113.5/', 'http': 'http://203.0.113.6/'}", "{'https': None}")])
+    def test_request_override_precedes_unused_session_proxy(self, session, override):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {session}\ns.get('https://pypi.org/', proxies={override}, allow_redirects=False)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/', 'http': 'http://203.0.113.6/'}\ns.get('https://pypi.org/', proxies={'https': None}, allow_redirects=False)"})
+
+studio/backend/tests/test_sandbox_tools.py:1393: AssertionError
+_ TestNetworkTargetResolution.test_request_proxy_none_key_does_not_disable_fallback _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x780c85cd70b0>
+
+    def test_request_proxy_none_key_does_not_disable_fallback(self):
+        code = "import requests\nrequests.get('https://pypi.org/', proxies={'https': None, 'all': 'http://203.0.113.5/'}, allow_redirects=False)"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:1402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nrequests.get('https://pypi.org/', proxies={'https': None, 'all': 'http://203.0.113.5/'}, allow_redirects=False)"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         requests.get('https://pypi.org/', proxies={'https': None, 'all': 'http://203.0.113.5/'}, allow_redirects=False)
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_disabled_redirects_still_check_selected_proxy[{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_request_proxy_override_replaces_session_value[False-{'https': None}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_request_proxy_override_replaces_session_value[False-{'https': 'https://pypi.org/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_request_proxy_override_replaces_session_value[True-{'https': None}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_request_proxy_override_replaces_session_value[True-{'https': 'https://pypi.org/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_request_override_precedes_unused_session_proxy[{'all': 'http://203.0.113.5/'}-{'https': 'https://pypi.org/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_request_override_precedes_unused_session_proxy[{'https': 'http://203.0.113.5/', 'http': 'http://203.0.113.6/'}-{'https': None}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_request_proxy_none_key_does_not_disable_fallback
+8 failed, 6 passed, 923 deselected in 1.35s

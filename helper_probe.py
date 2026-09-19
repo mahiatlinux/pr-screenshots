@@ -31,6 +31,12 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as origin, http.server.HT
     cases = {'known_timeout': f"import requests\ns=requests.Session()\ns.trust_env=False\nresponse=s.get('http://pypi.org:{origin.server_port}/',**{{'timeout':2}})"}
     for method, argument in [('clear', ''), ('pop', ", 'http'"), ('popitem', '')]:
         cases['unbound_' + method] = f"import requests\ns=requests.Session()\ns.trust_env=False\ns.proxies={{'http':'http://127.0.0.1:{proxy.server_port}'}}\ndict.{method}(s.proxies{argument})\nresponse=s.get('http://pypi.org:{origin.server_port}/',timeout=2)"
+    cases.update({
+        'disabled_session_proxy': f"import requests\ns=requests.Session()\ns.trust_env=False\ns.proxies={{'http':'http://127.0.0.1:{proxy.server_port}'}}\nresponse=s.get('http://pypi.org:{origin.server_port}/',proxies={{'http':None}},allow_redirects=False,timeout=2)",
+        'request_proxy_priority': f"import requests\ns=requests.Session()\ns.trust_env=False\ns.proxies={{'all':'http://127.0.0.1:{proxy.server_port}'}}\nresponse=s.get('http://pypi.org:{origin.server_port}/',proxies={{'http':'http://pypi.org:{origin.server_port}'}},allow_redirects=False,timeout=2)",
+        'none_fallback_proxy': f"import requests\nresponse=requests.get('http://pypi.org:{origin.server_port}/',proxies={{'http':None,'all':'http://127.0.0.1:{proxy.server_port}'}},allow_redirects=False,timeout=2)",
+        'none_host_fallback_proxy': f"import requests\nresponse=requests.get('http://pypi.org:{origin.server_port}/',proxies={{'http://pypi.org':None,'http':'http://127.0.0.1:{proxy.server_port}'}},allow_redirects=False,timeout=2)",
+    })
     for name, code in cases.items():
         origin.paths.clear(); proxy.paths.clear()
         namespace = {}

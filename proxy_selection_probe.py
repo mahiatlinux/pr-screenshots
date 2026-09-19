@@ -85,7 +85,9 @@ for invocation in ['', 'configure()']:
 
 for proxies in [{'http':'http://203.0.113.5/'},{'https://example.com':'http://203.0.113.5/'},{'https://pypi.org':None,'https':'http://203.0.113.5/'}]:
     code=f"import requests\nrequests.get('https://pypi.org/',proxies={proxies!r},allow_redirects=False)"
-    print(json.dumps({'case':'no_redirect_proxy_selection','proxies':proxies,'selected':select_proxy('https://pypi.org/',proxies),'blocked':_check_code_safety(code),'prompt':is_high_risk_tool_call('python',{'code':code})}))
+    session=requests.Session(); session.trust_env=False
+    effective=session.merge_environment_settings('https://pypi.org/',dict(proxies),False,True,None)['proxies']
+    print(json.dumps({'selected_after_session_merge':select_proxy('https://pypi.org/',effective),'case':'no_redirect_proxy_selection','proxies':proxies,'selected':select_proxy('https://pypi.org/',proxies),'blocked':_check_code_safety(code),'prompt':is_high_risk_tool_call('python',{'code':code})}))
 
 proxies={'https':'http://203.0.113.5', **{'https':None}}
 code="import requests\nrequests.get('https://pypi.org/',proxies={'https':'http://203.0.113.5', **{'https':None}},allow_redirects=False)"

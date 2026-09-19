@@ -1,0 +1,36 @@
+FF.                                                                      [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unused_composed_lazy_client_does_not_connect[c = httpx.Client(transport=httpx.HTTPTransport(proxy='http://203.0.113.5/'))] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x718cd10cfbf0>
+construction = "c = httpx.Client(transport=httpx.HTTPTransport(proxy='http://203.0.113.5/'))"
+
+    @pytest.mark.parametrize("construction", ["c = httpx.Client(transport=httpx.HTTPTransport(proxy='http://203.0.113.5/'))", "mounts = {'https://': httpx.HTTPTransport(proxy='http://203.0.113.5/')}\nc = httpx.Client(mounts=mounts)"])
+    def test_unused_composed_lazy_client_does_not_connect(self, construction):
+        code = f"import httpx\n{construction}\nc.close()"
+        assert _check_code_safety(code) is None
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import httpx\nc = httpx.Client(transport=httpx.HTTPTransport(proxy='http://203.0.113.5/'))\nc.close()"})
+
+studio/backend/tests/test_sandbox_tools.py:1371: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unused_composed_lazy_client_does_not_connect[mounts = {'https://': httpx.HTTPTransport(proxy='http://203.0.113.5/')}\nc = httpx.Client(mounts=mounts)] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x718cd10cfd40>
+construction = "mounts = {'https://': httpx.HTTPTransport(proxy='http://203.0.113.5/')}\nc = httpx.Client(mounts=mounts)"
+
+    @pytest.mark.parametrize("construction", ["c = httpx.Client(transport=httpx.HTTPTransport(proxy='http://203.0.113.5/'))", "mounts = {'https://': httpx.HTTPTransport(proxy='http://203.0.113.5/')}\nc = httpx.Client(mounts=mounts)"])
+    def test_unused_composed_lazy_client_does_not_connect(self, construction):
+        code = f"import httpx\n{construction}\nc.close()"
+        assert _check_code_safety(code) is None
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import httpx\nmounts = {'https://': httpx.HTTPTransport(proxy='http://203.0.113.5/')}\nc = httpx.Client(mounts=mounts)\nc.close()"})
+
+studio/backend/tests/test_sandbox_tools.py:1371: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_composed_lazy_client_does_not_connect[c = httpx.Client(transport=httpx.HTTPTransport(proxy='http://203.0.113.5/'))]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_composed_lazy_client_does_not_connect[mounts = {'https://': httpx.HTTPTransport(proxy='http://203.0.113.5/')}\nc = httpx.Client(mounts=mounts)]
+2 failed, 1 passed, 924 deselected in 1.18s

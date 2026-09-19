@@ -1,0 +1,51 @@
+FFF.                                                                     [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_returned_lazy_client_requires_approval[http.client.HTTPConnection('203.0.113.5')-request('GET', '/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7992ee9e3410>
+constructor = "http.client.HTTPConnection('203.0.113.5')"
+use = "request('GET', '/')"
+
+    @pytest.mark.parametrize("constructor, use", [("http.client.HTTPConnection('203.0.113.5')", "request('GET', '/')"), ("urllib3.HTTPConnectionPool('203.0.113.5')", "request('GET', '/')"), ("httpx.Client(proxy='http://203.0.113.5/')", "get('https://pypi.org/')")])
+    def test_returned_lazy_client_requires_approval(self, constructor, use):
+        code = f"import http.client, urllib3, httpx\ndef make():\n    return {constructor}\nmake().{use}"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import http.client, urllib3, httpx\ndef make():\n    return http.client.HTTPConnection('203.0.113.5')\nmake().request('GET', '/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1351: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_returned_lazy_client_requires_approval[urllib3.HTTPConnectionPool('203.0.113.5')-request('GET', '/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7992ee9e3590>
+constructor = "urllib3.HTTPConnectionPool('203.0.113.5')"
+use = "request('GET', '/')"
+
+    @pytest.mark.parametrize("constructor, use", [("http.client.HTTPConnection('203.0.113.5')", "request('GET', '/')"), ("urllib3.HTTPConnectionPool('203.0.113.5')", "request('GET', '/')"), ("httpx.Client(proxy='http://203.0.113.5/')", "get('https://pypi.org/')")])
+    def test_returned_lazy_client_requires_approval(self, constructor, use):
+        code = f"import http.client, urllib3, httpx\ndef make():\n    return {constructor}\nmake().{use}"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import http.client, urllib3, httpx\ndef make():\n    return urllib3.HTTPConnectionPool('203.0.113.5')\nmake().request('GET', '/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1351: AssertionError
+_ TestNetworkTargetResolution.test_returned_lazy_client_requires_approval[httpx.Client(proxy='http://203.0.113.5/')-get('https://pypi.org/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7992ee9e3650>
+constructor = "httpx.Client(proxy='http://203.0.113.5/')"
+use = "get('https://pypi.org/')"
+
+    @pytest.mark.parametrize("constructor, use", [("http.client.HTTPConnection('203.0.113.5')", "request('GET', '/')"), ("urllib3.HTTPConnectionPool('203.0.113.5')", "request('GET', '/')"), ("httpx.Client(proxy='http://203.0.113.5/')", "get('https://pypi.org/')")])
+    def test_returned_lazy_client_requires_approval(self, constructor, use):
+        code = f"import http.client, urllib3, httpx\ndef make():\n    return {constructor}\nmake().{use}"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import http.client, urllib3, httpx\ndef make():\n    return httpx.Client(proxy='http://203.0.113.5/')\nmake().get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1351: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_returned_lazy_client_requires_approval[http.client.HTTPConnection('203.0.113.5')-request('GET', '/')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_returned_lazy_client_requires_approval[urllib3.HTTPConnectionPool('203.0.113.5')-request('GET', '/')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_returned_lazy_client_requires_approval[httpx.Client(proxy='http://203.0.113.5/')-get('https://pypi.org/')]
+3 failed, 1 passed, 920 deselected in 1.21s

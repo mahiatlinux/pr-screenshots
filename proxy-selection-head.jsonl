@@ -1,2 +1,4 @@
 {"case": "no_proxy", "selected": null, "blocked": null, "prompt": false}
 {"case": "initially_unused_proxy", "initial_selected": null, "status": 200, "origin_requests": ["/"], "proxy_requests": ["http://localhost:1/final"]}
+{"case": "clear()", "selected": null, "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true}
+{"case": "pop('https')", "selected": null, "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true}

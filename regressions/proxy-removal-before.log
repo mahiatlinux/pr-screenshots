@@ -1,0 +1,96 @@
+FFFFFF...                                                                [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_removed_proxy_does_not_block_request[s.proxies-clear()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x714d2e4c4b90>
+removal = 'clear()', receiver = 's.proxies'
+
+    @pytest.mark.parametrize("removal", ["clear()", "pop('https')", "pop('https', None)"])
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    def test_removed_proxy_does_not_block_request(self, removal, receiver):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\n" + f"{receiver}.{removal}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\ns.proxies.clear()\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:885: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_removed_proxy_does_not_block_request[s.proxies-pop('https')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x714d2e4c4ef0>
+removal = "pop('https')", receiver = 's.proxies'
+
+    @pytest.mark.parametrize("removal", ["clear()", "pop('https')", "pop('https', None)"])
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    def test_removed_proxy_does_not_block_request(self, removal, receiver):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\n" + f"{receiver}.{removal}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\ns.proxies.pop('https')\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:885: AssertionError
+_ TestNetworkTargetResolution.test_removed_proxy_does_not_block_request[s.proxies-pop('https', None)] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x714d2e4c4fb0>
+removal = "pop('https', None)", receiver = 's.proxies'
+
+    @pytest.mark.parametrize("removal", ["clear()", "pop('https')", "pop('https', None)"])
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    def test_removed_proxy_does_not_block_request(self, removal, receiver):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\n" + f"{receiver}.{removal}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\ns.proxies.pop('https', None)\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:885: AssertionError
+_ TestNetworkTargetResolution.test_removed_proxy_does_not_block_request[mapping-clear()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x714d2e4c5070>
+removal = 'clear()', receiver = 'mapping'
+
+    @pytest.mark.parametrize("removal", ["clear()", "pop('https')", "pop('https', None)"])
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    def test_removed_proxy_does_not_block_request(self, removal, receiver):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\n" + f"{receiver}.{removal}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\nmapping.clear()\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:885: AssertionError
+_ TestNetworkTargetResolution.test_removed_proxy_does_not_block_request[mapping-pop('https')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x714d2e4c5130>
+removal = "pop('https')", receiver = 'mapping'
+
+    @pytest.mark.parametrize("removal", ["clear()", "pop('https')", "pop('https', None)"])
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    def test_removed_proxy_does_not_block_request(self, removal, receiver):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\n" + f"{receiver}.{removal}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\nmapping.pop('https')\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:885: AssertionError
+_ TestNetworkTargetResolution.test_removed_proxy_does_not_block_request[mapping-pop('https', None)] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x714d2e4c51f0>
+removal = "pop('https', None)", receiver = 'mapping'
+
+    @pytest.mark.parametrize("removal", ["clear()", "pop('https')", "pop('https', None)"])
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    def test_removed_proxy_does_not_block_request(self, removal, receiver):
+        code = "import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\n" + f"{receiver}.{removal}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nmapping = s.proxies\nmapping.pop('https', None)\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:885: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_removed_proxy_does_not_block_request[s.proxies-clear()]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_removed_proxy_does_not_block_request[s.proxies-pop('https')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_removed_proxy_does_not_block_request[s.proxies-pop('https', None)]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_removed_proxy_does_not_block_request[mapping-clear()]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_removed_proxy_does_not_block_request[mapping-pop('https')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_removed_proxy_does_not_block_request[mapping-pop('https', None)]
+6 failed, 3 passed, 684 deselected in 1.17s

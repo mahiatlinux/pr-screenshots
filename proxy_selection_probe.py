@@ -30,3 +30,9 @@ with http.server.HTTPServer(('127.0.0.1',0),Handler) as origin, http.server.HTTP
     print(json.dumps({'case':'initially_unused_proxy', 'initial_selected':select_proxy(url,proxies),'status':response.status_code,'origin_requests':origin.paths,'proxy_requests':proxy.paths}))
     origin.shutdown()
     proxy.shutdown()
+
+for removal in ["clear()", "pop('https')"]:
+    code = "import requests\ns=requests.Session()\ns.trust_env=False\ns.proxies={'https':'http://203.0.113.5/'}\ns.proxies." + removal
+    namespace = {}
+    exec(code, namespace)
+    print(json.dumps({'case':removal,'selected':select_proxy('https://pypi.org/', namespace['s'].proxies),'blocked':_check_code_safety(code + "\ns.get('https://pypi.org/')"),'prompt':is_high_risk_tool_call('python',{'code':code + "\ns.get('https://pypi.org/')"})}))

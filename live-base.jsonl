@@ -1,3 +1,7 @@
+{"case": "unused_httpx_coroutine", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "awaited_httpx_coroutine", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "scheduled_httpx_coroutine", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "changed_coroutine_base", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "returned_raw_connection", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "returned_pool", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "returned_proxy_client", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}

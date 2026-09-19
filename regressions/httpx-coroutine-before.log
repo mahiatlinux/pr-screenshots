@@ -1,0 +1,110 @@
+FFFFFF.....F                                                             [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unused_httpx_coroutine_does_not_connect[-get-'http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7dafc73b87d0>
+method = 'get', args = "'http://203.0.113.5/'", tail = ''
+
+    @pytest.mark.parametrize("method, args", [("get", "'http://203.0.113.5/'"), ("request", "'GET', 'http://203.0.113.5/'"), ("send", "httpx.Request('GET', 'http://203.0.113.5/')")])
+    @pytest.mark.parametrize("tail", ["", "pending.close()"])
+    def test_unused_httpx_coroutine_does_not_connect(self, method, args, tail):
+        code = f"import httpx\nc = httpx.AsyncClient()\npending = c.{method}({args})\n{tail}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\nc = httpx.AsyncClient()\npending = c.get('http://203.0.113.5/')\n")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unused_httpx_coroutine_does_not_connect[-request-'GET', 'http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7dafc73b8a10>
+method = 'request', args = "'GET', 'http://203.0.113.5/'", tail = ''
+
+    @pytest.mark.parametrize("method, args", [("get", "'http://203.0.113.5/'"), ("request", "'GET', 'http://203.0.113.5/'"), ("send", "httpx.Request('GET', 'http://203.0.113.5/')")])
+    @pytest.mark.parametrize("tail", ["", "pending.close()"])
+    def test_unused_httpx_coroutine_does_not_connect(self, method, args, tail):
+        code = f"import httpx\nc = httpx.AsyncClient()\npending = c.{method}({args})\n{tail}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\nc = httpx.AsyncClient()\npending = c.request('GET', 'http://203.0.113.5/')\n")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_unused_httpx_coroutine_does_not_connect[-send-httpx.Request('GET', 'http://203.0.113.5/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7dafc73b8ad0>
+method = 'send', args = "httpx.Request('GET', 'http://203.0.113.5/')", tail = ''
+
+    @pytest.mark.parametrize("method, args", [("get", "'http://203.0.113.5/'"), ("request", "'GET', 'http://203.0.113.5/'"), ("send", "httpx.Request('GET', 'http://203.0.113.5/')")])
+    @pytest.mark.parametrize("tail", ["", "pending.close()"])
+    def test_unused_httpx_coroutine_does_not_connect(self, method, args, tail):
+        code = f"import httpx\nc = httpx.AsyncClient()\npending = c.{method}({args})\n{tail}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\nc = httpx.AsyncClient()\npending = c.send(httpx.Request('GET', 'http://203.0.113.5/'))\n")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_unused_httpx_coroutine_does_not_connect[pending.close()-get-'http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7dafc73b8b90>
+method = 'get', args = "'http://203.0.113.5/'", tail = 'pending.close()'
+
+    @pytest.mark.parametrize("method, args", [("get", "'http://203.0.113.5/'"), ("request", "'GET', 'http://203.0.113.5/'"), ("send", "httpx.Request('GET', 'http://203.0.113.5/')")])
+    @pytest.mark.parametrize("tail", ["", "pending.close()"])
+    def test_unused_httpx_coroutine_does_not_connect(self, method, args, tail):
+        code = f"import httpx\nc = httpx.AsyncClient()\npending = c.{method}({args})\n{tail}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\nc = httpx.AsyncClient()\npending = c.get('http://203.0.113.5/')\npending.close()")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_unused_httpx_coroutine_does_not_connect[pending.close()-request-'GET', 'http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7dafc73b8c50>
+method = 'request', args = "'GET', 'http://203.0.113.5/'"
+tail = 'pending.close()'
+
+    @pytest.mark.parametrize("method, args", [("get", "'http://203.0.113.5/'"), ("request", "'GET', 'http://203.0.113.5/'"), ("send", "httpx.Request('GET', 'http://203.0.113.5/')")])
+    @pytest.mark.parametrize("tail", ["", "pending.close()"])
+    def test_unused_httpx_coroutine_does_not_connect(self, method, args, tail):
+        code = f"import httpx\nc = httpx.AsyncClient()\npending = c.{method}({args})\n{tail}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\nc = httpx.AsyncClient()\npending = c.request('GET', 'http://203.0.113.5/')\npending.close()")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_unused_httpx_coroutine_does_not_connect[pending.close()-send-httpx.Request('GET', 'http://203.0.113.5/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7dafc73b8d10>
+method = 'send', args = "httpx.Request('GET', 'http://203.0.113.5/')"
+tail = 'pending.close()'
+
+    @pytest.mark.parametrize("method, args", [("get", "'http://203.0.113.5/'"), ("request", "'GET', 'http://203.0.113.5/'"), ("send", "httpx.Request('GET', 'http://203.0.113.5/')")])
+    @pytest.mark.parametrize("tail", ["", "pending.close()"])
+    def test_unused_httpx_coroutine_does_not_connect(self, method, args, tail):
+        code = f"import httpx\nc = httpx.AsyncClient()\npending = c.{method}({args})\n{tail}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx\nc = httpx.AsyncClient()\npending = c.send(httpx.Request('GET', 'http://203.0.113.5/'))\npending.close()")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_coroutine_reads_changed_client_state_when_awaited _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7dafc73b8dd0>
+
+    def test_coroutine_reads_changed_client_state_when_awaited(self):
+        code = "import httpx, asyncio\nasync def run():\n    c = httpx.AsyncClient(base_url='https://pypi.org/')\n    pending = c.get('/')\n    c.base_url = 'http://203.0.113.5/'\n    await pending\nasyncio.run(run())"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx, asyncio\nasync def run():\n    c = httpx.AsyncClient(base_url='https://pypi.org/')\n    pending = c.get('/')\n    c.base_url = 'http://203.0.113.5/'\n    await pending\nasyncio.run(run())"})
+
+studio/backend/tests/test_sandbox_tools.py:1443: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_coroutine_does_not_connect[-get-'http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_coroutine_does_not_connect[-request-'GET', 'http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_coroutine_does_not_connect[-send-httpx.Request('GET', 'http://203.0.113.5/')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_coroutine_does_not_connect[pending.close()-get-'http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_coroutine_does_not_connect[pending.close()-request-'GET', 'http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_httpx_coroutine_does_not_connect[pending.close()-send-httpx.Request('GET', 'http://203.0.113.5/')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_coroutine_reads_changed_client_state_when_awaited
+7 failed, 5 passed, 945 deselected in 1.33s

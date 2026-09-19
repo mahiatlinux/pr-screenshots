@@ -1,0 +1,96 @@
+FFFFFF...                                                                [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_proxy_union_replaces_existing_keys[{'https': None}-s.proxies] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72c6f1b04440>
+target = 's.proxies', value = "{'https': None}"
+
+    @pytest.mark.parametrize("target", ["s.proxies", "alias"])
+    @pytest.mark.parametrize("value", ["{'https': None}", "{'https': 'https://pypi.org/'}", "replacement"])
+    def test_proxy_union_replaces_existing_keys(self, target, value):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\nalias = s.proxies\nreplacement = {{'https': None}}\n{target} |= {value}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nalias = s.proxies\nreplacement = {'https': None}\ns.proxies |= {'https': None}\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_proxy_union_replaces_existing_keys[{'https': None}-alias] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72c6f1b04710>
+target = 'alias', value = "{'https': None}"
+
+    @pytest.mark.parametrize("target", ["s.proxies", "alias"])
+    @pytest.mark.parametrize("value", ["{'https': None}", "{'https': 'https://pypi.org/'}", "replacement"])
+    def test_proxy_union_replaces_existing_keys(self, target, value):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\nalias = s.proxies\nreplacement = {{'https': None}}\n{target} |= {value}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nalias = s.proxies\nreplacement = {'https': None}\nalias |= {'https': None}\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_proxy_union_replaces_existing_keys[{'https': 'https://pypi.org/'}-s.proxies] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72c6f1b047d0>
+target = 's.proxies', value = "{'https': 'https://pypi.org/'}"
+
+    @pytest.mark.parametrize("target", ["s.proxies", "alias"])
+    @pytest.mark.parametrize("value", ["{'https': None}", "{'https': 'https://pypi.org/'}", "replacement"])
+    def test_proxy_union_replaces_existing_keys(self, target, value):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\nalias = s.proxies\nreplacement = {{'https': None}}\n{target} |= {value}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nalias = s.proxies\nreplacement = {'https': None}\ns.proxies |= {'https': 'https://pypi.org/'}\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_proxy_union_replaces_existing_keys[{'https': 'https://pypi.org/'}-alias] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72c6f1b04890>
+target = 'alias', value = "{'https': 'https://pypi.org/'}"
+
+    @pytest.mark.parametrize("target", ["s.proxies", "alias"])
+    @pytest.mark.parametrize("value", ["{'https': None}", "{'https': 'https://pypi.org/'}", "replacement"])
+    def test_proxy_union_replaces_existing_keys(self, target, value):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\nalias = s.proxies\nreplacement = {{'https': None}}\n{target} |= {value}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nalias = s.proxies\nreplacement = {'https': None}\nalias |= {'https': 'https://pypi.org/'}\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_proxy_union_replaces_existing_keys[replacement-s.proxies] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72c6f1b04950>
+target = 's.proxies', value = 'replacement'
+
+    @pytest.mark.parametrize("target", ["s.proxies", "alias"])
+    @pytest.mark.parametrize("value", ["{'https': None}", "{'https': 'https://pypi.org/'}", "replacement"])
+    def test_proxy_union_replaces_existing_keys(self, target, value):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\nalias = s.proxies\nreplacement = {{'https': None}}\n{target} |= {value}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nalias = s.proxies\nreplacement = {'https': None}\ns.proxies |= replacement\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+_ TestNetworkTargetResolution.test_proxy_union_replaces_existing_keys[replacement-alias] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72c6f1b04a10>
+target = 'alias', value = 'replacement'
+
+    @pytest.mark.parametrize("target", ["s.proxies", "alias"])
+    @pytest.mark.parametrize("value", ["{'https': None}", "{'https': 'https://pypi.org/'}", "replacement"])
+    def test_proxy_union_replaces_existing_keys(self, target, value):
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\nalias = s.proxies\nreplacement = {{'https': None}}\n{target} |= {value}\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nalias = s.proxies\nreplacement = {'https': None}\nalias |= replacement\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1429: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_union_replaces_existing_keys[{'https': None}-s.proxies]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_union_replaces_existing_keys[{'https': None}-alias]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_union_replaces_existing_keys[{'https': 'https://pypi.org/'}-s.proxies]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_union_replaces_existing_keys[{'https': 'https://pypi.org/'}-alias]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_union_replaces_existing_keys[replacement-s.proxies]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_proxy_union_replaces_existing_keys[replacement-alias]
+6 failed, 3 passed, 939 deselected in 1.30s

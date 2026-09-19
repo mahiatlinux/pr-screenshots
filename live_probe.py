@@ -16,6 +16,10 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     thread.start()
     proxy = f'http://127.0.0.1:{server.server_port}'
     cases = {
+        'unused_httpx_coroutine': f"import httpx, asyncio\nc=httpx.AsyncClient()\npending=c.get({proxy!r})\npending.close()\nasyncio.run(c.aclose())\nresponse=None",
+        'awaited_httpx_coroutine': f"import httpx, asyncio\nasync def run():\n    async with httpx.AsyncClient() as c:\n        pending=c.get({proxy!r})\n        return await pending\nresponse=asyncio.run(run())",
+        'scheduled_httpx_coroutine': f"import httpx, asyncio\nasync def run():\n    async with httpx.AsyncClient() as c:\n        pending=c.get({proxy!r})\n        return await asyncio.create_task(pending)\nresponse=asyncio.run(run())",
+        'changed_coroutine_base': f"import httpx, asyncio\nasync def run():\n    async with httpx.AsyncClient(base_url='https://pypi.org/') as c:\n        pending=c.get('/')\n        c.base_url={proxy!r}\n        return await pending\nresponse=asyncio.run(run())",
         'returned_raw_connection': f"import http.client\ndef make():\n    return http.client.HTTPConnection('127.0.0.1',port={server.server_port})\nc=make()\nc.request('GET','/')\nresponse=c.getresponse()\nresponse.read()\nc.close()",
         'returned_pool': f"import urllib3\ndef make():\n    return urllib3.HTTPConnectionPool('127.0.0.1',port={server.server_port})\nresponse=make().request('GET','/',timeout=2)",
         'returned_proxy_client': f"import httpx\ndef make():\n    return httpx.Client(proxy={proxy!r})\nc=make()\nresponse=c.get('http://pypi.org/',timeout=2)\nc.close()",

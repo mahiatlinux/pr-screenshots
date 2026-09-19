@@ -1,0 +1,134 @@
+FFFF....FFFF..                                                           [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unused_client_base_url_is_not_a_destination[httpx.Client] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74be97d56ff0>
+client = 'httpx.Client'
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_client_base_url_is_not_a_destination(self, client):
+        code = f"import httpx, aiohttp\nclient = {client}(base_url='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = httpx.Client(base_url='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:808: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unused_client_base_url_is_not_a_destination[httpx.AsyncClient] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74be97d571a0>
+client = 'httpx.AsyncClient'
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_client_base_url_is_not_a_destination(self, client):
+        code = f"import httpx, aiohttp\nclient = {client}(base_url='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = httpx.AsyncClient(base_url='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:808: AssertionError
+_ TestNetworkTargetResolution.test_unused_client_base_url_is_not_a_destination[aiohttp.ClientSession] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74be97d57260>
+client = 'aiohttp.ClientSession'
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_client_base_url_is_not_a_destination(self, client):
+        code = f"import httpx, aiohttp\nclient = {client}(base_url='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = aiohttp.ClientSession(base_url='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:808: AssertionError
+_ TestNetworkTargetResolution.test_unused_client_base_url_is_not_a_destination[aiohttp.client.ClientSession] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74be97d57320>
+client = 'aiohttp.client.ClientSession'
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_client_base_url_is_not_a_destination(self, client):
+        code = f"import httpx, aiohttp\nclient = {client}(base_url='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = aiohttp.client.ClientSession(base_url='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:808: AssertionError
+_ TestNetworkTargetResolution.test_client_base_url_is_checked_when_consumed['https://pypi.org/'-httpx.Client] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74be97e7c0b0>
+client = 'httpx.Client', url = "'https://pypi.org/'"
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    @pytest.mark.parametrize("url", ["'/'", "'https://pypi.org/'"])
+    def test_client_base_url_is_checked_when_consumed(self, client, url):
+        code = f"import httpx, aiohttp\nclient = {client}(base_url='http://203.0.113.5/')\nalias = client\nfetch = alias.get\nfetch({url})"
+        if url == "'/'":
+            _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+        else:
+>           assert _check_code_safety(code) is None
+E           assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E            +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = httpx.Client(base_url='http://203.0.113.5/')\nalias = client\nfetch = alias.get\nfetch('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:818: AssertionError
+_ TestNetworkTargetResolution.test_client_base_url_is_checked_when_consumed['https://pypi.org/'-httpx.AsyncClient] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74be97e7c170>
+client = 'httpx.AsyncClient', url = "'https://pypi.org/'"
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    @pytest.mark.parametrize("url", ["'/'", "'https://pypi.org/'"])
+    def test_client_base_url_is_checked_when_consumed(self, client, url):
+        code = f"import httpx, aiohttp\nclient = {client}(base_url='http://203.0.113.5/')\nalias = client\nfetch = alias.get\nfetch({url})"
+        if url == "'/'":
+            _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+        else:
+>           assert _check_code_safety(code) is None
+E           assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E            +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = httpx.AsyncClient(base_url='http://203.0.113.5/')\nalias = client\nfetch = alias.get\nfetch('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:818: AssertionError
+_ TestNetworkTargetResolution.test_client_base_url_is_checked_when_consumed['https://pypi.org/'-aiohttp.ClientSession] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74be97e7c230>
+client = 'aiohttp.ClientSession', url = "'https://pypi.org/'"
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    @pytest.mark.parametrize("url", ["'/'", "'https://pypi.org/'"])
+    def test_client_base_url_is_checked_when_consumed(self, client, url):
+        code = f"import httpx, aiohttp\nclient = {client}(base_url='http://203.0.113.5/')\nalias = client\nfetch = alias.get\nfetch({url})"
+        if url == "'/'":
+            _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+        else:
+>           assert _check_code_safety(code) is None
+E           assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E            +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = aiohttp.ClientSession(base_url='http://203.0.113.5/')\nalias = client\nfetch = alias.get\nfetch('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:818: AssertionError
+_ TestNetworkTargetResolution.test_client_base_url_is_checked_when_consumed['https://pypi.org/'-aiohttp.client.ClientSession] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x74be97e7c2f0>
+client = 'aiohttp.client.ClientSession', url = "'https://pypi.org/'"
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    @pytest.mark.parametrize("url", ["'/'", "'https://pypi.org/'"])
+    def test_client_base_url_is_checked_when_consumed(self, client, url):
+        code = f"import httpx, aiohttp\nclient = {client}(base_url='http://203.0.113.5/')\nalias = client\nfetch = alias.get\nfetch({url})"
+        if url == "'/'":
+            _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+        else:
+>           assert _check_code_safety(code) is None
+E           assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E            +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = aiohttp.client.ClientSession(base_url='http://203.0.113.5/')\nalias = client\nfetch = alias.get\nfetch('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:818: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_client_base_url_is_not_a_destination[httpx.Client]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_client_base_url_is_not_a_destination[httpx.AsyncClient]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_client_base_url_is_not_a_destination[aiohttp.ClientSession]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_client_base_url_is_not_a_destination[aiohttp.client.ClientSession]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_client_base_url_is_checked_when_consumed['https://pypi.org/'-httpx.Client]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_client_base_url_is_checked_when_consumed['https://pypi.org/'-httpx.AsyncClient]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_client_base_url_is_checked_when_consumed['https://pypi.org/'-aiohttp.ClientSession]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_client_base_url_is_checked_when_consumed['https://pypi.org/'-aiohttp.client.ClientSession]
+8 failed, 6 passed, 660 deselected in 1.23s

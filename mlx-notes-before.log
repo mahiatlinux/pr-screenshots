@@ -1,0 +1,82 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_____ test_single_image_replay_notes_describe_only_retained_pixels[False] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f9b5e25a8d0>
+merged_question = False
+
+    @pytest.mark.parametrize("merged_question", [False, True])
+    def test_single_image_replay_notes_describe_only_retained_pixels(monkeypatch, merged_question):
+        from core.inference.mcp_images import IMAGE_TURN_TEXT, image_marker_parts, placeholder_turn
+    
+        backend, calls = _vlm_runtime(monkeypatch, marker = None)
+        older, newer = object(), object()
+        previous_image = placeholder_turn(1)
+        if merged_question:
+            previous_image["content"].append({"type": "text", "text": "Keep this user question."})
+        history = [
+            {"role": "user", "content": "Inspect the first screenshot."},
+            {"role": "assistant", "content": "The first tool returned."},
+            previous_image,
+            {"role": "assistant", "content": "The first screenshot was inspected."},
+            {"role": "user", "content": "Inspect the next screenshot."},
+            {"role": "assistant", "content": "The second tool returned."},
+            placeholder_turn(1),
+        ]
+        assert list(backend.generate_chat_response(history, images = [older, newer])) == ["ok"]
+        assert calls[-1]["images"] == [newer]
+        assert calls[-1]["prompt"].count("<|image|>") == 1
+        if merged_question:
+            assert "Keep this user question." in calls[-1]["prompt"]
+            assert "(0 of 1)" in calls[-1]["prompt"]
+        else:
+>           assert calls[-1]["prompt"].count(IMAGE_TURN_TEXT) == 1
+E           AssertionError: assert 2 == 1
+E            +  where 2 = <built-in method count of str object at 0x7f9b5a311bd0>('Images returned by the tool call above:')
+E            +    where <built-in method count of str object at 0x7f9b5a311bd0> = 'Inspect the first screenshot.The first tool returned.Images returned by the tool call above:The first screenshot was inspected.Inspect the next screenshot.The second tool returned.<|image|>Images returned by the tool call above:'.count
+
+tests/test_mlx_inference_backend.py:6485: AssertionError
+----------------------------- Captured stdout call -----------------------------
+2026-09-19 01:14:00 [info     ] Serving 1 of 2 images: 'None' marks one image per request.
+2026-09-19 01:14:00 [info     ] VLM generating: prompt_len=228, images=1, has_video=False
+2026-09-19 01:14:00 [info     ] MLX VLM prompt cache needs a newer mlx-vlm (No module named 'mlx_vlm.generate'; 'mlx_vlm' is not a package); prefilling every request
+______ test_single_image_replay_notes_describe_only_retained_pixels[True] ______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f9b5a3139b0>
+merged_question = True
+
+    @pytest.mark.parametrize("merged_question", [False, True])
+    def test_single_image_replay_notes_describe_only_retained_pixels(monkeypatch, merged_question):
+        from core.inference.mcp_images import IMAGE_TURN_TEXT, image_marker_parts, placeholder_turn
+    
+        backend, calls = _vlm_runtime(monkeypatch, marker = None)
+        older, newer = object(), object()
+        previous_image = placeholder_turn(1)
+        if merged_question:
+            previous_image["content"].append({"type": "text", "text": "Keep this user question."})
+        history = [
+            {"role": "user", "content": "Inspect the first screenshot."},
+            {"role": "assistant", "content": "The first tool returned."},
+            previous_image,
+            {"role": "assistant", "content": "The first screenshot was inspected."},
+            {"role": "user", "content": "Inspect the next screenshot."},
+            {"role": "assistant", "content": "The second tool returned."},
+            placeholder_turn(1),
+        ]
+        assert list(backend.generate_chat_response(history, images = [older, newer])) == ["ok"]
+        assert calls[-1]["images"] == [newer]
+        assert calls[-1]["prompt"].count("<|image|>") == 1
+        if merged_question:
+            assert "Keep this user question." in calls[-1]["prompt"]
+>           assert "(0 of 1)" in calls[-1]["prompt"]
+E           AssertionError: assert '(0 of 1)' in 'Inspect the first screenshot.The first tool returned.Images returned by the tool call above:Keep this user question.T...ot was inspected.Inspect the next screenshot.The second tool returned.<|image|>Images returned by the tool call above:'
+
+tests/test_mlx_inference_backend.py:6483: AssertionError
+----------------------------- Captured stdout call -----------------------------
+2026-09-19 01:14:00 [info     ] Serving 1 of 2 images: 'None' marks one image per request.
+2026-09-19 01:14:00 [info     ] VLM generating: prompt_len=252, images=1, has_video=False
+2026-09-19 01:14:00 [info     ] MLX VLM prompt cache needs a newer mlx-vlm (No module named 'mlx_vlm.generate'; 'mlx_vlm' is not a package); prefilling every request
+=========================== short test summary info ============================
+FAILED tests/test_mlx_inference_backend.py::test_single_image_replay_notes_describe_only_retained_pixels[False]
+FAILED tests/test_mlx_inference_backend.py::test_single_image_replay_notes_describe_only_retained_pixels[True]
+2 failed, 264 deselected in 2.40s

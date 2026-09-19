@@ -49,3 +49,5 @@ python -m pytest tests/test_llama_cpp_stream_cancel.py tests/test_gguf_stream_sl
 WebKit 26.5 also reproduces NO_IMAGE to RED with zero page errors. Its runtime libraries were extracted into the disposable task directory; the host was unchanged.
 
 Review finding 4051743629 was rejected after verification on exact mirror head 9b8fad07152ec40579306d39244f971e21c05c07. The async-generator closure is defined at line 4236, messages is initialized at line 4918, and the only calls to the generator are at lines 7760 and 7778. TypeScript and the production build pass. An executed probe of the actual lookup block returns the user message with the correct parent ID after initialization. All 17 research frontend contract tests pass. No code change was required.
+
+Final MLX note repair: 536f7535d on the original-based branch, 67f4b941e9df774ed46c59d8778c843d876f3711 on the mirror. Both new omission-note regressions fail before repair. Final affected suites: original-based 1923 passed, 70 skipped; mirror 1926 passed, 70 skipped. Shared trimming keeps the selected image, removes emptied synthetic turns and relabels notes beside preserved user text.

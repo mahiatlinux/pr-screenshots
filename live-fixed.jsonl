@@ -2,6 +2,9 @@
 {"case": "relative_httpx_base_url", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}
 {"case": "prepared_url_method", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["/"]}
 {"case": "httpx_base_reassignment", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["/"]}
+{"case": "unused_httpx_proxy", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "mounted_httpx_proxy", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "direct_httpx_transport", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "conditional_receiver", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "kwargs_proxy", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "subclass", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}

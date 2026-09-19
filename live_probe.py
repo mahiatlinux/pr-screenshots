@@ -20,6 +20,9 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
         'relative_httpx_base_url': f"import httpx\nclient=httpx.Client(base_url={proxy!r})\nresponse=client.get('/', timeout=2)\nclient.close()",
         'prepared_url_method': f"import requests\ns=requests.Session()\nr=s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nr.prepare_url({proxy!r}, None)\nresponse=s.send(r, timeout=2)",
         'httpx_base_reassignment': f"import httpx\nclient=httpx.Client()\nclient.base_url={proxy!r}\nresponse=client.get('/', timeout=2)\nclient.close()",
+        'unused_httpx_proxy': f"import httpx\nclient=httpx.Client(proxy={proxy!r})\nresponse=None\nclient.close()",
+        'mounted_httpx_proxy': f"import httpx\nt=httpx.HTTPTransport(proxy={proxy!r})\nclient=httpx.Client(mounts={{'http://': t}})\nresponse=client.get('http://pypi.org/', timeout=2)\nclient.close()",
+        'direct_httpx_transport': f"import httpx\nt=httpx.HTTPTransport(proxy={proxy!r})\nresponse=t.handle_request(httpx.Request('GET','http://pypi.org/'))\nresponse.read()\nt.close()",
         'conditional_receiver': f"import requests\ns=requests.Session()\ns.proxies={{'http': {proxy!r}}}\nif False:\n    s=requests.Session()\nresponse=s.get('http://pypi.org/', timeout=2)",
         'kwargs_proxy': f"import requests\noptions={{'proxies': {{'http': {proxy!r}}}}}\nresponse=requests.get('http://pypi.org/', timeout=2, **options)",
     }

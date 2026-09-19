@@ -31,7 +31,7 @@ with http.server.HTTPServer(('127.0.0.1',0),Handler) as origin, http.server.HTTP
     origin.shutdown()
     proxy.shutdown()
 
-for removal in ["clear()", "pop('https')"]:
+for removal in ["clear()", "pop('https')", "popitem()"]:
     code = "import requests\ns=requests.Session()\ns.trust_env=False\ns.proxies={'https':'http://203.0.113.5/'}\ns.proxies." + removal
     namespace = {}
     exec(code, namespace)

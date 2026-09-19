@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ TestNetworkTargetResolution.test_changed_transport_mounts_require_approval __
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7cb64c5a8f50>
+
+    def test_changed_transport_mounts_require_approval(self):
+        code = "import httpx\nmounts = {'http://': None}\nmounts['http://'] = httpx.HTTPTransport(proxy='http://203.0.113.5/')\nhttpx.Client(mounts=mounts).get('http://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\nmounts = {'http://': None}\nmounts['http://'] = httpx.HTTPTransport(proxy='http://203.0.113.5/')\nhttpx.Client(mounts=mounts).get('http://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:971: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_changed_transport_mounts_require_approval
+1 failed, 711 deselected in 1.18s

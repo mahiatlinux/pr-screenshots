@@ -1,0 +1,90 @@
+FFFFFF....                                                               [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unused_proxy_constructor_does_not_prompt[httpx.Client] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x79f71b2976b0>
+constructor = 'httpx.Client'
+
+    @pytest.mark.parametrize("constructor", ["httpx.Client", "httpx.AsyncClient", "httpx.HTTPTransport", "httpx.AsyncHTTPTransport", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_proxy_constructor_does_not_prompt(self, constructor):
+        code = f"import httpx, aiohttp\nclient = {constructor}(proxy='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = httpx.Client(proxy='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:944: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unused_proxy_constructor_does_not_prompt[httpx.AsyncClient] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x79f71b2978c0>
+constructor = 'httpx.AsyncClient'
+
+    @pytest.mark.parametrize("constructor", ["httpx.Client", "httpx.AsyncClient", "httpx.HTTPTransport", "httpx.AsyncHTTPTransport", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_proxy_constructor_does_not_prompt(self, constructor):
+        code = f"import httpx, aiohttp\nclient = {constructor}(proxy='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = httpx.AsyncClient(proxy='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:944: AssertionError
+_ TestNetworkTargetResolution.test_unused_proxy_constructor_does_not_prompt[httpx.HTTPTransport] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x79f71b297980>
+constructor = 'httpx.HTTPTransport'
+
+    @pytest.mark.parametrize("constructor", ["httpx.Client", "httpx.AsyncClient", "httpx.HTTPTransport", "httpx.AsyncHTTPTransport", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_proxy_constructor_does_not_prompt(self, constructor):
+        code = f"import httpx, aiohttp\nclient = {constructor}(proxy='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = httpx.HTTPTransport(proxy='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:944: AssertionError
+_ TestNetworkTargetResolution.test_unused_proxy_constructor_does_not_prompt[httpx.AsyncHTTPTransport] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x79f71b297a40>
+constructor = 'httpx.AsyncHTTPTransport'
+
+    @pytest.mark.parametrize("constructor", ["httpx.Client", "httpx.AsyncClient", "httpx.HTTPTransport", "httpx.AsyncHTTPTransport", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_proxy_constructor_does_not_prompt(self, constructor):
+        code = f"import httpx, aiohttp\nclient = {constructor}(proxy='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = httpx.AsyncHTTPTransport(proxy='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:944: AssertionError
+_ TestNetworkTargetResolution.test_unused_proxy_constructor_does_not_prompt[aiohttp.ClientSession] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x79f71b297b00>
+constructor = 'aiohttp.ClientSession'
+
+    @pytest.mark.parametrize("constructor", ["httpx.Client", "httpx.AsyncClient", "httpx.HTTPTransport", "httpx.AsyncHTTPTransport", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_proxy_constructor_does_not_prompt(self, constructor):
+        code = f"import httpx, aiohttp\nclient = {constructor}(proxy='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = aiohttp.ClientSession(proxy='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:944: AssertionError
+_ TestNetworkTargetResolution.test_unused_proxy_constructor_does_not_prompt[aiohttp.client.ClientSession] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x79f71b297bc0>
+constructor = 'aiohttp.client.ClientSession'
+
+    @pytest.mark.parametrize("constructor", ["httpx.Client", "httpx.AsyncClient", "httpx.HTTPTransport", "httpx.AsyncHTTPTransport", "aiohttp.ClientSession", "aiohttp.client.ClientSession"])
+    def test_unused_proxy_constructor_does_not_prompt(self, constructor):
+        code = f"import httpx, aiohttp\nclient = {constructor}(proxy='http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import httpx, aiohttp\nclient = aiohttp.client.ClientSession(proxy='http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:944: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_proxy_constructor_does_not_prompt[httpx.Client]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_proxy_constructor_does_not_prompt[httpx.AsyncClient]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_proxy_constructor_does_not_prompt[httpx.HTTPTransport]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_proxy_constructor_does_not_prompt[httpx.AsyncHTTPTransport]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_proxy_constructor_does_not_prompt[aiohttp.ClientSession]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_proxy_constructor_does_not_prompt[aiohttp.client.ClientSession]
+6 failed, 4 passed, 701 deselected in 1.18s

@@ -1,0 +1,4 @@
+generation FAIL After the optional system message, conversation roles must alternate user and assistant roles except for tool calls and results.
+processor FAIL After the optional system message, conversation roles must alternate user and assistant roles except for tool calls and results.
+count FAIL llama-server could not render the chat template
+stream FAIL llama-server returned 500: {"error":{"code":500,"message":"\n------------\nWhile executing CallExpression at line 46, column 32 in source:\n...== 0) %}↵            {{- raise_exception('After the optional system message, con...\n                                           ^\nError: Jinja Exception: After the optional system message, conversation roles must alternate user and assistant roles except for tool calls and results.","type":"server_error"}}

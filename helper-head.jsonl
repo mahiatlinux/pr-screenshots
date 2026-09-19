@@ -1,0 +1,2 @@
+{"calls": "run()", "blocked": null, "prompt": false, "origin_requests": ["/"], "proxy_requests": []}
+{"calls": "run()\nrun()", "blocked": null, "prompt": false, "origin_requests": ["/"], "proxy_requests": ["http://pypi.org:35235/"]}

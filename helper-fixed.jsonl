@@ -1,0 +1,2 @@
+{"calls": "run()", "blocked": null, "prompt": false, "origin_requests": ["/"], "proxy_requests": []}
+{"calls": "run()\nrun()", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "origin_requests": ["/"], "proxy_requests": ["http://pypi.org:39877/"]}

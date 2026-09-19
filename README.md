@@ -17,3 +17,5 @@ The `regressions/` directory preserves failing tests immediately before each ind
 The Fabric probe requires a disposable `USER=probe` environment value because the isolated namespace has no passwd database. It observes TCP connection initiation; the listener closes without an SSH handshake.
 
 The partial-network and unused urllib3 URL-factory cases have identical policy behavior on the exact base, original head, and repaired head. They document existing limitations, not regressions introduced by this PR.
+
+The helper probe overrides DNS for pypi.org inside the isolated runner so both real Requests destinations are local listeners. One run reaches only the origin; two runs reach the origin then the configured proxy. Classification and deliberate direct execution are recorded separately.

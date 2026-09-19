@@ -1,0 +1,2 @@
+{"case": "unused", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "connections": 0, "error": null}
+{"case": "open", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "connections": 1, "error": "SSHException"}

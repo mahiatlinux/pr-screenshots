@@ -1,0 +1,2 @@
+{"case": "unused", "blocked": null, "prompt": false, "connections": 0, "error": null}
+{"case": "open", "blocked": null, "prompt": false, "connections": 1, "error": "SSHException"}

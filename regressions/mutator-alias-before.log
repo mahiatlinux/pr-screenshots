@@ -1,0 +1,108 @@
+FFFFFFF..                                                                [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_bound_proxy_mutator_requires_approval[s.proxies.update] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x732f51c7b950>
+lookup = 's.proxies.update'
+
+    @pytest.mark.parametrize("lookup", ["s.proxies.update", "getattr(s.proxies, 'update')", "s.proxies.setdefault"])
+    def test_bound_proxy_mutator_requires_approval(self, lookup):
+        arguments = "'https', 'http://203.0.113.5/'" if lookup.endswith('setdefault') else "{'https': 'http://203.0.113.5/'}"
+        code = f"import requests\ns = requests.Session()\nconfigure = {lookup}\nalias = configure\nalias({arguments})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nconfigure = s.proxies.update\nalias = configure\nalias({'https': 'http://203.0.113.5/'})\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:898: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_bound_proxy_mutator_requires_approval[getattr(s.proxies, 'update')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x732f51c7bad0>
+lookup = "getattr(s.proxies, 'update')"
+
+    @pytest.mark.parametrize("lookup", ["s.proxies.update", "getattr(s.proxies, 'update')", "s.proxies.setdefault"])
+    def test_bound_proxy_mutator_requires_approval(self, lookup):
+        arguments = "'https', 'http://203.0.113.5/'" if lookup.endswith('setdefault') else "{'https': 'http://203.0.113.5/'}"
+        code = f"import requests\ns = requests.Session()\nconfigure = {lookup}\nalias = configure\nalias({arguments})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nconfigure = getattr(s.proxies, 'update')\nalias = configure\nalias({'https': 'http://203.0.113.5/'})\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:898: AssertionError
+_ TestNetworkTargetResolution.test_bound_proxy_mutator_requires_approval[s.proxies.setdefault] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x732f51c7bb90>
+lookup = 's.proxies.setdefault'
+
+    @pytest.mark.parametrize("lookup", ["s.proxies.update", "getattr(s.proxies, 'update')", "s.proxies.setdefault"])
+    def test_bound_proxy_mutator_requires_approval(self, lookup):
+        arguments = "'https', 'http://203.0.113.5/'" if lookup.endswith('setdefault') else "{'https': 'http://203.0.113.5/'}"
+        code = f"import requests\ns = requests.Session()\nconfigure = {lookup}\nalias = configure\nalias({arguments})\ns.get('https://pypi.org/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nconfigure = s.proxies.setdefault\nalias = configure\nalias('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:898: AssertionError
+_ TestNetworkTargetResolution.test_bound_request_mutator_requires_approval[r.prepare_url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x732f51c7a990>
+lookup = 'r.prepare_url'
+
+    @pytest.mark.parametrize("lookup", ["r.prepare_url", "getattr(r, 'prepare_url')", "r.prepare"])
+    def test_bound_request_mutator_requires_approval(self, lookup):
+        arguments = "method='GET', url='http://203.0.113.5/'" if lookup.endswith('.prepare') else "'http://203.0.113.5/', None"
+        code = f"import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nretarget = {lookup}\nalias = retarget\nalias({arguments})\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nretarget = r.prepare_url\nalias = retarget\nalias('http://203.0.113.5/', None)\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:904: AssertionError
+_ TestNetworkTargetResolution.test_bound_request_mutator_requires_approval[getattr(r, 'prepare_url')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x732f51c7aea0>
+lookup = "getattr(r, 'prepare_url')"
+
+    @pytest.mark.parametrize("lookup", ["r.prepare_url", "getattr(r, 'prepare_url')", "r.prepare"])
+    def test_bound_request_mutator_requires_approval(self, lookup):
+        arguments = "method='GET', url='http://203.0.113.5/'" if lookup.endswith('.prepare') else "'http://203.0.113.5/', None"
+        code = f"import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nretarget = {lookup}\nalias = retarget\nalias({arguments})\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nretarget = getattr(r, 'prepare_url')\nalias = retarget\nalias('http://203.0.113.5/', None)\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:904: AssertionError
+_ TestNetworkTargetResolution.test_bound_request_mutator_requires_approval[r.prepare] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x732f51c7a570>
+lookup = 'r.prepare'
+
+    @pytest.mark.parametrize("lookup", ["r.prepare_url", "getattr(r, 'prepare_url')", "r.prepare"])
+    def test_bound_request_mutator_requires_approval(self, lookup):
+        arguments = "method='GET', url='http://203.0.113.5/'" if lookup.endswith('.prepare') else "'http://203.0.113.5/', None"
+        code = f"import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nretarget = {lookup}\nalias = retarget\nalias({arguments})\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nretarget = r.prepare\nalias = retarget\nalias(method='GET', url='http://203.0.113.5/')\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:904: AssertionError
+_ TestNetworkTargetResolution.test_bound_urllib_proxy_mutator_requires_approval _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x732f529ff6e0>
+
+    def test_bound_urllib_proxy_mutator_requires_approval(self):
+        code = "import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nretarget = r.set_proxy\nretarget('203.0.113.5:8080', 'http')\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nretarget = r.set_proxy\nretarget('203.0.113.5:8080', 'http')\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:908: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_bound_proxy_mutator_requires_approval[s.proxies.update]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_bound_proxy_mutator_requires_approval[getattr(s.proxies, 'update')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_bound_proxy_mutator_requires_approval[s.proxies.setdefault]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_bound_request_mutator_requires_approval[r.prepare_url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_bound_request_mutator_requires_approval[getattr(r, 'prepare_url')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_bound_request_mutator_requires_approval[r.prepare]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_bound_urllib_proxy_mutator_requires_approval
+7 failed, 2 passed, 771 deselected in 1.22s

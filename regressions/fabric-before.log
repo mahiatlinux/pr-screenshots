@@ -1,0 +1,46 @@
+FF..........F.                                                           [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unused_fabric_connection_is_not_a_destination[fabric.Connection] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73a402132ba0>
+client = 'fabric.Connection'
+
+    @pytest.mark.parametrize("client", ["fabric.Connection", "fabric.connection.Connection"])
+    def test_unused_fabric_connection_is_not_a_destination(self, client):
+        code = f"import fabric, fabric.connection\nc = {client}('203.0.113.5')\nc.close()"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import fabric, fabric.connection\nc = fabric.Connection('203.0.113.5')\nc.close()")
+
+studio/backend/tests/test_sandbox_tools.py:955: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unused_fabric_connection_is_not_a_destination[fabric.connection.Connection] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73a402132db0>
+client = 'fabric.connection.Connection'
+
+    @pytest.mark.parametrize("client", ["fabric.Connection", "fabric.connection.Connection"])
+    def test_unused_fabric_connection_is_not_a_destination(self, client):
+        code = f"import fabric, fabric.connection\nc = {client}('203.0.113.5')\nc.close()"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import fabric, fabric.connection\nc = fabric.connection.Connection('203.0.113.5')\nc.close()")
+
+studio/backend/tests/test_sandbox_tools.py:955: AssertionError
+____ TestNetworkTargetResolution.test_changed_fabric_host_requires_approval ____
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73a402130a40>
+
+    def test_changed_fabric_host_requires_approval(self):
+        code = "import fabric\nc = fabric.Connection('pypi.org')\nc.host = '203.0.113.5'\nc.open()"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import fabric\nc = fabric.Connection('pypi.org')\nc.host = '203.0.113.5'\nc.open()"})
+
+studio/backend/tests/test_sandbox_tools.py:965: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_fabric_connection_is_not_a_destination[fabric.Connection]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unused_fabric_connection_is_not_a_destination[fabric.connection.Connection]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_changed_fabric_host_requires_approval
+3 failed, 11 passed, 780 deselected in 1.19s

@@ -1,3 +1,5 @@
+{"case": "bound_proxy_mutator", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "bound_request_mutator", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["/"]}
 {"case": "urllib_request_full_url", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["/"]}
 {"case": "urllib_request_host", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["/"]}
 {"case": "urllib_request_proxy_mutation", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}

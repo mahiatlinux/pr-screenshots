@@ -1,0 +1,68 @@
+FFFF.......                                                              [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_existing_proxy_key_ignores_setdefault['https://pypi.org/'-s.proxies] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7352665ecf50>
+receiver = 's.proxies', value = "'https://pypi.org/'"
+
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    @pytest.mark.parametrize("value", ["'https://pypi.org/'", "None"])
+    def test_existing_proxy_key_ignores_setdefault(self, receiver, value):
+        code = f"import requests\ns = requests.Session()\ns.proxies = {{'https': {value}}}\nmapping = s.proxies\n{receiver}.setdefault('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.proxies = {'https': 'https://pypi.org/'}\nmapping = s.proxies\ns.proxies.setdefault('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:918: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_existing_proxy_key_ignores_setdefault['https://pypi.org/'-mapping] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7352665de9f0>
+receiver = 'mapping', value = "'https://pypi.org/'"
+
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    @pytest.mark.parametrize("value", ["'https://pypi.org/'", "None"])
+    def test_existing_proxy_key_ignores_setdefault(self, receiver, value):
+        code = f"import requests\ns = requests.Session()\ns.proxies = {{'https': {value}}}\nmapping = s.proxies\n{receiver}.setdefault('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"
+        assert _check_code_safety(code) is None
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\ns.proxies = {'https': 'https://pypi.org/'}\nmapping = s.proxies\nmapping.setdefault('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:919: AssertionError
+_ TestNetworkTargetResolution.test_existing_proxy_key_ignores_setdefault[None-s.proxies] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7352665dfb00>
+receiver = 's.proxies', value = 'None'
+
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    @pytest.mark.parametrize("value", ["'https://pypi.org/'", "None"])
+    def test_existing_proxy_key_ignores_setdefault(self, receiver, value):
+        code = f"import requests\ns = requests.Session()\ns.proxies = {{'https': {value}}}\nmapping = s.proxies\n{receiver}.setdefault('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.proxies = {'https': None}\nmapping = s.proxies\ns.proxies.setdefault('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:918: AssertionError
+_ TestNetworkTargetResolution.test_existing_proxy_key_ignores_setdefault[None-mapping] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7352665cc080>
+receiver = 'mapping', value = 'None'
+
+    @pytest.mark.parametrize("receiver", ["s.proxies", "mapping"])
+    @pytest.mark.parametrize("value", ["'https://pypi.org/'", "None"])
+    def test_existing_proxy_key_ignores_setdefault(self, receiver, value):
+        code = f"import requests\ns = requests.Session()\ns.proxies = {{'https': {value}}}\nmapping = s.proxies\n{receiver}.setdefault('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"
+        assert _check_code_safety(code) is None
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\ns.proxies = {'https': None}\nmapping = s.proxies\nmapping.setdefault('https', 'http://203.0.113.5/')\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:919: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_existing_proxy_key_ignores_setdefault['https://pypi.org/'-s.proxies]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_existing_proxy_key_ignores_setdefault['https://pypi.org/'-mapping]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_existing_proxy_key_ignores_setdefault[None-s.proxies]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_existing_proxy_key_ignores_setdefault[None-mapping]
+4 failed, 7 passed, 758 deselected in 1.15s

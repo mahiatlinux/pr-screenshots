@@ -1,0 +1,34 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unrelated_prepared_request_attributes_preserve_url[full_url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x768f75eff050>
+attribute = 'full_url'
+
+    @pytest.mark.parametrize("attribute", ["full_url", "host"])
+    def test_unrelated_prepared_request_attributes_preserve_url(self, attribute):
+        code = f"import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nr.{attribute} = 'http://203.0.113.5/'\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nr.full_url = 'http://203.0.113.5/'\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:892: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unrelated_prepared_request_attributes_preserve_url[host] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x768f75eff1d0>
+attribute = 'host'
+
+    @pytest.mark.parametrize("attribute", ["full_url", "host"])
+    def test_unrelated_prepared_request_attributes_preserve_url(self, attribute):
+        code = f"import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nr.{attribute} = 'http://203.0.113.5/'\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nr.host = 'http://203.0.113.5/'\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:892: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unrelated_prepared_request_attributes_preserve_url[full_url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unrelated_prepared_request_attributes_preserve_url[host]
+2 failed, 769 deselected in 1.16s

@@ -1,0 +1,66 @@
+FFFF..                                                                   [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_urllib_request_destination_attribute_requires_approval[r-full_url-http://203.0.113.5/] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x761152599400>
+attribute = 'full_url', value = 'http://203.0.113.5/', receiver = 'r'
+
+    @pytest.mark.parametrize("attribute, value", [("full_url", "http://203.0.113.5/"), ("host", "203.0.113.5")])
+    @pytest.mark.parametrize("receiver", ["r", "alias"])
+    def test_urllib_request_destination_attribute_requires_approval(self, attribute, value, receiver):
+        code = f"import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nalias = r\n{receiver}.{attribute} = {value!r}\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nalias = r\nr.full_url = 'http://203.0.113.5/'\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:878: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_urllib_request_destination_attribute_requires_approval[r-host-203.0.113.5] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x761152599580>
+attribute = 'host', value = '203.0.113.5', receiver = 'r'
+
+    @pytest.mark.parametrize("attribute, value", [("full_url", "http://203.0.113.5/"), ("host", "203.0.113.5")])
+    @pytest.mark.parametrize("receiver", ["r", "alias"])
+    def test_urllib_request_destination_attribute_requires_approval(self, attribute, value, receiver):
+        code = f"import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nalias = r\n{receiver}.{attribute} = {value!r}\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nalias = r\nr.host = '203.0.113.5'\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:878: AssertionError
+_ TestNetworkTargetResolution.test_urllib_request_destination_attribute_requires_approval[alias-full_url-http://203.0.113.5/] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x761152599640>
+attribute = 'full_url', value = 'http://203.0.113.5/', receiver = 'alias'
+
+    @pytest.mark.parametrize("attribute, value", [("full_url", "http://203.0.113.5/"), ("host", "203.0.113.5")])
+    @pytest.mark.parametrize("receiver", ["r", "alias"])
+    def test_urllib_request_destination_attribute_requires_approval(self, attribute, value, receiver):
+        code = f"import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nalias = r\n{receiver}.{attribute} = {value!r}\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nalias = r\nalias.full_url = 'http://203.0.113.5/'\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:878: AssertionError
+_ TestNetworkTargetResolution.test_urllib_request_destination_attribute_requires_approval[alias-host-203.0.113.5] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x761152599700>
+attribute = 'host', value = '203.0.113.5', receiver = 'alias'
+
+    @pytest.mark.parametrize("attribute, value", [("full_url", "http://203.0.113.5/"), ("host", "203.0.113.5")])
+    @pytest.mark.parametrize("receiver", ["r", "alias"])
+    def test_urllib_request_destination_attribute_requires_approval(self, attribute, value, receiver):
+        code = f"import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nalias = r\n{receiver}.{attribute} = {value!r}\nurllib.request.urlopen(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import urllib.request\nr = urllib.request.Request('http://pypi.org/')\nalias = r\nalias.host = '203.0.113.5'\nurllib.request.urlopen(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:878: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_urllib_request_destination_attribute_requires_approval[r-full_url-http://203.0.113.5/]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_urllib_request_destination_attribute_requires_approval[r-host-203.0.113.5]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_urllib_request_destination_attribute_requires_approval[alias-full_url-http://203.0.113.5/]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_urllib_request_destination_attribute_requires_approval[alias-host-203.0.113.5]
+4 failed, 2 passed, 752 deselected in 1.17s

@@ -31,6 +31,8 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
         'mapping_alias': f"import requests\ns=requests.Session()\np={{}}\ns.proxies=p\np['http']={proxy!r}\nresponse=s.get('http://pypi.org/', timeout=2)",
         'bound_method': f"import requests\ns=requests.Session()\nfetch=s.get\ns.proxies={{'http': {proxy!r}}}\nresponse=fetch('http://pypi.org/', timeout=2)",
         'super_method': f"import requests\nclass Client(requests.Session):\n    def fetch(self):\n        return super().get({proxy!r}, timeout=2)\nresponse=Client().fetch()",
+        'explicit_super_method': f"import requests\nclass Client(requests.Session):\n    def fetch(self):\n        return super(Client, self).get({proxy!r}, timeout=2)\nresponse=Client().fetch()",
+        'getattr_proxy': f"import requests\ns=requests.Session()\ns.proxies={{'http': {proxy!r}}}\nresponse=getattr(s, 'get')('http://pypi.org/', timeout=2)",
         'setattr_proxy_preexisting': f"import requests\ns=requests.Session()\nsetattr(s, 'proxies', {{'http': {proxy!r}}})\nresponse=s.get('http://pypi.org/', timeout=2)",
         'environment_proxy_preexisting': f"import os, requests\nos.environ['HTTP_PROXY']={proxy!r}\nresponse=requests.get('http://pypi.org/', timeout=2)",
     })

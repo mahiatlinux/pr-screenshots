@@ -1,0 +1,65 @@
+FF.F                                                                     [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_explicit_super_network_method_checks_destination['http://203.0.113.5/'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x78137a756390>
+url = "'http://203.0.113.5/'"
+
+    @pytest.mark.parametrize("url", ["'http://203.0.113.5/'", "input()", "'https://pypi.org/'"])
+    def test_explicit_super_network_method_checks_destination(self, url):
+        code = f"import requests\nclass Client(requests.Session):\n    def fetch(self):\n        return super(Client, self).get({url})\nClient().fetch()"
+>       assert is_high_risk_tool_call("python", {"code": code}) is (url != "'https://pypi.org/'")
+E       assert False is ("'http://203.0.113.5/'" != "'https://pypi.org/'")
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\nclass Client(requests.Session):\n    def fetch(self):\n        return super(Client, self).get('http://203.0.113.5/')\nClient().fetch()"})
+
+studio/backend/tests/test_sandbox_tools.py:1063: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_explicit_super_network_method_checks_destination[input()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x78137a756570>
+url = 'input()'
+
+    @pytest.mark.parametrize("url", ["'http://203.0.113.5/'", "input()", "'https://pypi.org/'"])
+    def test_explicit_super_network_method_checks_destination(self, url):
+        code = f"import requests\nclass Client(requests.Session):\n    def fetch(self):\n        return super(Client, self).get({url})\nClient().fetch()"
+>       assert is_high_risk_tool_call("python", {"code": code}) is (url != "'https://pypi.org/'")
+E       assert False is ('input()' != "'https://pypi.org/'")
+E        +  where False = is_high_risk_tool_call('python', {'code': 'import requests\nclass Client(requests.Session):\n    def fetch(self):\n        return super(Client, self).get(input())\nClient().fetch()'})
+
+studio/backend/tests/test_sandbox_tools.py:1063: AssertionError
+_ TestNetworkTargetResolution.test_explicit_super_preserves_external_instance_proxy _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x78137a756d80>
+
+    def test_explicit_super_preserves_external_instance_proxy(self):
+>       _blocked(
+            "import requests\nclass Client(requests.Session):\n    pass\n"
+            "s = Client()\ns.proxies = {'https': 'http://203.0.113.5'}\n"
+            "super(Client, s).get('https://pypi.org/')",
+            expect_phrase = "Blocked: host not in sandbox allowlist",
+        )
+
+studio/backend/tests/test_sandbox_tools.py:1068: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Client(requests.Session):\n    pass\ns = Client()\ns.proxies = {'https': 'http://203.0.113.5'}\nsuper(Client, s).get('https://pypi.org/')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import requests
+E         class Client(requests.Session):
+E             pass
+E         s = Client()
+E         s.proxies = {'https': 'http://203.0.113.5'}
+E         super(Client, s).get('https://pypi.org/')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_explicit_super_network_method_checks_destination['http://203.0.113.5/']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_explicit_super_network_method_checks_destination[input()]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_explicit_super_preserves_external_instance_proxy
+3 failed, 1 passed, 621 deselected in 1.09s

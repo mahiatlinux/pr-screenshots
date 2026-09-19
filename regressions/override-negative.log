@@ -1,0 +1,305 @@
+FFFFFFFFF.                                                               [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_local_network_method_override_stays_safe[Local-def get(self, url):\n        return url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e383770>
+implementation = 'def get(self, url):\n        return url', client = 'Local'
+
+    @pytest.mark.parametrize("implementation", ["def get(self, url):\n        return url", "@staticmethod\n    def get(url):\n        return url", "@classmethod\n    def get(cls, url):\n        return url", "get = lambda self, url: url"])
+    @pytest.mark.parametrize("client", ["Local", "Child"])
+    def test_local_network_method_override_stays_safe(self, implementation, client):
+        code = (
+            f"import requests\nclass Local(requests.Session):\n    {implementation}\n"
+            f"class Child(Local):\n    pass\n{client}().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1082: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Local(requests.Session):\n    def get(self, url):\n        return url\nclass Child(Local):\n    pass\nLocal().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Local(requests.Session):
+E             def get(self, url):
+E                 return url
+E         class Child(Local):
+E             pass
+E         Local().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Local(requests.Session):\n    def get(self, url):\n        return url\nclass Child(Local):\n    pass\nLocal().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_local_network_method_override_stays_safe[Local-@staticmethod\n    def get(url):\n        return url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e383260>
+implementation = '@staticmethod\n    def get(url):\n        return url'
+client = 'Local'
+
+    @pytest.mark.parametrize("implementation", ["def get(self, url):\n        return url", "@staticmethod\n    def get(url):\n        return url", "@classmethod\n    def get(cls, url):\n        return url", "get = lambda self, url: url"])
+    @pytest.mark.parametrize("client", ["Local", "Child"])
+    def test_local_network_method_override_stays_safe(self, implementation, client):
+        code = (
+            f"import requests\nclass Local(requests.Session):\n    {implementation}\n"
+            f"class Child(Local):\n    pass\n{client}().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1082: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Local(requests.Session):\n    @staticmethod\n    def get(url):\n        return url\nclass Child(Local):\n    pass\nLocal().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Local(requests.Session):
+E             @staticmethod
+E             def get(url):
+E                 return url
+E         class Child(Local):
+E             pass
+E         Local().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Local(requests.Session):\n    @staticmethod\n    def get(url):\n        return url\nclass Child(Local):\n    pass\nLocal().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+_ TestNetworkTargetResolution.test_local_network_method_override_stays_safe[Local-@classmethod\n    def get(cls, url):\n        return url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e382c30>
+implementation = '@classmethod\n    def get(cls, url):\n        return url'
+client = 'Local'
+
+    @pytest.mark.parametrize("implementation", ["def get(self, url):\n        return url", "@staticmethod\n    def get(url):\n        return url", "@classmethod\n    def get(cls, url):\n        return url", "get = lambda self, url: url"])
+    @pytest.mark.parametrize("client", ["Local", "Child"])
+    def test_local_network_method_override_stays_safe(self, implementation, client):
+        code = (
+            f"import requests\nclass Local(requests.Session):\n    {implementation}\n"
+            f"class Child(Local):\n    pass\n{client}().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1082: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Local(requests.Session):\n    @classmethod\n    def get(cls, url):\n        return url\nclass Child(Local):\n    pass\nLocal().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Local(requests.Session):
+E             @classmethod
+E             def get(cls, url):
+E                 return url
+E         class Child(Local):
+E             pass
+E         Local().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Local(requests.Session):\n    @classmethod\n    def get(cls, url):\n        return url\nclass Child(Local):\n    pass\nLocal().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+_ TestNetworkTargetResolution.test_local_network_method_override_stays_safe[Local-get = lambda self, url: url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e3828a0>
+implementation = 'get = lambda self, url: url', client = 'Local'
+
+    @pytest.mark.parametrize("implementation", ["def get(self, url):\n        return url", "@staticmethod\n    def get(url):\n        return url", "@classmethod\n    def get(cls, url):\n        return url", "get = lambda self, url: url"])
+    @pytest.mark.parametrize("client", ["Local", "Child"])
+    def test_local_network_method_override_stays_safe(self, implementation, client):
+        code = (
+            f"import requests\nclass Local(requests.Session):\n    {implementation}\n"
+            f"class Child(Local):\n    pass\n{client}().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1082: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Local(requests.Session):\n    get = lambda self, url: url\nclass Child(Local):\n    pass\nLocal().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Local(requests.Session):
+E             get = lambda self, url: url
+E         class Child(Local):
+E             pass
+E         Local().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Local(requests.Session):\n    get = lambda self, url: url\nclass Child(Local):\n    pass\nLocal().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+_ TestNetworkTargetResolution.test_local_network_method_override_stays_safe[Child-def get(self, url):\n        return url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e382900>
+implementation = 'def get(self, url):\n        return url', client = 'Child'
+
+    @pytest.mark.parametrize("implementation", ["def get(self, url):\n        return url", "@staticmethod\n    def get(url):\n        return url", "@classmethod\n    def get(cls, url):\n        return url", "get = lambda self, url: url"])
+    @pytest.mark.parametrize("client", ["Local", "Child"])
+    def test_local_network_method_override_stays_safe(self, implementation, client):
+        code = (
+            f"import requests\nclass Local(requests.Session):\n    {implementation}\n"
+            f"class Child(Local):\n    pass\n{client}().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1082: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Local(requests.Session):\n    def get(self, url):\n        return url\nclass Child(Local):\n    pass\nChild().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Local(requests.Session):
+E             def get(self, url):
+E                 return url
+E         class Child(Local):
+E             pass
+E         Child().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Local(requests.Session):\n    def get(self, url):\n        return url\nclass Child(Local):\n    pass\nChild().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+_ TestNetworkTargetResolution.test_local_network_method_override_stays_safe[Child-@staticmethod\n    def get(url):\n        return url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e382210>
+implementation = '@staticmethod\n    def get(url):\n        return url'
+client = 'Child'
+
+    @pytest.mark.parametrize("implementation", ["def get(self, url):\n        return url", "@staticmethod\n    def get(url):\n        return url", "@classmethod\n    def get(cls, url):\n        return url", "get = lambda self, url: url"])
+    @pytest.mark.parametrize("client", ["Local", "Child"])
+    def test_local_network_method_override_stays_safe(self, implementation, client):
+        code = (
+            f"import requests\nclass Local(requests.Session):\n    {implementation}\n"
+            f"class Child(Local):\n    pass\n{client}().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1082: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Local(requests.Session):\n    @staticmethod\n    def get(url):\n        return url\nclass Child(Local):\n    pass\nChild().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Local(requests.Session):
+E             @staticmethod
+E             def get(url):
+E                 return url
+E         class Child(Local):
+E             pass
+E         Child().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Local(requests.Session):\n    @staticmethod\n    def get(url):\n        return url\nclass Child(Local):\n    pass\nChild().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+_ TestNetworkTargetResolution.test_local_network_method_override_stays_safe[Child-@classmethod\n    def get(cls, url):\n        return url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e3820f0>
+implementation = '@classmethod\n    def get(cls, url):\n        return url'
+client = 'Child'
+
+    @pytest.mark.parametrize("implementation", ["def get(self, url):\n        return url", "@staticmethod\n    def get(url):\n        return url", "@classmethod\n    def get(cls, url):\n        return url", "get = lambda self, url: url"])
+    @pytest.mark.parametrize("client", ["Local", "Child"])
+    def test_local_network_method_override_stays_safe(self, implementation, client):
+        code = (
+            f"import requests\nclass Local(requests.Session):\n    {implementation}\n"
+            f"class Child(Local):\n    pass\n{client}().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1082: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Local(requests.Session):\n    @classmethod\n    def get(cls, url):\n        return url\nclass Child(Local):\n    pass\nChild().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Local(requests.Session):
+E             @classmethod
+E             def get(cls, url):
+E                 return url
+E         class Child(Local):
+E             pass
+E         Child().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Local(requests.Session):\n    @classmethod\n    def get(cls, url):\n        return url\nclass Child(Local):\n    pass\nChild().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+_ TestNetworkTargetResolution.test_local_network_method_override_stays_safe[Child-get = lambda self, url: url] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e382270>
+implementation = 'get = lambda self, url: url', client = 'Child'
+
+    @pytest.mark.parametrize("implementation", ["def get(self, url):\n        return url", "@staticmethod\n    def get(url):\n        return url", "@classmethod\n    def get(cls, url):\n        return url", "get = lambda self, url: url"])
+    @pytest.mark.parametrize("client", ["Local", "Child"])
+    def test_local_network_method_override_stays_safe(self, implementation, client):
+        code = (
+            f"import requests\nclass Local(requests.Session):\n    {implementation}\n"
+            f"class Child(Local):\n    pass\n{client}().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1082: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Local(requests.Session):\n    get = lambda self, url: url\nclass Child(Local):\n    pass\nChild().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Local(requests.Session):
+E             get = lambda self, url: url
+E         class Child(Local):
+E             pass
+E         Child().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Local(requests.Session):\n    get = lambda self, url: url\nclass Child(Local):\n    pass\nChild().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+_ TestNetworkTargetResolution.test_network_override_body_still_requires_approval _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73429e393500>
+
+    def test_network_override_body_still_requires_approval(self):
+        code = (
+            "import requests\nclass Client(requests.Session):\n"
+            "    def get(self, url):\n        return requests.get(url)\n"
+            "Client().get('http://203.0.113.5/')"
+        )
+>       _ok(code)
+
+studio/backend/tests/test_sandbox_tools.py:1091: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import requests\nclass Client(requests.Session):\n    def get(self, url):\n        return requests.get(url)\nClient().get('http://203.0.113.5/')"
+
+    def _ok(code: str):
+>       assert _check_code_safety(code) is None, code
+E       AssertionError: import requests
+E         class Client(requests.Session):
+E             def get(self, url):
+E                 return requests.get(url)
+E         Client().get('http://203.0.113.5/')
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nclass Client(requests.Session):\n    def get(self, url):\n        return requests.get(url)\nClient().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:30: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_local_network_method_override_stays_safe[Local-def get(self, url):\n        return url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_local_network_method_override_stays_safe[Local-@staticmethod\n    def get(url):\n        return url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_local_network_method_override_stays_safe[Local-@classmethod\n    def get(cls, url):\n        return url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_local_network_method_override_stays_safe[Local-get = lambda self, url: url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_local_network_method_override_stays_safe[Child-def get(self, url):\n        return url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_local_network_method_override_stays_safe[Child-@staticmethod\n    def get(url):\n        return url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_local_network_method_override_stays_safe[Child-@classmethod\n    def get(cls, url):\n        return url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_local_network_method_override_stays_safe[Child-get = lambda self, url: url]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_network_override_body_still_requires_approval
+9 failed, 1 passed, 625 deselected in 1.29s

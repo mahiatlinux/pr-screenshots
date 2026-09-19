@@ -9,5 +9,7 @@
 {"case": "mapping_alias", "blocked": null, "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "bound_method", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "super_method", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}
+{"case": "explicit_super_method", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}
+{"case": "getattr_proxy", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "setattr_proxy_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "environment_proxy_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}

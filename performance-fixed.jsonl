@@ -1,3 +1,3 @@
-{"case": "simple_compute", "milliseconds_per_analysis": 0.12850047199754044}
-{"case": "trusted_http", "milliseconds_per_analysis": 0.24799339799938025}
-{"case": "session_aliases", "milliseconds_per_analysis": 0.3602280100021744}
+{"case": "simple_compute", "milliseconds_per_analysis": 0.12914167199778603}
+{"case": "trusted_http", "milliseconds_per_analysis": 0.25042700799531303}
+{"case": "session_aliases", "milliseconds_per_analysis": 0.3583859639984439}

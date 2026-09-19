@@ -1,0 +1,48 @@
+FFF.....                                                                 [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_disabled_redirects_ignore_unselected_proxy[{'http': 'http://203.0.113.5/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x76310f7916d0>
+proxies = "{'http': 'http://203.0.113.5/'}"
+
+    @pytest.mark.parametrize("proxies", ["{'http': 'http://203.0.113.5/'}", "{'https://example.com': 'http://203.0.113.5/'}", "{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}"])
+    def test_disabled_redirects_ignore_unselected_proxy(self, proxies):
+        code = f"import requests\nrequests.get('https://pypi.org/', proxies={proxies}, allow_redirects=False)"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nrequests.get('https://pypi.org/', proxies={'http': 'http://203.0.113.5/'}, allow_redirects=False)")
+
+studio/backend/tests/test_sandbox_tools.py:1027: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_disabled_redirects_ignore_unselected_proxy[{'https://example.com': 'http://203.0.113.5/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x76310f790fe0>
+proxies = "{'https://example.com': 'http://203.0.113.5/'}"
+
+    @pytest.mark.parametrize("proxies", ["{'http': 'http://203.0.113.5/'}", "{'https://example.com': 'http://203.0.113.5/'}", "{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}"])
+    def test_disabled_redirects_ignore_unselected_proxy(self, proxies):
+        code = f"import requests\nrequests.get('https://pypi.org/', proxies={proxies}, allow_redirects=False)"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nrequests.get('https://pypi.org/', proxies={'https://example.com': 'http://203.0.113.5/'}, allow_redirects=False)")
+
+studio/backend/tests/test_sandbox_tools.py:1027: AssertionError
+_ TestNetworkTargetResolution.test_disabled_redirects_ignore_unselected_proxy[{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x76310f7915b0>
+proxies = "{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}"
+
+    @pytest.mark.parametrize("proxies", ["{'http': 'http://203.0.113.5/'}", "{'https://example.com': 'http://203.0.113.5/'}", "{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}"])
+    def test_disabled_redirects_ignore_unselected_proxy(self, proxies):
+        code = f"import requests\nrequests.get('https://pypi.org/', proxies={proxies}, allow_redirects=False)"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\nrequests.get('https://pypi.org/', proxies={'https://pypi.org': None, 'https': 'http://203.0.113.5/'}, allow_redirects=False)")
+
+studio/backend/tests/test_sandbox_tools.py:1027: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_disabled_redirects_ignore_unselected_proxy[{'http': 'http://203.0.113.5/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_disabled_redirects_ignore_unselected_proxy[{'https://example.com': 'http://203.0.113.5/'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_disabled_redirects_ignore_unselected_proxy[{'https://pypi.org': None, 'https': 'http://203.0.113.5/'}]
+3 failed, 5 passed, 823 deselected in 1.21s

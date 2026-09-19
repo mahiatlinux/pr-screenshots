@@ -1,0 +1,34 @@
+FF.                                                                      [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_later_helper_call_does_not_change_earlier_request[configure()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7fa5bd954500>
+tail = 'configure()'
+
+    @pytest.mark.parametrize("tail", ["configure()", "def invoke():\n    configure()\ninvoke()"])
+    def test_later_helper_call_does_not_change_earlier_request(self, tail):
+        code = "import requests\ns = requests.Session()\ndef configure():\n    s.proxies = {'https': 'http://203.0.113.5/'}\ns.get('https://pypi.org/')\n" + tail
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ndef configure():\n    s.proxies = {'https': 'http://203.0.113.5/'}\ns.get('https://pypi.org/')\nconfigure()")
+
+studio/backend/tests/test_sandbox_tools.py:1057: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_later_helper_call_does_not_change_earlier_request[def invoke():\n    configure()\ninvoke()] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7fa5bd954680>
+tail = 'def invoke():\n    configure()\ninvoke()'
+
+    @pytest.mark.parametrize("tail", ["configure()", "def invoke():\n    configure()\ninvoke()"])
+    def test_later_helper_call_does_not_change_earlier_request(self, tail):
+        code = "import requests\ns = requests.Session()\ndef configure():\n    s.proxies = {'https': 'http://203.0.113.5/'}\ns.get('https://pypi.org/')\n" + tail
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ndef configure():\n    s.proxies = {'https': 'http://203.0.113.5/'}\ns.get('https://pypi.org/')\ndef invoke():\n    configure()\ninvoke()")
+
+studio/backend/tests/test_sandbox_tools.py:1057: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_later_helper_call_does_not_change_earlier_request[configure()]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_later_helper_call_does_not_change_earlier_request[def invoke():\n    configure()\ninvoke()]
+2 failed, 1 passed, 831 deselected in 1.15s

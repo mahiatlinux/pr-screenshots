@@ -1,5 +1,6 @@
 {"case": "no_proxy", "selected": null, "blocked": null, "prompt": false}
 {"case": "initially_unused_proxy", "initial_selected": null, "status": 200, "origin_requests": ["/"], "proxy_requests": ["http://localhost:1/final"]}
+{"case": "disabled_redirects", "status": 302, "origin_requests": ["/"], "proxy_requests": []}
 {"case": "clear()", "selected": null, "blocked": null, "prompt": false}
 {"case": "pop('https')", "selected": null, "blocked": null, "prompt": false}
 {"case": "popitem()", "selected": null, "blocked": null, "prompt": false}
@@ -9,3 +10,6 @@
 {"case": "setdefault_existing", "selected": "https://pypi.org/", "blocked": null, "prompt": false}
 {"case": "helper_uncalled", "selected": null, "blocked": null, "prompt": false}
 {"case": "helper_called", "selected": "http://203.0.113.5/", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true}
+{"case": "no_redirect_proxy_selection", "proxies": {"http": "http://203.0.113.5/"}, "selected": null, "blocked": null, "prompt": false}
+{"case": "no_redirect_proxy_selection", "proxies": {"https://example.com": "http://203.0.113.5/"}, "selected": null, "blocked": null, "prompt": false}
+{"case": "no_redirect_proxy_selection", "proxies": {"https://pypi.org": null, "https": "http://203.0.113.5/"}, "selected": null, "blocked": null, "prompt": false}

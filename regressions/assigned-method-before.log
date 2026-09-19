@@ -1,0 +1,48 @@
+FFF.                                                                     [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_assigned_local_function_overrides_network_method[get = local] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ec1bef9bdd0>
+assignment = 'get = local'
+
+    @pytest.mark.parametrize("assignment", ["get = local", "get = alias", "get: object = local"])
+    def test_assigned_local_function_overrides_network_method(self, assignment):
+        code = f"import requests\ndef local(self, url):\n    return url\nalias = local\nclass Client(requests.Session):\n    {assignment}\nClient().get('http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ndef local(self, url):\n    return url\nalias = local\nclass Client(requests.Session):\n    get = local\nClient().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:1070: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_assigned_local_function_overrides_network_method[get = alias] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ec1bef9b6e0>
+assignment = 'get = alias'
+
+    @pytest.mark.parametrize("assignment", ["get = local", "get = alias", "get: object = local"])
+    def test_assigned_local_function_overrides_network_method(self, assignment):
+        code = f"import requests\ndef local(self, url):\n    return url\nalias = local\nclass Client(requests.Session):\n    {assignment}\nClient().get('http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ndef local(self, url):\n    return url\nalias = local\nclass Client(requests.Session):\n    get = alias\nClient().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:1070: AssertionError
+_ TestNetworkTargetResolution.test_assigned_local_function_overrides_network_method[get: object = local] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7ec1bef9b3e0>
+assignment = 'get: object = local'
+
+    @pytest.mark.parametrize("assignment", ["get = local", "get = alias", "get: object = local"])
+    def test_assigned_local_function_overrides_network_method(self, assignment):
+        code = f"import requests\ndef local(self, url):\n    return url\nalias = local\nclass Client(requests.Session):\n    {assignment}\nClient().get('http://203.0.113.5/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ndef local(self, url):\n    return url\nalias = local\nclass Client(requests.Session):\n    get: object = local\nClient().get('http://203.0.113.5/')")
+
+studio/backend/tests/test_sandbox_tools.py:1070: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_assigned_local_function_overrides_network_method[get = local]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_assigned_local_function_overrides_network_method[get = alias]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_assigned_local_function_overrides_network_method[get: object = local]
+3 failed, 1 passed, 834 deselected in 1.13s

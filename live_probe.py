@@ -16,6 +16,7 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     thread.start()
     proxy = f'http://127.0.0.1:{server.server_port}'
     cases = {
+        'assigned_local_override': f"import requests\ndef local(self,url):\n    return url\nclass Client(requests.Session):\n    get=local\nresponse=Client().get({proxy!r})",
         'partial_network_preexisting': f"import functools,requests\nf=functools.partial(requests.get, {proxy!r})\nresponse=f(timeout=2)",
         'unused_url_pool': f"import urllib3\npool=urllib3.connection_from_url({proxy!r})\nresponse=None\npool.close()",
         'url_pool_request': f"import urllib3\npool=urllib3.connection_from_url({proxy!r})\nresponse=pool.request('GET','/',timeout=2)\npool.close()",

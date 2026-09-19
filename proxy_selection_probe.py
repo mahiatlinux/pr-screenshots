@@ -28,6 +28,9 @@ with http.server.HTTPServer(('127.0.0.1',0),Handler) as origin, http.server.HTTP
     proxies={'http://localhost':f'http://127.0.0.1:{proxy.server_port}'}
     response=requests.get(url,proxies=proxies,timeout=3)
     print(json.dumps({'case':'initially_unused_proxy', 'initial_selected':select_proxy(url,proxies),'status':response.status_code,'origin_requests':origin.paths,'proxy_requests':proxy.paths}))
+    origin.paths.clear(); proxy.paths.clear()
+    response=requests.get(url,proxies=proxies,timeout=3,allow_redirects=False)
+    print(json.dumps({'case':'disabled_redirects','status':response.status_code,'origin_requests':origin.paths,'proxy_requests':proxy.paths}))
     origin.shutdown()
     proxy.shutdown()
 
@@ -63,3 +66,7 @@ for invocation in ['', 'configure()']:
     exec(code, namespace)
     checked=code+"\ns.get('https://pypi.org/')"
     print(json.dumps({'case':'helper_called' if invocation else 'helper_uncalled','selected':select_proxy('https://pypi.org/',namespace['s'].proxies),'blocked':_check_code_safety(checked),'prompt':is_high_risk_tool_call('python',{'code':checked})}))
+
+for proxies in [{'http':'http://203.0.113.5/'},{'https://example.com':'http://203.0.113.5/'},{'https://pypi.org':None,'https':'http://203.0.113.5/'}]:
+    code=f"import requests\nrequests.get('https://pypi.org/',proxies={proxies!r},allow_redirects=False)"
+    print(json.dumps({'case':'no_redirect_proxy_selection','proxies':proxies,'selected':select_proxy('https://pypi.org/',proxies),'blocked':_check_code_safety(code),'prompt':is_high_risk_tool_call('python',{'code':code})}))

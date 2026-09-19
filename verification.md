@@ -30,3 +30,18 @@ Executed tests:
 The local MLX checks are backend contract tests; live vision execution used llama.cpp on CUDA.
 
 Additional execution: a disposable FastMCP 4.0.5 HTTP server returned real ImageContent blocks. Studio's production call_tool_sync and replay builder fed those results to the GPU model. Base passed zero image parts and could not see any of the three colors; repaired code passed one image part and identified all three correctly. Firefox 153.0 reproduced the browser NO_IMAGE to RED result with zero page errors. The repository Python-floor check also passed for Python 3.10.
+
+Final test-only follow-up:
+- Original task branch: 34bd20102f3f5565856721534f2ce292216b595e.
+- Mirror: 9b8fad07152ec40579306d39244f971e21c05c07.
+- Video-routing and CI-sharding guards: 56 passed on each branch. The video guard detects mutations removing the video gate, replacing image-or-video with image-and-video, or inverting the image condition.
+- Stream cancellation, GGUF slot-release ordering and context-refusal suites: 10 passed.
+
+Commands, run from studio/backend with the isolated environment:
+
+```
+python -m pytest tests/test_chat_template_tool_arguments.py tests/test_chat_template_continuation.py tests/test_mcp_images.py tests/test_mcp_flatten_result.py tests/test_sf_client_tools_passthrough.py tests/test_vision_client_tools.py tests/test_openai_tool_passthrough.py tests/test_anthropic_messages.py tests/test_external_tool_call_id_replay.py tests/test_mlx_inference_backend.py tests/test_safetensors_tool_loop.py tests/test_orchestrator_unload_cancel.py -q
+python -m pytest tests/test_llama_cpp_tool_loop.py tests/test_studio_tool_loop.py -q -k 'mcp or image'
+python -m pytest tests/test_video_attachment_part.py ../../tests/test_ci_backend_pytest_shards.py -q
+python -m pytest tests/test_llama_cpp_stream_cancel.py tests/test_gguf_stream_slot_release_ordering.py tests/test_context_refusal_units.py -q
+```

@@ -1,0 +1,8 @@
+{"case": "tunnel_preexisting", "blocked": null, "prompt": false, "status": 200, "origin_requests": [["GET", "/", ""]], "connects": ["CONNECT 127.0.0.1:43327 HTTP/1.1"]}
+{"case": "unused_aiohttp", "blocked": null, "prompt": false, "status": null, "origin_requests": [], "connects": []}
+{"case": "awaited_aiohttp", "blocked": null, "prompt": false, "status": 200, "origin_requests": [["GET", "/", ""]], "connects": []}
+{"case": "entered_aiohttp_module", "blocked": null, "prompt": false, "status": 200, "origin_requests": [["GET", "/", ""]], "connects": []}
+{"case": "unused_request_builder", "blocked": null, "prompt": false, "status": null, "origin_requests": [], "connects": []}
+{"case": "sent_request_builder", "blocked": null, "prompt": false, "status": 200, "origin_requests": [["POST", "/", "x"]], "connects": []}
+{"case": "unused_httpx_builder", "blocked": null, "prompt": false, "status": null, "origin_requests": [], "connects": []}
+{"case": "sent_httpx_builder", "blocked": null, "prompt": false, "status": 200, "origin_requests": [["POST", "/", "x"]], "connects": []}

@@ -1,11 +1,11 @@
 {"calls": "run()", "blocked": null, "prompt": false, "origin_requests": ["/"], "proxy_requests": []}
-{"calls": "run()\nrun()", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "origin_requests": ["/"], "proxy_requests": ["http://pypi.org:33423/"]}
+{"calls": "run()\nrun()", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "origin_requests": ["/"], "proxy_requests": ["http://pypi.org:42873/"]}
 {"case": "known_timeout", "blocked": null, "prompt": false, "status": 200, "origin_requests": ["/"], "proxy_requests": []}
 {"case": "unbound_clear", "blocked": null, "prompt": false, "status": 200, "origin_requests": ["/"], "proxy_requests": []}
 {"case": "unbound_pop", "blocked": null, "prompt": false, "status": 200, "origin_requests": ["/"], "proxy_requests": []}
 {"case": "unbound_popitem", "blocked": null, "prompt": false, "status": 200, "origin_requests": ["/"], "proxy_requests": []}
 {"case": "union_disabled_proxy", "blocked": null, "prompt": false, "status": 200, "origin_requests": ["/"], "proxy_requests": []}
 {"case": "disabled_session_proxy", "blocked": null, "prompt": false, "status": 200, "origin_requests": ["/"], "proxy_requests": []}
-{"case": "request_proxy_priority", "blocked": null, "prompt": false, "status": 200, "origin_requests": ["http://pypi.org:33423/"], "proxy_requests": []}
-{"case": "none_fallback_proxy", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "origin_requests": [], "proxy_requests": ["http://pypi.org:33423/"]}
-{"case": "none_host_fallback_proxy", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "origin_requests": [], "proxy_requests": ["http://pypi.org:33423/"]}
+{"case": "request_proxy_priority", "blocked": null, "prompt": false, "status": 200, "origin_requests": ["http://pypi.org:42873/"], "proxy_requests": []}
+{"case": "none_fallback_proxy", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "origin_requests": [], "proxy_requests": ["http://pypi.org:42873/"]}
+{"case": "none_host_fallback_proxy", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "origin_requests": [], "proxy_requests": ["http://pypi.org:42873/"]}

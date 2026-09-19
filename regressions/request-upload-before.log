@@ -1,0 +1,62 @@
+FFFF...                                                                  [100%]
+=================================== FAILURES ===================================
+_ TestUploadDenylist.test_unused_request_payload_is_not_uploaded[requests.Request('POST', 'https://pypi.org/', data=b'x')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestUploadDenylist object at 0x710e454b32f0>
+builder = "requests.Request('POST', 'https://pypi.org/', data=b'x')"
+
+    @pytest.mark.parametrize("builder", ["requests.Request('POST', 'https://pypi.org/', data=b'x')", "httpx.Request('POST', 'https://pypi.org/', files={'f': b'x'})", "httpx.Client().build_request('POST', 'https://pypi.org/', data=b'x')", "requests.Session().prepare_request(requests.Request('POST', 'https://pypi.org/', data=b'x'))"])
+    def test_unused_request_payload_is_not_uploaded(self, builder):
+        code = f"import requests, httpx\nr = {builder}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: file upload disallowed in sandbox). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: file upload disallowed in sandbox). Please remove unsafe patterns from your code.' = _check_code_safety("import requests, httpx\nr = requests.Request('POST', 'https://pypi.org/', data=b'x')")
+
+studio/backend/tests/test_sandbox_tools.py:2505: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestUploadDenylist.test_unused_request_payload_is_not_uploaded[httpx.Request('POST', 'https://pypi.org/', files={'f': b'x'})] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestUploadDenylist object at 0x710e454b34a0>
+builder = "httpx.Request('POST', 'https://pypi.org/', files={'f': b'x'})"
+
+    @pytest.mark.parametrize("builder", ["requests.Request('POST', 'https://pypi.org/', data=b'x')", "httpx.Request('POST', 'https://pypi.org/', files={'f': b'x'})", "httpx.Client().build_request('POST', 'https://pypi.org/', data=b'x')", "requests.Session().prepare_request(requests.Request('POST', 'https://pypi.org/', data=b'x'))"])
+    def test_unused_request_payload_is_not_uploaded(self, builder):
+        code = f"import requests, httpx\nr = {builder}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: file upload disallowed in sandbox). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: file upload disallowed in sandbox). Please remove unsafe patterns from your code.' = _check_code_safety("import requests, httpx\nr = httpx.Request('POST', 'https://pypi.org/', files={'f': b'x'})")
+
+studio/backend/tests/test_sandbox_tools.py:2505: AssertionError
+_ TestUploadDenylist.test_unused_request_payload_is_not_uploaded[httpx.Client().build_request('POST', 'https://pypi.org/', data=b'x')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestUploadDenylist object at 0x710e454b3560>
+builder = "httpx.Client().build_request('POST', 'https://pypi.org/', data=b'x')"
+
+    @pytest.mark.parametrize("builder", ["requests.Request('POST', 'https://pypi.org/', data=b'x')", "httpx.Request('POST', 'https://pypi.org/', files={'f': b'x'})", "httpx.Client().build_request('POST', 'https://pypi.org/', data=b'x')", "requests.Session().prepare_request(requests.Request('POST', 'https://pypi.org/', data=b'x'))"])
+    def test_unused_request_payload_is_not_uploaded(self, builder):
+        code = f"import requests, httpx\nr = {builder}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: file upload disallowed in sandbox). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: file upload disallowed in sandbox). Please remove unsafe patterns from your code.' = _check_code_safety("import requests, httpx\nr = httpx.Client().build_request('POST', 'https://pypi.org/', data=b'x')")
+
+studio/backend/tests/test_sandbox_tools.py:2505: AssertionError
+_ TestUploadDenylist.test_unused_request_payload_is_not_uploaded[requests.Session().prepare_request(requests.Request('POST', 'https://pypi.org/', data=b'x'))] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestUploadDenylist object at 0x710e454b3620>
+builder = "requests.Session().prepare_request(requests.Request('POST', 'https://pypi.org/', data=b'x'))"
+
+    @pytest.mark.parametrize("builder", ["requests.Request('POST', 'https://pypi.org/', data=b'x')", "httpx.Request('POST', 'https://pypi.org/', files={'f': b'x'})", "httpx.Client().build_request('POST', 'https://pypi.org/', data=b'x')", "requests.Session().prepare_request(requests.Request('POST', 'https://pypi.org/', data=b'x'))"])
+    def test_unused_request_payload_is_not_uploaded(self, builder):
+        code = f"import requests, httpx\nr = {builder}"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: file upload disallowed in sandbox). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: file upload disallowed in sandbox). Please remove unsafe patterns from your code.' = _check_code_safety("import requests, httpx\nr = requests.Session().prepare_request(requests.Request('POST', 'https://pypi.org/', data=b'x'))")
+
+studio/backend/tests/test_sandbox_tools.py:2505: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestUploadDenylist::test_unused_request_payload_is_not_uploaded[requests.Request('POST', 'https://pypi.org/', data=b'x')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestUploadDenylist::test_unused_request_payload_is_not_uploaded[httpx.Request('POST', 'https://pypi.org/', files={'f': b'x'})]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestUploadDenylist::test_unused_request_payload_is_not_uploaded[httpx.Client().build_request('POST', 'https://pypi.org/', data=b'x')]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestUploadDenylist::test_unused_request_payload_is_not_uploaded[requests.Session().prepare_request(requests.Request('POST', 'https://pypi.org/', data=b'x'))]
+4 failed, 3 passed, 967 deselected in 1.25s

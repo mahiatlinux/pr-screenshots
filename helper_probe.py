@@ -28,4 +28,12 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as origin, http.server.HT
         prompt = is_high_risk_tool_call('python', {'code': code})
         exec(code, {})
         print(json.dumps({'calls': calls, 'blocked': blocked, 'prompt': prompt, 'origin_requests': origin.paths, 'proxy_requests': proxy.paths}))
+    cases = {'known_timeout': f"import requests\ns=requests.Session()\ns.trust_env=False\nresponse=s.get('http://pypi.org:{origin.server_port}/',**{{'timeout':2}})"}
+    for method, argument in [('clear', ''), ('pop', ", 'http'"), ('popitem', '')]:
+        cases['unbound_' + method] = f"import requests\ns=requests.Session()\ns.trust_env=False\ns.proxies={{'http':'http://127.0.0.1:{proxy.server_port}'}}\ndict.{method}(s.proxies{argument})\nresponse=s.get('http://pypi.org:{origin.server_port}/',timeout=2)"
+    for name, code in cases.items():
+        origin.paths.clear(); proxy.paths.clear()
+        namespace = {}
+        exec(code, namespace)
+        print(json.dumps({'case':name,'blocked':_check_code_safety(code),'prompt':is_high_risk_tool_call('python',{'code':code}),'status':namespace['response'].status_code,'origin_requests':origin.paths,'proxy_requests':proxy.paths}))
     origin.shutdown(); proxy.shutdown()

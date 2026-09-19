@@ -1,0 +1,66 @@
+FFFF.....                                                                [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_known_nonrouting_keyword_options_do_not_require_approval[{'timeout': 5}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73f527601a90>
+options = "{'timeout': 5}"
+
+    @pytest.mark.parametrize("options", ["{'timeout': 5}", "{'headers': {'X-Test': 'value'}, 'verify': True}", "{'timeout': 5, **{'params': {'q': 'example'}}}", "options"])
+    def test_known_nonrouting_keyword_options_do_not_require_approval(self, options):
+        code = f"import requests\noptions = {{'timeout': 5}}\nrequests.get('https://pypi.org/', **{options})"
+        assert _check_code_safety(code) is None
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\noptions = {'timeout': 5}\nrequests.get('https://pypi.org/', **{'timeout': 5})"})
+
+studio/backend/tests/test_sandbox_tools.py:1321: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_known_nonrouting_keyword_options_do_not_require_approval[{'headers': {'X-Test': 'value'}, 'verify': True}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73f527601c70>
+options = "{'headers': {'X-Test': 'value'}, 'verify': True}"
+
+    @pytest.mark.parametrize("options", ["{'timeout': 5}", "{'headers': {'X-Test': 'value'}, 'verify': True}", "{'timeout': 5, **{'params': {'q': 'example'}}}", "options"])
+    def test_known_nonrouting_keyword_options_do_not_require_approval(self, options):
+        code = f"import requests\noptions = {{'timeout': 5}}\nrequests.get('https://pypi.org/', **{options})"
+        assert _check_code_safety(code) is None
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\noptions = {'timeout': 5}\nrequests.get('https://pypi.org/', **{'headers': {'X-Test': 'value'}, 'verify': True})"})
+
+studio/backend/tests/test_sandbox_tools.py:1321: AssertionError
+_ TestNetworkTargetResolution.test_known_nonrouting_keyword_options_do_not_require_approval[{'timeout': 5, **{'params': {'q': 'example'}}}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73f527601d30>
+options = "{'timeout': 5, **{'params': {'q': 'example'}}}"
+
+    @pytest.mark.parametrize("options", ["{'timeout': 5}", "{'headers': {'X-Test': 'value'}, 'verify': True}", "{'timeout': 5, **{'params': {'q': 'example'}}}", "options"])
+    def test_known_nonrouting_keyword_options_do_not_require_approval(self, options):
+        code = f"import requests\noptions = {{'timeout': 5}}\nrequests.get('https://pypi.org/', **{options})"
+        assert _check_code_safety(code) is None
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\noptions = {'timeout': 5}\nrequests.get('https://pypi.org/', **{'timeout': 5, **{'params': {'q': 'example'}}})"})
+
+studio/backend/tests/test_sandbox_tools.py:1321: AssertionError
+_ TestNetworkTargetResolution.test_known_nonrouting_keyword_options_do_not_require_approval[options] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x73f527601df0>
+options = 'options'
+
+    @pytest.mark.parametrize("options", ["{'timeout': 5}", "{'headers': {'X-Test': 'value'}, 'verify': True}", "{'timeout': 5, **{'params': {'q': 'example'}}}", "options"])
+    def test_known_nonrouting_keyword_options_do_not_require_approval(self, options):
+        code = f"import requests\noptions = {{'timeout': 5}}\nrequests.get('https://pypi.org/', **{options})"
+        assert _check_code_safety(code) is None
+>       assert is_high_risk_tool_call("python", {"code": code}) is False
+E       assert True is False
+E        +  where True = is_high_risk_tool_call('python', {'code': "import requests\noptions = {'timeout': 5}\nrequests.get('https://pypi.org/', **options)"})
+
+studio/backend/tests/test_sandbox_tools.py:1321: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_known_nonrouting_keyword_options_do_not_require_approval[{'timeout': 5}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_known_nonrouting_keyword_options_do_not_require_approval[{'headers': {'X-Test': 'value'}, 'verify': True}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_known_nonrouting_keyword_options_do_not_require_approval[{'timeout': 5, **{'params': {'q': 'example'}}}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_known_nonrouting_keyword_options_do_not_require_approval[options]
+4 failed, 5 passed, 911 deselected in 1.24s

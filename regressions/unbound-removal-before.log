@@ -1,0 +1,108 @@
+FFFFFF..                                                                 [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_unbound_proxy_removal_discards_deleted_host[False-clear-] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e12dbff8140>
+method = 'clear', arguments = '', alias = False
+
+    @pytest.mark.parametrize("method, arguments", [("clear", ""), ("pop", ", 'https'"), ("popitem", "")])
+    @pytest.mark.parametrize("alias", [False, True])
+    def test_unbound_proxy_removal_discards_deleted_host(self, method, arguments, alias):
+        binding = f"remove = dict.{method}\n" if alias else ""
+        caller = "remove" if alias else f"dict.{method}"
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\n{binding}{caller}(s.proxies{arguments})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\ndict.clear(s.proxies)\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1300: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_unbound_proxy_removal_discards_deleted_host[False-pop-, 'https'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e12dbff8380>
+method = 'pop', arguments = ", 'https'", alias = False
+
+    @pytest.mark.parametrize("method, arguments", [("clear", ""), ("pop", ", 'https'"), ("popitem", "")])
+    @pytest.mark.parametrize("alias", [False, True])
+    def test_unbound_proxy_removal_discards_deleted_host(self, method, arguments, alias):
+        binding = f"remove = dict.{method}\n" if alias else ""
+        caller = "remove" if alias else f"dict.{method}"
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\n{binding}{caller}(s.proxies{arguments})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\ndict.pop(s.proxies, 'https')\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1300: AssertionError
+_ TestNetworkTargetResolution.test_unbound_proxy_removal_discards_deleted_host[False-popitem-] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e12dbff8440>
+method = 'popitem', arguments = '', alias = False
+
+    @pytest.mark.parametrize("method, arguments", [("clear", ""), ("pop", ", 'https'"), ("popitem", "")])
+    @pytest.mark.parametrize("alias", [False, True])
+    def test_unbound_proxy_removal_discards_deleted_host(self, method, arguments, alias):
+        binding = f"remove = dict.{method}\n" if alias else ""
+        caller = "remove" if alias else f"dict.{method}"
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\n{binding}{caller}(s.proxies{arguments})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\ndict.popitem(s.proxies)\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1300: AssertionError
+_ TestNetworkTargetResolution.test_unbound_proxy_removal_discards_deleted_host[True-clear-] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e12dbff8500>
+method = 'clear', arguments = '', alias = True
+
+    @pytest.mark.parametrize("method, arguments", [("clear", ""), ("pop", ", 'https'"), ("popitem", "")])
+    @pytest.mark.parametrize("alias", [False, True])
+    def test_unbound_proxy_removal_discards_deleted_host(self, method, arguments, alias):
+        binding = f"remove = dict.{method}\n" if alias else ""
+        caller = "remove" if alias else f"dict.{method}"
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\n{binding}{caller}(s.proxies{arguments})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nremove = dict.clear\nremove(s.proxies)\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1300: AssertionError
+_ TestNetworkTargetResolution.test_unbound_proxy_removal_discards_deleted_host[True-pop-, 'https'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e12dbff85c0>
+method = 'pop', arguments = ", 'https'", alias = True
+
+    @pytest.mark.parametrize("method, arguments", [("clear", ""), ("pop", ", 'https'"), ("popitem", "")])
+    @pytest.mark.parametrize("alias", [False, True])
+    def test_unbound_proxy_removal_discards_deleted_host(self, method, arguments, alias):
+        binding = f"remove = dict.{method}\n" if alias else ""
+        caller = "remove" if alias else f"dict.{method}"
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\n{binding}{caller}(s.proxies{arguments})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nremove = dict.pop\nremove(s.proxies, 'https')\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1300: AssertionError
+_ TestNetworkTargetResolution.test_unbound_proxy_removal_discards_deleted_host[True-popitem-] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7e12dbff8680>
+method = 'popitem', arguments = '', alias = True
+
+    @pytest.mark.parametrize("method, arguments", [("clear", ""), ("pop", ", 'https'"), ("popitem", "")])
+    @pytest.mark.parametrize("alias", [False, True])
+    def test_unbound_proxy_removal_discards_deleted_host(self, method, arguments, alias):
+        binding = f"remove = dict.{method}\n" if alias else ""
+        caller = "remove" if alias else f"dict.{method}"
+        code = f"import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {{'https': 'http://203.0.113.5/'}}\n{binding}{caller}(s.proxies{arguments})\ns.get('https://pypi.org/')"
+>       assert _check_code_safety(code) is None
+E       assert 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' is None
+E        +  where 'Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.' = _check_code_safety("import requests\ns = requests.Session()\ns.trust_env = False\ns.proxies = {'https': 'http://203.0.113.5/'}\nremove = dict.popitem\nremove(s.proxies)\ns.get('https://pypi.org/')")
+
+studio/backend/tests/test_sandbox_tools.py:1300: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_removal_discards_deleted_host[False-clear-]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_removal_discards_deleted_host[False-pop-, 'https']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_removal_discards_deleted_host[False-popitem-]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_removal_discards_deleted_host[True-clear-]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_removal_discards_deleted_host[True-pop-, 'https']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_unbound_proxy_removal_discards_deleted_host[True-popitem-]
+6 failed, 2 passed, 902 deselected in 1.28s

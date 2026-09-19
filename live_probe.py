@@ -16,6 +16,11 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
     thread.start()
     proxy = f'http://127.0.0.1:{server.server_port}'
     cases = {
+        'partial_network_preexisting': f"import functools,requests\nf=functools.partial(requests.get, {proxy!r})\nresponse=f(timeout=2)",
+        'unused_url_pool': f"import urllib3\npool=urllib3.connection_from_url({proxy!r})\nresponse=None\npool.close()",
+        'url_pool_request': f"import urllib3\npool=urllib3.connection_from_url({proxy!r})\nresponse=pool.request('GET','/',timeout=2)\npool.close()",
+        'unused_proxy_factory': f"import urllib3\npool=urllib3.proxy_from_url({proxy!r})\nresponse=None\npool.clear()",
+        'proxy_factory_request': f"import urllib3\npool=urllib3.proxy_from_url({proxy!r})\nresponse=pool.request('GET','http://pypi.org/',timeout=2)\npool.clear()",
         'constructor_proxy_state': f"import requests\nclass Client(requests.Session):\n    def __init__(self):\n        super().__init__()\n        self.proxies={{'http': {proxy!r}}}\nresponse=Client().get('http://pypi.org/', timeout=2)",
         'constructor_base_url_state': f"import httpx\nclass Client(httpx.Client):\n    def __init__(self):\n        super().__init__()\n        self.base_url={proxy!r}\nresponse=Client().get('/', timeout=2)",
         'attribute_request_method': f"import requests\nclass Holder: pass\no=Holder()\ns=requests.Session()\no.fetch=s.get\ns.proxies={{'http': {proxy!r}}}\nresponse=o.fetch('http://pypi.org/', timeout=2)",

@@ -1,3 +1,30 @@
+{"case": "partial_network_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "unused_url_pool", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": null, "proxy_requests": []}
+{"case": "url_pool_request", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["/"]}
+{"case": "unused_proxy_factory", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": null, "proxy_requests": []}
+{"case": "proxy_factory_request", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "constructor_proxy_state", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "constructor_base_url_state", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "attribute_request_method", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "attribute_proxy_mutator", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "bound_proxy_mutator", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "bound_request_mutator", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "urllib_request_full_url", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "urllib_request_host", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "urllib_request_proxy_mutation", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "unused_httpx_base_url", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "relative_httpx_base_url", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "prepared_url_method", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "httpx_base_reassignment", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "unused_httpx_proxy", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "mounted_httpx_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "direct_httpx_transport", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "aiohttp_network_path", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/path"]}
+{"case": "unbound_request", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "unbound_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "unused_connection_pool", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "connection_pool_request", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "changed_connection_pool_host", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "conditional_receiver", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "kwargs_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "subclass", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
@@ -8,5 +35,12 @@
 {"case": "lowercase_send", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "mapping_alias", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "bound_method", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "super_method", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "explicit_super_method", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "getattr_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "initial_proxy_alias", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "prepared_url_mutation", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
+{"case": "first_mixin_override", "blocked": null, "prompt": false, "status": null, "proxy_requests": []}
+{"case": "mixin_ancestor_control", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}
 {"case": "setattr_proxy_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "environment_proxy_preexisting", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}

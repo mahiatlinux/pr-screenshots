@@ -15,3 +15,5 @@ python -m pytest studio/backend/tests/test_sandbox_tools.py studio/backend/tests
 The `regressions/` directory preserves failing tests immediately before each individual repair. Some failures are from intermediate repaired heads, not the original PR head. Final passing output is in `fix-tests.log` and `merge-tests.log`.
 
 The Fabric probe requires a disposable `USER=probe` environment value because the isolated namespace has no passwd database. It observes TCP connection initiation; the listener closes without an SSH handshake.
+
+The partial-network and unused urllib3 URL-factory cases have identical policy behavior on the exact base, original head, and repaired head. They document existing limitations, not regressions introduced by this PR.

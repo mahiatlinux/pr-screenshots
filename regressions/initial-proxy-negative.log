@@ -1,0 +1,117 @@
+FFFFFF..                                                                 [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_initial_proxy_mapping_alias_requires_approval[-p['https'] = 'http://203.0.113.5'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d8bf2d001a0>
+mutation = "p['https'] = 'http://203.0.113.5'", tail = ''
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("tail", ["", "if False:\n    s.proxies = {}\n"])
+    def test_initial_proxy_mapping_alias_requires_approval(self, mutation, tail):
+        code = (
+            "import requests\ns = requests.Session()\np = s.proxies\n"
+            f"{mutation}\n{tail}s.get('https://pypi.org/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = s.proxies\np['https'] = 'http://203.0.113.5'\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1202: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_initial_proxy_mapping_alias_requires_approval[-p.update({'https': 'http://203.0.113.5'})] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d8bf2d00500>
+mutation = "p.update({'https': 'http://203.0.113.5'})", tail = ''
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("tail", ["", "if False:\n    s.proxies = {}\n"])
+    def test_initial_proxy_mapping_alias_requires_approval(self, mutation, tail):
+        code = (
+            "import requests\ns = requests.Session()\np = s.proxies\n"
+            f"{mutation}\n{tail}s.get('https://pypi.org/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = s.proxies\np.update({'https': 'http://203.0.113.5'})\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1202: AssertionError
+_ TestNetworkTargetResolution.test_initial_proxy_mapping_alias_requires_approval[-p |= {'https': 'http://203.0.113.5'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d8bf2d005c0>
+mutation = "p |= {'https': 'http://203.0.113.5'}", tail = ''
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("tail", ["", "if False:\n    s.proxies = {}\n"])
+    def test_initial_proxy_mapping_alias_requires_approval(self, mutation, tail):
+        code = (
+            "import requests\ns = requests.Session()\np = s.proxies\n"
+            f"{mutation}\n{tail}s.get('https://pypi.org/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = s.proxies\np |= {'https': 'http://203.0.113.5'}\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1202: AssertionError
+_ TestNetworkTargetResolution.test_initial_proxy_mapping_alias_requires_approval[if False:\n    s.proxies = {}\n-p['https'] = 'http://203.0.113.5'] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d8bf2d00680>
+mutation = "p['https'] = 'http://203.0.113.5'"
+tail = 'if False:\n    s.proxies = {}\n'
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("tail", ["", "if False:\n    s.proxies = {}\n"])
+    def test_initial_proxy_mapping_alias_requires_approval(self, mutation, tail):
+        code = (
+            "import requests\ns = requests.Session()\np = s.proxies\n"
+            f"{mutation}\n{tail}s.get('https://pypi.org/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = s.proxies\np['https'] = 'http://203.0.113.5'\nif False:\n    s.proxies = {}\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1202: AssertionError
+_ TestNetworkTargetResolution.test_initial_proxy_mapping_alias_requires_approval[if False:\n    s.proxies = {}\n-p.update({'https': 'http://203.0.113.5'})] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d8bf2d00740>
+mutation = "p.update({'https': 'http://203.0.113.5'})"
+tail = 'if False:\n    s.proxies = {}\n'
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("tail", ["", "if False:\n    s.proxies = {}\n"])
+    def test_initial_proxy_mapping_alias_requires_approval(self, mutation, tail):
+        code = (
+            "import requests\ns = requests.Session()\np = s.proxies\n"
+            f"{mutation}\n{tail}s.get('https://pypi.org/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = s.proxies\np.update({'https': 'http://203.0.113.5'})\nif False:\n    s.proxies = {}\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1202: AssertionError
+_ TestNetworkTargetResolution.test_initial_proxy_mapping_alias_requires_approval[if False:\n    s.proxies = {}\n-p |= {'https': 'http://203.0.113.5'}] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7d8bf2d00800>
+mutation = "p |= {'https': 'http://203.0.113.5'}"
+tail = 'if False:\n    s.proxies = {}\n'
+
+    @pytest.mark.parametrize("mutation", ["p['https'] = 'http://203.0.113.5'", "p.update({'https': 'http://203.0.113.5'})", "p |= {'https': 'http://203.0.113.5'}"])
+    @pytest.mark.parametrize("tail", ["", "if False:\n    s.proxies = {}\n"])
+    def test_initial_proxy_mapping_alias_requires_approval(self, mutation, tail):
+        code = (
+            "import requests\ns = requests.Session()\np = s.proxies\n"
+            f"{mutation}\n{tail}s.get('https://pypi.org/')"
+        )
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\np = s.proxies\np |= {'https': 'http://203.0.113.5'}\nif False:\n    s.proxies = {}\ns.get('https://pypi.org/')"})
+
+studio/backend/tests/test_sandbox_tools.py:1202: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_initial_proxy_mapping_alias_requires_approval[-p['https'] = 'http://203.0.113.5']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_initial_proxy_mapping_alias_requires_approval[-p.update({'https': 'http://203.0.113.5'})]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_initial_proxy_mapping_alias_requires_approval[-p |= {'https': 'http://203.0.113.5'}]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_initial_proxy_mapping_alias_requires_approval[if False:\n    s.proxies = {}\n-p['https'] = 'http://203.0.113.5']
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_initial_proxy_mapping_alias_requires_approval[if False:\n    s.proxies = {}\n-p.update({'https': 'http://203.0.113.5'})]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_initial_proxy_mapping_alias_requires_approval[if False:\n    s.proxies = {}\n-p |= {'https': 'http://203.0.113.5'}]
+6 failed, 2 passed, 651 deselected in 1.21s

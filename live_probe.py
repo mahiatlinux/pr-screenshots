@@ -33,6 +33,10 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
         'super_method': f"import requests\nclass Client(requests.Session):\n    def fetch(self):\n        return super().get({proxy!r}, timeout=2)\nresponse=Client().fetch()",
         'explicit_super_method': f"import requests\nclass Client(requests.Session):\n    def fetch(self):\n        return super(Client, self).get({proxy!r}, timeout=2)\nresponse=Client().fetch()",
         'getattr_proxy': f"import requests\ns=requests.Session()\ns.proxies={{'http': {proxy!r}}}\nresponse=getattr(s, 'get')('http://pypi.org/', timeout=2)",
+        'initial_proxy_alias': f"import requests\ns=requests.Session()\np=s.proxies\np['http']={proxy!r}\nresponse=s.get('http://pypi.org/', timeout=2)",
+        'prepared_url_mutation': f"import requests\ns=requests.Session()\nr=s.prepare_request(requests.Request('GET', 'http://pypi.org/'))\nr.url={proxy!r}\nresponse=s.send(r, timeout=2)",
+        'first_mixin_override': f"import requests\nclass Local:\n    def get(self, url):\n        return url\nclass Client(Local, requests.Session):\n    pass\nresponse=Client().get({proxy!r})",
+        'mixin_ancestor_control': f"import requests\nclass Local:\n    def get(self, url):\n        return url\nclass First(Local):\n    pass\nclass Second(requests.Session, Local):\n    pass\nclass Client(First, Second):\n    pass\nresponse=Client().get({proxy!r}, timeout=2)",
         'setattr_proxy_preexisting': f"import requests\ns=requests.Session()\nsetattr(s, 'proxies', {{'http': {proxy!r}}})\nresponse=s.get('http://pypi.org/', timeout=2)",
         'environment_proxy_preexisting': f"import os, requests\nos.environ['HTTP_PROXY']={proxy!r}\nresponse=requests.get('http://pypi.org/', timeout=2)",
     })
@@ -42,6 +46,6 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
         server.requests.clear()
         scope = {}
         exec(code, scope)
-        print(json.dumps({'case': name, 'blocked': blocked, 'prompt': prompt, 'status': scope['response'].status_code, 'proxy_requests': server.requests}))
+        print(json.dumps({'case': name, 'blocked': blocked, 'prompt': prompt, 'status': getattr(scope['response'], 'status_code', None), 'proxy_requests': server.requests}))
     server.shutdown()
     thread.join()

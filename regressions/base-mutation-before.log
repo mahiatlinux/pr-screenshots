@@ -1,0 +1,66 @@
+FFFF...                                                                  [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_reassigned_client_base_url_requires_approval[-httpx.Client] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72ee7d9bea20>
+client = 'httpx.Client', setup = ''
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient"])
+    @pytest.mark.parametrize("setup", ["", "base_url='https://pypi.org/'"])
+    def test_reassigned_client_base_url_requires_approval(self, client, setup):
+        code = f"import httpx\nc = {client}({setup})\nalias = c\nalias.base_url = 'http://203.0.113.5/'\nc.get('/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\nc = httpx.Client()\nalias = c\nalias.base_url = 'http://203.0.113.5/'\nc.get('/')"})
+
+studio/backend/tests/test_sandbox_tools.py:864: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_reassigned_client_base_url_requires_approval[-httpx.AsyncClient] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72ee7d9becc0>
+client = 'httpx.AsyncClient', setup = ''
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient"])
+    @pytest.mark.parametrize("setup", ["", "base_url='https://pypi.org/'"])
+    def test_reassigned_client_base_url_requires_approval(self, client, setup):
+        code = f"import httpx\nc = {client}({setup})\nalias = c\nalias.base_url = 'http://203.0.113.5/'\nc.get('/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\nc = httpx.AsyncClient()\nalias = c\nalias.base_url = 'http://203.0.113.5/'\nc.get('/')"})
+
+studio/backend/tests/test_sandbox_tools.py:864: AssertionError
+_ TestNetworkTargetResolution.test_reassigned_client_base_url_requires_approval[base_url='https://pypi.org/'-httpx.Client] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72ee7d9bed80>
+client = 'httpx.Client', setup = "base_url='https://pypi.org/'"
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient"])
+    @pytest.mark.parametrize("setup", ["", "base_url='https://pypi.org/'"])
+    def test_reassigned_client_base_url_requires_approval(self, client, setup):
+        code = f"import httpx\nc = {client}({setup})\nalias = c\nalias.base_url = 'http://203.0.113.5/'\nc.get('/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\nc = httpx.Client(base_url='https://pypi.org/')\nalias = c\nalias.base_url = 'http://203.0.113.5/'\nc.get('/')"})
+
+studio/backend/tests/test_sandbox_tools.py:864: AssertionError
+_ TestNetworkTargetResolution.test_reassigned_client_base_url_requires_approval[base_url='https://pypi.org/'-httpx.AsyncClient] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x72ee7d9bee40>
+client = 'httpx.AsyncClient', setup = "base_url='https://pypi.org/'"
+
+    @pytest.mark.parametrize("client", ["httpx.Client", "httpx.AsyncClient"])
+    @pytest.mark.parametrize("setup", ["", "base_url='https://pypi.org/'"])
+    def test_reassigned_client_base_url_requires_approval(self, client, setup):
+        code = f"import httpx\nc = {client}({setup})\nalias = c\nalias.base_url = 'http://203.0.113.5/'\nc.get('/')"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import httpx\nc = httpx.AsyncClient(base_url='https://pypi.org/')\nalias = c\nalias.base_url = 'http://203.0.113.5/'\nc.get('/')"})
+
+studio/backend/tests/test_sandbox_tools.py:864: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_reassigned_client_base_url_requires_approval[-httpx.Client]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_reassigned_client_base_url_requires_approval[-httpx.AsyncClient]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_reassigned_client_base_url_requires_approval[base_url='https://pypi.org/'-httpx.Client]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_reassigned_client_base_url_requires_approval[base_url='https://pypi.org/'-httpx.AsyncClient]
+4 failed, 3 passed, 677 deselected in 1.16s

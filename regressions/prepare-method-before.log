@@ -1,0 +1,34 @@
+FF.                                                                      [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_prepared_request_url_method_requires_approval[prepare_url('http://203.0.113.5/', None)] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7db56efb9d90>
+mutation = "prepare_url('http://203.0.113.5/', None)"
+
+    @pytest.mark.parametrize("mutation", ["prepare_url('http://203.0.113.5/', None)", "prepare(method='GET', url='http://203.0.113.5/')"])
+    def test_prepared_request_url_method_requires_approval(self, mutation):
+        code = "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\n" + f"alias = r\nalias.{mutation}\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nalias = r\nalias.prepare_url('http://203.0.113.5/', None)\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:845: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_prepared_request_url_method_requires_approval[prepare(method='GET', url='http://203.0.113.5/')] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x7db56efb9ee0>
+mutation = "prepare(method='GET', url='http://203.0.113.5/')"
+
+    @pytest.mark.parametrize("mutation", ["prepare_url('http://203.0.113.5/', None)", "prepare(method='GET', url='http://203.0.113.5/')"])
+    def test_prepared_request_url_method_requires_approval(self, mutation):
+        code = "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\n" + f"alias = r\nalias.{mutation}\ns.send(r)"
+>       assert is_high_risk_tool_call("python", {"code": code}) is True
+E       assert False is True
+E        +  where False = is_high_risk_tool_call('python', {'code': "import requests\ns = requests.Session()\nr = s.prepare_request(requests.Request('GET', 'https://pypi.org/'))\nalias = r\nalias.prepare(method='GET', url='http://203.0.113.5/')\ns.send(r)"})
+
+studio/backend/tests/test_sandbox_tools.py:845: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_prepared_request_url_method_requires_approval[prepare_url('http://203.0.113.5/', None)]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_prepared_request_url_method_requires_approval[prepare(method='GET', url='http://203.0.113.5/')]
+2 failed, 1 passed, 674 deselected in 1.12s

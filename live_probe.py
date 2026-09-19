@@ -23,6 +23,7 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
         'unused_httpx_proxy': f"import httpx\nclient=httpx.Client(proxy={proxy!r})\nresponse=None\nclient.close()",
         'mounted_httpx_proxy': f"import httpx\nt=httpx.HTTPTransport(proxy={proxy!r})\nclient=httpx.Client(mounts={{'http://': t}})\nresponse=client.get('http://pypi.org/', timeout=2)\nclient.close()",
         'direct_httpx_transport': f"import httpx\nt=httpx.HTTPTransport(proxy={proxy!r})\nresponse=t.handle_request(httpx.Request('GET','http://pypi.org/'))\nresponse.read()\nt.close()",
+        'aiohttp_network_path': f"import asyncio,aiohttp\nasync def fetch():\n    async with aiohttp.ClientSession(base_url='http://pypi.org/') as client:\n        async with client.get('//127.0.0.1:{server.server_port}/path') as result:\n            await result.read()\n            return result\nresponse=asyncio.run(fetch())",
         'conditional_receiver': f"import requests\ns=requests.Session()\ns.proxies={{'http': {proxy!r}}}\nif False:\n    s=requests.Session()\nresponse=s.get('http://pypi.org/', timeout=2)",
         'kwargs_proxy': f"import requests\noptions={{'proxies': {{'http': {proxy!r}}}}}\nresponse=requests.get('http://pypi.org/', timeout=2, **options)",
     }
@@ -53,6 +54,6 @@ with http.server.HTTPServer(('127.0.0.1', 0), Handler) as server:
         server.requests.clear()
         scope = {}
         exec(code, scope)
-        print(json.dumps({'case': name, 'blocked': blocked, 'prompt': prompt, 'status': getattr(scope['response'], 'status_code', None), 'proxy_requests': server.requests}))
+        print(json.dumps({'case': name, 'blocked': blocked, 'prompt': prompt, 'status': getattr(scope['response'], 'status_code', getattr(scope['response'], 'status', None)), 'proxy_requests': server.requests}))
     server.shutdown()
     thread.join()

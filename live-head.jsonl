@@ -5,6 +5,7 @@
 {"case": "unused_httpx_proxy", "blocked": "Error: unsafe code detected (Blocked: host not in sandbox allowlist; use an allowed informational source). Please remove unsafe patterns from your code.", "prompt": true, "status": null, "proxy_requests": []}
 {"case": "mounted_httpx_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "direct_httpx_transport", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
+{"case": "aiohttp_network_path", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/path"]}
 {"case": "conditional_receiver", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "kwargs_proxy", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["http://pypi.org/"]}
 {"case": "subclass", "blocked": null, "prompt": false, "status": 200, "proxy_requests": ["/"]}

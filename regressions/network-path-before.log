@@ -1,0 +1,90 @@
+FFF.                                                                     [100%]
+=================================== FAILURES ===================================
+_ TestNetworkTargetResolution.test_aiohttp_network_path_reference_checks_authority[get] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x722a71c9a870>
+method = 'get'
+
+    @pytest.mark.parametrize("method", ["get", "request", "ws_connect"])
+    def test_aiohttp_network_path_reference_checks_authority(self, method):
+        args = "'GET', " if method == "request" else ""
+        code = "import aiohttp\nasync def fetch():\n    async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:\n" + f"        await client.{method}({args}'//203.0.113.5/path')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:981: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import aiohttp\nasync def fetch():\n    async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:\n        await client.get('//203.0.113.5/path')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import aiohttp
+E         async def fetch():
+E             async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:
+E                 await client.get('//203.0.113.5/path')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+_ TestNetworkTargetResolution.test_aiohttp_network_path_reference_checks_authority[request] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x722a71c9aa50>
+method = 'request'
+
+    @pytest.mark.parametrize("method", ["get", "request", "ws_connect"])
+    def test_aiohttp_network_path_reference_checks_authority(self, method):
+        args = "'GET', " if method == "request" else ""
+        code = "import aiohttp\nasync def fetch():\n    async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:\n" + f"        await client.{method}({args}'//203.0.113.5/path')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:981: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import aiohttp\nasync def fetch():\n    async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:\n        await client.request('GET', '//203.0.113.5/path')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import aiohttp
+E         async def fetch():
+E             async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:
+E                 await client.request('GET', '//203.0.113.5/path')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+_ TestNetworkTargetResolution.test_aiohttp_network_path_reference_checks_authority[ws_connect] _
+
+self = <studio.backend.tests.test_sandbox_tools.TestNetworkTargetResolution object at 0x722a71c9ab10>
+method = 'ws_connect'
+
+    @pytest.mark.parametrize("method", ["get", "request", "ws_connect"])
+    def test_aiohttp_network_path_reference_checks_authority(self, method):
+        args = "'GET', " if method == "request" else ""
+        code = "import aiohttp\nasync def fetch():\n    async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:\n" + f"        await client.{method}({args}'//203.0.113.5/path')"
+>       _blocked(code, expect_phrase = "Blocked: host not in sandbox allowlist")
+
+studio/backend/tests/test_sandbox_tools.py:981: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+code = "import aiohttp\nasync def fetch():\n    async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:\n        await client.ws_connect('//203.0.113.5/path')"
+expect_phrase = 'Blocked: host not in sandbox allowlist'
+
+    def _blocked(code: str, *, expect_phrase: str):
+        msg = _check_code_safety(code)
+>       assert msg is not None, code
+E       AssertionError: import aiohttp
+E         async def fetch():
+E             async with aiohttp.ClientSession(base_url='https://pypi.org/') as client:
+E                 await client.ws_connect('//203.0.113.5/path')
+E       assert None is not None
+
+studio/backend/tests/test_sandbox_tools.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_aiohttp_network_path_reference_checks_authority[get]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_aiohttp_network_path_reference_checks_authority[request]
+FAILED studio/backend/tests/test_sandbox_tools.py::TestNetworkTargetResolution::test_aiohttp_network_path_reference_checks_authority[ws_connect]
+3 failed, 1 passed, 712 deselected in 1.12s

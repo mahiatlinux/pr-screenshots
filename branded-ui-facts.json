@@ -1,0 +1,98 @@
+[
+  {
+    "side": "base",
+    "browser": "chrome",
+    "version": "153.0.8010.52",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "resume_buttons": 0,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "base",
+    "browser": "chrome",
+    "version": "153.0.8010.52",
+    "viewport": [
+      390,
+      844
+    ],
+    "resume_buttons": 0,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "head",
+    "browser": "chrome",
+    "version": "153.0.8010.52",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "resume_buttons": 1,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "head",
+    "browser": "chrome",
+    "version": "153.0.8010.52",
+    "viewport": [
+      390,
+      844
+    ],
+    "resume_buttons": 1,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "base",
+    "browser": "edge",
+    "version": "153.0.4234.48",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "resume_buttons": 0,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "base",
+    "browser": "edge",
+    "version": "153.0.4234.48",
+    "viewport": [
+      390,
+      844
+    ],
+    "resume_buttons": 0,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "head",
+    "browser": "edge",
+    "version": "153.0.4234.48",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "resume_buttons": 1,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "head",
+    "browser": "edge",
+    "version": "153.0.4234.48",
+    "viewport": [
+      390,
+      844
+    ],
+    "resume_buttons": 1,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  }
+]

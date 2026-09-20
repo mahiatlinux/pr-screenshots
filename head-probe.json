@@ -1,0 +1,62 @@
+[
+  {
+    "layout": "regular",
+    "model": true,
+    "dataset": true,
+    "size": 4096
+  },
+  {
+    "layout": "own",
+    "model": true,
+    "dataset": true,
+    "size": 4096
+  },
+  {
+    "layout": "shared",
+    "model": true,
+    "dataset": true,
+    "size": 4096
+  },
+  {
+    "layout": "mixed",
+    "model": true,
+    "dataset": true,
+    "size": 5120
+  },
+  {
+    "layout": "external",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "other-repo",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "prefix-collision",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "broken",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "loop",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "shared-escape",
+    "model": false,
+    "dataset": false,
+    "size": null
+  }
+]

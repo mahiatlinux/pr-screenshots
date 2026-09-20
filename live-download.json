@@ -1,0 +1,32 @@
+{
+  "hub_version": "1.32.0",
+  "files": [
+    {
+      "repo": "hf-internal-testing/tiny-random-LlamaForCausalLM",
+      "type": "model",
+      "filename": "config.json",
+      "snapshot": "models--hf-internal-testing--tiny-random-LlamaForCausalLM/snapshots/9fb191250dd56d0ba7ec9785a025ed29c03d5998/config.json",
+      "resolved": "models--hf-internal-testing--tiny-random-LlamaForCausalLM/blobs/705aabd46343ea21e243acb1a505f13282831a7a",
+      "bytes": 721,
+      "is_symlink": true
+    },
+    {
+      "repo": "hf-internal-testing/tiny-random-LlamaForCausalLM",
+      "type": "model",
+      "filename": "model.safetensors",
+      "snapshot": "models--hf-internal-testing--tiny-random-LlamaForCausalLM/snapshots/9fb191250dd56d0ba7ec9785a025ed29c03d5998/model.safetensors",
+      "resolved": "blobs/f5/f54827240aacee8268a6bfe85e39176002451d520fa5854d5de8c54619559f8f",
+      "bytes": 4131280,
+      "is_symlink": true
+    },
+    {
+      "repo": "hf-internal-testing/librispeech_asr_dummy",
+      "type": "dataset",
+      "filename": "clean/validation-00000-of-00001.parquet",
+      "snapshot": "datasets--hf-internal-testing--librispeech_asr_dummy/snapshots/5be91486e11a2d616f4ec5db8d3fd248585ac07a/clean/validation-00000-of-00001.parquet",
+      "resolved": "blobs/11/11ab33144f8185b0ed8ca0df969dbe14b855d42449b4d2e4bb69c0ee3f1b7b80",
+      "bytes": 9192059,
+      "is_symlink": true
+    }
+  ]
+}

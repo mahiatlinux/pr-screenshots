@@ -1,0 +1,36 @@
+[
+  {
+    "side": "base",
+    "runs": [
+      {
+        "id": "shared-cache-run",
+        "can_resume": false,
+        "resume_blocked_reason": "The model revision used by this run was not attested.",
+        "artifacts_available": true
+      },
+      {
+        "id": "previously-unattested",
+        "can_resume": false,
+        "resume_blocked_reason": "The model revision used by this run was not attested.",
+        "artifacts_available": true
+      }
+    ]
+  },
+  {
+    "side": "head",
+    "runs": [
+      {
+        "id": "shared-cache-run",
+        "can_resume": true,
+        "resume_blocked_reason": null,
+        "artifacts_available": true
+      },
+      {
+        "id": "previously-unattested",
+        "can_resume": false,
+        "resume_blocked_reason": "The model revision used by this run was not attested.",
+        "artifacts_available": true
+      }
+    ]
+  }
+]

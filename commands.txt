@@ -1,0 +1,31 @@
+Linux x86_64, Ubuntu 26.04, kernel 7.0.0-31-generic; uv 0.12.1.
+Base: 768d644036a948441ba80b626c9e747c1fecfbae
+Head: 1d941ba6d172071d7d6cd6f208e3b434db8450b2
+Prospective merge: a86aa46dd39f2db8263d347ea5342aa270c48d48
+Each Python invocation ran in a separate worktree venv and a credential-free bubblewrap namespace with task-local homes and caches.
+
+Base and merge focused suite:
+python -m pytest studio/backend/tests/test_training_provenance.py studio/backend/tests/test_training_resume.py studio/backend/tests/test_model_memory_settings.py studio/backend/tests/test_dataset_cache_paths.py studio/backend/tests/test_dataset_cache_safe.py studio/backend/tests/test_dataset_cache_timestamps.py studio/backend/tests/test_partial_resume_verdict.py studio/backend/tests/test_resume_pin_load_subdirs.py studio/backend/tests/test_resume_blocker_reason.py studio/backend/tests/test_resume_reason_matches_cause.py studio/backend/tests/test_resume_blocked_reason_surfaces.py studio/backend/tests/test_training_history_delete.py studio/backend/tests/test_training_history_update.py -q
+Merge additionally includes studio/backend/tests/test_model_size_shared_blob_store.py.
+Head: same suite split into head-suite.log and head-resume.log, with overlapping provenance coverage.
+
+Python 3.10.20 / huggingface_hub 1.23.0 and Python 3.14.4 / huggingface_hub 1.32.0:
+python -m pytest studio/backend/tests/test_training_provenance.py studio/backend/tests/test_model_size_shared_blob_store.py studio/backend/tests/test_dataset_cache_paths.py studio/backend/tests/test_dataset_cache_safe.py -q
+
+Independent checks:
+python probe.py --base --require-shared  # base: fails specifically because shared blobs are rejected
+python probe.py                        # head: all ten filesystem layouts pass
+python live_hub.py                     # Hub 1.32.0 downloads actual model and parquet files
+python seed.py                         # records actual provenance events and seeds stopped checkpoint fixtures
+python loaded_dataset.py               # datasets 4.3.0 loads 73 real parquet rows; base rejects attestation, head accepts
+python cache_versions.py               # Hub 1.23.0 creates legacy cache
+python cache_versions.py --offline     # Hub 1.32.0 reads existing legacy cache
+python cache_versions.py --offline --shared  # Hub 1.23.0 reads 1.32.0 shared cache on rollback
+
+Frontend: npm ci --ignore-scripts && npm run build, independently on base and head.
+Browser: separate base/head contexts, 1440x1000 and 390x844, light theme, reduced motion, en-US; actual servers and persisted fixtures. The browser overrides only /api/health chat_only=false to expose Train in the dependency-light test install. No history, provenance, resume or file-size response is mocked. Checkpoints are deterministic fixtures, not completed GPU training runs.
+Browser assertions: base has zero Resume training buttons, head has one; previously incomplete record stays blocked; refresh preserves state; available Resume accepts focus.
+
+Formatting: scripts/run_ruff_format.py on copies of all five changed files with repository-pinned ruff 0.6.9; byte-for-byte unchanged.
+Lint: python -m ruff check on all five changed files, passed with ruff 0.6.9 and 0.16.8.
+Git: diff --check passes, no source repairs necessary.

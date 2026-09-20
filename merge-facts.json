@@ -1,0 +1,40 @@
+{
+  "side": "merge",
+  "event": {
+    "type": "resource_provenance",
+    "version": 1,
+    "model": {
+      "status": "attested",
+      "repo_id": "hf-internal-testing/tiny-random-LlamaForCausalLM",
+      "snapshot_path": "<task-root>/runtime/merge/hf/hub/models--hf-internal-testing--tiny-random-LlamaForCausalLM/snapshots/9fb191250dd56d0ba7ec9785a025ed29c03d5998",
+      "load_mode": "unquantized"
+    },
+    "dataset": {
+      "status": "attested",
+      "snapshot_path": "<task-root>/runtime/merge/hf/hub/datasets--hf-internal-testing--librispeech_asr_dummy/snapshots/5be91486e11a2d616f4ec5db8d3fd248585ac07a"
+    },
+    "reasons": []
+  },
+  "can_resume": true,
+  "blocked_reason": null,
+  "size": 4131280,
+  "size_mean_ms": 0.39787221005099127,
+  "persisted": {
+    "model_name": "hf-internal-testing/tiny-random-LlamaForCausalLM",
+    "model_snapshot_path": "<task-root>/runtime/merge/hf/hub/models--hf-internal-testing--tiny-random-LlamaForCausalLM/snapshots/9fb191250dd56d0ba7ec9785a025ed29c03d5998",
+    "hf_dataset": "hf-internal-testing/librispeech_asr_dummy",
+    "dataset_snapshot_path": "<task-root>/runtime/merge/hf/hub/datasets--hf-internal-testing--librispeech_asr_dummy/snapshots/5be91486e11a2d616f4ec5db8d3fd248585ac07a",
+    "load_in_4bit": false,
+    "training_type": "LoRA",
+    "dataset_source": "huggingface",
+    "actual_model_repo_id": "hf-internal-testing/tiny-random-LlamaForCausalLM",
+    "resource_provenance": {
+      "version": 1,
+      "status": "complete",
+      "model_status": "attested",
+      "model_load_mode": "unquantized",
+      "dataset_status": "attested",
+      "reasons": []
+    }
+  }
+}

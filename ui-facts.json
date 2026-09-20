@@ -1,0 +1,98 @@
+[
+  {
+    "side": "base",
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "resume_buttons": 0,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "base",
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "viewport": [
+      390,
+      844
+    ],
+    "resume_buttons": 0,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "head",
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "resume_buttons": 1,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "head",
+    "browser": "chromium",
+    "version": "153.0.8010.12",
+    "viewport": [
+      390,
+      844
+    ],
+    "resume_buttons": 1,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "base",
+    "browser": "firefox",
+    "version": "155.0",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "resume_buttons": 0,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "base",
+    "browser": "firefox",
+    "version": "155.0",
+    "viewport": [
+      390,
+      844
+    ],
+    "resume_buttons": 0,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "head",
+    "browser": "firefox",
+    "version": "155.0",
+    "viewport": [
+      1440,
+      1000
+    ],
+    "resume_buttons": 1,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  },
+  {
+    "side": "head",
+    "browser": "firefox",
+    "version": "155.0",
+    "viewport": [
+      390,
+      844
+    ],
+    "resume_buttons": 1,
+    "refresh_passed": true,
+    "hardware_navigation_fixture": true
+  }
+]

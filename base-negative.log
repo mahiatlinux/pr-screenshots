@@ -1,0 +1,67 @@
+[
+  {
+    "layout": "regular",
+    "model": true,
+    "dataset": true,
+    "size": 4096
+  },
+  {
+    "layout": "own",
+    "model": true,
+    "dataset": true,
+    "size": 4096
+  },
+  {
+    "layout": "shared",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "mixed",
+    "model": false,
+    "dataset": false,
+    "size": 1024
+  },
+  {
+    "layout": "external",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "other-repo",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "prefix-collision",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "broken",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "loop",
+    "model": false,
+    "dataset": false,
+    "size": null
+  },
+  {
+    "layout": "shared-escape",
+    "model": false,
+    "dataset": false,
+    "size": null
+  }
+]
+Traceback (most recent call last):
+  File "<task-root>/base/../probe.py", line 39, in <module>
+    assert all(r['model'] and r['dataset'] and r['size'] for r in results if r['layout']=='shared'),'shared blobs rejected'
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: shared blobs rejected

@@ -1,0 +1,2 @@
+RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+{"python": "3.10.20", "hub": "1.23.0", "offline": true, "resolved": "blobs/f5/f54827240aacee8268a6bfe85e39176002451d520fa5854d5de8c54619559f8f", "size": 4131280}

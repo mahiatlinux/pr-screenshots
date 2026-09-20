@@ -1,0 +1,27 @@
+...............s........................................................ [  8%]
+........................................................................ [ 16%]
+........................................................................ [ 25%]
+........................................................................ [ 33%]
+........................................................................ [ 41%]
+........................................................................ [ 50%]
+........................................................................ [ 58%]
+........................................................................ [ 67%]
+........................................................................ [ 75%]
+........................................................................ [ 83%]
+........................................................................ [ 92%]
+..................................................................       [100%]
+=============================== warnings summary ===============================
+studio/backend/tests/test_model_memory_settings.py::TestNoDeadMemoryBookkeeping::test_the_launch_records_nothing_unread
+  <unknown>:240: SyntaxWarning: invalid escape sequence '\`'
+
+studio/backend/tests/test_model_memory_settings.py::TestNoDeadMemoryBookkeeping::test_the_launch_records_nothing_unread
+  <unknown>:1943: SyntaxWarning: invalid escape sequence '\;'
+
+studio/backend/tests/test_model_memory_settings.py::TestNoDeadMemoryBookkeeping::test_the_launch_records_nothing_unread
+  <unknown>:1944: SyntaxWarning: invalid escape sequence '\;'
+
+studio/backend/tests/test_model_memory_settings.py::TestNoDeadMemoryBookkeeping::test_the_launch_records_nothing_unread
+  <unknown>:1951: SyntaxWarning: invalid escape sequence '\;'
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+857 passed, 1 skipped, 4 warnings in 15.45s

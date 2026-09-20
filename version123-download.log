@@ -1,0 +1,3 @@
+RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+{"python": "3.10.20", "hub": "1.23.0", "offline": false, "resolved": "models--hf-internal-testing--tiny-random-LlamaForCausalLM/blobs/49c20f32c6c597480fcaec5df2f86c645eabea765cbea1e67886dbae45e5c992", "size": 4131280}

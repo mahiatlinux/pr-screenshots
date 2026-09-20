@@ -1,0 +1,48 @@
+{
+  "side": "base",
+  "event": {
+    "type": "resource_provenance",
+    "version": 1,
+    "model": {
+      "status": "incomplete",
+      "repo_id": null,
+      "snapshot_path": null,
+      "load_mode": null
+    },
+    "dataset": {
+      "status": "incomplete",
+      "snapshot_path": null
+    },
+    "reasons": [
+      "model_snapshot_unattested",
+      "dataset_cache_unattested"
+    ]
+  },
+  "can_resume": false,
+  "blocked_reason": "The model revision used by this run was not attested.",
+  "size": null,
+  "size_mean_ms": 0.3356087999418378,
+  "persisted": {
+    "model_name": "hf-internal-testing/tiny-random-LlamaForCausalLM",
+    "model_snapshot_path": null,
+    "hf_dataset": "hf-internal-testing/librispeech_asr_dummy",
+    "dataset_snapshot_path": null,
+    "load_in_4bit": false,
+    "training_type": "LoRA",
+    "dataset_source": "huggingface",
+    "actual_model_repo_id": null,
+    "resource_provenance": {
+      "version": 1,
+      "status": "incomplete",
+      "model_status": "incomplete",
+      "model_load_mode": null,
+      "dataset_status": "incomplete",
+      "reasons": [
+        "model_snapshot_unattested",
+        "dataset_cache_unattested",
+        "model_event_invalid",
+        "dataset_event_invalid"
+      ]
+    }
+  }
+}

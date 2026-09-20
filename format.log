@@ -1,0 +1,3 @@
+2 files reformatted
+Adjusted kwarg spacing in studio/backend/routes/data_recipe/validate.py
+Adjusted kwarg spacing in studio/backend/tests/test_data_recipe_seed.py

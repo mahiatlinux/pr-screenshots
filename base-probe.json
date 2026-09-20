@@ -1,0 +1,73 @@
+{
+  "side": "base",
+  "python": "3.13.14",
+  "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
+  "results": [
+    {
+      "case": "null",
+      "valid": false,
+      "errors": [
+        "1 validation error for BuilderConfig\ndata_designer.seed_config.source.hf.endpoint\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type"
+      ],
+      "seconds": 0.498
+    },
+    {
+      "case": "empty",
+      "exception": "Error",
+      "error": "UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol."
+    },
+    {
+      "case": "whitespace",
+      "exception": "Error",
+      "error": "UnsupportedProtocol: Request URL is missing an 'http://' or 'https://' protocol."
+    },
+    {
+      "case": "explicit",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.207
+    },
+    {
+      "case": "omitted",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.113
+    },
+    {
+      "case": "seedless",
+      "valid": true,
+      "errors": [],
+      "seconds": 0.005
+    },
+    {
+      "case": "missing-columns",
+      "valid": false,
+      "errors": [
+        "Recipe must include columns."
+      ],
+      "seconds": 0.0
+    },
+    {
+      "case": "invalid-expression",
+      "valid": false,
+      "errors": [
+        "Expression column 'result' references missing column 'not_a_column'."
+      ],
+      "seconds": 0.201
+    },
+    {
+      "case": "github-invalid",
+      "valid": false,
+      "errors": [
+        "GitHub seed requires at least one repo."
+      ],
+      "seconds": 0.0
+    },
+    {
+      "case": "explicit-preserved-despite-env",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.134
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "side": "base",
+  "engine": "chrome",
+  "version": "153.0.8010.52",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "submitted_endpoint": null,
+  "http_status": 200,
+  "response": {
+    "valid": false,
+    "errors": [
+      {
+        "message": "1 validation error for BuilderConfig\ndata_designer.seed_config.source.hf.endpoint\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type",
+        "path": null,
+        "code": null
+      }
+    ],
+    "raw_detail": "1 validation error for BuilderConfig\ndata_designer.seed_config.source.hf.endpoint\n  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]\n    For further information visit https://errors.pydantic.dev/2.13/v/string_type"
+  },
+  "visible": "Fix these issues first"
+}

@@ -1,0 +1,17 @@
+{
+  "side": "head",
+  "engine": "edge",
+  "version": "153.0.4234.48",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "submitted_endpoint": null,
+  "http_status": 200,
+  "response": {
+    "valid": true,
+    "errors": [],
+    "raw_detail": null
+  },
+  "visible": "Ready to run"
+}

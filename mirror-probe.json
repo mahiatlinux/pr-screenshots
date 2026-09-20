@@ -1,0 +1,91 @@
+{
+  "side": "mirror",
+  "python": "3.13.14",
+  "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
+  "results": [
+    {
+      "case": "null",
+      "valid": true,
+      "errors": [],
+      "seconds": 3.205
+    },
+    {
+      "case": "empty",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.18
+    },
+    {
+      "case": "whitespace",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.24
+    },
+    {
+      "case": "explicit",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.026
+    },
+    {
+      "case": "omitted",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.075
+    },
+    {
+      "case": "seedless",
+      "valid": true,
+      "errors": [],
+      "seconds": 0.005
+    },
+    {
+      "case": "missing-columns",
+      "valid": false,
+      "errors": [
+        "Recipe must include columns."
+      ],
+      "seconds": 0.0
+    },
+    {
+      "case": "invalid-expression",
+      "valid": false,
+      "errors": [
+        "Expression column 'result' references missing column 'not_a_column'."
+      ],
+      "seconds": 0.13
+    },
+    {
+      "case": "github-invalid",
+      "valid": false,
+      "errors": [
+        "GitHub seed requires at least one repo."
+      ],
+      "seconds": 0.0
+    },
+    {
+      "case": "explicit-preserved-despite-env",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.186
+    },
+    {
+      "case": "repeat-warm",
+      "valid": true,
+      "errors": [],
+      "seconds": 1.224
+    },
+    {
+      "case": "concurrent-validation",
+      "passed": 8
+    },
+    {
+      "case": "generation",
+      "rows": 2,
+      "result_values": [
+        "verified",
+        "verified"
+      ]
+    }
+  ]
+}

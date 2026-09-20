@@ -1,0 +1,17 @@
+{
+  "side": "head",
+  "engine": "firefox",
+  "version": "155.0",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "submitted_endpoint": null,
+  "http_status": 200,
+  "response": {
+    "valid": true,
+    "errors": [],
+    "raw_detail": null
+  },
+  "visible": "Ready to run"
+}

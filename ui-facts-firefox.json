@@ -1,0 +1,27 @@
+{
+  "expected_visible_difference": "context User to System; question System to User; answer remains Assistant",
+  "ui_fixture": "chat_only capability overridden to expose the dataset UI; upload and format responses are live",
+  "browsers": {
+    "firefox": "153.0"
+  },
+  "base": {
+    "mapping": {
+      "answer": "assistant",
+      "context": "user",
+      "question": "system"
+    },
+    "format": "custom_heuristic",
+    "total_rows": null,
+    "refresh_preserves_mapping": true
+  },
+  "head": {
+    "mapping": {
+      "answer": "assistant",
+      "question": "user",
+      "context": "system"
+    },
+    "format": "custom_heuristic",
+    "total_rows": null,
+    "refresh_preserves_mapping": true
+  }
+}

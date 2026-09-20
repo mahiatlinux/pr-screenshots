@@ -1,0 +1,52 @@
+{
+  "model": "context shadows text only for selection; preserve two-column fallback, explicit system-only manual mapping, recognized schemas and both implementations",
+  "counts": {
+    "qa_cases": 5808,
+    "compatibility_cases": 6413
+  },
+  "example": {
+    "base": [
+      {
+        "answer": "assistant",
+        "context": "user",
+        "question": "system"
+      },
+      {
+        "answer": "assistant",
+        "context": "user",
+        "question": "system"
+      }
+    ],
+    "head": [
+      {
+        "answer": "assistant",
+        "question": "user",
+        "context": "system"
+      },
+      {
+        "answer": "assistant",
+        "question": "user",
+        "context": "system"
+      }
+    ],
+    "merge": [
+      {
+        "answer": "assistant",
+        "question": "user",
+        "context": "system"
+      },
+      {
+        "answer": "assistant",
+        "question": "user",
+        "context": "system"
+      }
+    ]
+  },
+  "median_microseconds": {
+    "base": 7.56,
+    "head": 14.57,
+    "merge": 14.17
+  },
+  "compatibility_difference_count": 0,
+  "compatibility_differences": []
+}

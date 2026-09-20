@@ -1,0 +1,308 @@
+{
+  "base": {
+    "serial_checks": 16,
+    "concurrent_checks": 16,
+    "concurrent_median_ms": 339.5,
+    "rows": [
+      {
+        "case": 0,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user",
+          "question": "system"
+        },
+        "manual": false
+      },
+      {
+        "case": 0,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user",
+          "question": "system"
+        },
+        "manual": false
+      },
+      {
+        "case": 1,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 1,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 2,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user",
+          "explanation": "system"
+        },
+        "manual": false
+      },
+      {
+        "case": 2,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user",
+          "explanation": "system"
+        },
+        "manual": false
+      },
+      {
+        "case": 3,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "fulltext": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 3,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "fulltext": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 4,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "target_text": "assistant",
+          "input_text": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 4,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "target_text": "assistant",
+          "input_text": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 5,
+        "file_format": "jsonl",
+        "detected_format": "unknown",
+        "mapping": null,
+        "manual": true
+      },
+      {
+        "case": 5,
+        "file_format": "parquet",
+        "detected_format": "unknown",
+        "mapping": null,
+        "manual": true
+      },
+      {
+        "case": 6,
+        "file_format": "jsonl",
+        "detected_format": "alpaca",
+        "mapping": null,
+        "manual": false
+      },
+      {
+        "case": 6,
+        "file_format": "parquet",
+        "detected_format": "alpaca",
+        "mapping": null,
+        "manual": false
+      },
+      {
+        "case": 7,
+        "file_format": "jsonl",
+        "detected_format": "chatml",
+        "mapping": null,
+        "manual": false
+      },
+      {
+        "case": 7,
+        "file_format": "parquet",
+        "detected_format": "chatml",
+        "mapping": null,
+        "manual": false
+      }
+    ]
+  },
+  "head": {
+    "serial_checks": 16,
+    "concurrent_checks": 16,
+    "concurrent_median_ms": 310.57,
+    "rows": [
+      {
+        "case": 0,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "question": "user",
+          "context": "system"
+        },
+        "manual": false
+      },
+      {
+        "case": 0,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "question": "user",
+          "context": "system"
+        },
+        "manual": false
+      },
+      {
+        "case": 1,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 1,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 2,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user",
+          "explanation": "system"
+        },
+        "manual": false
+      },
+      {
+        "case": 2,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "user",
+          "explanation": "system"
+        },
+        "manual": false
+      },
+      {
+        "case": 3,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "fulltext": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 3,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "fulltext": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 4,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "target_text": "assistant",
+          "input_text": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 4,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "target_text": "assistant",
+          "input_text": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 5,
+        "file_format": "jsonl",
+        "detected_format": "unknown",
+        "mapping": null,
+        "manual": true
+      },
+      {
+        "case": 5,
+        "file_format": "parquet",
+        "detected_format": "unknown",
+        "mapping": null,
+        "manual": true
+      },
+      {
+        "case": 6,
+        "file_format": "jsonl",
+        "detected_format": "alpaca",
+        "mapping": null,
+        "manual": false
+      },
+      {
+        "case": 6,
+        "file_format": "parquet",
+        "detected_format": "alpaca",
+        "mapping": null,
+        "manual": false
+      },
+      {
+        "case": 7,
+        "file_format": "jsonl",
+        "detected_format": "chatml",
+        "mapping": null,
+        "manual": false
+      },
+      {
+        "case": 7,
+        "file_format": "parquet",
+        "detected_format": "chatml",
+        "mapping": null,
+        "manual": false
+      }
+    ]
+  }
+}

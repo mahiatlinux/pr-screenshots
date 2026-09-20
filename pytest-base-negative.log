@@ -1,0 +1,168 @@
+FFFFFFFF................................                                 [100%]
+=================================== FAILURES ===================================
+_______ test_context_column_is_not_matched_as_text[row0-expected0-utils] _______
+
+heuristic = <function detect_custom_format_heuristic at 0x74e9840b07c0>
+row = {'context': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'}
+expected = {'question': 'user', 'context': 'system', 'answer': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'answer': 'a...on': 'system'} == {'question': ...: 'assistant'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'question': 'system'} != {'question': 'user'}
+E         {'context': 'user'} != {'context': 'system'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:114: AssertionError
+------------------------------ Captured log setup ------------------------------
+WARNING  storage.rag_db:rag_db.py:34 RAG unavailable: sqlite-vec could not be imported (No module named 'sqlite_vec')
+________ test_context_column_is_not_matched_as_text[row0-expected0-hub] ________
+
+heuristic = <function detect_custom_format_heuristic at 0x74e98401f6a0>
+row = {'context': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'}
+expected = {'question': 'user', 'context': 'system', 'answer': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'answer': 'a...on': 'system'} == {'question': ...: 'assistant'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'question': 'system'} != {'question': 'user'}
+E         {'context': 'user'} != {'context': 'system'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:114: AssertionError
+_______ test_context_column_is_not_matched_as_text[row1-expected1-utils] _______
+
+heuristic = <function detect_custom_format_heuristic at 0x74e9840b07c0>
+row = {'id': '1', 'title': 't', 'context': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy', ...}
+expected = {'question': 'user', 'context': 'system', 'title': 'system', 'answers': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'answers': '...le': 'system'} == {'question': ...: 'assistant'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'context': 'user'} != {'context': 'system'}
+E         Right contains 1 more item:
+E         {'question': 'user'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:114: AssertionError
+________ test_context_column_is_not_matched_as_text[row1-expected1-hub] ________
+
+heuristic = <function detect_custom_format_heuristic at 0x74e98401f6a0>
+row = {'id': '1', 'title': 't', 'context': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy', ...}
+expected = {'question': 'user', 'context': 'system', 'title': 'system', 'answers': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'answers': '...le': 'system'} == {'question': ...: 'assistant'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'context': 'user'} != {'context': 'system'}
+E         Right contains 1 more item:
+E         {'question': 'user'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:114: AssertionError
+_______ test_context_column_is_not_matched_as_text[row2-expected2-utils] _______
+
+heuristic = <function detect_custom_format_heuristic at 0x74e9840b07c0>
+row = {'instruction': 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy', 'category': 'qa'}
+expected = {'instruction': 'user', 'context': 'system', 'response': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'response': ...on': 'system'} == {'instruction...: 'assistant'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'instruction': 'system'} != {'instruction': 'user'}
+E         {'context': 'user'} != {'context': 'system'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:114: AssertionError
+________ test_context_column_is_not_matched_as_text[row2-expected2-hub] ________
+
+heuristic = <function detect_custom_format_heuristic at 0x74e98401f6a0>
+row = {'instruction': 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy...yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy', 'category': 'qa'}
+expected = {'instruction': 'user', 'context': 'system', 'response': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'response': ...on': 'system'} == {'instruction...: 'assistant'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'instruction': 'system'} != {'instruction': 'user'}
+E         {'context': 'user'} != {'context': 'system'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:114: AssertionError
+_______ test_context_column_is_not_matched_as_text[row3-expected3-utils] _______
+
+heuristic = <function detect_custom_format_heuristic at 0x74e9840b07c0>
+row = {'retrieved_contexts': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'}
+expected = {'question': 'user', 'retrieved_contexts': 'system', 'ground_truth_answer': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'ground_trut...on': 'system'} == {'question': ...: 'assistant'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'retrieved_contexts': 'user'} != {'retrieved_contexts': 'system'}
+E         {'question': 'system'} != {'question': 'user'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:114: AssertionError
+________ test_context_column_is_not_matched_as_text[row3-expected3-hub] ________
+
+heuristic = <function detect_custom_format_heuristic at 0x74e98401f6a0>
+row = {'retrieved_contexts': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'}
+expected = {'question': 'user', 'retrieved_contexts': 'system', 'ground_truth_answer': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'ground_trut...on': 'system'} == {'question': ...: 'assistant'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'retrieved_contexts': 'user'} != {'retrieved_contexts': 'system'}
+E         {'question': 'system'} != {'question': 'user'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:114: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row0-expected0-utils]
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row0-expected0-hub]
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row1-expected1-utils]
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row1-expected1-hub]
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row2-expected2-utils]
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row2-expected2-hub]
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row3-expected3-utils]
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row3-expected3-hub]
+8 failed, 32 passed in 2.31s

@@ -1,8 +1,8 @@
 {
   "base": {
-    "serial_checks": 16,
+    "serial_checks": 18,
     "concurrent_checks": 16,
-    "concurrent_median_ms": 339.5,
+    "concurrent_median_ms": 228.87,
     "rows": [
       {
         "case": 0,
@@ -148,14 +148,36 @@
         "file_format": "parquet",
         "detected_format": "chatml",
         "mapping": null,
+        "manual": false
+      },
+      {
+        "case": 8,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "system",
+          "prompt": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 8,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "system",
+          "prompt": "user"
+        },
         "manual": false
       }
     ]
   },
-  "head": {
-    "serial_checks": 16,
+  "fix": {
+    "serial_checks": 18,
     "concurrent_checks": 16,
-    "concurrent_median_ms": 310.57,
+    "concurrent_median_ms": 250.62,
     "rows": [
       {
         "case": 0,
@@ -301,6 +323,28 @@
         "file_format": "parquet",
         "detected_format": "chatml",
         "mapping": null,
+        "manual": false
+      },
+      {
+        "case": 8,
+        "file_format": "jsonl",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "system",
+          "prompt": "user"
+        },
+        "manual": false
+      },
+      {
+        "case": 8,
+        "file_format": "parquet",
+        "detected_format": "custom_heuristic",
+        "mapping": {
+          "answer": "assistant",
+          "context": "system",
+          "prompt": "user"
+        },
         "manual": false
       }
     ]

@@ -11,7 +11,7 @@ async def main():
   if browser_name in paths: launch['executable_path']=str(paths[browser_name])
   browser=await (p.firefox if browser_name=='firefox' else p.chromium).launch(**launch)
   results['browsers'][browser_name]=browser.version
-  for side,port in [('base',19391),('head',19392)]:
+  for side,port in [('base',19391),('fix',19392)]:
    url=f'http://127.0.0.1:{port}'
    client=httpx.Client(base_url=url,timeout=60)
    secret=root/side/'.ui-session.json'
@@ -35,8 +35,8 @@ async def main():
    await context.route('**/api/health',enable_dataset_ui)
    page=await context.new_page()
    await page.goto(url+'/studio',wait_until='networkidle',timeout=60000)
-   
-   
+
+
    try:
     await page.get_by_role('button',name='View dataset',exact=False).click(timeout=15000)
     dialog=page.get_by_role('dialog'); await dialog.wait_for(); await page.wait_for_timeout(1500)
@@ -47,7 +47,7 @@ async def main():
      assert text.lower()==expected[name],(name,text,expected)
     card=dialog.get_by_text('Heuristic-detected mapping',exact=True).locator('xpath=../../..')
     box=await card.bounding_box(); table=await dialog.locator('table').bounding_box()
-    await page.screenshot(path=str(root/'artifacts'/f'{browser_name}-{side}-mapping.png'),clip={'x':box['x'],'y':box['y'],'width':box['width'],'height':table['y']+table['height']-box['y']})
+    await page.screenshot(path=str(root/'artifacts'/f'final-{browser_name}-{side}-mapping.png'),clip={'x':box['x'],'y':box['y'],'width':box['width'],'height':table['y']+table['height']-box['y']})
     await page.reload(wait_until='networkidle'); await page.get_by_role('button',name='View dataset',exact=False).click()
     await page.get_by_role('dialog').wait_for()
     for name in ['context','question','answer']:
@@ -63,5 +63,5 @@ async def main():
     results[side]['explicit_manual_mapping_survives_reload']=True
     print(side,expected,'refresh passed',flush=True)
    finally: await context.close()
-  (root/f'artifacts/ui-facts-{browser_name}.json').write_text(json.dumps(results,indent=2)); await browser.close()
+  (root/f'artifacts/ui-facts-final-{browser_name}.json').write_text(json.dumps(results,indent=2)); await browser.close()
 asyncio.run(main())

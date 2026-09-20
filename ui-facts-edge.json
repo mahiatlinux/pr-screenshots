@@ -12,9 +12,10 @@
     },
     "format": "custom_heuristic",
     "total_rows": null,
-    "refresh_preserves_mapping": true
+    "refresh_preserves_mapping": true,
+    "explicit_manual_mapping_survives_reload": true
   },
-  "head": {
+  "fix": {
     "mapping": {
       "answer": "assistant",
       "question": "user",
@@ -22,6 +23,7 @@
     },
     "format": "custom_heuristic",
     "total_rows": null,
-    "refresh_preserves_mapping": true
+    "refresh_preserves_mapping": true,
+    "explicit_manual_mapping_survives_reload": true
   }
 }

@@ -17,7 +17,7 @@
         "question": "system"
       }
     ],
-    "head": [
+    "fix": [
       {
         "answer": "assistant",
         "question": "user",
@@ -29,7 +29,7 @@
         "context": "system"
       }
     ],
-    "merge": [
+    "mirror": [
       {
         "answer": "assistant",
         "question": "user",
@@ -43,9 +43,9 @@
     ]
   },
   "median_microseconds": {
-    "base": 7.56,
-    "head": 14.57,
-    "merge": 14.17
+    "base": 7.01,
+    "fix": 12.65,
+    "mirror": 12.68
   },
   "compatibility_difference_count": 0,
   "compatibility_differences": []

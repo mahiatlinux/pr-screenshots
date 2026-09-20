@@ -2,8 +2,9 @@ import concurrent.futures, io, json, pathlib, statistics, time
 import httpx, pyarrow as pa, pyarrow.parquet as pq
 root=pathlib.Path(__file__).resolve().parent
 schemas=[{'context':'Background passage. '*60,'question':'Who wrote this?','answer':'Mira.'},{'context':'Background passage. '*60,'answer':'Mira.'},{'context':'Background passage. '*60,'answer':'A'*120,'explanation':'E'*120},{'fulltext':'Full text '*20,'answer':'A'*120},{'input_text':'I'*120,'target_text':'T'*120},{'system':'S'*120,'output':'O'*120},{'instruction':'I'*120,'input':'More context','output':'O'*120},{'messages':[{'role':'user','content':'Who?'},{'role':'assistant','content':'Mira.'}]}]
+schemas.append({'context':'Background.','prompt':'Summarize.','question':'Why?','answer':'A'*120})
 results={}; raw={}
-for side,port in [('base',19391),('head',19392)]:
+for side,port in [('base',19391),('fix',19392)]:
  auth=json.loads((root/side/'.ui-session.json').read_text()); client=httpx.Client(base_url=f'http://127.0.0.1:{port}',headers={'Authorization':'Bearer '+auth['access_token']},timeout=60)
  rows=[]; paths=[]
  for index,row in enumerate(schemas):
@@ -25,5 +26,5 @@ for side,port in [('base',19391),('head',19392)]:
  with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool: concurrent_results=list(pool.map(request,range(16)))
  assert all(x[0]==rows[0]['mapping'] for x in concurrent_results)
  results[side]={'serial_checks':len(rows),'concurrent_checks':len(concurrent_results),'concurrent_median_ms':round(statistics.median(x[1] for x in concurrent_results)*1000,2),'rows':rows}
-assert results['base']['rows'][2:]==results['head']['rows'][2:]
-(root/'artifacts/live-api.json').write_text(json.dumps(results,indent=2));print(json.dumps(results,indent=2))
+assert results['base']['rows'][2:]==results['fix']['rows'][2:]
+(root/'artifacts/live-api-final.json').write_text(json.dumps(results,indent=2));print(json.dumps(results,indent=2))

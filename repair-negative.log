@@ -1,0 +1,44 @@
+..........................FF................                             [100%]
+=================================== FAILURES ===================================
+______ test_context_column_is_not_matched_as_text[row13-expected13-utils] ______
+
+heuristic = <function detect_custom_format_heuristic at 0x72b822d5c4a0>
+row = {'context': 'Background.', 'prompt': 'Summarize.', 'question': 'Why?', 'answer': 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'}
+expected = {'context': 'system', 'prompt': 'user', 'answer': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'answer': 'a...pt': 'system'} == {'context': '...: 'assistant'}
+E
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'context': 'user'} != {'context': 'system'}
+E         {'prompt': 'system'} != {'prompt': 'user'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:122: AssertionError
+_______ test_context_column_is_not_matched_as_text[row13-expected13-hub] _______
+
+heuristic = <function detect_custom_format_heuristic at 0x72b822d2b2e0>
+row = {'context': 'Background.', 'prompt': 'Summarize.', 'question': 'Why?', 'answer': 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy'}
+expected = {'context': 'system', 'prompt': 'user', 'answer': 'assistant'}
+
+    @pytest.mark.parametrize("heuristic", _HEURISTICS)
+    @pytest.mark.parametrize("row, expected", _CASES)
+    def test_context_column_is_not_matched_as_text(heuristic, row, expected):
+>       assert heuristic([row]) == expected
+E       AssertionError: assert {'answer': 'a...pt': 'system'} == {'context': '...: 'assistant'}
+E
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'context': 'user'} != {'context': 'system'}
+E         {'prompt': 'system'} != {'prompt': 'user'}
+E         Use -v to get more diff
+
+studio/backend/tests/test_dataset_heuristic_role_keywords.py:122: AssertionError
+=========================== short test summary info ============================
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row13-expected13-utils]
+FAILED studio/backend/tests/test_dataset_heuristic_role_keywords.py::test_context_column_is_not_matched_as_text[row13-expected13-hub]
+2 failed, 42 passed in 2.08s

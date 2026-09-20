@@ -11,7 +11,7 @@ expected = {'question': 'user', 'context': 'system', 'answer': 'assistant'}
     def test_context_column_is_not_matched_as_text(heuristic, row, expected):
 >       assert heuristic([row]) == expected
 E       AssertionError: assert {'answer': 'a...on': 'system'} == {'question': ...: 'assistant'}
-E         
+E
 E         Omitting 1 identical items, use -vv to show
 E         Differing items:
 E         {'question': 'system'} != {'question': 'user'}
@@ -32,7 +32,7 @@ expected = {'question': 'user', 'context': 'system', 'answer': 'assistant'}
     def test_context_column_is_not_matched_as_text(heuristic, row, expected):
 >       assert heuristic([row]) == expected
 E       AssertionError: assert {'answer': 'a...on': 'system'} == {'question': ...: 'assistant'}
-E         
+E
 E         Omitting 1 identical items, use -vv to show
 E         Differing items:
 E         {'question': 'system'} != {'question': 'user'}
@@ -51,7 +51,7 @@ expected = {'question': 'user', 'context': 'system', 'title': 'system', 'answers
     def test_context_column_is_not_matched_as_text(heuristic, row, expected):
 >       assert heuristic([row]) == expected
 E       AssertionError: assert {'answers': '...le': 'system'} == {'question': ...: 'assistant'}
-E         
+E
 E         Omitting 2 identical items, use -vv to show
 E         Differing items:
 E         {'context': 'user'} != {'context': 'system'}
@@ -71,7 +71,7 @@ expected = {'question': 'user', 'context': 'system', 'title': 'system', 'answers
     def test_context_column_is_not_matched_as_text(heuristic, row, expected):
 >       assert heuristic([row]) == expected
 E       AssertionError: assert {'answers': '...le': 'system'} == {'question': ...: 'assistant'}
-E         
+E
 E         Omitting 2 identical items, use -vv to show
 E         Differing items:
 E         {'context': 'user'} != {'context': 'system'}
@@ -91,7 +91,7 @@ expected = {'instruction': 'user', 'context': 'system', 'response': 'assistant'}
     def test_context_column_is_not_matched_as_text(heuristic, row, expected):
 >       assert heuristic([row]) == expected
 E       AssertionError: assert {'response': ...on': 'system'} == {'instruction...: 'assistant'}
-E         
+E
 E         Omitting 1 identical items, use -vv to show
 E         Differing items:
 E         {'instruction': 'system'} != {'instruction': 'user'}
@@ -110,7 +110,7 @@ expected = {'instruction': 'user', 'context': 'system', 'response': 'assistant'}
     def test_context_column_is_not_matched_as_text(heuristic, row, expected):
 >       assert heuristic([row]) == expected
 E       AssertionError: assert {'response': ...on': 'system'} == {'instruction...: 'assistant'}
-E         
+E
 E         Omitting 1 identical items, use -vv to show
 E         Differing items:
 E         {'instruction': 'system'} != {'instruction': 'user'}
@@ -129,7 +129,7 @@ expected = {'question': 'user', 'retrieved_contexts': 'system', 'ground_truth_an
     def test_context_column_is_not_matched_as_text(heuristic, row, expected):
 >       assert heuristic([row]) == expected
 E       AssertionError: assert {'ground_trut...on': 'system'} == {'question': ...: 'assistant'}
-E         
+E
 E         Omitting 1 identical items, use -vv to show
 E         Differing items:
 E         {'retrieved_contexts': 'user'} != {'retrieved_contexts': 'system'}
@@ -148,7 +148,7 @@ expected = {'question': 'user', 'retrieved_contexts': 'system', 'ground_truth_an
     def test_context_column_is_not_matched_as_text(heuristic, row, expected):
 >       assert heuristic([row]) == expected
 E       AssertionError: assert {'ground_trut...on': 'system'} == {'question': ...: 'assistant'}
-E         
+E
 E         Omitting 1 identical items, use -vv to show
 E         Differing items:
 E         {'retrieved_contexts': 'user'} != {'retrieved_contexts': 'system'}

@@ -15,7 +15,7 @@
     "refresh_preserves_mapping": true,
     "explicit_manual_mapping_survives_reload": true
   },
-  "head": {
+  "fix": {
     "mapping": {
       "answer": "assistant",
       "question": "user",

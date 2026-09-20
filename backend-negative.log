@@ -1,0 +1,111 @@
+.......FF.F...F....F...........                                          [100%]
+=================================== FAILURES ===================================
+___________ test_resumed_run_eta_uses_the_steps_done_in_this_session ___________
+
+    def test_resumed_run_eta_uses_the_steps_done_in_this_session():
+        owner = _make_owner()
+        owner._update_progress(total_steps = 1000)
+        backend = TrainingBackend()
+        event_queue = _FakeQueue()
+        owner.add_progress_callback(_create_trainer_progress_callback(event_queue))
+        owner.training_start_time = 100
+
+        _drive_resumed(owner._create_progress_callback(), start_step = 900, step = 910)
+        for event in event_queue.events:
+            backend._handle_event(event)
+
+>       assert owner.training_progress.eta_seconds == pytest.approx(540, rel = 0.02)
+E       assert 65.27472527472527 == 540 ± 10.8
+E
+E         comparison failed
+E         Obtained: 65.27472527472527
+E         Expected: 540 ± 10.8
+
+tests/test_training_progress_callback.py:259: AssertionError
+----------------------------- Captured stdout call -----------------------------
+2026-09-20 04:10:36 [info     ] TrainingBackend initialized (subprocess mode)
+2026-09-20 04:10:36 [info     ] training_progress              epoch=0.9 eta_s=65 loss=0.5 percent=91 s_per_step=None step=910 tok_per_s=None total_steps=1000
+____________ test_resumed_run_reports_no_eta_before_its_first_step _____________
+
+    def test_resumed_run_reports_no_eta_before_its_first_step():
+        owner = _make_owner()
+        owner._update_progress(total_steps = 1000)
+        owner.training_start_time = 100
+
+        _drive_resumed(owner._create_progress_callback(), start_step = 900, step = 900)
+
+>       assert owner.training_progress.eta_seconds is None
+E       assert 73.33333333333333 is None
+E        +  where 73.33333333333333 = TrainingProgress(epoch=0.9, step=900, total_steps=1000, loss=0.5, learning_rate=0.0001, is_training=True, is_completed...333333333333, grad_norm=None, num_tokens=0, eval_loss=None, peak_memory_gb=None, output_dir=None, is_run_summary=False).eta_seconds
+E        +    where TrainingProgress(epoch=0.9, step=900, total_steps=1000, loss=0.5, learning_rate=0.0001, is_training=True, is_completed...333333333333, grad_norm=None, num_tokens=0, eval_loss=None, peak_memory_gb=None, output_dir=None, is_run_summary=False) = <core.training.trainer.UnslothTrainer object at 0x7a554014c3e0>.training_progress
+
+tests/test_training_progress_callback.py:272: AssertionError
+________________ test_mlx_adapter_keeps_the_session_start_step _________________
+
+    def test_mlx_adapter_keeps_the_session_start_step():
+        adapter = _MLXTrainerAdapter()
+
+        adapter._handle_event({"type": "progress", "step": 910, "session_start_step": 900})
+        adapter._handle_event({"type": "progress", "step": 920, "eval_loss": 0.4})
+
+>       assert adapter.training_progress.session_start_step == 900
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'TrainingProgress' object has no attribute 'session_start_step'
+
+tests/test_training_progress_callback.py:291: AttributeError
+______ test_embedding_resumed_run_eta_uses_the_steps_done_in_this_session ______
+
+    def test_embedding_resumed_run_eta_uses_the_steps_done_in_this_session():
+        event_queue = _FakeQueue()
+        backend = TrainingBackend()
+        callback = _create_embedding_progress_callback(
+            event_queue,
+            total_steps = 1000,
+            training_start_time = 100,
+            should_stop = lambda: False,
+        )
+
+        _drive_resumed(callback, start_step = 900, step = 910)
+        for event in event_queue.events:
+            backend._handle_event(event)
+
+>       assert backend._progress.eta_seconds == pytest.approx(540, rel = 0.02)
+E       assert 65.27472527472527 == 540 ± 10.8
+E
+E         comparison failed
+E         Obtained: 65.27472527472527
+E         Expected: 540 ± 10.8
+
+tests/test_training_progress_callback.py:366: AssertionError
+----------------------------- Captured stdout call -----------------------------
+2026-09-20 04:10:36 [info     ] TrainingBackend initialized (subprocess mode)
+2026-09-20 04:10:36 [info     ] training_progress              epoch=0.9 eta_s=65 loss=0.5 percent=91 s_per_step=None step=910 tok_per_s=None total_steps=1000
+__________________ test_stream_carries_the_session_start_step __________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7a554014c9b0>
+
+    def test_stream_carries_the_session_start_step(monkeypatch):
+        backend = _FakeBackend(active_polls = 2)
+        monkeypatch.setattr(rt, "get_training_backend", lambda: backend)
+
+        response = asyncio.run(rt.stream_training_progress(_FakeRequest(), current_subject = "tester"))
+>       assert {p["session_start_step"] for p in _progress_payloads(_collect_events(response))} == {
+                ^^^^^^^^^^^^^^^^^^^^^^^
+            None
+        }
+E       KeyError: 'session_start_step'
+
+tests/test_training_progress_stream_nan.py:161: KeyError
+=============================== warnings summary ===============================
+../../.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1345
+  /task/base/.venv/lib/python3.12/site-packages/_pytest/config/__init__.py:1345: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; anyio
+    self._mark_plugins_for_rewrite(hook, disable_autoload)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_training_progress_callback.py::test_resumed_run_eta_uses_the_steps_done_in_this_session
+FAILED tests/test_training_progress_callback.py::test_resumed_run_reports_no_eta_before_its_first_step
+FAILED tests/test_training_progress_callback.py::test_mlx_adapter_keeps_the_session_start_step
+FAILED tests/test_training_progress_callback.py::test_embedding_resumed_run_eta_uses_the_steps_done_in_this_session
+FAILED tests/test_training_progress_stream_nan.py::test_stream_carries_the_session_start_step
+5 failed, 26 passed, 1 warning in 5.09s

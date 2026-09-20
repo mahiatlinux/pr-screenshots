@@ -1,0 +1,1 @@
+PASS: fresh and legacy displays identical on base/head in Chrome, Edge and Firefox. Head initial frame shows unknown ETA; completed frame shows 0s ETA and session throughput.

@@ -1,0 +1,252 @@
+[
+  {
+    "scenario": "resumed",
+    "payloads": [
+      {
+        "job_id": "job-1",
+        "step": 0,
+        "total_steps": 1000,
+        "loss": null,
+        "learning_rate": null,
+        "progress_percent": 0.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 910,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 91.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 910,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 91.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      }
+    ]
+  },
+  {
+    "scenario": "resumed_setup",
+    "payloads": [
+      {
+        "job_id": "job-1",
+        "step": 0,
+        "total_steps": 1000,
+        "loss": null,
+        "learning_rate": null,
+        "progress_percent": 0.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 910,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 91.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 910,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 91.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      }
+    ]
+  },
+  {
+    "scenario": "fresh",
+    "payloads": [
+      {
+        "job_id": "job-1",
+        "step": 0,
+        "total_steps": 1000,
+        "loss": null,
+        "learning_rate": null,
+        "progress_percent": 0.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 0,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 100,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 10.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 0,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 100,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 10.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": 540.0,
+        "session_start_step": 0,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      }
+    ]
+  },
+  {
+    "scenario": "initial",
+    "payloads": [
+      {
+        "job_id": "job-1",
+        "step": 0,
+        "total_steps": 1000,
+        "loss": null,
+        "learning_rate": null,
+        "progress_percent": 0.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": null,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 900,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 90.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": null,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 900,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 90.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": null,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      }
+    ]
+  },
+  {
+    "scenario": "complete",
+    "payloads": [
+      {
+        "job_id": "job-1",
+        "step": 0,
+        "total_steps": 1000,
+        "loss": null,
+        "learning_rate": null,
+        "progress_percent": 0.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": null,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 1000,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 100.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": null,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      },
+      {
+        "job_id": "job-1",
+        "step": 1000,
+        "total_steps": 1000,
+        "loss": 0.5,
+        "learning_rate": 0.0001,
+        "progress_percent": 100.0,
+        "epoch": 0.9,
+        "elapsed_seconds": 60.0,
+        "eta_seconds": null,
+        "session_start_step": 900,
+        "grad_norm": null,
+        "num_tokens": 100,
+        "eval_loss": null
+      }
+    ]
+  }
+]

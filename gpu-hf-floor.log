@@ -1,0 +1,23 @@
+/task/floor-venv/lib/python3.12/site-packages/transformers/trainer.py:4380: UserWarning: mtime may not be reliable on this filesystem, falling back to numerical ordering
+  warnings.warn("mtime may not be reliable on this filesystem, falling back to numerical ordering")
+{"gpu": "NVIDIA GeForce RTX 5060 Ti", "torch": "2.10.0+cu128"}
+{'loss': 3.8899, 'grad_norm': 1.4516035318374634, 'learning_rate': 0.0001, 'epoch': 0.125}
+{'loss': 3.8706, 'grad_norm': 1.4033222198486328, 'learning_rate': 8.333333333333334e-05, 'epoch': 0.25}
+{'loss': 3.8756, 'grad_norm': 1.3021050691604614, 'learning_rate': 6.666666666666667e-05, 'epoch': 0.375}
+{'loss': 3.8709, 'grad_norm': 1.2056078910827637, 'learning_rate': 5e-05, 'epoch': 0.5}
+{'loss': 3.8725, 'grad_norm': 1.283597707748413, 'learning_rate': 3.3333333333333335e-05, 'epoch': 0.625}
+{'loss': 3.8614, 'grad_norm': 1.4845584630966187, 'learning_rate': 1.6666666666666667e-05, 'epoch': 0.75}
+2026-09-20 04:11:56 [info     ] trainer summary                epoch=0.75 total_flos=47554560.0 train_loss=3.8734920422236123 train_runtime=0.3342 train_samples_per_second=71.812 train_steps_per_second=17.953
+2026-09-20 04:11:56 [info     ] training finished: mean train_loss=3.8734920422236123 over 6 steps
+2026-09-20 04:11:56 [info     ] trainer summary                epoch=0.75 total_flos=47554560.0 train_loss=3.8734920422236123 train_runtime=0.3342 train_samples_per_second=71.812 train_steps_per_second=17.953
+Training finished: mean train_loss=3.8734920422236123 over 6 steps
+{'train_runtime': 0.3342, 'train_samples_per_second': 71.812, 'train_steps_per_second': 17.953, 'train_loss': 3.8734920422236123, 'epoch': 0.75}
+{'loss': 3.8709, 'grad_norm': 1.2056078910827637, 'learning_rate': 5e-05, 'epoch': 0.5}
+{'loss': 3.8725, 'grad_norm': 1.283597707748413, 'learning_rate': 3.3333333333333335e-05, 'epoch': 0.625}
+{'loss': 3.8614, 'grad_norm': 1.4845584630966187, 'learning_rate': 1.6666666666666667e-05, 'epoch': 0.75}
+2026-09-20 04:11:57 [info     ] trainer summary                epoch=0.75 total_flos=47554560.0 train_loss=1.9341309865315754 train_runtime=0.0286 train_samples_per_second=838.449 train_steps_per_second=209.612
+2026-09-20 04:11:57 [info     ] training finished: mean train_loss=1.9341309865315754 over 6 steps
+2026-09-20 04:11:57 [info     ] trainer summary                epoch=0.75 total_flos=47554560.0 train_loss=1.9341309865315754 train_runtime=0.0286 train_samples_per_second=838.449 train_steps_per_second=209.612
+Training finished: mean train_loss=1.9341309865315754 over 6 steps
+{'train_runtime': 0.0286, 'train_samples_per_second': 838.449, 'train_steps_per_second': 209.612, 'train_loss': 1.9341309865315754, 'epoch': 0.75}
+PASS: checkpoint step 3 restored; session baseline confirmed in both callbacks; six-step final weights and resumed losses match uninterrupted training exactly

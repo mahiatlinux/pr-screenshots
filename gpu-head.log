@@ -1,0 +1,31 @@
+{"gpu": "NVIDIA GeForce RTX 5060 Ti", "torch": "2.10.0+cu128", "transformers": "5.17.0"}
+{'loss': '4.149', 'grad_norm': '1.548', 'learning_rate': '0.0001', 'epoch': '0.125'}
+{'loss': '4.129', 'grad_norm': '1.497', 'learning_rate': '8.333e-05', 'epoch': '0.25'}
+{'loss': '4.134', 'grad_norm': '1.389', 'learning_rate': '6.667e-05', 'epoch': '0.375'}
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 577.17it/s]
+{'loss': '4.129', 'grad_norm': '1.286', 'learning_rate': '5e-05', 'epoch': '0.5'}
+{'loss': '4.131', 'grad_norm': '1.369', 'learning_rate': '3.333e-05', 'epoch': '0.625'}
+{'loss': '4.119', 'grad_norm': '1.584', 'learning_rate': '1.667e-05', 'epoch': '0.75'}
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 1388.84it/s]
+[transformers] mtime may not be reliable on this filesystem, falling back to numerical ordering
+2026-09-20 04:12:44 [info     ] trainer summary                epoch=0.75 total_flos=47554560.0 train_loss=4.131724754969279 train_runtime=0.3746 train_samples_per_second=64.069 train_steps_per_second=16.017
+2026-09-20 04:12:44 [info     ] training finished: mean train_loss=4.131724754969279 over 6 steps
+2026-09-20 04:12:44 [info     ] trainer summary                epoch=0.75 total_flos=47554560.0 train_loss=4.131724754969279 train_runtime=0.3746 train_samples_per_second=64.069 train_steps_per_second=16.017
+Training finished: mean train_loss=4.131724754969279 over 6 steps
+{'train_runtime': '0.3746', 'train_samples_per_second': '64.07', 'train_steps_per_second': '16.02', 'train_loss': '4.132', 'epoch': '0.75'}
+{'loss': '4.129', 'grad_norm': '1.286', 'learning_rate': '5e-05', 'epoch': '0.5'}
+{'loss': '4.131', 'grad_norm': '1.369', 'learning_rate': '3.333e-05', 'epoch': '0.625'}
+{'loss': '4.119', 'grad_norm': '1.584', 'learning_rate': '1.667e-05', 'epoch': '0.75'}
+
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+Writing model shards: 100%|██████████| 1/1 [00:00<00:00, 1204.22it/s]
+2026-09-20 04:12:44 [info     ] trainer summary                epoch=0.75 total_flos=47554560.0 train_loss=2.0630730787913003 train_runtime=0.0339 train_samples_per_second=707.347 train_steps_per_second=176.837
+2026-09-20 04:12:44 [info     ] training finished: mean train_loss=2.0630730787913003 over 6 steps
+2026-09-20 04:12:44 [info     ] trainer summary                epoch=0.75 total_flos=47554560.0 train_loss=2.0630730787913003 train_runtime=0.0339 train_samples_per_second=707.347 train_steps_per_second=176.837
+Training finished: mean train_loss=2.0630730787913003 over 6 steps
+{'train_runtime': '0.0339', 'train_samples_per_second': '707.3', 'train_steps_per_second': '176.8', 'train_loss': '2.063', 'epoch': '0.75'}
+PASS: checkpoint step 3 restored; session baseline confirmed in both callbacks; six-step final weights and resumed losses match uninterrupted training exactly

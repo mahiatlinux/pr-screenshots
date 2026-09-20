@@ -1,0 +1,20 @@
+{
+  "cases": 1000,
+  "wrong": 0,
+  "last_event": {
+    "type": "progress",
+    "step": 6878,
+    "epoch": 0.95,
+    "loss": 0.5,
+    "learning_rate": 0.0001,
+    "total_steps": 7274,
+    "elapsed_seconds": 4674,
+    "eta_seconds": 3694.4191616766466,
+    "session_start_step": 6377,
+    "grad_norm": 0.1,
+    "num_tokens": 100,
+    "eval_loss": null,
+    "status_message": null,
+    "peak_memory_gb": 1
+  }
+}

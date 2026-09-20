@@ -1,0 +1,392 @@
+[
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "base",
+    "scenario": "resumed",
+    "state": {
+      "step": 910,
+      "baseline": null,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "base",
+    "scenario": "fresh",
+    "state": {
+      "step": 100,
+      "baseline": null,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n10% complete\nStep 100 / 1000\n10%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "base",
+    "scenario": "legacy",
+    "state": {
+      "step": 910,
+      "baseline": null,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "base",
+    "scenario": "initial",
+    "state": {
+      "step": 900,
+      "baseline": null,
+      "eta": 73.33333333333333
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n90% complete\nStep 900 / 1000\n90%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 11m 0s\nETA: 1m 13s\n1.36 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "base",
+    "scenario": "complete",
+    "state": {
+      "step": 1000,
+      "baseline": null,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n100% complete\nStep 1000 / 1000\n100%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 11m 0s\nETA: 0s\n1.52 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "head",
+    "scenario": "resumed",
+    "state": {
+      "step": 910,
+      "baseline": 900,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n0.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "head",
+    "scenario": "fresh",
+    "state": {
+      "step": 100,
+      "baseline": 0,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n10% complete\nStep 100 / 1000\n10%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "head",
+    "scenario": "legacy",
+    "state": {
+      "step": 910,
+      "baseline": 0,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "head",
+    "scenario": "initial",
+    "state": {
+      "step": 900,
+      "baseline": 900,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n90% complete\nStep 900 / 1000\n90%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: --\n0.00 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "chrome",
+    "version": "153.0.8010.52",
+    "side": "head",
+    "scenario": "complete",
+    "state": {
+      "step": 1000,
+      "baseline": 900,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n100% complete\nStep 1000 / 1000\n100%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "base",
+    "scenario": "resumed",
+    "state": {
+      "step": 910,
+      "baseline": null,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "base",
+    "scenario": "fresh",
+    "state": {
+      "step": 100,
+      "baseline": null,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n10% complete\nStep 100 / 1000\n10%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "base",
+    "scenario": "legacy",
+    "state": {
+      "step": 910,
+      "baseline": null,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "base",
+    "scenario": "initial",
+    "state": {
+      "step": 900,
+      "baseline": null,
+      "eta": 73.33333333333333
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n90% complete\nStep 900 / 1000\n90%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 11m 0s\nETA: 1m 13s\n1.36 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "base",
+    "scenario": "complete",
+    "state": {
+      "step": 1000,
+      "baseline": null,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n100% complete\nStep 1000 / 1000\n100%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 11m 0s\nETA: 0s\n1.52 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "head",
+    "scenario": "resumed",
+    "state": {
+      "step": 910,
+      "baseline": 900,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n0.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "head",
+    "scenario": "fresh",
+    "state": {
+      "step": 100,
+      "baseline": 0,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n10% complete\nStep 100 / 1000\n10%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "head",
+    "scenario": "legacy",
+    "state": {
+      "step": 910,
+      "baseline": 0,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "head",
+    "scenario": "initial",
+    "state": {
+      "step": 900,
+      "baseline": 900,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n90% complete\nStep 900 / 1000\n90%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: --\n0.00 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "edge",
+    "version": "153.0.4234.48",
+    "side": "head",
+    "scenario": "complete",
+    "state": {
+      "step": 1000,
+      "baseline": 900,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n100% complete\nStep 1000 / 1000\n100%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "base",
+    "scenario": "resumed",
+    "state": {
+      "step": 910,
+      "baseline": null,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "base",
+    "scenario": "fresh",
+    "state": {
+      "step": 100,
+      "baseline": null,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n10% complete\nStep 100 / 1000\n10%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "base",
+    "scenario": "legacy",
+    "state": {
+      "step": 910,
+      "baseline": null,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "base",
+    "scenario": "initial",
+    "state": {
+      "step": 900,
+      "baseline": null,
+      "eta": 73.33333333333333
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n90% complete\nStep 900 / 1000\n90%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 11m 0s\nETA: 1m 13s\n1.36 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "base",
+    "scenario": "complete",
+    "state": {
+      "step": 1000,
+      "baseline": null,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n100% complete\nStep 1000 / 1000\n100%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 11m 0s\nETA: 0s\n1.52 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "head",
+    "scenario": "resumed",
+    "state": {
+      "step": 910,
+      "baseline": 900,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n0.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "head",
+    "scenario": "fresh",
+    "state": {
+      "step": 100,
+      "baseline": 0,
+      "eta": 540
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n10% complete\nStep 100 / 1000\n10%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 9m 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "head",
+    "scenario": "legacy",
+    "state": {
+      "step": 910,
+      "baseline": 0,
+      "eta": 5.934065934065934
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n91% complete\nStep 910 / 1000\n91%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 5s\n15.17 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "head",
+    "scenario": "initial",
+    "state": {
+      "step": 900,
+      "baseline": 900,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n90% complete\nStep 900 / 1000\n90%\n\nMILESTONE\n\nHalfway done. Training is past 50%.\n\n50%+\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: --\n0.00 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  },
+  {
+    "engine": "firefox",
+    "version": "155.0",
+    "side": "head",
+    "scenario": "complete",
+    "state": {
+      "step": 1000,
+      "baseline": 900,
+      "eta": null
+    },
+    "text": "Training Progress\n\nTraining in progress...\n\nStop\nTraining\nCheckpoint 900\nEpoch 0.90\n100% complete\nStep 1000 / 1000\n100%\n\nLoss\n\n0.5000\n\nLR\n\n1.00e-4\n\nGrad Norm\n\n--\n\nProject\n\nCheckpoint 900\n\nModel\n\nResume verification\n\nMethod\n\nFull\n\nElapsed: 1m 0s\nETA: 0s\n1.67 steps/s\nTokens: 100\n\nGPU Monitor\n\nLive\nUtilization\n--\nTemperature\n--\nVRAM\n--\nPower\n--",
+    "errors": []
+  }
+]

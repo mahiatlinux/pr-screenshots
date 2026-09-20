@@ -1,0 +1,10 @@
+✔ session arithmetic matches independently calculated windows over 10,000 cases (2.280133ms)
+✔ old, null, zero, malformed and resumed fields pass the real parser and store (16.145956ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 95.183461

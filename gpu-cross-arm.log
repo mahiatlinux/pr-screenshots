@@ -1,0 +1,1 @@
+PASS: exact final tensor equality across base, head, and merge; 6 optimizer steps, gradient accumulation 2, same seed and data.

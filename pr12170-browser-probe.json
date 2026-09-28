@@ -1,0 +1,646 @@
+{
+  "viewports": [
+    {
+      "before": 0,
+      "afterLeave": 0,
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "root": {
+        "left": 268,
+        "right": 1012,
+        "top": 48,
+        "bottom": 252.984375,
+        "width": 744,
+        "height": 204.984375
+      },
+      "wrapper": {
+        "left": 416.8125,
+        "right": 1012,
+        "top": 72,
+        "bottom": 236.984375,
+        "width": 595.1875,
+        "height": 164.984375
+      },
+      "row": {
+        "left": 725.6875,
+        "right": 1020.5,
+        "top": 204.984375,
+        "bottom": 236.984375,
+        "width": 294.8125,
+        "height": 32
+      },
+      "bar": {
+        "left": 725.6875,
+        "right": 1020.5,
+        "top": 204.984375,
+        "bottom": 236.984375,
+        "width": 294.8125,
+        "height": 32
+      },
+      "time": {
+        "left": 725.6875,
+        "right": 872.5,
+        "top": 211.84375,
+        "bottom": 230.125,
+        "width": 146.8125,
+        "height": 18.28125
+      },
+      "text": "Sep 11, 2025, 12:22 AM",
+      "title": "Thursday, September 11, 2025 at 12:22 AM",
+      "dateTime": "2025-09-10T12:22:00.000Z",
+      "timeScrollWidth": 147,
+      "timeClientWidth": 147,
+      "barScrollWidth": 295,
+      "barClientWidth": 295,
+      "rowScrollWidth": 295,
+      "rowClientWidth": 295,
+      "buttons": [
+        {
+          "name": "Copy",
+          "rect": {
+            "left": 880.5,
+            "right": 912.5,
+            "top": 204.984375,
+            "bottom": 236.984375,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Edit",
+          "rect": {
+            "left": 916.5,
+            "right": 948.5,
+            "top": 204.984375,
+            "bottom": 236.984375,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Fork from here",
+          "rect": {
+            "left": 952.5,
+            "right": 984.5,
+            "top": 204.984375,
+            "bottom": 236.984375,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Delete message",
+          "rect": {
+            "left": 988.5,
+            "right": 1020.5,
+            "top": 204.984375,
+            "bottom": 236.984375,
+            "width": 32,
+            "height": 32
+          }
+        }
+      ],
+      "pageScrollWidth": 1280,
+      "bodyScrollWidth": 1280,
+      "tooltipCount": 0,
+      "focusable": false
+    },
+    {
+      "before": 0,
+      "afterLeave": 0,
+      "viewport": {
+        "width": 768,
+        "height": 800
+      },
+      "root": {
+        "left": 30,
+        "right": 738,
+        "top": 48,
+        "bottom": 252.984375,
+        "width": 708,
+        "height": 204.984375
+      },
+      "wrapper": {
+        "left": 171.609375,
+        "right": 738,
+        "top": 72,
+        "bottom": 236.984375,
+        "width": 566.390625,
+        "height": 164.984375
+      },
+      "row": {
+        "left": 451.6875,
+        "right": 746.5,
+        "top": 204.984375,
+        "bottom": 236.984375,
+        "width": 294.8125,
+        "height": 32
+      },
+      "bar": {
+        "left": 451.6875,
+        "right": 746.5,
+        "top": 204.984375,
+        "bottom": 236.984375,
+        "width": 294.8125,
+        "height": 32
+      },
+      "time": {
+        "left": 451.6875,
+        "right": 598.5,
+        "top": 211.84375,
+        "bottom": 230.125,
+        "width": 146.8125,
+        "height": 18.28125
+      },
+      "text": "Sep 11, 2025, 12:22 AM",
+      "title": "Thursday, September 11, 2025 at 12:22 AM",
+      "dateTime": "2025-09-10T12:22:00.000Z",
+      "timeScrollWidth": 147,
+      "timeClientWidth": 147,
+      "barScrollWidth": 295,
+      "barClientWidth": 295,
+      "rowScrollWidth": 295,
+      "rowClientWidth": 295,
+      "buttons": [
+        {
+          "name": "Copy",
+          "rect": {
+            "left": 606.5,
+            "right": 638.5,
+            "top": 204.984375,
+            "bottom": 236.984375,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Edit",
+          "rect": {
+            "left": 642.5,
+            "right": 674.5,
+            "top": 204.984375,
+            "bottom": 236.984375,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Fork from here",
+          "rect": {
+            "left": 678.5,
+            "right": 710.5,
+            "top": 204.984375,
+            "bottom": 236.984375,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Delete message",
+          "rect": {
+            "left": 714.5,
+            "right": 746.5,
+            "top": 204.984375,
+            "bottom": 236.984375,
+            "width": 32,
+            "height": 32
+          }
+        }
+      ],
+      "pageScrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "tooltipCount": 0,
+      "focusable": false
+    },
+    {
+      "before": 0,
+      "afterLeave": 0,
+      "viewport": {
+        "width": 390,
+        "height": 800
+      },
+      "root": {
+        "left": 30,
+        "right": 360,
+        "top": -57,
+        "bottom": 278.765625,
+        "width": 330,
+        "height": 335.765625
+      },
+      "wrapper": {
+        "left": 96,
+        "right": 360,
+        "top": -33,
+        "bottom": 262.765625,
+        "width": 264,
+        "height": 295.765625
+      },
+      "row": {
+        "left": 73.6875,
+        "right": 368.5,
+        "top": 230.765625,
+        "bottom": 262.765625,
+        "width": 294.8125,
+        "height": 32
+      },
+      "bar": {
+        "left": 73.6875,
+        "right": 368.5,
+        "top": 230.765625,
+        "bottom": 262.765625,
+        "width": 294.8125,
+        "height": 32
+      },
+      "time": {
+        "left": 73.6875,
+        "right": 220.5,
+        "top": 237.625,
+        "bottom": 255.90625,
+        "width": 146.8125,
+        "height": 18.28125
+      },
+      "text": "Sep 11, 2025, 12:22 AM",
+      "title": "Thursday, September 11, 2025 at 12:22 AM",
+      "dateTime": "2025-09-10T12:22:00.000Z",
+      "timeScrollWidth": 147,
+      "timeClientWidth": 147,
+      "barScrollWidth": 295,
+      "barClientWidth": 295,
+      "rowScrollWidth": 295,
+      "rowClientWidth": 295,
+      "buttons": [
+        {
+          "name": "Copy",
+          "rect": {
+            "left": 228.5,
+            "right": 260.5,
+            "top": 230.765625,
+            "bottom": 262.765625,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Edit",
+          "rect": {
+            "left": 264.5,
+            "right": 296.5,
+            "top": 230.765625,
+            "bottom": 262.765625,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Fork from here",
+          "rect": {
+            "left": 300.5,
+            "right": 332.5,
+            "top": 230.765625,
+            "bottom": 262.765625,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Delete message",
+          "rect": {
+            "left": 336.5,
+            "right": 368.5,
+            "top": 230.765625,
+            "bottom": 262.765625,
+            "width": 32,
+            "height": 32
+          }
+        }
+      ],
+      "pageScrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "tooltipCount": 0,
+      "focusable": false
+    },
+    {
+      "before": 0,
+      "afterLeave": 0,
+      "viewport": {
+        "width": 320,
+        "height": 800
+      },
+      "root": {
+        "left": 30,
+        "right": 290,
+        "top": -207,
+        "bottom": 215.953125,
+        "width": 260,
+        "height": 422.953125
+      },
+      "wrapper": {
+        "left": 82,
+        "right": 290,
+        "top": -183,
+        "bottom": 199.953125,
+        "width": 208,
+        "height": 382.953125
+      },
+      "row": {
+        "left": 3.6875,
+        "right": 298.5,
+        "top": 167.953125,
+        "bottom": 199.953125,
+        "width": 294.8125,
+        "height": 32
+      },
+      "bar": {
+        "left": 3.6875,
+        "right": 298.5,
+        "top": 167.953125,
+        "bottom": 199.953125,
+        "width": 294.8125,
+        "height": 32
+      },
+      "time": {
+        "left": 3.6875,
+        "right": 150.5,
+        "top": 174.8125,
+        "bottom": 193.09375,
+        "width": 146.8125,
+        "height": 18.28125
+      },
+      "text": "Sep 11, 2025, 12:22 AM",
+      "title": "Thursday, September 11, 2025 at 12:22 AM",
+      "dateTime": "2025-09-10T12:22:00.000Z",
+      "timeScrollWidth": 147,
+      "timeClientWidth": 147,
+      "barScrollWidth": 295,
+      "barClientWidth": 295,
+      "rowScrollWidth": 295,
+      "rowClientWidth": 295,
+      "buttons": [
+        {
+          "name": "Copy",
+          "rect": {
+            "left": 158.5,
+            "right": 190.5,
+            "top": 167.953125,
+            "bottom": 199.953125,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Edit",
+          "rect": {
+            "left": 194.5,
+            "right": 226.5,
+            "top": 167.953125,
+            "bottom": 199.953125,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Fork from here",
+          "rect": {
+            "left": 230.5,
+            "right": 262.5,
+            "top": 167.953125,
+            "bottom": 199.953125,
+            "width": 32,
+            "height": 32
+          }
+        },
+        {
+          "name": "Delete message",
+          "rect": {
+            "left": 266.5,
+            "right": 298.5,
+            "top": 167.953125,
+            "bottom": 199.953125,
+            "width": 32,
+            "height": 32
+          }
+        }
+      ],
+      "pageScrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "tooltipCount": 0,
+      "focusable": false
+    }
+  ],
+  "touch": {
+    "before": 0,
+    "afterTap": 1,
+    "actionButtonsAfterTap": 4,
+    "tooltipAfterTimeTap": 0
+  },
+  "keyboard": [
+    {
+      "tag": "BUTTON",
+      "name": "Enable code execution",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Enable web search",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Permission level for tool calls",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Tools and attachments",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "SPAN",
+      "name": "Message actions",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "More",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Delete message",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Refresh",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Copy",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "DIV",
+      "name": "Reply 1. The reception of a long thread is decided by what the renderer does on ",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BODY",
+      "name": "Prompt 0. The reception of a long thread is decided by what the renderer does on",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Dictate",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "TEXTAREA",
+      "name": "Message input",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Enable code execution",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Enable web search",
+      "role": null,
+      "userTimeCount": 0
+    },
+    {
+      "tag": "BUTTON",
+      "name": "Permission level for tool calls",
+      "role": null,
+      "userTimeCount": 0
+    }
+  ],
+  "locales": [
+    {
+      "locale": "en",
+      "text": "Sep 11, 2025, 12:22 AM",
+      "title": "Thursday, September 11, 2025 at 12:22 AM",
+      "timeLeft": 3.6875,
+      "barLeft": 3.6875,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "zh-CN",
+      "text": "2025年9月11日 0:22",
+      "title": "2025年9月11日星期四 00:22",
+      "timeLeft": 26.328125,
+      "barLeft": 26.328125,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "ja",
+      "text": "2025年9月11日 0:22",
+      "title": "2025年9月11日木曜日 0:22",
+      "timeLeft": 26.328125,
+      "barLeft": 26.328125,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "ko",
+      "text": "2025년 9월 11일 오전 12:22",
+      "title": "2025년 9월 11일 목요일 오전 12:22",
+      "timeLeft": -11.71875,
+      "barLeft": -11.71875,
+      "barRight": 298.5,
+      "fitsViewport": false
+    },
+    {
+      "locale": "es",
+      "text": "11 sept 2025, 0:22",
+      "title": "jueves, 11 de septiembre de 2025, 0:22",
+      "timeLeft": 35.5,
+      "barLeft": 35.5,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "pt-BR",
+      "text": "11 de set. de 2025, 0:22",
+      "title": "quinta-feira, 11 de setembro de 2025 às 00:22",
+      "timeLeft": 3.15625,
+      "barLeft": 3.15625,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "fr",
+      "text": "11 sept. 2025, 0:22",
+      "title": "jeudi 11 septembre 2025 à 00:22",
+      "timeLeft": 32.09375,
+      "barLeft": 32.09375,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "de",
+      "text": "11. Sept. 2025, 0:22",
+      "title": "Donnerstag, 11. September 2025 um 00:22",
+      "timeLeft": 27.296875,
+      "barLeft": 27.296875,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "it",
+      "text": "11 set 2025, 0:22",
+      "title": "giovedì 11 settembre 2025 alle ore 00:22",
+      "timeLeft": 43.109375,
+      "barLeft": 43.109375,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "ru",
+      "text": "11 сент. 2025 г., 0:22",
+      "title": "четверг, 11 сентября 2025 г. в 00:22",
+      "timeLeft": 17.875,
+      "barLeft": 17.875,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "hi",
+      "text": "11 सित॰ 2025, 12:22 am",
+      "title": "गुरुवार, 11 सितंबर 2025 को 12:22 am बजे",
+      "timeLeft": 7.875,
+      "barLeft": 7.875,
+      "barRight": 298.5,
+      "fitsViewport": true
+    },
+    {
+      "locale": "ar",
+      "text": "11 سبتمبر 2025، 12:22 ص",
+      "title": "الخميس، 11 سبتمبر 2025 في 12:22 ص",
+      "timeLeft": 0.4375,
+      "barLeft": 0.4375,
+      "barRight": 298.5,
+      "fitsViewport": true
+    }
+  ]
+}

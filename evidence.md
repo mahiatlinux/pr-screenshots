@@ -7,7 +7,7 @@
 - Host: Ubuntu Linux, kernel `7.0.0-34-generic`, x86_64
 - Node: `26.8.2`; npm: `11.19.1`
 - Python: `3.13.14` in per-worktree uv environments; uv: `0.12.1`
-- Playwright: `1.62.0`; Chromium for Testing: `151.0.7922.34`
+- Playwright: `1.62.0`; Chromium for Testing: `151.0.7922.34`; Playwright Firefox: `153.0`
 - Browser contexts: isolated, non-persistent; viewport 1440x900 and 640x700; device scale factor 1
 
 ## A/B method
@@ -38,6 +38,17 @@ Pixel-difference bounding boxes were exactly the 40 CSS-pixel titlebar band:
 - 640x700 narrow frame: `(0, 0, 640, 40)`, 25,558 changed pixels.
 
 Every composite was opened and manually inspected. The change matches the expected titlebar-only blur/dim; the dialog and page remain pixel-identical, and the three window-control glyphs remain sharp.
+
+The same A/B interaction matrix also passed in Playwright Firefox 153.0 with the same computed style facts. The 1440px Firefox captures differed only in the 40px titlebar band and were manually inspected; Chromium remains the primary evidence because the production smoke harness and CI target Chromium.
+
+## Current-main mirror
+
+The `mirror-pr.py` review target merged the source head onto upstream `c1e5a56fe626c060005c9671f95c388ef6bd6953`, producing mirror head `087c252ebfd83b344fbd9df96393103002dd5fea`. Its net diff is the same ten in-scope files, and the GitGuardian-reported `studio/backend/tests/test_mcp_image.py` has no net diff from the mirror base.
+
+- Production frontend build passed on the mirror tree.
+- The three titlebar layering unit tests passed on the mirror tree.
+- The full Chromium interaction scene passed in an isolated mirror rerun with the same z-index and blur facts.
+- One earlier mirror scene run, executed concurrently with the production build and full unit suite, timed out waiting for a stubbed window-command dispatch. No code changed; the immediate isolated rerun passed in 12 seconds, matching the source-head run. This was treated as CPU-saturation flake rather than a reachable product failure.
 
 ## Other executed checks
 

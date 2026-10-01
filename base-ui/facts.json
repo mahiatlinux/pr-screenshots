@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:15491/smoke-titlebar-blur.html",
+  "expected_blur": false,
+  "media": {
+    "titlebarZ": "70",
+    "content": "none",
+    "opacity": "1",
+    "blur": "none",
+    "pointerEvents": "none",
+    "backdropZ": "auto",
+    "controlsZ": "auto",
+    "overlayZ": "50"
+  },
+  "commands": [
+    "minimize",
+    "toggle_maximize",
+    "close",
+    "start_dragging"
+  ],
+  "checks": [
+    "media",
+    "dialog",
+    "alert",
+    "sheet",
+    "scoped excluded",
+    "menu excluded",
+    "nested",
+    "close cleanup",
+    "dark",
+    "narrow",
+    "web",
+    "macOS"
+  ],
+  "page_errors": []
+}

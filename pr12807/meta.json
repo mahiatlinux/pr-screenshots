@@ -1,0 +1,115 @@
+{
+  "pr": 12807,
+  "head_ref": "f5508ab101d10c486ffcf8c42ff5de14764662e9",
+  "base_sha": "7ccf3fcb2aef4601e54f18cbe893915ec6a9173b",
+  "head_sha": "f5508ab101d10c486ffcf8c42ff5de14764662e9",
+  "scene": "audio_more_navigation",
+  "expect": "BEFORE keeps /chat open and shows Audio's workflow submenu in More. AFTER navigates to /audio, closes More, and shows Audio inline with Speak through Transcribe. Facts also prove hover and Enter, Space, and ArrowRight still open the submenu without navigating, the customization store is unchanged, and the same pointer behavior holds in the mobile sheet.",
+  "facts": {
+    "BEFORE": {
+      "desktop_path": "/chat",
+      "desktop_inline_audio": 0,
+      "desktop_submenu_speak": 1,
+      "desktop_workflow_buttons": {
+        "Speak": 0,
+        "Clone": 0,
+        "Edit": 0,
+        "Convert": 0,
+        "Music": 0,
+        "Separate": 0,
+        "Transcribe": 0
+      },
+      "audio_trigger_role": "menuitem",
+      "audio_trigger_haspopup": "menu",
+      "appearance_store_unchanged": true,
+      "keyboard": {
+        "Enter": {
+          "path": "/chat",
+          "submenu_visible": true,
+          "focused_item": "Speak"
+        },
+        "Space": {
+          "path": "/chat",
+          "submenu_visible": true,
+          "focused_item": "Speak"
+        },
+        "ArrowRight": {
+          "path": "/chat",
+          "submenu_visible": true,
+          "focused_item": "Speak"
+        }
+      },
+      "hover": {
+        "path": "/chat",
+        "submenu_visible": true
+      },
+      "mobile_path": "/chat",
+      "mobile_inline_audio": 0,
+      "mobile_submenu_speak": 1,
+      "mobile_workflow_buttons": {
+        "Speak": 0,
+        "Clone": 0,
+        "Edit": 0,
+        "Convert": 0,
+        "Music": 0,
+        "Separate": 0,
+        "Transcribe": 0
+      }
+    },
+    "AFTER": {
+      "desktop_path": "/audio",
+      "desktop_inline_audio": 1,
+      "desktop_submenu_speak": 0,
+      "desktop_workflow_buttons": {
+        "Speak": 1,
+        "Clone": 1,
+        "Edit": 1,
+        "Convert": 1,
+        "Music": 1,
+        "Separate": 1,
+        "Transcribe": 1
+      },
+      "audio_trigger_role": "menuitem",
+      "audio_trigger_haspopup": "menu",
+      "appearance_store_unchanged": true,
+      "keyboard": {
+        "Enter": {
+          "path": "/chat",
+          "submenu_visible": true,
+          "focused_item": "Speak"
+        },
+        "Space": {
+          "path": "/chat",
+          "submenu_visible": true,
+          "focused_item": "Speak"
+        },
+        "ArrowRight": {
+          "path": "/chat",
+          "submenu_visible": true,
+          "focused_item": "Speak"
+        }
+      },
+      "hover": {
+        "path": "/chat",
+        "submenu_visible": true
+      },
+      "mobile_path": "/audio",
+      "mobile_inline_audio": 1,
+      "mobile_submenu_speak": 0,
+      "mobile_workflow_buttons": {
+        "Speak": 1,
+        "Clone": 1,
+        "Edit": 1,
+        "Convert": 1,
+        "Music": 1,
+        "Separate": 1,
+        "Transcribe": 1
+      }
+    }
+  },
+  "studio_env": {},
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-12807/artifacts/ui-evidence/combined/pr12807_pair_00.png",
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-12807/artifacts/ui-evidence/combined/pr12807_pair_01.png"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "pr": 13106,
+  "head_ref": "cde06983c89e3efca3b97199bee574497d36331d",
+  "base_sha": "fc56663ef21cd8580ae348bf122f209638a3ef58",
+  "head_sha": "cde06983c89e3efca3b97199bee574497d36331d",
+  "scene": "ollama_context_usage",
+  "expect": "BEFORE has no context-usage control and the provider request omits stream_options. AFTER shows '224 tokens' in the header and forwards stream_options.include_usage=true. Facts: usage_button_count 0 -> 1, usage_label null -> 'Token usage: 224 tokens', and include_usage_forwarded false -> true.",
+  "facts": {
+    "BEFORE": {
+      "include_usage_forwarded": false,
+      "model_request_count": 1,
+      "selected_model": "uidiff-ollama-context\nUI diff Ollama usage",
+      "usage_button_count": 0,
+      "usage_label": null
+    },
+    "AFTER": {
+      "include_usage_forwarded": true,
+      "model_request_count": 1,
+      "selected_model": "uidiff-ollama-context\nUI diff Ollama usage",
+      "usage_button_count": 1,
+      "usage_label": "Token usage: 224 tokens"
+    }
+  },
+  "studio_env": {},
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13106/artifacts/ui-evidence/combined/pr13106_before_after.png"
+  ]
+}

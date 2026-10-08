@@ -1,0 +1,260 @@
+{
+  "chromium": {
+    "version": "156.0.8078.4",
+    "before": {
+      "captured": 12,
+      "target": 12,
+      "trustedTarget": 12,
+      "css": "m6",
+      "stored": [
+        "m6"
+      ],
+      "scrollTop": 720
+    },
+    "after": {
+      "captured": 14,
+      "target": 4,
+      "trustedTarget": 2,
+      "css": "m6",
+      "stored": [
+        "m6"
+      ],
+      "scrollTop": 720
+    },
+    "drag": {
+      "captured": [
+        {
+          "type": "mouseleave",
+          "id": "m2",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m3",
+          "buttons": 1,
+          "trusted": true
+        }
+      ],
+      "delivered": [
+        {
+          "type": "mouseleave",
+          "id": "m2",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m3",
+          "buttons": 1,
+          "trusted": true
+        }
+      ],
+      "heldDelivered": 2,
+      "css": "m3",
+      "stored": [
+        "m3"
+      ]
+    }
+  },
+  "firefox": {
+    "version": "157.0",
+    "before": {
+      "captured": 2,
+      "target": 2,
+      "trustedTarget": 2,
+      "css": "m6",
+      "stored": [
+        "m6"
+      ],
+      "scrollTop": 720
+    },
+    "after": {
+      "captured": 4,
+      "target": 2,
+      "trustedTarget": 0,
+      "css": "m6",
+      "stored": [
+        "m6"
+      ],
+      "scrollTop": 720
+    },
+    "drag": {
+      "captured": [
+        {
+          "type": "mouseleave",
+          "id": "m0",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m2",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseleave",
+          "id": "m2",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m3",
+          "buttons": 1,
+          "trusted": true
+        }
+      ],
+      "delivered": [
+        {
+          "type": "mouseleave",
+          "id": "m0",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m2",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseleave",
+          "id": "m2",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m3",
+          "buttons": 1,
+          "trusted": true
+        }
+      ],
+      "heldDelivered": 4,
+      "css": "m3",
+      "stored": [
+        "m3"
+      ]
+    }
+  },
+  "webkit": {
+    "version": "27.2",
+    "before": {
+      "captured": 6,
+      "target": 6,
+      "trustedTarget": 6,
+      "css": "m6",
+      "stored": [
+        "m6"
+      ],
+      "scrollTop": 720
+    },
+    "after": {
+      "captured": 6,
+      "target": 2,
+      "trustedTarget": 0,
+      "css": "m6",
+      "stored": [
+        "m6"
+      ],
+      "scrollTop": 720
+    },
+    "drag": {
+      "captured": [
+        {
+          "type": "mouseleave",
+          "id": "m0",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m1",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseleave",
+          "id": "m1",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m2",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseleave",
+          "id": "m2",
+          "buttons": 0,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m3",
+          "buttons": 0,
+          "trusted": true
+        },
+        {
+          "type": "mouseleave",
+          "id": "m2",
+          "buttons": 0,
+          "trusted": false
+        },
+        {
+          "type": "mouseenter",
+          "id": "m3",
+          "buttons": 0,
+          "trusted": false
+        }
+      ],
+      "delivered": [
+        {
+          "type": "mouseleave",
+          "id": "m0",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m1",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseleave",
+          "id": "m1",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseenter",
+          "id": "m2",
+          "buttons": 1,
+          "trusted": true
+        },
+        {
+          "type": "mouseleave",
+          "id": "m2",
+          "buttons": 0,
+          "trusted": false
+        },
+        {
+          "type": "mouseenter",
+          "id": "m3",
+          "buttons": 0,
+          "trusted": false
+        }
+      ],
+      "heldDelivered": 4,
+      "css": "m3",
+      "stored": [
+        "m3"
+      ]
+    }
+  }
+}

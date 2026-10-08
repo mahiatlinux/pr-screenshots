@@ -1,0 +1,48 @@
+{
+  "pr": 13077,
+  "head_ref": "391f5e269f3dbf6162c15bc9092ca0e87a43d087",
+  "base_sha": "5333c969f08a40493b8427583516a606355ddfb2",
+  "head_sha": "391f5e269f3dbf6162c15bc9092ca0e87a43d087",
+  "scene": "thread_wheel_hover",
+  "expect": "BEFORE lets native message-boundary events reach assistant-ui during the gesture, so the visible action bar follows the message currently under the red pointer. AFTER holds the original hover still, suppresses intermediate target events, and moves one action bar to the pointer only after settling. Facts must show fewer trusted target boundary events during the gesture while both sides settle with the visible bar on the CSS-hovered message.",
+  "facts": {
+    "BEFORE": {
+      "message_count": 80,
+      "initial_owner": "a-017",
+      "during_css_owner": "u-018",
+      "during_visible_bar_owners": [
+        "u-018"
+      ],
+      "during_scroll_top": 4374,
+      "captured_boundary_events": 2,
+      "target_boundary_events": 2,
+      "trusted_target_boundary_events": 2,
+      "settled_css_owner": "a-021",
+      "settled_visible_bar_owners": [
+        "a-021"
+      ],
+      "settled_target_boundary_events": 16
+    },
+    "AFTER": {
+      "message_count": 80,
+      "initial_owner": "a-017",
+      "during_css_owner": "u-018",
+      "during_visible_bar_owners": [
+        "a-017"
+      ],
+      "during_scroll_top": 4374,
+      "captured_boundary_events": 2,
+      "target_boundary_events": 0,
+      "trusted_target_boundary_events": 0,
+      "settled_css_owner": "a-021",
+      "settled_visible_bar_owners": [
+        "a-021"
+      ],
+      "settled_target_boundary_events": 2
+    }
+  },
+  "studio_env": {},
+  "pairs": [
+    "/task/ui-evidence/combined/pr13077_before_after.png"
+  ]
+}

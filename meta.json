@@ -1,0 +1,61 @@
+{
+  "pr": 13101,
+  "head_ref": "fa49827c44",
+  "base_sha": "63988fd030bf2e2ba825e68f4d4482819de61b14",
+  "head_sha": "fa49827c445ca94f498efc214f9bd01b1d920d9b",
+  "scene": "images_more_workflows",
+  "expect": "BEFORE shows Images as a plain More item with no workflow submenu; opening it lands on Create and leaves Images hidden in More. AFTER shows all seven image workflows in a submenu; ArrowRight exposes the same submenu, choosing Edit opens the Edit workspace, and the temporarily surfaced Images row lists every workflow without changing the saved pin. Facts: submenu workflow count 0 -> 7, keyboard submenu count 0 -> 7, heading Create images -> Edit, and inline Images row false -> true.",
+  "facts": {
+    "BEFORE": {
+      "hover_submenu_workflows": [],
+      "hover_submenu_workflow_count": 0,
+      "images_parent_has_popup": false,
+      "keyboard_submenu_workflows": [],
+      "keyboard_submenu_workflow_count": 0,
+      "images_heading": "Create images",
+      "images_inline": false,
+      "path": "/images",
+      "inline_workflow_labels": []
+    },
+    "AFTER": {
+      "hover_submenu_workflows": [
+        "Create",
+        "Edit",
+        "Transform",
+        "Inpaint",
+        "Extend",
+        "Upscale",
+        "Reference"
+      ],
+      "hover_submenu_workflow_count": 7,
+      "images_parent_has_popup": true,
+      "keyboard_submenu_workflows": [
+        "Create",
+        "Edit",
+        "Transform",
+        "Inpaint",
+        "Extend",
+        "Upscale",
+        "Reference"
+      ],
+      "keyboard_submenu_workflow_count": 7,
+      "images_heading": "Edit",
+      "images_inline": true,
+      "path": "/images",
+      "inline_workflow_labels": [
+        "Create",
+        "Edit",
+        "Transform",
+        "Inpaint",
+        "Extend",
+        "Upscale",
+        "Reference"
+      ]
+    }
+  },
+  "studio_env": {},
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13101/artifacts/ui-evidence/combined/pr13101_pair_00.png",
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13101/artifacts/ui-evidence/combined/pr13101_pair_01.png"
+  ]
+}

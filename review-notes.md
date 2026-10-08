@@ -71,6 +71,8 @@ Mirror landing preview found exactly two new commits and no PR body change. Revi
 
 ## UI evidence
 
+Discovery follow-up: `39d44d60af5d38d99a7b0cbc0015caa60540dd5c` retains selected sources absent from a discovery response, displays them as unavailable, counts them toward the 20-source limit, and provides explicit removal. The browser regression on `7e17de9921` failed with `AssertionError: incomplete discovery deleted the saved source` after an empty discovery response and Save. The test uses isolated settings initialization and an async response handler; earlier harness timeouts are not counted as negative proof. Focused frontend tests (5), type checks and scoped ESLint passed.
+
 Final review follow-up: `7e17de99218e4f46e6c6edcba4bdfaf447e95712` fixes two confirmed findings: queued sends now snapshot MCP selections and installation settings sync includes their payload, normalization, persistence and hydration. Before implementation, both frontend regressions failed and the backend rejected the field as extra input. Afterward, all 11,072 frontend tests passed (102.19s), 69 focused backend tests passed (2.66s), app/test type checks, scoped ESLint, Ruff and diff checks passed. The source replay also applied cleanly. Final screenshots are refreshed against this SHA.
 
 Two isolated full Studio installs were built at source merge base `6d3af3c332dc4eb1942a21d4d690677207152be5` and repaired mirror head `51bafb8072f28a9f45893ec00c92d5c723bb5380`. Installer CPU selection (`UNSLOTH_LLAMA_CPP_BACKEND=cpu`) resolved the sandbox's inaccessible NVIDIA runtime. The driver receives explicit refs, so its generic override warning is expected: BEFORE is still the actual source merge base, while AFTER is the repaired mirror merge.

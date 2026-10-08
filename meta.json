@@ -1,8 +1,8 @@
 {
   "pr": 13103,
-  "head_ref": "51bafb8072",
+  "head_ref": "7e17de99218e4f46e6c6edcba4bdfaf447e95712",
   "base_sha": "6d3af3c332dc4eb1942a21d4d690677207152be5",
-  "head_sha": "51bafb8072f28a9f45893ec00c92d5c723bb5380",
+  "head_sha": "7e17de99218e4f46e6c6edcba4bdfaf447e95712",
   "scene": "deep_research_mcp_sources",
   "expect": "BEFORE ends after website access controls. AFTER adds an MCP search sources section, explains the 20-source limit, and lists Project Notes search_notes and Paper Index search_papers as accessible switches. Facts: mcp_header_visible false -> true, mcp_tool_labels [] -> both labels, and research_tools_requests 0 -> 1.",
   "facts": {

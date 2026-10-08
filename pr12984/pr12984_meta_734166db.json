@@ -1,0 +1,26 @@
+{
+  "pr": 12984,
+  "head_ref": "734166dbf27606901b7448503497318c2b9258c4",
+  "base_sha": "cebca113b6df62c618a812692a25c752d11aaf71",
+  "head_sha": "734166dbf27606901b7448503497318c2b9258c4",
+  "scene": "temporary_browser_history",
+  "expect": "BEFORE lists Example Domain in Browsing history. AFTER shows the empty-history message while the chat remains temporary. Facts: history_row_count 1 -> 0, example_domain_visible true -> false, and empty_history_visible false -> true.",
+  "facts": {
+    "BEFORE": {
+      "history_row_count": 1,
+      "example_domain_visible": true,
+      "empty_history_visible": false,
+      "temporary_chat_visible": true
+    },
+    "AFTER": {
+      "history_row_count": 0,
+      "example_domain_visible": false,
+      "empty_history_visible": true,
+      "temporary_chat_visible": true
+    }
+  },
+  "studio_env": {},
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-12984/ui-evidence/combined/pr12984_before_after.png"
+  ]
+}

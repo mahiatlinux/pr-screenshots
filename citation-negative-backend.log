@@ -1,0 +1,27 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_identically_named_mcp_sources_have_distinct_citations __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7e587385deb0>
+
+    def test_identically_named_mcp_sources_have_distinct_citations(monkeypatch):
+        from core import research_runs as worker
+        from core.research.citations import _document_source_citation
+    
+        supervisor = worker.ResearchSupervisor(SimpleNamespace(state = SimpleNamespace(server_port = 1)))
+        tools = [
+            {"serverId": server_id, "serverName": "Notes", "tool": "search", "name": f"mcp__{server_id}__search", "argument": "query"}
+            for server_id in ("first", "second")
+        ]
+        monkeypatch.setattr(worker, "execute_mcp_tool", lambda name, *args, **kwargs: f"Evidence from {name}")
+        sources = asyncio.run(supervisor._search_mcp_tools({"id": "r"}, tools, "query", 0, 10))
+>       assert len({_document_source_citation(source) for source in sources}) == 2
+E       AssertionError: assert 1 == 2
+E        +  where 1 = len({'[MCP: Notes · search]'})
+
+tests/test_research_mcp_sources.py:435: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+2026-10-09 00:03:58 [debug    ] torch._dynamo warm skipped: ModuleNotFoundError("No module named 'torch'")
+=========================== short test summary info ============================
+FAILED tests/test_research_mcp_sources.py::test_identically_named_mcp_sources_have_distinct_citations
+1 failed, 13 deselected in 1.51s

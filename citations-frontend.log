@@ -1,0 +1,22 @@
+✔ MCP citations cannot open a RAG document preview, including stored reports (0.610879ms)
+(node:9) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ MCP sources hydrate from the account and saves reach another session (3.584932ms)
+✔ queued research retains the MCP sources selected when sent (0.827125ms)
+(node:10) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ MCP research sources stay within the backend request limit (1.380837ms)
+✔ the client's drifted copy of a research report is replaced by the stored one (1.791359ms)
+✔ the research prompt is protected as the parent of the report (0.222018ms)
+✔ ordinary messages in the same thread keep the client's edits (0.203042ms)
+✔ a thread with no research turn is passed through untouched (0.175399ms)
+✔ research ownership is detected from any of the backend's link keys (0.163999ms)
+✔ a relinked research prompt keeps the client's parent, not the pruned one (0.167024ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 655.44558

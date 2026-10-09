@@ -1,0 +1,32 @@
+✖ MCP citations cannot open a RAG document preview, including stored reports (1.246744ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85.706211
+
+✖ failing tests:
+
+test at tests/research-citations.test.ts:8:1
+✖ MCP citations cannot open a RAG document preview, including stored reports (1.246744ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'mcp__notes__search'
+  - undefined
+  
+      at TestContext.<anonymous> (file:///home/masher/unsloth-work/temp/pr-review-fix-unsloth-13103/fix/studio/frontend/tests/research-citations.test.ts:10:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'mcp__notes__search',
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

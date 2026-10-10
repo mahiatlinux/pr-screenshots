@@ -1,0 +1,43 @@
+{
+  "pr": 13182,
+  "head_ref": "dc312e30305d326e58998e568da9b3f85b68a157",
+  "base_sha": "57a175692dec95d4cb5f2f99cda189284b161152",
+  "head_sha": "dc312e30305d326e58998e568da9b3f85b68a157",
+  "scene": "claude_import_parent_chain",
+  "expect": "BEFORE is limited to the first two-message root and the canvas shows only its 'Bring sandwiches.' reply. AFTER shows the complete six-turn conversation through 'Leave before noon.' Facts: root_count 4 -> 1, longest_chain 2 -> 6, unique reply/follow-up turns 1 -> 5, and final_reply_visible false -> true in Chromium and Firefox.",
+  "facts": {
+    "BEFORE": {
+      "imported_new_chats": 0,
+      "imported_messages": 0,
+      "stored_message_count": 6,
+      "root_count": 4,
+      "longest_chain": 2,
+      "chromium_version": "145.0.7632.6",
+      "chromium_visible_count": 1,
+      "chromium_final_reply_visible": false,
+      "firefox_version": "146.0.1",
+      "firefox_visible_count": 1,
+      "firefox_final_reply_visible": false
+    },
+    "AFTER": {
+      "imported_new_chats": 0,
+      "imported_messages": 0,
+      "stored_message_count": 6,
+      "root_count": 1,
+      "longest_chain": 6,
+      "chromium_version": "145.0.7632.6",
+      "chromium_visible_count": 5,
+      "chromium_final_reply_visible": true,
+      "firefox_version": "146.0.1",
+      "firefox_visible_count": 5,
+      "firefox_final_reply_visible": true
+    }
+  },
+  "studio_env": {
+    "UNSLOTH_CLAUDE_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13182/artifacts/ui-evidence/claude-home"
+  },
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13182/artifacts/ui-evidence/combined/pr13182_pair_00.png",
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13182/artifacts/ui-evidence/combined/pr13182_pair_01.png"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "pr": 13649,
+  "head_ref": "c75db56358",
+  "base_sha": "e751e19447f7c85130beb00245a3f2abf2567bdb",
+  "head_sha": "c75db5635877c2cebc14c2834eb366abf61628e1",
+  "scene": "inline_numeric_math",
+  "expect": "BEFORE garbles the numeric spans and reports at least one KaTeX error. AFTER renders 3, 5, 3 + 5 = 8, and 8 as four math spans with no KaTeX errors while keeping the six displayed shell examples literal. Facts: math_annotations changes to the four expected spans, katex_errors changes to 0, and shell_literals_preserved is true.",
+  "facts": {
+    "BEFORE": {
+      "math_annotations": [
+        null
+      ],
+      "katex_errors": 7,
+      "visible_dollars": 5,
+      "assistant_has_expected_words": false,
+      "shell_literals_preserved": false,
+      "provider_model": "uidiff-inline-numeric-math"
+    },
+    "AFTER": {
+      "math_annotations": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "katex_errors": 0,
+      "visible_dollars": 13,
+      "assistant_has_expected_words": true,
+      "shell_literals_preserved": true,
+      "provider_model": "uidiff-inline-numeric-math"
+    }
+  },
+  "studio_env": {
+    "HF_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/hf",
+    "HF_HUB_CACHE": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/hub",
+    "HF_XET_CACHE": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/xet",
+    "XDG_CACHE_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/xdg"
+  },
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/artifacts/ui/combined/pr13649_before_after.png"
+  ]
+}

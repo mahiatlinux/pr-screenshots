@@ -1,0 +1,49 @@
+{
+  "pr": 13649,
+  "head_ref": "81d480e60f",
+  "base_sha": "e751e19447f7c85130beb00245a3f2abf2567bdb",
+  "head_sha": "81d480e60f65e79f36621952ee65e1ecdb727d54",
+  "scene": "inline_numeric_math",
+  "expect": "BEFORE garbles numeric spans and shell examples. AFTER renders seven numeric spans, including exclamation/question punctuation and a quoted closer, with no KaTeX errors; keeps six shell examples literal; and preserves bold 'then'. Facts: math_span_count is 7, katex_errors is 0, shell_literals_preserved is true, and strong_then_preserved is true.",
+  "facts": {
+    "BEFORE": {
+      "math_annotations": [
+        null
+      ],
+      "math_span_count": 1,
+      "katex_errors": 7,
+      "visible_dollars": 11,
+      "assistant_has_expected_words": false,
+      "shell_literals_preserved": false,
+      "strong_then_preserved": false,
+      "provider_model": "uidiff-inline-numeric-math"
+    },
+    "AFTER": {
+      "math_annotations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "math_span_count": 7,
+      "katex_errors": 0,
+      "visible_dollars": 13,
+      "assistant_has_expected_words": true,
+      "shell_literals_preserved": true,
+      "strong_then_preserved": true,
+      "provider_model": "uidiff-inline-numeric-math"
+    }
+  },
+  "studio_env": {
+    "HF_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/hf",
+    "HF_HUB_CACHE": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/hub",
+    "HF_XET_CACHE": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/xet",
+    "XDG_CACHE_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/xdg"
+  },
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/artifacts/ui/combined/pr13649_before_after.png"
+  ]
+}

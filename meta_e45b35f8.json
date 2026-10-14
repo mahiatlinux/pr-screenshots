@@ -1,0 +1,49 @@
+{
+  "pr": 13649,
+  "head_ref": "e45b35f802f3f159e211fbbf2e08a00f252d5b9d",
+  "base_sha": "e751e19447f7c85130beb00245a3f2abf2567bdb",
+  "head_sha": "e45b35f802f3f159e211fbbf2e08a00f252d5b9d",
+  "scene": "inline_numeric_math",
+  "expect": "BEFORE garbles numeric spans and shell examples. AFTER renders eight numeric spans, including exclamation/question punctuation and a quoted closer plus one before a Markdown link in quoted prose, with no KaTeX errors; keeps eight shell examples literal; preserves the link and bold 'then'. Facts: math_span_count is 8, katex_errors is 0, shell_literals_preserved, unquoted_shell_literals_preserved, reference_link_preserved, and strong_then_preserved are true.",
+  "facts": {
+    "BEFORE": {
+      "math_annotations": [
+        null
+      ],
+      "math_span_count": 1,
+      "katex_errors": 7,
+      "visible_dollars": 17,
+      "assistant_has_expected_words": false,
+      "shell_literals_preserved": false,
+      "strong_then_preserved": false,
+      "reference_link_preserved": false,
+      "unquoted_shell_literals_preserved": true,
+      "provider_model": "uidiff-inline-numeric-math"
+    },
+    "AFTER": {
+      "math_annotations": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "math_span_count": 8,
+      "katex_errors": 0,
+      "visible_dollars": 17,
+      "assistant_has_expected_words": true,
+      "shell_literals_preserved": true,
+      "strong_then_preserved": true,
+      "reference_link_preserved": true,
+      "unquoted_shell_literals_preserved": true,
+      "provider_model": "uidiff-inline-numeric-math"
+    }
+  },
+  "studio_env": {},
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/artifacts/ui/combined/pr13649_before_after.png"
+  ]
+}

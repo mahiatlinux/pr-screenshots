@@ -1,18 +1,29 @@
 {
   "pr": 13649,
-  "head_ref": "366b8d227f",
+  "head_ref": "dd20014458e42ed4ab7b3aaf040e40423fdc0cf4",
   "base_sha": "e751e19447f7c85130beb00245a3f2abf2567bdb",
-  "head_sha": "366b8d227f1b86906e4169c3f383d120af747cbb",
+  "head_sha": "dd20014458e42ed4ab7b3aaf040e40423fdc0cf4",
   "scene": "inline_numeric_math",
-  "expect": "BEFORE garbles the numeric spans and reports at least one KaTeX error. AFTER renders 3, 5, 3 + 5 = 8, and 8 as four math spans with no KaTeX errors or visible dollar signs. Facts: math_annotations changes to the four expected spans, katex_errors changes to 0, and visible_dollars changes to 0.",
+  "expect": "BEFORE garbles numeric spans and shell examples. AFTER renders sixteen numeric spans, including exclamation/question punctuation and a quoted closer, compact display math, possessive punctuation, adjacent bold, and Markdown links, with no KaTeX errors; keeps shell examples literal. Facts: math_span_count is 16, katex_errors is 0, shell_literals_preserved, unquoted_shell_literals_preserved, arbitrary_shell_literal_preserved, reference_link_preserved, shortcut_reference_preserved, possessive_preserved, strong_then_preserved, and strong_red_preserved are true.",
   "facts": {
     "BEFORE": {
       "math_annotations": [
+        null,
+        null,
         null
       ],
-      "katex_errors": 2,
-      "visible_dollars": 2,
+      "math_span_count": 3,
+      "katex_errors": 20,
+      "visible_dollars": 11,
       "assistant_has_expected_words": false,
+      "shell_literals_preserved": false,
+      "strong_then_preserved": false,
+      "reference_link_preserved": false,
+      "shortcut_reference_preserved": true,
+      "arbitrary_shell_literal_preserved": true,
+      "possessive_preserved": true,
+      "strong_red_preserved": false,
+      "unquoted_shell_literals_preserved": false,
       "provider_model": "uidiff-inline-numeric-math"
     },
     "AFTER": {
@@ -20,20 +31,36 @@
         null,
         null,
         null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null
       ],
+      "math_span_count": 16,
       "katex_errors": 0,
-      "visible_dollars": 0,
+      "visible_dollars": 23,
       "assistant_has_expected_words": true,
+      "shell_literals_preserved": true,
+      "strong_then_preserved": true,
+      "reference_link_preserved": true,
+      "shortcut_reference_preserved": true,
+      "arbitrary_shell_literal_preserved": true,
+      "possessive_preserved": true,
+      "strong_red_preserved": true,
+      "unquoted_shell_literals_preserved": true,
       "provider_model": "uidiff-inline-numeric-math"
     }
   },
-  "studio_env": {
-    "HF_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/hf",
-    "HF_HUB_CACHE": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/hub",
-    "HF_XET_CACHE": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/xet",
-    "XDG_CACHE_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/xdg"
-  },
+  "studio_env": {},
   "pairs": [
     "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/artifacts/ui/combined/pr13649_before_after.png"
   ]

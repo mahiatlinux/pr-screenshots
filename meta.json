@@ -1,0 +1,40 @@
+{
+  "pr": 13649,
+  "head_ref": "366b8d227f",
+  "base_sha": "e751e19447f7c85130beb00245a3f2abf2567bdb",
+  "head_sha": "366b8d227f1b86906e4169c3f383d120af747cbb",
+  "scene": "inline_numeric_math",
+  "expect": "BEFORE garbles the numeric spans and reports at least one KaTeX error. AFTER renders 3, 5, 3 + 5 = 8, and 8 as four math spans with no KaTeX errors or visible dollar signs. Facts: math_annotations changes to the four expected spans, katex_errors changes to 0, and visible_dollars changes to 0.",
+  "facts": {
+    "BEFORE": {
+      "math_annotations": [
+        null
+      ],
+      "katex_errors": 2,
+      "visible_dollars": 2,
+      "assistant_has_expected_words": false,
+      "provider_model": "uidiff-inline-numeric-math"
+    },
+    "AFTER": {
+      "math_annotations": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "katex_errors": 0,
+      "visible_dollars": 0,
+      "assistant_has_expected_words": true,
+      "provider_model": "uidiff-inline-numeric-math"
+    }
+  },
+  "studio_env": {
+    "HF_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/hf",
+    "HF_HUB_CACHE": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/hub",
+    "HF_XET_CACHE": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/xet",
+    "XDG_CACHE_HOME": "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/ui-cache/xdg"
+  },
+  "pairs": [
+    "/home/masher/unsloth-work/temp/pr-review-fix-unsloth-13649/artifacts/ui/combined/pr13649_before_after.png"
+  ]
+}
